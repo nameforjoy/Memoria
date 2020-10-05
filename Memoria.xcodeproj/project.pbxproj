@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15266D60252BC7D9006A531D /* UILabel+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15266D5F252BC7D9006A531D /* UILabel+Accessibility.swift */; };
+		15266D64252BC88C006A531D /* SF-Font in Resources */ = {isa = PBXBuildFile; fileRef = 15266D63252BC88C006A531D /* SF-Font */; };
 		152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E5252B33A5002F379C /* AppDelegate.swift */; };
 		152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E7252B33A5002F379C /* SceneDelegate.swift */; };
 		152EE5EA252B33A5002F379C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E9252B33A5002F379C /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15266D5F252BC7D9006A531D /* UILabel+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Accessibility.swift"; sourceTree = "<group>"; };
+		15266D63252BC88C006A531D /* SF-Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF-Font"; sourceTree = "<group>"; };
 		152EE5E2252B33A5002F379C /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152EE5E5252B33A5002F379C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		152EE5E7252B33A5002F379C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15266D5E252BC7BE006A531D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15266D5F252BC7D9006A531D /* UILabel+Accessibility.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		152EE5D9252B33A5002F379C = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +68,8 @@
 		152EE5E4252B33A5002F379C /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				15266D63252BC88C006A531D /* SF-Font */,
+				15266D5E252BC7BE006A531D /* Extensions */,
 				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
 				152EE5E7252B33A5002F379C /* SceneDelegate.swift */,
 				152EE5E9252B33A5002F379C /* ViewController.swift */,
@@ -125,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15266D64252BC88C006A531D /* SF-Font in Resources */,
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
@@ -161,6 +176,7 @@
 				152EE5EA252B33A5002F379C /* ViewController.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
+				15266D60252BC7D9006A531D /* UILabel+Accessibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
