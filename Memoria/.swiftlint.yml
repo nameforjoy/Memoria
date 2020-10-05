@@ -15,8 +15,8 @@ included: # paths to include during linting. `--path` is ignored if present.
 #
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
-  - ManasPelasManas/Storyboards
-  - ManasPelasManas/Fonts
+  - Memoria/Storyboards
+  - Memoria/Fonts
 #
 analyzer_rules: # Rules run by `swiftlint analyze` (experimental)
   - explicit_self
@@ -28,7 +28,9 @@ force_try:
   severity: warning # explicitly
 # rules that have both warning and error levels, can set just the warning level
 # implicitly
-line_length: 110
+line_length: 
+  - 140
+  - ignores_comments: true
 # they can set both implicitly with an array
 type_body_length:
   - 300 # warning
