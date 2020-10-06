@@ -32,6 +32,8 @@
 		15CDC15A252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC148252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf */; };
 		15CDC15B252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */; };
 		15CDC15C252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */; };
+		15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */; };
+		15CDC163252CC00A00BD9A11 /* InputAudio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		15CDC148252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
 		15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioVC.swift; sourceTree = "<group>"; };
+		15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAudio.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				152EE5EE252B33A7002F379C /* Assets.xcassets */,
 				152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */,
 				152EE5F3252B33A7002F379C /* Info.plist */,
+				15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */,
+				15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */,
 			);
 			path = Memoria;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 				15CDC151252C884A00BD9A11 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				15CDC150252C884A00BD9A11 /* SF-Pro-Display-Black.otf in Resources */,
 				15CDC156252C884A00BD9A11 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				15CDC163252CC00A00BD9A11 /* InputAudio.storyboard in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
 				15CDC152252C884A00BD9A11 /* SF-Pro-Display-Light.otf in Resources */,
 				15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */,
@@ -253,6 +260,7 @@
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabel+Accessibility.swift in Sources */,
+				15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
