@@ -17,8 +17,7 @@ extension UILabel {
             let fontName = newValue.components(separatedBy: "_")[0]
             let fontSize = CGFloat(Int(newValue.components(separatedBy: "_")[1]) ?? 17)
 
-            let newFont = UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize:
-                fontSize)
+            let newFont = UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
             self.dynamicFont = newFont
         }
     }
@@ -29,13 +28,12 @@ extension UILabel {
         }
         
         set {
-            
             self.numberOfLines = 0
             
-             if #available(iOS 10.0, *) {
+            if #available(iOS 10.0, *) {
                 // Real-time size update
                 self.adjustsFontForContentSizeCategory = true
-             }
+            }
             
             let fontMetrics = UIFontMetrics(forTextStyle: .body)
             self.font = fontMetrics.scaledFont(for: newValue)
