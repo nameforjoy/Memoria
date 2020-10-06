@@ -19,10 +19,10 @@ class ViewController: UIViewController {
     }
     
     private func setupAccessibility() {
-        let loremFont = UIFont(name: "SFProDisplay-Medium", size: 18) ?? UIFont.systemFont(ofSize: 18)
+        let loremFont = UIFont(name: "SFProDisplay-Black", size: 18) ?? UIFont.systemFont(ofSize: 18)
 
         self.loremLabel.dynamicFont = loremFont
-
+        print(UIFont.familyNames)
     }
 
 }
