@@ -106,19 +106,43 @@
 		152EE5E4252B33A5002F379C /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				15C8F23E252DF49800DD9208 /* Models */,
+				15C8F23D252DF48C00DD9208 /* Controllers */,
+				15C8F23B252DF46B00DD9208 /* Views */,
 				15CDC138252C880000BD9A11 /* SF-Pro-Font */,
 				15266D5E252BC7BE006A531D /* Extensions */,
 				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
 				152EE5E7252B33A5002F379C /* SceneDelegate.swift */,
-				152EE5E9252B33A5002F379C /* ViewController.swift */,
-				152EE5EB252B33A5002F379C /* Main.storyboard */,
 				152EE5EE252B33A7002F379C /* Assets.xcassets */,
 				152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */,
 				152EE5F3252B33A7002F379C /* Info.plist */,
-				15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */,
-				15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */,
 			);
 			path = Memoria;
+			sourceTree = "<group>";
+		};
+		15C8F23B252DF46B00DD9208 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				152EE5EB252B33A5002F379C /* Main.storyboard */,
+				15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		15C8F23D252DF48C00DD9208 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */,
+				152EE5E9252B33A5002F379C /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		15C8F23E252DF49800DD9208 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		15CDC138252C880000BD9A11 /* SF-Pro-Font */ = {
