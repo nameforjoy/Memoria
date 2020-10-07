@@ -13,16 +13,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.setupAccessibility()
     }
     
+    /// Method for configuring accessibility
+    /// Set font and size, then associate with the label as a dynamicFont
     private func setupAccessibility() {
         let loremFont = UIFont(name: "SFProDisplay-Black", size: 18) ?? UIFont.systemFont(ofSize: 18)
-
         self.loremLabel.dynamicFont = loremFont
-        print(UIFont.familyNames)
+        
+        //print(UIFont.familyNames) //know if the font is intalled
     }
 
 }

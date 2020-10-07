@@ -16,9 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obc-2Z-SOZ">
+                                <rect key="frame" x="168" y="754" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Audio Input"/>
+                                <connections>
+                                    <segue destination="H3Q-rM-KD8" kind="show" id="PpY-CI-564"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAu-i0-bp8">
-                                <rect key="frame" x="34" y="307" width="346" height="345"/>
-                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae sodales purus, vitae molestie nisl. Quisque accumsan ante a augue malesuada tempor. Maecenas sodales pretium imperdiet. Cras tempor convallis magna id pellentesque. Aliquam nulla dui, ultricies ut sem et, dignissim porta tortor. Phasellus pretium turpis ac nibh imperdiet, eget tempor dolor euismod. Curabitur vel mattis tortor. Fusce scelerisque metus vel nisl bibendum, eget blandit lectus fermentum. Nullam pulvinar metus sem, et laoreet metus blandit ut. In hac habitasse platea dictumst. Duis porttitor, tortor ut elementum luctus, dolor enim pulvinar est, nec vehicula ipsum metus non orci. Proin tristique consectetur mauris non dignissim.</mutableString>
+                                <rect key="frame" x="34" y="102" width="346" height="264"/>
+                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae sodales purus, vitae molestie nisl. Quisque accumsan ante a augue malesuada tempor. Maecenas sodales pretium imperdiet. Cras tempor convallis magna id pellentesque. Aliquam nulla dui, ultricies ut sem et, dignissim porta tortor. Phasellus pretium turpis ac nibh imperdiet, eget tempor dolor euismod. Curabitur vel mattis tortor. Fusce scelerisque metus vel nisl bibendum, eget blandit lectus fermentum. Nullam pulvinar metus sem, et laoreet metus blandit ut. </mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,8 +35,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dAu-i0-bp8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="N2f-Sq-o9C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dAu-i0-bp8" secondAttribute="trailing" constant="34" id="QSV-hp-MJj"/>
-                            <constraint firstItem="dAu-i0-bp8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="263" id="e6b-h3-QeJ"/>
                             <constraint firstItem="dAu-i0-bp8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="vud-rK-WaI"/>
                         </constraints>
                     </view>
@@ -39,6 +47,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="123.88392857142857"/>
+        </scene>
+        <!--InputAudio-->
+        <scene sceneID="F69-r5-nw3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InputAudio" id="H3Q-rM-KD8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bz9-iT-JMw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JLx-K6-Dmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="93"/>
         </scene>
     </scenes>
     <resources>
