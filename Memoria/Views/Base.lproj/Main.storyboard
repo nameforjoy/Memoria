@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="swH-iQ-aQK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Memory Collection-->
+        <scene sceneID="rc0-uH-Plc">
+            <objects>
+                <viewController storyboardIdentifier="memoryCollection" title="Memory Collection" id="upX-eD-PW6" customClass="MemoryCollectionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="izE-Oo-atp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WL9-vj-r8I">
+                                <rect key="frame" x="106" y="763" width="203" height="30"/>
+                                <state key="normal" title="Dynamic type and audio tests"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Z0z-I4-Mza"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WL9-vj-r8I" firstAttribute="top" secondItem="e5p-nX-PYi" secondAttribute="top" constant="623" id="1dX-Ru-wk0"/>
+                            <constraint firstItem="e5p-nX-PYi" firstAttribute="trailing" secondItem="WL9-vj-r8I" secondAttribute="trailing" constant="105" id="FSS-sg-f5a"/>
+                            <constraint firstItem="WL9-vj-r8I" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="106" id="khp-ck-jD9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Caixa de Memórias" id="cce-3W-jOh">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="LHh-Nh-cwe">
+                            <connections>
+                                <segue destination="6OU-zm-CFT" kind="show" id="Oaj-zN-rst"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7v-o0-zM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197.10144927536234" y="123.88392857142857"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -16,17 +53,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obc-2Z-SOZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obc-2Z-SOZ">
                                 <rect key="frame" x="168" y="754" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Audio Input"/>
                                 <connections>
                                     <segue destination="H3Q-rM-KD8" kind="show" id="PpY-CI-564"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAu-i0-bp8">
-                                <rect key="frame" x="34" y="102" width="346" height="264"/>
-                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae sodales purus, vitae molestie nisl. Quisque accumsan ante a augue malesuada tempor. Maecenas sodales pretium imperdiet. Cras tempor convallis magna id pellentesque. Aliquam nulla dui, ultricies ut sem et, dignissim porta tortor. Phasellus pretium turpis ac nibh imperdiet, eget tempor dolor euismod. Curabitur vel mattis tortor. Fusce scelerisque metus vel nisl bibendum, eget blandit lectus fermentum. Nullam pulvinar metus sem, et laoreet metus blandit ut. </mutableString>
+                                <rect key="frame" x="34" y="198" width="346" height="264"/>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae sodales purus, vitae molestie nisl. Quisque accumsan ante a augue malesuada tempor. Maecenas sodales pretium imperdiet. Cras tempor convallis magna id pellentesque. Aliquam nulla dui, ultricies ut sem et, dignissim porta tortor. Phasellus pretium turpis ac nibh imperdiet, eget tempor dolor euismod. Curabitur vel mattis tortor. Fusce scelerisque metus vel nisl bibendum, eget blandit lectus fermentum. Nullam pulvinar metus sem, et laoreet metus blandit ut. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,18 +71,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Obc-2Z-SOZ" firstAttribute="top" secondItem="dAu-i0-bp8" secondAttribute="bottom" constant="292" id="JFf-1N-gKX"/>
                             <constraint firstItem="dAu-i0-bp8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="N2f-Sq-o9C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dAu-i0-bp8" secondAttribute="trailing" constant="34" id="QSV-hp-MJj"/>
+                            <constraint firstItem="Obc-2Z-SOZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="168" id="WA3-Br-cfj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Obc-2Z-SOZ" secondAttribute="trailing" constant="167" id="mwc-Ho-juh"/>
                             <constraint firstItem="dAu-i0-bp8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="vud-rK-WaI"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="KjX-CB-nKa"/>
                     <connections>
                         <outlet property="loremLabel" destination="dAu-i0-bp8" id="0l1-1m-iG5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="123.88392857142857"/>
+            <point key="canvasLocation" x="197" y="844"/>
         </scene>
         <!--InputAudio-->
         <scene sceneID="F69-r5-nw3">
@@ -56,7 +96,41 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLx-K6-Dmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="93"/>
+            <point key="canvasLocation" x="773" y="844"/>
+        </scene>
+        <!--Navigation-->
+        <scene sceneID="T4j-0T-HqN">
+            <objects>
+                <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="upX-eD-PW6" kind="relationship" relationship="rootViewController" id="11W-0C-uJK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Me-uc-kUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-697" y="124"/>
+        </scene>
+        <!--Question-->
+        <scene sceneID="nvh-aE-BPr">
+            <objects>
+                <viewController storyboardIdentifier="question" title="Question" id="6OU-zm-CFT" customClass="QuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lwf-Fw-7ku">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TTR-GR-XYr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Question" id="C8O-jV-aaK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XNY-Mt-vXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1070" y="124"/>
         </scene>
     </scenes>
     <resources>
