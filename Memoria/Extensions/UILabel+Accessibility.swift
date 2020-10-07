@@ -8,21 +8,7 @@
 import UIKit
 
 extension UILabel {
-    @IBInspectable var dynamicTheme: String {
-        get {
-            return self.dynamicTheme
-        }
-        
-        set {
-            let fontName = newValue.components(separatedBy: "_")[0]
-            let fontSize = CGFloat(Int(newValue.components(separatedBy: "_")[1]) ?? 17)
-
-            let newFont = UIFont(name: fontName, size: fontSize) ?? UIFont.systemFont(ofSize:
-                fontSize)
-            self.dynamicFont = newFont
-        }
-    }
-    
+    ///Configuration to enable multiple lines, to update in real time and to call the property that enable the font to scale large size
     var dynamicFont: UIFont {
         get {
             return self.font
