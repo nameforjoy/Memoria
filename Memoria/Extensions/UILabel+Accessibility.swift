@@ -8,7 +8,6 @@
 import UIKit
 
 extension UILabel {
-    
     ///Configuration to enable multiple lines, to update in real time and to call the property that enable the font to scale large size
     var dynamicFont: UIFont {
         get {
