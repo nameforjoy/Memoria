@@ -14,6 +14,8 @@
 		152EE5ED252B33A5002F379C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EB252B33A5002F379C /* Main.storyboard */; };
 		152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EE252B33A7002F379C /* Assets.xcassets */; };
 		152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */; };
+		15C8F242252DFE5600DD9208 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F241252DFE5600DD9208 /* Memory.swift */; };
+		15C8F246252DFF6600DD9208 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F245252DFF6600DD9208 /* Detail.swift */; };
 		15CDC14B252C884A00BD9A11 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */; };
 		15CDC14C252C884A00BD9A11 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */; };
 		15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13B252C884800BD9A11 /* SF-Pro-Display-LightItalic.otf */; };
@@ -46,6 +48,8 @@
 		152EE5EE252B33A7002F379C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		152EE5F1252B33A7002F379C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		152EE5F3252B33A7002F379C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15C8F241252DFE5600DD9208 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		15C8F245252DFF6600DD9208 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		15CDC13B252C884800BD9A11 /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 		152EE5E4252B33A5002F379C /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				15C8F240252DF6EF00DD9208 /* Xibs */,
 				15C8F23E252DF49800DD9208 /* Models */,
 				15C8F23D252DF48C00DD9208 /* Controllers */,
 				15C8F23B252DF46B00DD9208 /* Views */,
@@ -141,8 +146,17 @@
 		15C8F23E252DF49800DD9208 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				15C8F241252DFE5600DD9208 /* Memory.swift */,
+				15C8F245252DFF6600DD9208 /* Detail.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		15C8F240252DF6EF00DD9208 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xibs;
 			sourceTree = "<group>";
 		};
 		15CDC138252C880000BD9A11 /* SF-Pro-Font */ = {
@@ -280,6 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
+				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				152EE5EA252B33A5002F379C /* ViewController.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
