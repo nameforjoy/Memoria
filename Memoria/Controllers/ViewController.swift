@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.save()
-        self.retrieve()
+        //self.retrieve()
         self.setupAccessibility()
     }
     
@@ -45,32 +45,32 @@ class ViewController: UIViewController {
     
 //    func retrieve() {
 //        let predicate = NSPredicate(value: true)
-//        
+//
 //        let query = CKQuery(recordType: "Memory", predicate: predicate)
 //        query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
-//        
+//
 //        let operation = CKQueryOperation(query: query)
-//        
+//
 //        var titles = [String]()
-//        
+//
 //        operation.recordFetchedBlock = { record in
-//            
+//
 //            titles.append(record["title"]!)
 //            print(record)
-//            
+//
 //        }
-//        
+//
 //        operation.queryCompletionBlock = { cursor, error in
-//            
+//
 //            DispatchQueue.main.async {
-//                
+//
 //                print("Titles: \(titles)")
-//                
+//
 //            }
-//            
+//
 //        }
-//    
-//        
+//
+//
 //        privateDatabase.add(operation)
 //    }
     
