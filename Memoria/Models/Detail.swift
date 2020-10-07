@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 
 class Detail: Codable {
-//    let audio: CKAsset?  //need to import CloudKit for this format but does not conform to protocol 'Codable'
+//    let audio: CKAsset?  // need to import CloudKit for this format but does not conform to protocol 'Codable'
 //    let image: CKAsset?
     let text: String?
     let title: String?

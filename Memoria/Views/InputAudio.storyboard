@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YWm-VN-6LL">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +12,7 @@
             <objects>
                 <viewController id="YWm-VN-6LL" customClass="InputAudioVC" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dza-C7-wFN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmM-2G-K0x">
@@ -38,7 +37,7 @@
                     </view>
                     <connections>
                         <outlet property="playButton" destination="rrO-dN-Vkq" id="KAj-gF-PxB"/>
-                        <outlet property="recorButton" destination="YmM-2G-K0x" id="YOl-5r-0eQ"/>
+                        <outlet property="recordButton" destination="YmM-2G-K0x" id="YOl-5r-0eQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGt-Z3-ZPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

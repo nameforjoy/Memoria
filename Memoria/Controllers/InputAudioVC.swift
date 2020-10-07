@@ -10,7 +10,7 @@ import AVFoundation
 
 class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
-    @IBOutlet weak var recorButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
     var soundRecorder = AVAudioRecorder()
@@ -54,13 +54,13 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     ///Check the recordButton`s state
     @IBAction func record(_ sender: Any) {
-        if self.recorButton.titleLabel?.text == "Record" {
+        if self.recordButton.titleLabel?.text == "Record" {
             soundRecorder.record()
-            self.recorButton.setTitle("Stop", for: UIControl.State.normal)
+            self.recordButton.setTitle("Stop", for: UIControl.State.normal)
             self.playButton.isEnabled = false
         } else {
             soundRecorder.stop()
-            self.recorButton.setTitle("Record", for: UIControl.State.normal)
+            self.recordButton.setTitle("Record", for: UIControl.State.normal)
             self.playButton.isEnabled = false
         }
         
@@ -69,7 +69,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     ///Check the playButton`s state
     @IBAction func play(_ sender: Any) {
         if self.playButton.titleLabel?.text == "Play" {
-            self.recorButton.isEnabled = false
+            self.recordButton.isEnabled = false
             self.playButton.setTitle("Stop", for: UIControl.State.normal)
             preparePlayer()
             self.soundPlayer.play()
@@ -98,7 +98,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     ///Enable record when finish recording
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        self.recorButton.isEnabled = true
+        self.recordButton.isEnabled = true
         self.playButton.setTitle("Play", for: UIControl.State.normal)
     }
     
