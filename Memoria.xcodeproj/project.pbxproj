@@ -16,6 +16,8 @@
 		152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */; };
 		15C8F242252DFE5600DD9208 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F241252DFE5600DD9208 /* Memory.swift */; };
 		15C8F246252DFF6600DD9208 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F245252DFF6600DD9208 /* Detail.swift */; };
+		15C8F24B252E029700DD9208 /* TituloEtapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */; };
+		15C8F24C252E029700DD9208 /* TituloEtapaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */; };
 		15CDC14B252C884A00BD9A11 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */; };
 		15CDC14C252C884A00BD9A11 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */; };
 		15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13B252C884800BD9A11 /* SF-Pro-Display-LightItalic.otf */; };
@@ -50,6 +52,8 @@
 		152EE5F3252B33A7002F379C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15C8F241252DFE5600DD9208 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		15C8F245252DFF6600DD9208 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TituloEtapaViewCell.xib; sourceTree = "<group>"; };
+		15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TituloEtapaViewCell.swift; sourceTree = "<group>"; };
 		15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		15CDC13B252C884800BD9A11 /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
@@ -155,8 +159,18 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				15C8F248252E023B00DD9208 /* TituloEtapaCell */,
 			);
 			path = Xibs;
+			sourceTree = "<group>";
+		};
+		15C8F248252E023B00DD9208 /* TituloEtapaCell */ = {
+			isa = PBXGroup;
+			children = (
+				15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */,
+				15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */,
+			);
+			path = TituloEtapaCell;
 			sourceTree = "<group>";
 		};
 		15CDC138252C880000BD9A11 /* SF-Pro-Font */ = {
@@ -250,6 +264,7 @@
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
 				15CDC159252C884A00BD9A11 /* SF-Pro-Display-Ultralight.otf in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
+				15C8F24B252E029700DD9208 /* TituloEtapaViewCell.xib in Resources */,
 				15CDC158252C884A00BD9A11 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				15CDC14E252C884A00BD9A11 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				15CDC15A252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf in Resources */,
@@ -297,6 +312,7 @@
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				152EE5EA252B33A5002F379C /* ViewController.swift in Sources */,
+				15C8F24C252E029700DD9208 /* TituloEtapaViewCell.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabel+Accessibility.swift in Sources */,
