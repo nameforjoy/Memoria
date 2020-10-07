@@ -18,6 +18,7 @@
 		15C8F246252DFF6600DD9208 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F245252DFF6600DD9208 /* Detail.swift */; };
 		15C8F24B252E029700DD9208 /* TituloEtapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */; };
 		15C8F24C252E029700DD9208 /* TituloEtapaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */; };
+		15C8F25D252E08C000DD9208 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8F25C252E08C000DD9208 /* CloudKit.framework */; };
 		15CDC14B252C884A00BD9A11 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */; };
 		15CDC14C252C884A00BD9A11 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */; };
 		15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13B252C884800BD9A11 /* SF-Pro-Display-LightItalic.otf */; };
@@ -54,6 +55,8 @@
 		15C8F245252DFF6600DD9208 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TituloEtapaViewCell.xib; sourceTree = "<group>"; };
 		15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TituloEtapaViewCell.swift; sourceTree = "<group>"; };
+		15C8F259252E08B300DD9208 /* Memoria.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memoria.entitlements; sourceTree = "<group>"; };
+		15C8F25C252E08C000DD9208 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		15CDC13B252C884800BD9A11 /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C8F25D252E08C000DD9208 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +104,7 @@
 			children = (
 				152EE5E4252B33A5002F379C /* Memoria */,
 				152EE5E3252B33A5002F379C /* Products */,
+				15C8F25B252E08C000DD9208 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +119,7 @@
 		152EE5E4252B33A5002F379C /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				15C8F259252E08B300DD9208 /* Memoria.entitlements */,
 				15C8F240252DF6EF00DD9208 /* Xibs */,
 				15C8F23E252DF49800DD9208 /* Models */,
 				15C8F23D252DF48C00DD9208 /* Controllers */,
@@ -171,6 +177,14 @@
 				15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */,
 			);
 			path = TituloEtapaCell;
+			sourceTree = "<group>";
+		};
+		15C8F25B252E08C000DD9208 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15C8F25C252E08C000DD9208 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		15CDC138252C880000BD9A11 /* SF-Pro-Font */ = {
@@ -463,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Memoria/Memoria.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KDP22XDFSU;
 				INFOPLIST_FILE = Memoria/Info.plist;
@@ -482,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Memoria/Memoria.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KDP22XDFSU;
 				INFOPLIST_FILE = Memoria/Info.plist;
