@@ -15,7 +15,6 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var saveMemoryButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    // ROI
     var scrolledByKeyboard: Bool = false
     
     override func viewDidLoad() {
