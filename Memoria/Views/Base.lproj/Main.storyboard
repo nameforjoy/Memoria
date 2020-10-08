@@ -123,17 +123,63 @@
                     <view key="view" contentMode="scaleToFill" id="Lwf-Fw-7ku">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd9-8e-muY">
+                                <rect key="frame" x="25" y="150" width="364" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text answer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O2x-MF-M3z">
+                                <rect key="frame" x="25" y="180.5" width="364" height="200"/>
+                                <color key="backgroundColor" red="0.49304013324873097" green="0.49304013324873097" blue="0.49304013324873097" alpha="0.1972923801369863" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="SJj-tx-WP9"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDg-kO-0dq">
+                                <rect key="frame" x="25" y="812" width="364" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="saveMemory:" destination="6OU-zm-CFT" eventType="touchUpInside" id="J92-Dq-NWq"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="TTR-GR-XYr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wd9-8e-muY" firstAttribute="leading" secondItem="TTR-GR-XYr" secondAttribute="leading" constant="25" id="68j-ah-WPg"/>
+                            <constraint firstItem="kDg-kO-0dq" firstAttribute="leading" secondItem="wd9-8e-muY" secondAttribute="leading" id="C2F-05-sxZ"/>
+                            <constraint firstItem="wd9-8e-muY" firstAttribute="leading" secondItem="O2x-MF-M3z" secondAttribute="leading" id="FCE-1Q-QNa"/>
+                            <constraint firstItem="O2x-MF-M3z" firstAttribute="centerX" secondItem="TTR-GR-XYr" secondAttribute="centerX" id="FLz-X1-gqe"/>
+                            <constraint firstItem="wd9-8e-muY" firstAttribute="top" secondItem="TTR-GR-XYr" secondAttribute="top" constant="10" id="V3r-X8-DHb"/>
+                            <constraint firstItem="wd9-8e-muY" firstAttribute="centerX" secondItem="TTR-GR-XYr" secondAttribute="centerX" id="XuZ-65-w2h"/>
+                            <constraint firstItem="kDg-kO-0dq" firstAttribute="centerX" secondItem="TTR-GR-XYr" secondAttribute="centerX" id="hQq-Wh-R0S"/>
+                            <constraint firstItem="O2x-MF-M3z" firstAttribute="top" secondItem="wd9-8e-muY" secondAttribute="bottom" constant="10" id="wzQ-to-I4z"/>
+                            <constraint firstItem="TTR-GR-XYr" firstAttribute="bottom" secondItem="kDg-kO-0dq" secondAttribute="bottom" constant="20" id="zSt-4F-BYt"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Question" id="C8O-jV-aaK"/>
+                    <connections>
+                        <outlet property="saveMemoryButton" destination="kDg-kO-0dq" id="erW-gB-yNL"/>
+                        <outlet property="subtitle" destination="wd9-8e-muY" id="oCG-70-4xy"/>
+                        <outlet property="textAnswer" destination="O2x-MF-M3z" id="Aff-SL-Rug"/>
+                        <segue destination="Wnv-gd-wsS" kind="unwind" identifier="unwindSaveMemoryToCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="SqR-L3-dXi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNY-Mt-vXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Wnv-gd-wsS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="124"/>
+            <point key="canvasLocation" x="1069.5652173913045" y="123.88392857142857"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
