@@ -14,8 +14,6 @@ extension UITextView {
             return self.font ?? UIFont()
         }
         set {
-            self.textAlignment = .center
-
              if #available(iOS 10.0, *) {
                 // Real-time size update
                 self.adjustsFontForContentSizeCategory = true
