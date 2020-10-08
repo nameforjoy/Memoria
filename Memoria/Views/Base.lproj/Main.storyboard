@@ -103,9 +103,6 @@
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="dynamicTheme" value="SFProDisplay-Light_18"/>
-                                                </userDefinedRuntimeAttributes>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -139,9 +136,6 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="dynamicTheme" value="SFProDisplay-Light_18"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveMemory:" destination="6OU-zm-CFT" eventType="touchUpInside" id="45i-rY-EgP"/>
                                 </connections>

@@ -45,17 +45,33 @@ class QuestionViewController: UIViewController {
         
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        let keyboardFrame = keyboardSize.cgRectValue
 
-        let activeFieldMaxY: CGFloat = self.textAnswer.frame.maxY - self.scrollView.contentOffset.y
-
-        // Valor máximo do Y para que não seja sobreposto pelo teclado
-        let maxVisibleY = self.scrollView.frame.height - keyboardFrame.height
-
-        // Se TextField seria coberto, scrolla o conteúdo para cima
-        if activeFieldMaxY >= maxVisibleY {
-            self.scrollView.contentOffset.y += maxVisibleY - keyboardFrame.height
+        guard let activeInputView = self.textAnswer else {return}
+        let spacing: CGFloat = 20
+        
+        // Important values in Main View Coordinates (MVC)
+        let scrollViewFrameTopMVC = self.scrollView.frame.origin.y
+        let scrollViewContentTopMVC = scrollViewFrameTopMVC - self.scrollView.contentOffset.y
+        let activeInputViewTopMVC = activeInputView.frame.origin.y + scrollViewContentTopMVC
+        let activeInputViewBottomMVC = activeInputView.frame.origin.y + activeInputView.frame.height + scrollViewContentTopMVC
+        let keyboardTopMVC = keyboardSize.cgRectValue.origin.y
+        let visibleAreaHeight = keyboardTopMVC - scrollViewFrameTopMVC
+        
+        if activeInputViewTopMVC < scrollViewFrameTopMVC ||
+            activeInputViewBottomMVC > keyboardTopMVC {
+            
             self.scrolledByKeyboard = true
+            print("ActiveField NOT completely inside visible area")
+            
+            // Tests whether the sctive field shold be aligned by its top or bottom
+            if activeInputView.frame.height > visibleAreaHeight {
+                // Align top of active field with scrollView frame top
+                self.scrollView.contentOffset.y = activeInputView.frame.origin.y - spacing
+            } else {
+                // Align bottom of active field with the keyboard top
+            }
+        } else {
+            print("ActiveField is completely inside visible area")
         }
     }
 
@@ -97,7 +113,7 @@ class QuestionViewController: UIViewController {
     
     /// Puts question texts in its respective labels
     func setUpText() {
-        self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum?"
+        self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum lorem ipsum lorem ipsum lorem ipsum?"
         
         // Set up dynamic font
         let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
