@@ -10,7 +10,6 @@
 		15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15266D5F252BC7D9006A531D /* UILabelAccessibility.swift */; };
 		152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E5252B33A5002F379C /* AppDelegate.swift */; };
 		152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E7252B33A5002F379C /* SceneDelegate.swift */; };
-		152EE5EA252B33A5002F379C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E9252B33A5002F379C /* ViewController.swift */; };
 		152EE5ED252B33A5002F379C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EB252B33A5002F379C /* Main.storyboard */; };
 		152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EE252B33A7002F379C /* Assets.xcassets */; };
 		152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */; };
@@ -52,7 +51,6 @@
 		152EE5E2252B33A5002F379C /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152EE5E5252B33A5002F379C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		152EE5E7252B33A5002F379C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		152EE5E9252B33A5002F379C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		152EE5EC252B33A5002F379C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		152EE5EE252B33A7002F379C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		152EE5F1252B33A7002F379C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			children = (
 				15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */,
 				8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */,
-				152EE5E9252B33A5002F379C /* ViewController.swift */,
 				8DDCAB85252E20570012B671 /* QuestionViewController.swift */,
 			);
 			path = Controllers;
@@ -344,7 +341,6 @@
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
-				152EE5EA252B33A5002F379C /* ViewController.swift in Sources */,
 				15C8F24C252E029700DD9208 /* TituloEtapaViewCell.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
