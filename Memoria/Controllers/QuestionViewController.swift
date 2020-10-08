@@ -59,12 +59,14 @@ class QuestionViewController: UIViewController {
     func setUpText() {
         self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum?"
         
-        // Accessibility configurations
-        self.changeTextForAccessibility()
+        // Set up dynamic font
         let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
         self.subtitle.dynamicFont = font
         self.saveMemoryButton.dynamicFont = font
         self.textAnswer.dynamicFont = font
+        
+        // Accessibility configurations
+        self.changeTextForAccessibility()
     }
     
     func changeTextForAccessibility() {

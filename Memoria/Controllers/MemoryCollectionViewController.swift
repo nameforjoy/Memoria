@@ -19,6 +19,10 @@ class MemoryCollectionViewController: UIViewController {
 
         self.setUpNavigationBar()
         self.setUpNavigationController()
+        
+        // Handle Notifications for Category Size Changes
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,18 +33,30 @@ class MemoryCollectionViewController: UIViewController {
         }
     }
     
+    deinit {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    @objc func fontSizeChanged(_ notification: Notification) {
+        self.changeTextForAccessibility()
+    }
+    
     func setUpNavigationBar() {
+        self.changeTextForAccessibility()
+        // Change title of the add memory button
+        // Doesn't change it's size with dynamic type
+        guard let addButton = self.navigationItem.rightBarButtonItem else {return}
+        addButton.title = "Adicionar"
+    }
+    
+    func changeTextForAccessibility() {
         // Change navigation title depending on font size accessibility
-        // Only changes from one to the other if you close the app an open it again
         if self.traitCollection.isAccessibleCategory {
             self.navigationItem.title = "Memórias"
         } else {
             self.navigationItem.title = "Caixa de memórias"
         }
-        // Change title of the add memory button
-        // Doesn't change it's size with dynamic type
-        guard let addButton = self.navigationItem.rightBarButtonItem else {return}
-        addButton.title = "Adicionar"
     }
     
     func setUpNavigationController() {
