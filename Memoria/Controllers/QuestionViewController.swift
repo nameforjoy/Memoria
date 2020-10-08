@@ -63,8 +63,8 @@ class QuestionViewController: UIViewController {
         self.changeTextForAccessibility()
         let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
         self.subtitle.dynamicFont = font
-        self.saveMemoryButton.titleLabel?.font = font
-        self.textAnswer.font = font
+        self.saveMemoryButton.dynamicFont = font
+        self.textAnswer.dynamicFont = font
     }
     
     func changeTextForAccessibility() {
