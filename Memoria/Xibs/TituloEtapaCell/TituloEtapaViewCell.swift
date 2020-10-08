@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TitleStageCellDelegate {
+protocol TitleStageCellDelegate: AnyObject {
     func didTapEditCell(_ cell: TituloEtapaViewCell)
     func didTapDeleteCell(_ cell: TituloEtapaViewCell)
 }
@@ -19,7 +19,7 @@ class TituloEtapaViewCell: UITableViewCell {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
-    var delegate: TitleStageCellDelegate?
+    weak var delegate: TitleStageCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,14 +15,12 @@ extension UILabel {
         }
         
         set {
-            
             self.numberOfLines = 0
             
-             if #available(iOS 10.0, *) {
+            if #available(iOS 10.0, *) {
                 // Real-time size update
                 self.adjustsFontForContentSizeCategory = true
-             }
-            
+            }
             let fontMetrics = UIFontMetrics(forTextStyle: .body)
             self.font = fontMetrics.scaledFont(for: newValue)
         }
