@@ -13,9 +13,13 @@ class MemoryCollectionViewController: UIViewController {
     @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
     
     var didJustSaveAMemory: Bool = false
+    let dataManager = DataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.dataManager.save()
+        self.dataManager.retrieve()
 
         self.setUpNavigationBar()
         self.setUpNavigationController()
