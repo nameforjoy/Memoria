@@ -69,5 +69,7 @@
 		<string>SF-Pro-Display-Regular.otf</string>
 		<string>SF-Pro-Display-Heavy.otf</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string></string>
 </dict>
 </plist>

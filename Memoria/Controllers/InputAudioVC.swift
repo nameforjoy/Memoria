@@ -15,7 +15,6 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
-    var fileName =  "/audioFile.m4a"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,30 +25,26 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     ///Initial configuration for the recorder
     func setupRecorder() {
         //Some default audio configurations
-        let recordSettings = [AVFormatIDKey : kAudioFormatAppleLossless, AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue, AVEncoderBitRateKey : 320000, AVNumberOfChannelsKey : 2, AVSampleRateKey : 44100.0 ] as [String : Any]
+        let recordSettings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                              AVSampleRateKey: 12000,
+                              AVNumberOfChannelsKey: 1,
+                              AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
         
         do {
-            self.soundRecorder =  try AVAudioRecorder(url: self.getFileURL() as URL, settings: recordSettings)
+            self.soundRecorder =  try AVAudioRecorder(url: self.getFileURL(), settings: recordSettings)
             soundRecorder.delegate = self
             soundRecorder.prepareToRecord()
         } catch {
-            print("Error: Problemas para começar a gravação")
+            print("Error: Problemas para preparar a gravação")
         }
         
     }
     
-    ///Add the filename to the directories path
-    func getFileURL() -> NSURL {
-        let path = getCacheDirectory() + fileName
-        let filePath = NSURL(fileURLWithPath: path)
-        return filePath
-    }
-    
-    ///Get local developer directory
-    //TODO: This makes the app crash in iPhone because don`t have access permision, so need to be changed
-    func getCacheDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-        return paths[0]
+    //Get documents diretory - permission to Microfone usage add in info.plist
+    func getFileURL() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let audioFilename = paths[0].appendingPathComponent("recording.m4a")
+        return audioFilename
     }
     
     ///Check the recordButton`s state
