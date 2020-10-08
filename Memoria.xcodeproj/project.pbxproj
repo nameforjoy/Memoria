@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15266D60252BC7D9006A531D /* DynamicFontAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15266D5F252BC7D9006A531D /* DynamicFontAccessibility.swift */; };
+		15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15266D5F252BC7D9006A531D /* UILabelAccessibility.swift */; };
 		152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E5252B33A5002F379C /* AppDelegate.swift */; };
 		152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E7252B33A5002F379C /* SceneDelegate.swift */; };
 		152EE5EA252B33A5002F379C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E9252B33A5002F379C /* ViewController.swift */; };
@@ -38,6 +38,8 @@
 		15CDC15C252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */; };
 		15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */; };
 		15CDC163252CC00A00BD9A11 /* InputAudio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */; };
+		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
+		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */; };
 		8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB85252E20570012B671 /* QuestionViewController.swift */; };
 		8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* Alerts.swift */; };
@@ -45,7 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		15266D5F252BC7D9006A531D /* DynamicFontAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFontAccessibility.swift; sourceTree = "<group>"; };
+		15266D5F252BC7D9006A531D /* UILabelAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelAccessibility.swift; sourceTree = "<group>"; };
 		152EE5E2252B33A5002F379C /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152EE5E5252B33A5002F379C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		152EE5E7252B33A5002F379C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,8 @@
 		15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioVC.swift; sourceTree = "<group>"; };
 		15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAudio.storyboard; sourceTree = "<group>"; };
+		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
+		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB85252E20570012B671 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB99252EA0290012B671 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -98,7 +102,9 @@
 		15266D5E252BC7BE006A531D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				15266D5F252BC7D9006A531D /* DynamicFontAccessibility.swift */,
+				15266D5F252BC7D9006A531D /* UILabelAccessibility.swift */,
+				8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */,
+				8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */,
 				8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */,
 				8DDCAB99252EA0290012B671 /* Alerts.swift */,
 			);
@@ -329,9 +335,11 @@
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */,
+				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
-				15266D60252BC7D9006A531D /* DynamicFontAccessibility.swift in Sources */,
+				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
+				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
 				15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

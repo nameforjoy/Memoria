@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -130,7 +131,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text answer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O2x-MF-M3z">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text answer" translatesAutoresizingMaskIntoConstraints="NO" id="O2x-MF-M3z">
                                 <rect key="frame" x="25" y="180.5" width="364" height="200"/>
                                 <color key="backgroundColor" red="0.49304013324873097" green="0.49304013324873097" blue="0.49304013324873097" alpha="0.1972923801369863" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -139,10 +140,22 @@
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="dynamicTheme" value="SFProDisplay-Light_18"/>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDg-kO-0dq">
-                                <rect key="frame" x="25" y="812" width="364" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="25" y="802" width="364" height="40"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="tpK-fr-G3V"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="dynamicTheme" value="SFProDisplay-Light_18"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveMemory:" destination="6OU-zm-CFT" eventType="touchUpInside" id="J92-Dq-NWq"/>
                                 </connections>
@@ -177,6 +190,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

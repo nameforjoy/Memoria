@@ -17,12 +17,24 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setUpQuestion()
-        self.setUpDynamicType()
+        self.setUpText()
         
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        // Handle Notifications for Category Size Changes
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    deinit {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    @objc func fontSizeChanged(_ notification: Notification) {
+        self.changeTextForAccessibility()
     }
     
     @IBAction func saveMemory(_ sender: Any) {
@@ -44,23 +56,22 @@ class QuestionViewController: UIViewController {
     }
     
     /// Puts question texts in its respective labels
-    func setUpQuestion() {
+    func setUpText() {
+        self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum?"
+        
+        // Accessibility configurations
+        self.changeTextForAccessibility()
+        let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
+        self.subtitle.dynamicFont = font
+        self.saveMemoryButton.titleLabel?.font = font
+        self.textAnswer.font = font
+    }
+    
+    func changeTextForAccessibility() {
         if self.traitCollection.isAccessibleCategory {
             self.navigationItem.title = "Pergunta"
         } else {
             self.navigationItem.title = "Título da pergunta"
         }
-        self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum?"
-    }
-    
-    /// Method for configuring dynamic type accessibility.
-    /// Sets font and size, then associates it with the label as a dynamicFont
-    func setUpDynamicType() {
-        
-        let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
-        self.subtitle.dynamicFont = font
-        
-        // NÃO FUNCIONA
-        self.textAnswer.font = font
     }
 }
