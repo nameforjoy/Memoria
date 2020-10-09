@@ -19,5 +19,15 @@ class Memory: Codable {
     }
     
     ///Method to calculate date from number of days, months or years
+    func getEstimatedDate(timePassedBy: Int, timeUnit: Calendar.Component) -> Date {
+        var estimatedDate = Date()
+
+
+        if let modifiedDate = Calendar.current.date(byAdding: timeUnit, value: -timePassedBy, to: estimatedDate) {
+            estimatedDate = modifiedDate
+        }
+
+        return estimatedDate
+    }
     
 }

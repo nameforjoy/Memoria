@@ -17,9 +17,11 @@ class MemoryCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.dataManager.save()
-        self.dataManager.retrieve()
+
+//        let newMemory = Memory(title: "Teste", description: "O dia que eu testei aquele métodod no Xccode", date: Date())
+//
+//        self.dataManager.save(memory: newMemory)
+        self.dataManager.retrieveAllMemories()
 
         self.setUpNavigationBar()
         self.setUpNavigationController()

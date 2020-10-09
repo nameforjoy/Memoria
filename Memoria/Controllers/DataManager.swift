@@ -10,35 +10,31 @@ import CloudKit
 
 class DataManager {
     let privateDatabase = CKContainer.default().privateCloudDatabase
-    var titles = [String]()
-    var recordIDs = [CKRecord.ID]()
     
-    public func save() {
-        let title = "Tentativa 2"
-        
+    public func save(memory: Memory) {
         let record = CKRecord(recordType: "Memory")
         
-        record.setValue(title, forKey: "title")
+        record.setValue(memory.title, forKey: "title")
+        record.setValue(memory.description, forKey: "description")
+        record.setValue(memory.date, forKey: "date")
         
         self.privateDatabase.save(record) { (savedRecord, error) in
             
             if error == nil {
-                
                 print("Record Saved")
-                print(savedRecord?.allKeys())
-                print(savedRecord?.allTokens())
-                
             } else {
-                
                 print("Record Not Saved")
                 print(error)
-                
             }
             
         }
     }
-    
-    public func retrieve() {
+
+
+    // This method is not workinng -- Maybe we'll need to use a closure instead of a return
+    public func retrieveAllMemories() -> [Memory] {
+        var allMemories = [Memory]()
+
         let predicate = NSPredicate(value: true)
 
         let query = CKQuery(recordType: "Memory", predicate: predicate)
@@ -46,15 +42,14 @@ class DataManager {
 
         let operation = CKQueryOperation(query: query)
 
-        titles.removeAll()
-        recordIDs.removeAll()
-
         operation.recordFetchedBlock = { record in
 
-            print(record.allKeys())
-            print(record.allTokens())
-            self.titles.append(record["title"]!)
-            self.recordIDs.append(record.recordID)
+            if let title = record["title"] as? String,
+               let description = record["description"] as? String,
+               let date = record["date"] as? Date {
+                let newMemory = Memory(title: title, description: description, date: date)
+                allMemories.append(newMemory)
+            }
 
         }
 
@@ -62,14 +57,16 @@ class DataManager {
 
             DispatchQueue.main.async {
 
-                print("Titles: \(self.titles)")
-                print("RecordIDs: \(self.recordIDs)")
-
+                //return allMemories
+                for memory in allMemories {
+                    print(memory.title)
+                }
             }
 
         }
 
         privateDatabase.add(operation)
 
+        return allMemories
     }
 }
