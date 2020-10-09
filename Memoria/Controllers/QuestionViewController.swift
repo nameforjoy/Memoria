@@ -15,7 +15,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var saveMemoryButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var scrolledByKeyboard: Bool = false
+    var scrollOffsetBeforeKeyboard = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,48 +45,18 @@ class QuestionViewController: UIViewController {
         
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        let keyboardFrame = keyboardSize.cgRectValue
 
         guard let activeInputView = self.textAnswer else {return}
-        let spacing: CGFloat = 20
         
-        // Important values in Main View Coordinates (MVC)
-        let scrollViewFrameTopMVC = self.scrollView.frame.origin.y
-        let scrollViewContentTopMVC = scrollViewFrameTopMVC - self.scrollView.contentOffset.y
-        let activeInputViewTopMVC = activeInputView.frame.origin.y + scrollViewContentTopMVC
-        let activeInputViewBottomMVC = activeInputView.frame.origin.y + activeInputView.frame.height + scrollViewContentTopMVC
-        let keyboardTopMVC = keyboardSize.cgRectValue.origin.y
-        let visibleAreaHeight = keyboardTopMVC - scrollViewFrameTopMVC
-        
-        if activeInputViewTopMVC < scrollViewFrameTopMVC ||
-            activeInputViewBottomMVC > keyboardTopMVC {
-            
-            self.scrolledByKeyboard = true
-            print("ActiveField NOT completely inside visible area")
-            
-            // Tests whether the sctive field shold be aligned by its top or bottom
-            if activeInputView.frame.height > visibleAreaHeight {
-                // Align top of active field with scrollView frame top
-                self.scrollView.contentOffset.y = activeInputView.frame.origin.y - spacing
-            } else {
-                // Align bottom of active field with the keyboard top
-            }
-        } else {
-            print("ActiveField is completely inside visible area")
-        }
+        self.scrollOffsetBeforeKeyboard = self.scrollView.contentOffset
+        self.scrollView.adjustScrollOffsetToKeyboard(keyboardFrame: keyboardFrame,
+                                          inputViewFrame: activeInputView.frame)
     }
 
     // Adjusts the position of the scroll view when the keyboard hides back to where it was
     @objc func keyboardWillHide(notification: Notification) {
-        guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        let keyboardFrame = keyboardSize.cgRectValue
-
-        // If the screen was scrolled, go back to the original position
-        if self.scrolledByKeyboard {
-            self.scrollView.contentOffset.y -= (self.scrollView.frame.height - keyboardFrame.height) - keyboardFrame.height
-        }
-        // Updates flag back for non scrolled-by-keyboard position
-        self.scrolledByKeyboard = false
+        self.scrollView.contentOffset.y = self.scrollOffsetBeforeKeyboard.y
     }
     
     @objc func fontSizeChanged(_ notification: Notification) {
