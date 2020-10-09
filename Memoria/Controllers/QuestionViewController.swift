@@ -10,12 +10,16 @@ import UIKit
 
 class QuestionViewController: UIViewController {
 
+    // MARK: Attributes
+    
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var textAnswer: UITextView!
     @IBOutlet weak var saveMemoryButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var scrollOffsetBeforeKeyboard = CGPoint()
+    
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +38,21 @@ class QuestionViewController: UIViewController {
     }
     
     deinit {
+        // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
         notificationCenter.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    // MARK: Actions
+    
+    /// Saves memory to database and return to main screen
+    @IBAction func saveMemory(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+    }
+    
+    // MARK: Keyboard
     
     // Adjusts the position of the scroll view when the keyboard appears
     @objc func keyboardWillShow(notification: Notification) {
@@ -59,32 +73,30 @@ class QuestionViewController: UIViewController {
         self.scrollView.contentOffset.y = self.scrollOffsetBeforeKeyboard.y
     }
     
-    @objc func fontSizeChanged(_ notification: Notification) {
-        self.changeTextForAccessibility()
+    // Dismisses keyboard after tapping outside keyboard
+    @objc func dismissKeyboard() {
+        self.textAnswer.resignFirstResponder()
     }
     
-    @IBAction func saveMemory(_ sender: Any) {
-        // Save memory on database
-        // Goes back to memory box screen
-        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
-    }
+    // MARK: Segue
     
+    // Passes needed information the the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
         if let destination = segue.destination as? MemoryCollectionViewController {
             destination.didJustSaveAMemory = true
         }
     }
     
-    /// Dismisses keyboard after tapping outside keyboard
-    @objc func dismissKeyboard() {
-        self.textAnswer.resignFirstResponder()
+    // MARK: Text Acessibility
+    
+    /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
+    @objc func fontSizeChanged(_ notification: Notification) {
+        self.changeTextForAccessibility()
     }
     
-    /// Puts question texts in its respective labels
+    /// Set up question texts in its respective labels.
     func setUpText() {
-        self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum lorem ipsum lorem ipsum lorem ipsum?"
-        
         // Set up dynamic font
         let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
         self.subtitle.dynamicFont = font
@@ -95,10 +107,14 @@ class QuestionViewController: UIViewController {
         self.changeTextForAccessibility()
     }
     
+    /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
+    /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
         if self.traitCollection.isAccessibleCategory {
+            self.subtitle.text = "Lorem ipsum dolor lorem ipsum?"
             self.navigationItem.title = "Pergunta"
         } else {
+            self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum lorem ipsum lorem ipsum lorem ipsum?"
             self.navigationItem.title = "Título da pergunta"
         }
     }

@@ -9,10 +9,12 @@ import UIKit
 
 extension UITraitCollection {
     
+    /// Tells whether dynamic type font size is an acessibility category
     var isAccessibleCategory: Bool {
         if #available(iOS 11, *) {
             return preferredContentSizeCategory.isAccessibilityCategory
         } else {
+            // Manually set the acessibility categories for earlier iOS versions
             switch preferredContentSizeCategory {
             case .accessibilityExtraExtraExtraLarge,
                  .accessibilityExtraExtraLarge,
