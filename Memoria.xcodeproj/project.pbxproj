@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152471E525307E06006B39B4 /* AudioPlayerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 152471E425307E06006B39B4 /* AudioPlayerViewCell.xib */; };
+		152471E8253081BD006B39B4 /* AudioPlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152471E7253081BD006B39B4 /* AudioPlayerViewCell.swift */; };
 		15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15266D5F252BC7D9006A531D /* UILabelAccessibility.swift */; };
 		152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E5252B33A5002F379C /* AppDelegate.swift */; };
 		152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EE5E7252B33A5002F379C /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		152471E425307E06006B39B4 /* AudioPlayerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioPlayerViewCell.xib; sourceTree = "<group>"; };
+		152471E7253081BD006B39B4 /* AudioPlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewCell.swift; sourceTree = "<group>"; };
 		15266D5F252BC7D9006A531D /* UILabelAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelAccessibility.swift; sourceTree = "<group>"; };
 		152EE5E2252B33A5002F379C /* Memoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152EE5E5252B33A5002F379C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		152471E325307DB3006B39B4 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				152471E425307E06006B39B4 /* AudioPlayerViewCell.xib */,
+				152471E7253081BD006B39B4 /* AudioPlayerViewCell.swift */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
 		15266D5E252BC7BE006A531D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +196,7 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				152471E325307DB3006B39B4 /* AudioPlayer */,
 				15C8F248252E023B00DD9208 /* TituloEtapaCell */,
 			);
 			path = Xibs;
@@ -306,6 +320,7 @@
 				15CDC150252C884A00BD9A11 /* SF-Pro-Display-Black.otf in Resources */,
 				15CDC156252C884A00BD9A11 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				15CDC163252CC00A00BD9A11 /* InputAudio.storyboard in Resources */,
+				152471E525307E06006B39B4 /* AudioPlayerViewCell.xib in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
 				15CDC152252C884A00BD9A11 /* SF-Pro-Display-Light.otf in Resources */,
 				15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */,
@@ -351,6 +366,7 @@
 				8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
+				152471E8253081BD006B39B4 /* AudioPlayerViewCell.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
