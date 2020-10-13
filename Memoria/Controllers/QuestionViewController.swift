@@ -80,6 +80,11 @@ class QuestionViewController: UIViewController {
     @IBAction func saveMemory(_ sender: Any) {
         // Save memory on database
         // Goes back to memory box screen
+        let dataManager = DataManager()
+        let question = self.subtitle.text ?? ""
+        let text = self.textAnswer.text ?? ""
+        let newMemoryDetail = Detail(text: text, question: question)
+        dataManager.saveMemoryDetail(detail: newMemoryDetail)
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
     

@@ -10,8 +10,8 @@ import CloudKit
 
 class DataManager {
     let privateDatabase = CKContainer.default().privateCloudDatabase
-    
-    public func save(memory: Memory) {
+
+    public func saveMemory(memory: Memory) {
         let record = CKRecord(recordType: "Memory")
         
         record.setValue(memory.title, forKey: "title")
@@ -30,43 +30,62 @@ class DataManager {
         }
     }
 
+    public func saveMemoryDetail(detail: Detail) {
+        let record = CKRecord(recordType: "Detail")
+
+        record.setValue(detail.question, forKey: "question")
+        record.setValue(detail.text, forKey: "text")
+
+        self.privateDatabase.save(record) { (savedRecord, error) in
+
+            if error == nil {
+                print("Record Saved")
+                print(savedRecord?.object(forKey: "question"))
+                print(savedRecord?.object(forKey: "text"))
+            } else {
+                print("Record Not Saved")
+                print(error)
+            }
+        }
+    }
+
 
     // This method is not workinng -- Maybe we'll need to use a closure instead of a return
-    public func retrieveAllMemories() -> [Memory] {
-        var allMemories = [Memory]()
-
-        let predicate = NSPredicate(value: true)
-
-        let query = CKQuery(recordType: "Memory", predicate: predicate)
-        //query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
-
-        let operation = CKQueryOperation(query: query)
-
-        operation.recordFetchedBlock = { record in
-
-            if let title = record["title"] as? String,
-               let description = record["description"] as? String,
-               let date = record["date"] as? Date {
-                let newMemory = Memory(title: title, description: description, date: date)
-                allMemories.append(newMemory)
-            }
-
-        }
-
-        operation.queryCompletionBlock = { cursor, error in
-
-            DispatchQueue.main.async {
-
-                //return allMemories
-                for memory in allMemories {
-                    print(memory.title)
-                }
-            }
-
-        }
-
-        privateDatabase.add(operation)
-
-        return allMemories
-    }
+//    public func retrieveAllMemories() -> [Memory] {
+//        var allMemories = [Memory]()
+//
+//        let predicate = NSPredicate(value: true)
+//
+//        let query = CKQuery(recordType: "Memory", predicate: predicate)
+//        //query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
+//
+//        let operation = CKQueryOperation(query: query)
+//
+//        operation.recordFetchedBlock = { record in
+//
+//            if let title = record["title"] as? String,
+//               let description = record["description"] as? String,
+//               let date = record["date"] as? Date {
+//                let newMemory = Memory(title: title, description: description, date: date)
+//                allMemories.append(newMemory)
+//            }
+//
+//        }
+//
+//        operation.queryCompletionBlock = { cursor, error in
+//
+//            DispatchQueue.main.async {
+//
+//                //return allMemories
+//                for memory in allMemories {
+//                    print(memory.title)
+//                }
+//            }
+//
+//        }
+//
+//        privateDatabase.add(operation)
+//
+//        //return allMemories
+//    }
 }
