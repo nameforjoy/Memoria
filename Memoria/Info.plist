@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string></string>
+	<string>Precisamos usar seu microfone para que você possa registrar suas memórias</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-Black.otf</string>
