@@ -10,13 +10,16 @@ import UIKit
 
 class MemoryCollectionViewController: UIViewController {
     
-    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
+    // MARK: Attributes
     
     var didJustSaveAMemory: Bool = false
-
+    
+    // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Navigation set up
         self.setUpNavigationBar()
         self.setUpNavigationController()
         
@@ -28,30 +31,32 @@ class MemoryCollectionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Present alert if a memory has just been saved
         if didJustSaveAMemory {
             self.present(Alerts().memorySaved, animated: true)
         }
     }
     
     deinit {
+        // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
     }
+    
+    // MARK: Unwind segue
+    
+    /// Unwind segue to get back to this view controller after saving a memory
+    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
+    
+    // MARK: Acessibility text
     
     @objc func fontSizeChanged(_ notification: Notification) {
         self.changeTextForAccessibility()
     }
     
-    func setUpNavigationBar() {
-        self.changeTextForAccessibility()
-        // Change title of the add memory button
-        // Doesn't change it's size with dynamic type
-        guard let addButton = self.navigationItem.rightBarButtonItem else {return}
-        addButton.title = "Adicionar"
-    }
-    
+    /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
+    /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
-        // Change navigation title depending on font size accessibility
         if self.traitCollection.isAccessibleCategory {
             self.navigationItem.title = "Memórias"
         } else {
@@ -59,8 +64,17 @@ class MemoryCollectionViewController: UIViewController {
         }
     }
     
+    // MARK: Navigation
+    
+    /// Navigation bar configuration
+    func setUpNavigationBar() {
+        self.changeTextForAccessibility()
+        guard let addButton = self.navigationItem.rightBarButtonItem else {return}
+        addButton.title = "Adicionar"
+    }
+    
+    /// Configure back button of navigation flux
     func setUpNavigationController() {
-        // Change title of the back button for the entire navigation flux
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
     }
 }

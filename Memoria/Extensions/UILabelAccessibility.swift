@@ -9,12 +9,11 @@ import UIKit
 
 extension UILabel {
     
-    ///Configuration to enable multiple lines, to update in real time and to call the property that enable the font to scale large size
+    ///Configuration to enable multiple lines and  update font size in real time according to dynamic type acessibility settings
     var dynamicFont: UIFont {
         get {
             return self.font
         }
-        
         set {
             self.numberOfLines = 0
             
