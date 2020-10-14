@@ -8,25 +8,47 @@
 import UIKit
 import AVFoundation
 
-class AudioPlayerViewCell: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var slider: UISlider!
     
     var showingPlayIcon = true  //if not is showing pause icon
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
+    private var contentView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.setupSlider()
-        
-        //Timer for updatinng the slider when audio is playing
-        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
-    
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        xibSetup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        xibSetup()
+    }
+    
+    func xibSetup() {
+        loadXib(targetView: &contentView, xibName: "AudioPlayerView")
+        
+        self.setupSlider()
+        self.setupTimer()
+    }
+    
+    func loadXib(targetView contentView: inout UIView?, xibName xib: String) {
+        //load xib into content view
+        contentView = Bundle.main.loadNibNamed(xib, owner: self, options: nil)![0] as? UIView
+        self.addSubview(contentView!)
+        
+        contentView!.frame = self.bounds
+        contentView!.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+        
     func setupSlider() {
         self.slider.tintColor = .black
         
@@ -35,8 +57,25 @@ class AudioPlayerViewCell: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegat
         self.slider.setThumbImage(thumb, for: .normal)
     }
     
+    func setupTimer() {
+        //Timer for updatinng the slider when audio is playing
+        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
+    }
+    
     @objc func updateSlider() {
         slider.value = Float(soundPlayer.currentTime)
+    }
+    
+    @objc func updateTimerLabel() {
+        let currentTime = Int(soundPlayer.currentTime)
+        let duration = Int(soundPlayer.duration)
+        let total = duration - currentTime
+
+        let minutes = total/60
+        let seconds = total - minutes / 60
+
+        timerLabel.text = NSString(format: "%02d:%02d", minutes,seconds) as String
     }
     
     private func thumbImage(radius: CGFloat) -> UIImage {
@@ -57,7 +96,7 @@ class AudioPlayerViewCell: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegat
         }
     }
     
-    //Get documents diretory - permission to Microfone usage add in info.plist
+    ///Get documents diretory - permission to Microfone usage add in info.plist
     func getFileURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")

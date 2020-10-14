@@ -11,18 +11,12 @@ import AVFoundation
 class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var audioPlayView: UIView!
+    @IBOutlet weak var audioPlayView: AudioPlayerView!
     
-    let audioPlayerIdentifier : String = "AudioPlayerViewCell"
     var soundRecorder = AVAudioRecorder()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let audioView = Bundle.main.loadNibNamed(audioPlayerIdentifier, owner: self, options: nil)?.first as? AudioPlayerViewCell {
-            self.audioPlayView.addSubview(audioView)
-        }
-        
         self.setupRecorder()
     }
     
