@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "pause-icon.png",
+      "filename" : "playIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
