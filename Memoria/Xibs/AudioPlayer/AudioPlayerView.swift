@@ -13,6 +13,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var containerView: UIView!
     
     var showingPlayIcon = true  //if not is showing pause icon
     var soundRecorder = AVAudioRecorder()
@@ -38,6 +39,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         
         self.setupSlider()
         self.setupTimer()
+        self.setupLayout()
     }
     
     func loadXib(targetView contentView: inout UIView?, xibName xib: String) {
@@ -50,10 +52,10 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     }
         
     func setupSlider() {
-        self.slider.tintColor = .black
+        self.slider.tintColor = .systemGray2
         
         //Set style for thumbImage
-        let thumb = self.thumbImage(radius: 15)
+        let thumb = self.thumbImage(radius: 10)
         self.slider.setThumbImage(thumb, for: .normal)
     }
     
@@ -61,6 +63,12 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         //Timer for updatinng the slider when audio is playing
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
+    }
+    
+    func setupLayout() {
+        self.containerView.layer.cornerRadius = 8
+        self.containerView.layer.borderWidth = 2
+        self.containerView.layer.borderColor = UIColor.systemGray6.cgColor
     }
     
     @objc func updateSlider() {
@@ -81,7 +89,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     private func thumbImage(radius: CGFloat) -> UIImage {
         //Create thumb UIView with style attributes
         let thumbView = UIView()
-        thumbView.backgroundColor = .white
+        thumbView.backgroundColor = UIColor(named: "purple") ?? UIColor.purple
         thumbView.layer.borderWidth = 0.4
         thumbView.layer.borderColor = UIColor.darkGray.cgColor
         
@@ -105,13 +113,13 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
-            let pauseImage =  UIImage(named: "pause-icon")
+            let pauseImage =  UIImage(named: "pauseIcon")
             self.playButton.setImage(pauseImage, for: .normal)
             self.showingPlayIcon = false
             self.preparePlayer()
             self.soundPlayer.play()
         } else {
-            let playImage =  UIImage(named: "play-icon")
+            let playImage =  UIImage(named: "playIcon")
             self.playButton.setImage(playImage, for: .normal)
             self.showingPlayIcon = true
             self.soundPlayer.stop()
@@ -135,7 +143,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     ///Enable record when finish playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        let playImage =  UIImage(named: "play-icon")
+        let playImage =  UIImage(named: "playIcon")
         self.playButton.setImage(playImage, for: .normal)
         self.showingPlayIcon = true
     }
