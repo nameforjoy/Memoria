@@ -9,6 +9,7 @@ import UIKit
 
 extension UIButton {
 
+    ///Configuration to enable multiple lines and  update font size in real time according to dynamic type acessibility settings
     var dynamicFont: UIFont {
         get {
             return self.titleLabel?.font ?? UIFont()
