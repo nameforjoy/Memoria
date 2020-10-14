@@ -42,6 +42,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         self.setupLayout()
     }
     
+    ///Method for load the xib view in the view controller
     func loadXib(targetView contentView: inout UIView?, xibName xib: String) {
         //load xib into content view
         contentView = Bundle.main.loadNibNamed(xib, owner: self, options: nil)![0] as? UIView
@@ -50,7 +51,9 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         contentView!.frame = self.bounds
         contentView!.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-        
+    
+    // MARK: Setups
+    ///Style setup for slider
     func setupSlider() {
         self.slider.tintColor = .systemGray2
         
@@ -59,33 +62,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         self.slider.setThumbImage(thumb, for: .normal)
     }
     
-    func setupTimer() {
-        //Timer for updatinng the slider when audio is playing
-        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
-        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
-    }
-    
-    func setupLayout() {
-        self.containerView.layer.cornerRadius = 8
-        self.containerView.layer.borderWidth = 2
-        self.containerView.layer.borderColor = UIColor.systemGray6.cgColor
-    }
-    
-    @objc func updateSlider() {
-        slider.value = Float(soundPlayer.currentTime)
-    }
-    
-    @objc func updateTimerLabel() {
-        let currentTime = Int(soundPlayer.currentTime)
-        let duration = Int(soundPlayer.duration)
-        let total = duration - currentTime
-
-        let minutes = total/60
-        let seconds = total - minutes / 60
-
-        timerLabel.text = NSString(format: "%02d:%02d", minutes,seconds) as String
-    }
-    
+    ///Create image for thumb in slider to change layout style
     private func thumbImage(radius: CGFloat) -> UIImage {
         //Create thumb UIView with style attributes
         let thumbView = UIView()
@@ -103,7 +80,36 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
             thumbView.layer.render(in: rendererContext.cgContext)
         }
     }
+
+    func setupTimer() {
+        //Timer for updatinng the slider when audio is playing
+        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
+    }
     
+    func setupLayout() {
+        self.containerView.layer.cornerRadius = 8
+        self.containerView.layer.borderWidth = 2
+        self.containerView.layer.borderColor = UIColor.systemGray6.cgColor
+    }
+    
+    // MARK: Timer updates
+    @objc func updateSlider() {
+        slider.value = Float(soundPlayer.currentTime)
+    }
+    
+    @objc func updateTimerLabel() {
+        let currentTime = Int(soundPlayer.currentTime)
+        let duration = Int(soundPlayer.duration)
+        let total = duration - currentTime
+
+        let minutes = total/60
+        let seconds = total - minutes / 60
+
+        timerLabel.text = NSString(format: "%02d:%02d", minutes,seconds) as String
+    }
+    
+    // MARK: Audio play methods
     ///Get documents diretory - permission to Microfone usage add in info.plist
     func getFileURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -111,6 +117,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
         return audioFilename
     }
     
+    ///Change state when pressed play or pause button
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
             let pauseImage =  UIImage(named: "pauseIcon")

@@ -38,13 +38,14 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
 
     }
     
-    //Get documents diretory - permission to Microfone usage add in info.plist
+    ///Get documents diretory - permission to Microfone usage add in info.plist
     func getFileURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
         return audioFilename
     }
     
+    ///Change states when recording or stop recording
     @IBAction func record(_ sender: Any) {
         if self.recordButton.titleLabel?.text == "Record" {
             soundRecorder.record()
