@@ -17,16 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-KM-ccz">
-                                <rect key="frame" x="20" y="384" width="374" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-KM-ccz" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
+                                <rect key="frame" x="20" y="384" width="374" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="lZh-KH-DtX"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U09-yt-cOf">
-                                <rect key="frame" x="183" y="608" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfn-Do-2PF">
+                                <rect key="frame" x="72" y="248" width="240" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="4WU-UL-eqn"/>
+                                    <constraint firstAttribute="height" constant="100" id="68g-lv-zxl"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U09-yt-cOf">
+                                <rect key="frame" x="182.5" y="506" width="49" height="30"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
-                                    <action selector="record:" destination="YWm-VN-6LL" eventType="touchUpInside" id="81y-rQ-Mxo"/>
+                                    <action selector="record:" destination="YWm-VN-6LL" eventType="touchUpInside" id="tuo-k9-3Th"/>
                                     <action selector="recordAudio:" destination="b5W-jA-GyG" eventType="touchUpInside" id="WGj-8g-BtK"/>
                                 </connections>
                             </button>
@@ -35,14 +45,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CfA-KM-ccz" firstAttribute="top" secondItem="woK-8R-I89" secondAttribute="top" constant="340" id="HAr-5h-Ffl"/>
+                            <constraint firstItem="U09-yt-cOf" firstAttribute="centerX" secondItem="dza-C7-wFN" secondAttribute="centerX" id="HbE-4G-xUl"/>
                             <constraint firstItem="woK-8R-I89" firstAttribute="trailing" secondItem="CfA-KM-ccz" secondAttribute="trailing" constant="20" id="RIg-DQ-gFG"/>
                             <constraint firstItem="CfA-KM-ccz" firstAttribute="leading" secondItem="woK-8R-I89" secondAttribute="leading" constant="20" id="SVS-6h-zJj"/>
-                            <constraint firstItem="CfA-KM-ccz" firstAttribute="centerY" secondItem="dza-C7-wFN" secondAttribute="centerY" id="Whm-9e-0iz"/>
+                            <constraint firstItem="U09-yt-cOf" firstAttribute="top" secondItem="CfA-KM-ccz" secondAttribute="bottom" constant="52" id="ZL7-0d-ps4"/>
+                            <constraint firstItem="Pfn-Do-2PF" firstAttribute="leading" secondItem="woK-8R-I89" secondAttribute="leading" constant="72" id="cZ0-xK-s5W"/>
+                            <constraint firstItem="Pfn-Do-2PF" firstAttribute="top" secondItem="woK-8R-I89" secondAttribute="top" constant="204" id="pAy-Ij-pXw"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="audioPlayView" destination="CfA-KM-ccz" id="gHB-bi-fBl"/>
-                        <outlet property="recordButton" destination="U09-yt-cOf" id="jaR-h7-S9y"/>
+                        <outlet property="recordButton" destination="U09-yt-cOf" id="tAo-9c-7kw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGt-Z3-ZPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

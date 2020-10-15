@@ -16,6 +16,9 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var textAnswer: UITextView!
     @IBOutlet weak var saveMemoryButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var audioRecordLabel: UILabel!
+    @IBOutlet weak var audioTitle: UILabel!
+    @IBOutlet weak var audioSubtitle: UILabel!
     
     var scrollOffsetBeforeKeyboard = CGPoint()
     
@@ -109,6 +112,11 @@ class QuestionViewController: UIViewController {
         self.subtitle.dynamicFont = font
         self.saveMemoryButton.dynamicFont = font
         self.textAnswer.dynamicFont = font
+        self.audioSubtitle.dynamicFont = font
+        self.audioRecordLabel.dynamicFont = font
+        
+        let fontBold = UIFont(name: "SFProDisplay-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24)
+        self.audioTitle.dynamicFont = fontBold
         
         // Accessibility configurations
         self.changeTextForAccessibility()
