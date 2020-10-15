@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import CloudKit
 
 class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
@@ -56,9 +57,29 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
         }
     }
     
-    //    ///Enable play when finish recording
-//    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-//        self.playButton.isEnabled = true
-//    }
+    ///Enable play when finish recording
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        let audioCKAsset = CKAsset(fileURL: getFileURL())
+        
+        let record = CKRecord(recordType: "Detail")
+
+        record.setValue(audioCKAsset, forKey: "audio")
+
+        
+        
+        CKContainer.default().privateCloudDatabase.save(record) {
+            
+            (savedRecord, error) in
+
+                if error == nil {
+                    print("Record Saved")
+                    print(savedRecord?.object(forKey: "audio") ?? "Nil")
+                } else {
+                    print("Record Not Saved")
+                    print(error ?? "Nil")
+                    
+                }
+        }
+    }
     
 }
