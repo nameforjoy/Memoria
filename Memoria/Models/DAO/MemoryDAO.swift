@@ -55,7 +55,7 @@ class MemoryDAO: DAO {
                 let date = record["date"] as? Date {
                 let newMemory = Memory(title: title, description: description, date: date)
                 allRecords.append(newMemory)
-                print(newMemory.text)
+                print(newMemory.description)
             }
 
         }
