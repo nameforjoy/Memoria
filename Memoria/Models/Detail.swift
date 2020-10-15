@@ -10,14 +10,12 @@ import CloudKit
 
 class Detail: Codable {
 //    let audio: CKAsset?  // need to import CloudKit for this format but does not conform to protocol 'Codable'
-//    let image: CKAsset?
+//    let image: String?
     let text: String?
-    let title: String?
     let question: String?
     
-    init(text: String, title: String, question: String) {
-        self.text = text
-        self.title = title
+    init(text: String, question: String) {
+        self.text = text 
         self.question = question
     }
     
