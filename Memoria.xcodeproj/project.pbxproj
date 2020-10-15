@@ -47,6 +47,9 @@
 		8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB85252E20570012B671 /* QuestionViewController.swift */; };
 		8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* Alerts.swift */; };
 		8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */; };
+		B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72425372C7C003E1059 /* MemoryDAO.swift */; };
+		B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72725372C8B003E1059 /* DetailDAO.swift */; };
+		B39CA72B25372CC6003E1059 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72A25372CC6003E1059 /* DAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		8DDCAB85252E20570012B671 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB99252EA0290012B671 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitCollectionAccessibility.swift; sourceTree = "<group>"; };
+		B39CA72425372C7C003E1059 /* MemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDAO.swift; sourceTree = "<group>"; };
+		B39CA72725372C8B003E1059 /* DetailDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDAO.swift; sourceTree = "<group>"; };
+		B39CA72A25372CC6003E1059 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,7 @@
 		15C8F23E252DF49800DD9208 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B39CA72325372C61003E1059 /* DAO */,
 				15C8F241252DFE5600DD9208 /* Memory.swift */,
 				15C8F245252DFF6600DD9208 /* Detail.swift */,
 			);
@@ -242,6 +249,16 @@
 				15CDC13F252C884900BD9A11 /* SF-Pro-Display-UltralightItalic.otf */,
 			);
 			path = "SF-Pro-Font";
+			sourceTree = "<group>";
+		};
+		B39CA72325372C61003E1059 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				B39CA72425372C7C003E1059 /* MemoryDAO.swift */,
+				B39CA72725372C8B003E1059 /* DetailDAO.swift */,
+				B39CA72A25372CC6003E1059 /* DAO.swift */,
+			);
+			path = DAO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
@@ -367,8 +385,11 @@
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
+				152471E8253081BD006B39B4 /* AudioPlayerViewCell.swift in Sources */,
+				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
+				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
 				15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */,
 			);
