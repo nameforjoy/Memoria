@@ -13,11 +13,17 @@ class MemoryCollectionViewController: UIViewController {
     // MARK: Attributes
     
     var didJustSaveAMemory: Bool = false
+    var userMemoryDetails: [Detail]?
     
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        DetailDAO.findAll { allDetails in
+            self.userMemoryDetails = allDetails
+            print(self.userMemoryDetails)
+        }
 
         // Navigation set up
         self.setUpNavigationBar()

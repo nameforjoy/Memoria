@@ -49,6 +49,12 @@ class QuestionViewController: UIViewController {
     
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
+        // Save memory on database
+        // Goes back to memory box screen
+        let question = self.subtitle.text ?? ""
+        let text = self.textAnswer.text ?? ""
+        let newMemoryDetail = Detail(text: text, question: question)
+        DetailDAO.create(detail: newMemoryDetail)
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
     
@@ -78,16 +84,6 @@ class QuestionViewController: UIViewController {
         self.textAnswer.resignFirstResponder()
     }
     
-    @IBAction func saveMemory(_ sender: Any) {
-        // Save memory on database
-        // Goes back to memory box screen
-        let dataManager = DataManager()
-        let question = self.subtitle.text ?? ""
-        let text = self.textAnswer.text ?? ""
-        let newMemoryDetail = Detail(text: text, question: question)
-        dataManager.saveMemoryDetail(detail: newMemoryDetail)
-        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
-    }
     
     // MARK: Segue
     
