@@ -59,7 +59,9 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     ///Enable play when finish recording
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        let audioCKAsset = CKAsset(fileURL: getFileURL())
+        guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
+
+        //let audioCKAsset = CKAsset(fileURL: getFileURL())
         
         let record = CKRecord(recordType: "Detail")
 
