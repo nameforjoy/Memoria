@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class AudioPlayerView: UIView, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
