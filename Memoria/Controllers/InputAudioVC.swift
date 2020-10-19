@@ -67,11 +67,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
 
         record.setValue(audioCKAsset, forKey: "audio")
 
-        
-        
-        CKContainer.default().privateCloudDatabase.save(record) {
-            
-            (savedRecord, error) in
+        CKContainer.default().privateCloudDatabase.save(record) { (savedRecord, error) in
 
                 if error == nil {
                     print("Record Saved")

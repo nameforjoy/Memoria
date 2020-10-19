@@ -87,7 +87,6 @@ class QuestionViewController: UIViewController {
         self.textAnswer.resignFirstResponder()
     }
     
-    
     // MARK: Segue
     
     // Passes needed information the the next screen
@@ -120,6 +119,16 @@ class QuestionViewController: UIViewController {
         
         // Accessibility configurations
         self.changeTextForAccessibility()
+        
+        // Set text that will not change with accessibility
+        self.writeFixedText()
+    }
+    
+    func writeFixedText() {
+        self.subtitle.text = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
+        self.textAnswer.text = "Descreva sua memória aqui..."
+        self.audioTitle.text = "Que tal gravar?"
+        self.audioSubtitle.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.

@@ -27,7 +27,6 @@ class MemoryDAO: DAO {
                 print(savedRecord?.object(forKey: "description") ?? "Nil")
                 print(savedRecord?.object(forKey: "date") ?? "Nil")
 
-
             } else {
                 print("Record Not Saved")
                 print(error ?? "Nil")
@@ -55,7 +54,7 @@ class MemoryDAO: DAO {
                 let date = record["date"] as? Date {
                 let newMemory = Memory(title: title, description: description, date: date)
                 allRecords.append(newMemory)
-                print(newMemory.description)
+                print(newMemory.description ?? "Detail description returned nil")
             }
 
         }

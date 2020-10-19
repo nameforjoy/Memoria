@@ -23,8 +23,7 @@ extension UIButton {
     }
     
     /// Apply gradient in the button background
-    func applyGradient(colors: [CGColor])
-        {
+    func applyGradient(colors: [CGColor]) {
             let gradientLayer = CAGradientLayer()
             gradientLayer.colors = colors
             gradientLayer.startPoint = CGPoint(x: 0, y: 0)
