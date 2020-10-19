@@ -84,6 +84,11 @@
                 <constraint firstItem="5oJ-Py-ArA" firstAttribute="top" secondItem="atx-Cl-PtS" secondAttribute="top" id="Uki-Ev-CWe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="buttonBackground" destination="Pbw-T7-GJz" id="Kp0-fu-EO1"/>
+                <outlet property="icon" destination="vgX-2d-D2R" id="niv-6e-AgH"/>
+                <outlet property="title" destination="43S-VT-xy2" id="tpR-bK-mWZ"/>
+            </connections>
             <point key="canvasLocation" x="-438.40579710144931" y="-183.14732142857142"/>
         </view>
     </objects>
