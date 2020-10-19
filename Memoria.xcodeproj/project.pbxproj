@@ -17,8 +17,6 @@
 		15BB4A772535FE5900CECE25 /* AudioPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 152471E425307E06006B39B4 /* AudioPlayerView.xib */; };
 		15C8F242252DFE5600DD9208 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F241252DFE5600DD9208 /* Memory.swift */; };
 		15C8F246252DFF6600DD9208 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F245252DFF6600DD9208 /* Detail.swift */; };
-		15C8F24B252E029700DD9208 /* TituloEtapaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */; };
-		15C8F24C252E029700DD9208 /* TituloEtapaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */; };
 		15C8F25D252E08C000DD9208 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8F25C252E08C000DD9208 /* CloudKit.framework */; };
 		15CDC14B252C884A00BD9A11 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */; };
 		15CDC14C252C884A00BD9A11 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC13A252C884800BD9A11 /* SF-Pro-Display-Regular.otf */; };
@@ -43,6 +41,11 @@
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
+		8DBA9F8F253DCB9100E564E9 /* IconTextButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBA9F8E253DCB9100E564E9 /* IconTextButton.xib */; };
+		8DBA9F94253DCBF600E564E9 /* GradientButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBA9F93253DCBF600E564E9 /* GradientButtonView.xib */; };
+		8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F96253DCC5A00E564E9 /* GradientButtonView.swift */; };
+		8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F99253DCC6F00E564E9 /* IconTextButtonView.swift */; };
+		8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */; };
 		8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */; };
 		8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB85252E20570012B671 /* QuestionViewController.swift */; };
 		8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* Alerts.swift */; };
@@ -65,8 +68,6 @@
 		152EE5F3252B33A7002F379C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15C8F241252DFE5600DD9208 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		15C8F245252DFF6600DD9208 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
-		15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TituloEtapaViewCell.xib; sourceTree = "<group>"; };
-		15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TituloEtapaViewCell.swift; sourceTree = "<group>"; };
 		15C8F259252E08B300DD9208 /* Memoria.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memoria.entitlements; sourceTree = "<group>"; };
 		15C8F25C252E08C000DD9208 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		15CDC139252C884800BD9A11 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -92,6 +93,11 @@
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
+		8DBA9F8E253DCB9100E564E9 /* IconTextButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconTextButton.xib; sourceTree = "<group>"; };
+		8DBA9F93253DCBF600E564E9 /* GradientButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButtonView.xib; sourceTree = "<group>"; };
+		8DBA9F96253DCC5A00E564E9 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
+		8DBA9F99253DCC6F00E564E9 /* IconTextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextButtonView.swift; sourceTree = "<group>"; };
+		8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB85252E20570012B671 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB99252EA0290012B671 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 				8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */,
 				8DDCAB99252EA0290012B671 /* Alerts.swift */,
 				8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */,
+				8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -203,19 +210,11 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				8DBA9F92253DCBE000E564E9 /* GradientButton */,
+				8DBA9F91253DCBBF00E564E9 /* IconTextButton */,
 				152471E325307DB3006B39B4 /* AudioPlayer */,
-				15C8F248252E023B00DD9208 /* TituloEtapaCell */,
 			);
 			path = Xibs;
-			sourceTree = "<group>";
-		};
-		15C8F248252E023B00DD9208 /* TituloEtapaCell */ = {
-			isa = PBXGroup;
-			children = (
-				15C8F24A252E029700DD9208 /* TituloEtapaViewCell.swift */,
-				15C8F249252E029700DD9208 /* TituloEtapaViewCell.xib */,
-			);
-			path = TituloEtapaCell;
 			sourceTree = "<group>";
 		};
 		15C8F25B252E08C000DD9208 /* Frameworks */ = {
@@ -249,6 +248,24 @@
 				15CDC13F252C884900BD9A11 /* SF-Pro-Display-UltralightItalic.otf */,
 			);
 			path = "SF-Pro-Font";
+			sourceTree = "<group>";
+		};
+		8DBA9F91253DCBBF00E564E9 /* IconTextButton */ = {
+			isa = PBXGroup;
+			children = (
+				8DBA9F8E253DCB9100E564E9 /* IconTextButton.xib */,
+				8DBA9F99253DCC6F00E564E9 /* IconTextButtonView.swift */,
+			);
+			path = IconTextButton;
+			sourceTree = "<group>";
+		};
+		8DBA9F92253DCBE000E564E9 /* GradientButton */ = {
+			isa = PBXGroup;
+			children = (
+				8DBA9F93253DCBF600E564E9 /* GradientButtonView.xib */,
+				8DBA9F96253DCC5A00E564E9 /* GradientButtonView.swift */,
+			);
+			path = GradientButton;
 			sourceTree = "<group>";
 		};
 		B39CA72325372C61003E1059 /* DAO */ = {
@@ -328,8 +345,8 @@
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
 				15CDC159252C884A00BD9A11 /* SF-Pro-Display-Ultralight.otf in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
-				15C8F24B252E029700DD9208 /* TituloEtapaViewCell.xib in Resources */,
 				15CDC158252C884A00BD9A11 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
+				8DBA9F94253DCBF600E564E9 /* GradientButtonView.xib in Resources */,
 				15CDC14E252C884A00BD9A11 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				15CDC15A252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				15CDC155252C884A00BD9A11 /* SF-Pro-Display-RegularItalic.otf in Resources */,
@@ -341,6 +358,7 @@
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
 				15CDC152252C884A00BD9A11 /* SF-Pro-Display-Light.otf in Resources */,
 				15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */,
+				8DBA9F8F253DCB9100E564E9 /* IconTextButton.xib in Resources */,
 				15CDC15C252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf in Resources */,
 				15CDC157252C884A00BD9A11 /* SF-Pro-Display-Medium.otf in Resources */,
 			);
@@ -373,11 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */,
 				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
-				15C8F24C252E029700DD9208 /* TituloEtapaViewCell.swift in Sources */,
 				8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
@@ -385,7 +403,9 @@
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
-				152471E8253081BD006B39B4 /* AudioPlayerViewCell.swift in Sources */,
+				8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */,
+				8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */,
+				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
