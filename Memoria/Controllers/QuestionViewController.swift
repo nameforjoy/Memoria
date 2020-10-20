@@ -57,6 +57,24 @@ class QuestionViewController: UIViewController {
     
     // MARK: Actions
     
+    @IBAction func recordAudio(_ sender: Any) {
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
+        
+        self.presentAsAlert(show: recordAudioScreen, over: self)
+    }
+    
+    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
+    }
+    
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
         // Save memory on database

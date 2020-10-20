@@ -32,16 +32,6 @@
             </objects>
             <point key="canvasLocation" x="197.10144927536234" y="123.88392857142857"/>
         </scene>
-        <!--InputAudio-->
-        <scene sceneID="F69-r5-nw3">
-            <objects>
-                <viewControllerPlaceholder storyboardName="InputAudio" id="H3Q-rM-KD8" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="bz9-iT-JMw"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JLx-K6-Dmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1070" y="540"/>
-        </scene>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
             <objects>
@@ -141,7 +131,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1SU-ls-dq5"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="H3Q-rM-KD8" kind="show" id="WNo-2p-CDi"/>
+                                                    <action selector="recordAudio:" destination="6OU-zm-CFT" eventType="touchUpInside" id="ZC8-np-wdx"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -227,6 +217,73 @@
                 <exit id="Wnv-gd-wsS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1069.5652173913045" y="123.88392857142857"/>
+        </scene>
+        <!--Input AudioVC-->
+        <scene sceneID="AyG-dy-ZVO">
+            <objects>
+                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioVC" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SdM-oM-xjk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-SU-j3O">
+                                <rect key="frame" x="0.0" y="546" width="414" height="350"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ech-AU-zcx" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="238" width="374" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="rzx-I5-2z4"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9j-Ic-AZp">
+                                        <rect key="frame" x="182.5" y="116" width="49" height="30"/>
+                                        <state key="normal" title="Record"/>
+                                        <connections>
+                                            <action selector="record:" destination="ill-wr-s90" eventType="touchUpInside" id="DZB-KK-T69"/>
+                                            <action selector="recordAudio:" destination="euA-L0-ydR" eventType="touchUpInside" id="35b-zB-VPt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1186349937" green="0.1186349937" blue="0.1186349937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="Ckp-yg-GKC"/>
+                                    <constraint firstItem="ech-AU-zcx" firstAttribute="top" secondItem="V9j-Ic-AZp" secondAttribute="bottom" constant="92" id="WQQ-rZ-xn1"/>
+                                    <constraint firstAttribute="bottom" secondItem="ech-AU-zcx" secondAttribute="bottom" constant="42" id="ZMz-Fy-bf1"/>
+                                    <constraint firstItem="ech-AU-zcx" firstAttribute="leading" secondItem="pIj-SU-j3O" secondAttribute="leading" constant="20" symbolic="YES" id="a6E-13-Yns"/>
+                                    <constraint firstAttribute="trailing" secondItem="ech-AU-zcx" secondAttribute="trailing" constant="20" symbolic="YES" id="eKc-H4-eCr"/>
+                                    <constraint firstItem="V9j-Ic-AZp" firstAttribute="centerX" secondItem="ech-AU-zcx" secondAttribute="centerX" id="uA2-qJ-6cY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbD-VR-kDA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="546"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nVO-kz-C4x"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IbD-VR-kDA" firstAttribute="top" secondItem="SdM-oM-xjk" secondAttribute="top" id="2gc-DG-raE"/>
+                            <constraint firstAttribute="bottom" secondItem="pIj-SU-j3O" secondAttribute="bottom" id="95E-LH-Vjf"/>
+                            <constraint firstItem="IbD-VR-kDA" firstAttribute="leading" secondItem="nVO-kz-C4x" secondAttribute="leading" id="GYm-Ad-CEZ"/>
+                            <constraint firstItem="pIj-SU-j3O" firstAttribute="top" secondItem="IbD-VR-kDA" secondAttribute="bottom" id="HUT-U7-9sf"/>
+                            <constraint firstItem="pIj-SU-j3O" firstAttribute="trailing" secondItem="nVO-kz-C4x" secondAttribute="trailing" id="Hfw-s8-cMM"/>
+                            <constraint firstItem="pIj-SU-j3O" firstAttribute="leading" secondItem="nVO-kz-C4x" secondAttribute="leading" id="IUa-Rk-J8n"/>
+                            <constraint firstItem="IbD-VR-kDA" firstAttribute="trailing" secondItem="nVO-kz-C4x" secondAttribute="trailing" id="k86-JL-zQQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Wk-aG-c3e"/>
+                    <connections>
+                        <outlet property="audioPlayView" destination="ech-AU-zcx" id="HUx-Vt-zew"/>
+                        <outlet property="contentBackground" destination="pIj-SU-j3O" id="uyd-4C-fk1"/>
+                        <outlet property="dismissView" destination="IbD-VR-kDA" id="m8f-li-Zvw"/>
+                        <outlet property="recordButton" destination="V9j-Ic-AZp" id="jbg-8g-p2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YKz-BC-bJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="euA-L0-ydR" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1069.5652173913045" y="825.66964285714278"/>
         </scene>
     </scenes>
     <resources>

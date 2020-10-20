@@ -37,7 +37,6 @@
 		15CDC15B252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */; };
 		15CDC15C252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */; };
 		15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */; };
-		15CDC163252CC00A00BD9A11 /* InputAudio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
@@ -89,7 +88,6 @@
 		15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
 		15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioVC.swift; sourceTree = "<group>"; };
-		15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputAudio.storyboard; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				152EE5EB252B33A5002F379C /* Main.storyboard */,
-				15CDC162252CC00A00BD9A11 /* InputAudio.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 				15CDC151252C884A00BD9A11 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				15CDC150252C884A00BD9A11 /* SF-Pro-Display-Black.otf in Resources */,
 				15CDC156252C884A00BD9A11 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
-				15CDC163252CC00A00BD9A11 /* InputAudio.storyboard in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
 				15CDC152252C884A00BD9A11 /* SF-Pro-Display-Light.otf in Resources */,
 				15CDC14D252C884A00BD9A11 /* SF-Pro-Display-LightItalic.otf in Resources */,
