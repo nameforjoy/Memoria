@@ -13,6 +13,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var audioPlayView: AudioPlayerView!
+    @IBOutlet weak var background: UIView!
     
     var soundRecorder = AVAudioRecorder()
 

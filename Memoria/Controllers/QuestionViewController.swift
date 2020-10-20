@@ -19,6 +19,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioRecordLabel: UILabel!
     @IBOutlet weak var audioTitle: UILabel!
     @IBOutlet weak var audioSubtitle: UILabel!
+    @IBOutlet weak var audioButtonBackground: UIView!
     
     var scrollOffsetBeforeKeyboard = CGPoint()
     
@@ -33,7 +34,11 @@ class QuestionViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
+        // Configures buttons
+        self.saveMemoryButton.layer.cornerRadius = self.saveMemoryButton.frame.height/4
         self.saveMemoryButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
+        self.saveMemoryButton.clipsToBounds = true
+        self.audioButtonBackground.layer.cornerRadius = self.audioButtonBackground.frame.height/6
         
         // Handle Notifications
         let notificationCenter = NotificationCenter.default
@@ -137,11 +142,9 @@ class QuestionViewController: UIViewController {
     /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
         if self.traitCollection.isAccessibleCategory {
-            self.subtitle.text = "Lorem ipsum dolor lorem ipsum?"
-            self.navigationItem.title = "Pergunta"
+            self.navigationItem.title = "Me conta"
         } else {
-            self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum lorem ipsum lorem ipsum lorem ipsum?"
-            self.navigationItem.title = "Título da pergunta"
+            self.navigationItem.title = "Conta pra mim!"
         }
     }
 }
