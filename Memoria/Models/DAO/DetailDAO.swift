@@ -51,7 +51,7 @@ class DetailDAO: DAO {
                let question = record["question"] as? String {
                 let newDetail = Detail(text: text, question: question)
                 allRecords.append(newDetail)
-                print(newDetail.text)
+                print(newDetail.text!)
             }
 
         }

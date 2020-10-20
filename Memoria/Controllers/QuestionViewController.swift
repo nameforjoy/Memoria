@@ -19,6 +19,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioRecordLabel: UILabel!
     @IBOutlet weak var audioTitle: UILabel!
     @IBOutlet weak var audioSubtitle: UILabel!
+    @IBOutlet weak var audioButtonBackground: UIView!
     
     var scrollOffsetBeforeKeyboard = CGPoint()
     
@@ -32,6 +33,12 @@ class QuestionViewController: UIViewController {
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        // Configures buttons
+        self.saveMemoryButton.layer.cornerRadius = self.saveMemoryButton.frame.height/4
+        self.saveMemoryButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
+        self.saveMemoryButton.clipsToBounds = true
+        self.audioButtonBackground.layer.cornerRadius = self.audioButtonBackground.frame.height/6
         
         // Handle Notifications
         let notificationCenter = NotificationCenter.default
@@ -49,6 +56,24 @@ class QuestionViewController: UIViewController {
     }
     
     // MARK: Actions
+    
+    @IBAction func recordAudio(_ sender: Any) {
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
+        
+        self.presentAsAlert(show: recordAudioScreen, over: self)
+    }
+    
+    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
+    }
     
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
@@ -87,7 +112,6 @@ class QuestionViewController: UIViewController {
         self.textAnswer.resignFirstResponder()
     }
     
-    
     // MARK: Segue
     
     // Passes needed information the the next screen
@@ -120,17 +144,25 @@ class QuestionViewController: UIViewController {
         
         // Accessibility configurations
         self.changeTextForAccessibility()
+        
+        // Set text that will not change with accessibility
+        self.writeFixedText()
+    }
+    
+    func writeFixedText() {
+        self.subtitle.text = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
+        self.textAnswer.text = "Descreva sua memória aqui..."
+        self.audioTitle.text = "Que tal gravar?"
+        self.audioSubtitle.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
     /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
         if self.traitCollection.isAccessibleCategory {
-            self.subtitle.text = "Lorem ipsum dolor lorem ipsum?"
-            self.navigationItem.title = "Pergunta"
+            self.navigationItem.title = "Me conta"
         } else {
-            self.subtitle.text = "Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum lorem ipsum lorem ipsum lorem ipsum?"
-            self.navigationItem.title = "Título da pergunta"
+            self.navigationItem.title = "Conta pra mim!"
         }
     }
 }

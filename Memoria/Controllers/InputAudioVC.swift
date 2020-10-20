@@ -13,12 +13,23 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var audioPlayView: AudioPlayerView!
+    @IBOutlet weak var contentBackground: UIView!
+    @IBOutlet weak var dismissView: UIView!
     
     var soundRecorder = AVAudioRecorder()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupRecorder()
+        
+        self.contentBackground.layer.cornerRadius = 20
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
+        self.dismissView.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissAudioInputView() {
+        self.dismiss(animated: true)
     }
     
     ///Initial configuration for the recorder
@@ -67,11 +78,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
 
         record.setValue(audioCKAsset, forKey: "audio")
 
-        
-        
-        CKContainer.default().privateCloudDatabase.save(record) {
-            
-            (savedRecord, error) in
+        CKContainer.default().privateCloudDatabase.save(record) { (savedRecord, error) in
 
                 if error == nil {
                     print("Record Saved")

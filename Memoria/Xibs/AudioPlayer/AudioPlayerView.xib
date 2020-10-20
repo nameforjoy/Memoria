@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="70"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-0y-QvE">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-0y-QvE" userLabel="ContentView">
                     <rect key="frame" x="0.0" y="0.0" width="400" height="70"/>
                     <subviews>
                         <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MJC-5Y-tsN">

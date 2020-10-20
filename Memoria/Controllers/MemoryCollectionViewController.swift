@@ -22,7 +22,7 @@ class MemoryCollectionViewController: UIViewController {
 
         DetailDAO.findAll { allDetails in
             self.userMemoryDetails = allDetails
-            print(self.userMemoryDetails)
+            print(self.userMemoryDetails ?? "User memory details is  nil")
         }
 
         // Navigation set up
