@@ -120,14 +120,14 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Change state when pressed play or pause button
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
-            let pauseImage =  UIImage(named: "pauseIcon")
-            self.playButton.setImage(pauseImage, for: .normal)
+            let pauseImage =  UIImage(named: "pauseAudio")
+            self.playButton.setBackgroundImage(pauseImage, for: .normal)
             self.showingPlayIcon = false
             self.preparePlayer()
             self.soundPlayer.play()
         } else {
-            let playImage =  UIImage(named: "playIcon")
-            self.playButton.setImage(playImage, for: .normal)
+            let playImage =  UIImage(named: "playAudio")
+            self.playButton.setBackgroundImage(playImage, for: .normal)
             self.showingPlayIcon = true
             self.soundPlayer.stop()
         }

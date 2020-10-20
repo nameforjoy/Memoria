@@ -17,12 +17,14 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     @IBOutlet weak var dismissView: UIView!
     
     var soundRecorder = AVAudioRecorder()
+    var isRecording: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupRecorder()
         
         self.contentBackground.layer.cornerRadius = 20
+        self.audioPlayView.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
         self.dismissView.addGestureRecognizer(tap)
@@ -59,12 +61,17 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     
     ///Change states when recording or stop recording
     @IBAction func record(_ sender: Any) {
-        if self.recordButton.titleLabel?.text == "Record" {
+        if !self.isRecording {
             soundRecorder.record()
-            self.recordButton.setTitle("Stop", for: UIControl.State.normal)
+            guard let stopImage = UIImage(named: "stopRecording") else {return}
+            self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
+            self.isRecording = true
         } else {
             soundRecorder.stop()
-            self.recordButton.setTitle("Record", for: UIControl.State.normal)
+            guard let startImage = UIImage(named: "startRecording") else {return}
+            self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
+            self.isRecording = false
+            self.audioPlayView.isHidden = false
         }
     }
     

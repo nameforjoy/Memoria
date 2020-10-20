@@ -180,7 +180,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="kBB-WP-jGP"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Salvar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -227,7 +227,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-SU-j3O">
-                                <rect key="frame" x="0.0" y="546" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="551" width="414" height="375"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ech-AU-zcx" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
                                         <rect key="frame" x="20" y="238" width="374" height="70"/>
@@ -237,26 +237,49 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9j-Ic-AZp">
-                                        <rect key="frame" x="182.5" y="116" width="49" height="30"/>
-                                        <state key="normal" title="Record"/>
+                                        <rect key="frame" x="170" y="143" width="74" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="V9j-Ic-AZp" secondAttribute="height" multiplier="1:1" id="phs-VX-ADg"/>
+                                        </constraints>
+                                        <state key="normal" title="Record" backgroundImage="startRecording">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="record:" destination="ill-wr-s90" eventType="touchUpInside" id="DZB-KK-T69"/>
                                             <action selector="recordAudio:" destination="euA-L0-ydR" eventType="touchUpInside" id="35b-zB-VPt"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podemos gravar?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-5p-Nnw">
+                                        <rect key="frame" x="30" y="30" width="354" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ao pressionar o botão, a gravação será iniciada." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lp-j0-IqM">
+                                        <rect key="frame" x="30" y="70" width="354" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1186349937" green="0.1186349937" blue="0.1186349937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="Ckp-yg-GKC"/>
-                                    <constraint firstItem="ech-AU-zcx" firstAttribute="top" secondItem="V9j-Ic-AZp" secondAttribute="bottom" constant="92" id="WQQ-rZ-xn1"/>
-                                    <constraint firstAttribute="bottom" secondItem="ech-AU-zcx" secondAttribute="bottom" constant="42" id="ZMz-Fy-bf1"/>
+                                    <constraint firstItem="hvq-5p-Nnw" firstAttribute="top" secondItem="pIj-SU-j3O" secondAttribute="top" constant="30" id="2BQ-OF-FnA"/>
+                                    <constraint firstItem="V9j-Ic-AZp" firstAttribute="top" secondItem="4lp-j0-IqM" secondAttribute="bottom" constant="30" id="5k7-3F-pOA"/>
+                                    <constraint firstItem="4lp-j0-IqM" firstAttribute="leading" secondItem="hvq-5p-Nnw" secondAttribute="leading" id="8sP-hO-P9r"/>
+                                    <constraint firstAttribute="height" constant="375" id="Ckp-yg-GKC"/>
+                                    <constraint firstItem="hvq-5p-Nnw" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="J8x-b9-qks"/>
+                                    <constraint firstItem="V9j-Ic-AZp" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="PZN-9K-4js"/>
+                                    <constraint firstAttribute="bottom" secondItem="ech-AU-zcx" secondAttribute="bottom" constant="67" id="ZMz-Fy-bf1"/>
                                     <constraint firstItem="ech-AU-zcx" firstAttribute="leading" secondItem="pIj-SU-j3O" secondAttribute="leading" constant="20" symbolic="YES" id="a6E-13-Yns"/>
                                     <constraint firstAttribute="trailing" secondItem="ech-AU-zcx" secondAttribute="trailing" constant="20" symbolic="YES" id="eKc-H4-eCr"/>
-                                    <constraint firstItem="V9j-Ic-AZp" firstAttribute="centerX" secondItem="ech-AU-zcx" secondAttribute="centerX" id="uA2-qJ-6cY"/>
+                                    <constraint firstItem="hvq-5p-Nnw" firstAttribute="leading" secondItem="pIj-SU-j3O" secondAttribute="leading" constant="30" id="gDE-yh-JYJ"/>
+                                    <constraint firstItem="4lp-j0-IqM" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="huE-TG-20f"/>
+                                    <constraint firstItem="4lp-j0-IqM" firstAttribute="top" secondItem="hvq-5p-Nnw" secondAttribute="bottom" constant="11" id="rST-me-XCx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbD-VR-kDA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="546"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -264,7 +287,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IbD-VR-kDA" firstAttribute="top" secondItem="SdM-oM-xjk" secondAttribute="top" id="2gc-DG-raE"/>
-                            <constraint firstAttribute="bottom" secondItem="pIj-SU-j3O" secondAttribute="bottom" id="95E-LH-Vjf"/>
+                            <constraint firstAttribute="bottom" secondItem="pIj-SU-j3O" secondAttribute="bottom" constant="-30" id="95E-LH-Vjf"/>
                             <constraint firstItem="IbD-VR-kDA" firstAttribute="leading" secondItem="nVO-kz-C4x" secondAttribute="leading" id="GYm-Ad-CEZ"/>
                             <constraint firstItem="pIj-SU-j3O" firstAttribute="top" secondItem="IbD-VR-kDA" secondAttribute="bottom" id="HUT-U7-9sf"/>
                             <constraint firstItem="pIj-SU-j3O" firstAttribute="trailing" secondItem="nVO-kz-C4x" secondAttribute="trailing" id="Hfw-s8-cMM"/>
@@ -287,7 +310,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="microphone" width="159.5" height="230"/>
+        <image name="microphone" width="14" height="19.5"/>
+        <image name="startRecording" width="74" height="74"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -298,10 +322,10 @@
             <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purple">
-            <color red="0.46666666666666667" green="0.396078431372549" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46700000762939453" green="0.39599999785423279" blue="0.6589999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purpleDark">
-            <color red="0.36078431372549019" green="0.31372549019607843" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purpleLight">
             <color red="0.9649999737739563" green="0.94900000095367432" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
