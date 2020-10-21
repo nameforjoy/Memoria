@@ -71,5 +71,9 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>.light</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Precisamos acessar sua galeria para que você possa registrar suas memórias</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos usar sua camera para que você possa registrar suas memórias</string>
 </dict>
 </plist>
