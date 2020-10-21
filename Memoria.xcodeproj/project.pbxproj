@@ -385,7 +385,7 @@
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
-				152471E8253081BD006B39B4 /* AudioPlayerViewCell.swift in Sources */,
+				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,

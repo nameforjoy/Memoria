@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import CloudKit
 
 class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     
@@ -19,6 +20,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
     private var contentView: UIView!
+    var audioURL: URL!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +42,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
         self.setupSlider()
         self.setupTimer()
         self.setupLayout()
+        getAudioFromDB()
     }
     
     ///Method for load the xib view in the view controller
@@ -136,15 +139,34 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Configuration before start recording
     func preparePlayer() {
         do {
-            try self.soundPlayer = AVAudioPlayer(contentsOf: getFileURL() as URL)
+//            try self.soundPlayer = AVAudioPlayer(contentsOf: getFileURL() as URL)
+            try self.soundPlayer = AVAudioPlayer(contentsOf:self.audioURL as URL)
             self.soundPlayer.delegate = self
-            self.soundPlayer.prepareToPlay()
+            self.soundPlayer.prepareToPlay() 
             self.soundPlayer.volume = 1.0
             
             //Set slider maximum value as the duration of the audio
             self.slider.maximumValue = Float(soundPlayer.duration)
         } catch {
             print("Erro: Problemas para reproduzir um áudio")
+        }
+    }
+    
+    func getAudioFromDB() {
+        var allRecords = [CKAsset]()
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Detail", predicate: predicate)
+        
+        CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            
+            for record: CKRecord in records! {
+                if let audio = record["audioAsset"] as? CKAsset {
+                    allRecords.append(audio)
+                    self.audioURL = audio.fileURL as URL?
+                    print(audio)
+                }
+            }
         }
     }
     
