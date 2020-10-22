@@ -9,14 +9,20 @@ import Foundation
 import CloudKit
 
 class Detail: Codable {
-//    let audio: CKAsset?  // need to import CloudKit for this format but does not conform to protocol 'Codable'
+    var audio: Data?  // need to import CloudKit for this format but does not conform to protocol 'Codable'
 //    let image: String?
-    let text: String?
-    let question: String?
+    var text: String?
+    var question: String?
     
     init(text: String, question: String) {
-        self.text = text 
+        self.text = text
         self.question = question
+    }
+
+    init(text: String?, question: String?, audio: Data?) {
+        self.text = text
+        self.question = question
+        self.audio = audio
     }
     
 }

@@ -47,12 +47,11 @@ class DetailDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            if let text = record["text"] as? String,
-               let question = record["question"] as? String {
-                let newDetail = Detail(text: text, question: question)
-                allRecords.append(newDetail)
-                print(newDetail.text!)
-            }
+            let text = record["text"] as? String
+            let question = record["question"] as? String
+            let audio = record["audio"] as? Data
+            let newDetail = Detail(text: text, question: question, audio: audio)
+            allRecords.append(newDetail)
 
         }
 
@@ -66,4 +65,5 @@ class DetailDAO: DAO {
 
         privateDatabase.add(operation)
     }
+    
 }
