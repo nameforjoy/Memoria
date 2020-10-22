@@ -60,6 +60,7 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
     @IBAction func recordAudio(_ sender: Any) {
         guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
 
+        // Ties up this class as delegate for InputAudioVC
         recordAudioScreen.audioDelegate = self
 
         self.presentAsAlert(show: recordAudioScreen, over: self)
@@ -79,17 +80,24 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
 
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
-        // Save memory on database
-        // Goes back to memory box screen
+        // Organize content given by user
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
+
+        // Creates detail object
         let newMemoryDetail = Detail(text: text, question: question, audio: audio)
+
+        // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
+
+        // Return to main screen
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
 
+    /// Delegate method to populate audio data
     func finishedRecording(data: Data) {
+        // This content will be used on saveMemory()
         self.audioContent = data
     }
     

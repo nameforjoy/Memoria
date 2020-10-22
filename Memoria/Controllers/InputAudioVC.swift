@@ -55,7 +55,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
 
     }
     
-    ///Get documents diretory - permission to Microfone usage add in info.plist
+    ///Gets documents diretory used as temporary location for audio storage
     func getFileURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
@@ -73,12 +73,11 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
         }
     }
     
-    ///Enable play when finish recording
+    /// Creates Data object based on audio URL sends it to delegate method
+    // TODO: Change to CKAsset
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
-
         self.audioDelegate?.finishedRecording(data: audioCKAsset)
-
     }
     
 }
