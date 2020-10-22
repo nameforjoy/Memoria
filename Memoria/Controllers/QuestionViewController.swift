@@ -81,7 +81,7 @@ class QuestionViewController: UIViewController {
         // Goes back to memory box screen
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
-        let newMemoryDetail = Detail(text: text, question: question)
+        let newMemoryDetail = Detail(text: text, question: question, audio: nil)
         DetailDAO.create(detail: newMemoryDetail)
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
