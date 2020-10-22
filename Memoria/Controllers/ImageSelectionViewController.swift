@@ -21,6 +21,10 @@ class ImageSelectionViewController: UIViewController {
     @IBAction func pickImageClick( sender: Any) {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)
+//        getImageFromBD(completion: { asset in
+//            let uiImage = self.getUiImage(imageAsset: asset[0])
+//            self.imageView.image = uiImage
+//        })
     }
     
     func saveImageBD() {
@@ -45,6 +49,44 @@ class ImageSelectionViewController: UIViewController {
         }
     }
     
+    func getImageFromBD(completion: @escaping ([CKAsset]) -> Void) {
+        let privateDatabase = CKContainer.default().privateCloudDatabase
+        
+        var allRecords = [CKAsset]()
+
+        let predicate = NSPredicate(value: true)
+
+        let query = CKQuery(recordType: "Detail", predicate: predicate)
+
+        let operation = CKQueryOperation(query: query)
+
+        operation.recordFetchedBlock = { record in
+            if let image = record["image"] as? CKAsset {
+                allRecords.append(image)
+                print(image)
+            }
+        }
+        
+        operation.queryCompletionBlock = { cursor, error in
+
+            DispatchQueue.main.async {
+                completion(allRecords)
+            }
+
+        }
+
+        privateDatabase.add(operation)
+    }
+    
+    func getUiImage(imageAsset: CKAsset) -> UIImage? {
+        if let url = imageAsset.fileURL,
+           let data = try? Data(contentsOf: (url)),
+           let image = UIImage(data: data) {
+            return image
+        }
+        return nil
+    }
+    
     func getImageAsset(image: UIImage) -> CKAsset? {
         let data = image.pngData()
         if let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat") {
@@ -63,6 +105,6 @@ class ImageSelectionViewController: UIViewController {
 extension ImageSelectionViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         self.imageView.image = image
-        self.saveImageBD()
+//        self.saveImageBD()
     }
 }
