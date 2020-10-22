@@ -17,7 +17,11 @@ class DetailDAO: DAO {
 
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
-        record.setValue(detail.audio, forKey: "audio")
+
+        if let audioURL = detail.audio {
+            let audioCKAsset = CKAsset(fileURL: audioURL)
+            record.setValue(audioCKAsset, forKey: "audioAsset")
+        }
 
         self.privateDatabase.save(record) { (savedRecord, error) in
 
@@ -25,7 +29,7 @@ class DetailDAO: DAO {
                 print("Record Saved")
                 print(savedRecord?.object(forKey: "question") ?? "Nil")
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
-                print(savedRecord?.object(forKey: "audio") ?? "Nil")
+                print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
             } else {
                 print("Record Not Saved")
                 print(error ?? "Nil")
@@ -50,8 +54,9 @@ class DetailDAO: DAO {
 
             let text = record["text"] as? String
             let question = record["question"] as? String
-            let audio = record["audio"] as? Data
-            let newDetail = Detail(text: text, question: question, audio: audio)
+            let audio = record["audioAsset"] as? CKAsset
+            let audioURL = audio?.fileURL
+            let newDetail = Detail(text: text, question: question, audio: audioURL)
             allRecords.append(newDetail)
 
         }

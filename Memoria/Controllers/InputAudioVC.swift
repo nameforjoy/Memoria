@@ -10,7 +10,7 @@ import AVFoundation
 import CloudKit
 
 protocol AudioRecordingDelegate {
-    func finishedRecording(data: Data)
+    func finishedRecording(audioURL: URL)
 }
 
 class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
@@ -76,8 +76,8 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     /// Creates Data object based on audio URL sends it to delegate method
     // TODO: Change to CKAsset
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
-        self.audioDelegate?.finishedRecording(data: audioCKAsset)
+//        guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
+        self.audioDelegate?.finishedRecording(audioURL: getFileURL())
     }
     
 }

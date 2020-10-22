@@ -9,11 +9,11 @@ import Foundation
 import CloudKit
 
 class Detail: Codable {
-    var audio: Data?
+    var audio: URL?
     var text: String?
     var question: String?
 
-    init(text: String?, question: String?, audio: Data?) {
+    init(text: String?, question: String?, audio: URL?) {
         self.text = text
         self.question = question
         self.audio = audio

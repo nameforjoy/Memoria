@@ -20,7 +20,7 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
     @IBOutlet weak var audioSubtitle: UILabel!
     @IBOutlet weak var audioButtonBackground: UIView!
 
-    var audioContent: Data?
+    var audioContent: URL?
     var scrollOffsetBeforeKeyboard = CGPoint()
     
     // MARK: Life cycle
@@ -96,9 +96,9 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
     }
 
     /// Delegate method to populate audio data
-    func finishedRecording(data: Data) {
+    func finishedRecording(audioURL: URL) {
         // This content will be used on saveMemory()
-        self.audioContent = data
+        self.audioContent = audioURL
     }
     
     // MARK: Keyboard

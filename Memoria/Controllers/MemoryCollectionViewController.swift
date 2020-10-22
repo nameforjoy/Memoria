@@ -14,7 +14,7 @@ class MemoryCollectionViewController: UIViewController {
     
     var didJustSaveAMemory: Bool = false
     var userMemoryDetails: [Detail]?
-    var audios: [Data] = []
+    var audios: [URL] = []
     var timesPressed = 0
     @IBOutlet weak var testAudioPlayer: AudioPlayerView!
 
@@ -48,27 +48,6 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     @IBAction func testButton(_ sender: Any) {
-        DetailDAO.findAll { allDetails in
-            self.userMemoryDetails = allDetails
-            for memory in allDetails {
-                if let newAudio = memory.audio {
-                    print(memory.question)
-                    print(memory.text)
-                    self.audios.append(newAudio)
-                }
-            }
-            print(self.userMemoryDetails ?? "User memory details is  nil")
-        }
-        print(self.audios.count)
-        print(self.userMemoryDetails)
-
-        if !audios.isEmpty {
-            let positionAudio = timesPressed % 2
-            timesPressed += 1
-            let currentAudio = self.audios[positionAudio]
-            self.testAudioPlayer.audioContentData = currentAudio
-            print("Audio \(positionAudio)")
-        }
     }
 
     // MARK: Unwind segue
