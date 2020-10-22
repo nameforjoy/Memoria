@@ -17,6 +17,7 @@ class DetailDAO: DAO {
 
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
+        record.setValue(detail.audio, forKey: "audio")
 
         self.privateDatabase.save(record) { (savedRecord, error) in
 
@@ -24,7 +25,7 @@ class DetailDAO: DAO {
                 print("Record Saved")
                 print(savedRecord?.object(forKey: "question") ?? "Nil")
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
-
+                print(savedRecord?.object(forKey: "audio") ?? "Nil")
             } else {
                 print("Record Not Saved")
                 print(error ?? "Nil")

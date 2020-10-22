@@ -9,13 +9,18 @@ import UIKit
 import AVFoundation
 import CloudKit
 
+protocol AudioRecordingDelegate {
+    func finishedRecording(data: Data)
+}
+
 class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var audioPlayView: AudioPlayerView!
     @IBOutlet weak var contentBackground: UIView!
     @IBOutlet weak var dismissView: UIView!
-    
+
+    var audioDelegate: AudioRecordingDelegate?
     var soundRecorder = AVAudioRecorder()
 
     override func viewDidLoad() {
@@ -72,23 +77,8 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
 
-        //let audioCKAsset = CKAsset(fileURL: getFileURL())
-        
-        let record = CKRecord(recordType: "Detail")
+        self.audioDelegate?.finishedRecording(data: audioCKAsset)
 
-        record.setValue(audioCKAsset, forKey: "audio")
-
-        CKContainer.default().privateCloudDatabase.save(record) { (savedRecord, error) in
-
-                if error == nil {
-                    print("Record Saved")
-                    print(savedRecord?.object(forKey: "audio") ?? "Nil")
-                } else {
-                    print("Record Not Saved")
-                    print(error ?? "Nil")
-                    
-                }
-        }
     }
     
 }

@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class QuestionViewController: UIViewController {
-
+class QuestionViewController: UIViewController, AudioRecordingDelegate {
     // MARK: Attributes
     
     @IBOutlet weak var subtitle: UILabel!
@@ -20,7 +19,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioTitle: UILabel!
     @IBOutlet weak var audioSubtitle: UILabel!
     @IBOutlet weak var audioButtonBackground: UIView!
-    
+
+    var audioContent: Data?
     var scrollOffsetBeforeKeyboard = CGPoint()
     
     // MARK: Life cycle
@@ -59,7 +59,9 @@ class QuestionViewController: UIViewController {
     
     @IBAction func recordAudio(_ sender: Any) {
         guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
-        
+
+        recordAudioScreen.audioDelegate = self
+
         self.presentAsAlert(show: recordAudioScreen, over: self)
     }
     
@@ -74,16 +76,21 @@ class QuestionViewController: UIViewController {
         // Present alert
         context.present(viewController, animated: true, completion: nil)
     }
-    
+
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
         // Save memory on database
         // Goes back to memory box screen
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
-        let newMemoryDetail = Detail(text: text, question: question, audio: nil)
+        let audio = self.audioContent
+        let newMemoryDetail = Detail(text: text, question: question, audio: audio)
         DetailDAO.create(detail: newMemoryDetail)
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+    }
+
+    func finishedRecording(data: Data) {
+        self.audioContent = data
     }
     
     // MARK: Keyboard
