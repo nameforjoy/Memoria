@@ -17,8 +17,31 @@
                     <view key="view" contentMode="scaleToFill" id="izE-Oo-atp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiM-qd-O1Z" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
+                                <rect key="frame" x="20" y="413" width="374" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="1fg-2u-Ykb"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-aA-ToV">
+                                <rect key="frame" x="184" y="542" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="testButton:" destination="upX-eD-PW6" eventType="touchUpInside" id="FzO-sd-m0M"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e5p-nX-PYi" firstAttribute="trailing" secondItem="WiM-qd-O1Z" secondAttribute="trailing" constant="20" id="045-OR-CAB"/>
+                            <constraint firstItem="e5p-nX-PYi" firstAttribute="bottom" secondItem="WiM-qd-O1Z" secondAttribute="bottom" constant="379" id="HEA-xF-lNq"/>
+                            <constraint firstItem="WiM-qd-O1Z" firstAttribute="top" secondItem="e5p-nX-PYi" secondAttribute="top" constant="273" id="h3P-cF-b15"/>
+                            <constraint firstItem="WiM-qd-O1Z" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="20" id="mZu-en-joP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Caixa de Memórias" id="cce-3W-jOh">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="LHh-Nh-cwe">
@@ -27,6 +50,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="testAudioPlayer" destination="WiM-qd-O1Z" id="GQu-sZ-v9b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7v-o0-zM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -298,10 +324,10 @@
             <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purple">
-            <color red="0.46666666666666667" green="0.396078431372549" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46700000762939453" green="0.39599999785423279" blue="0.6589999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purpleDark">
-            <color red="0.36078431372549019" green="0.31372549019607843" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purpleLight">
             <color red="0.9649999737739563" green="0.94900000095367432" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
