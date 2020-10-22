@@ -18,6 +18,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     var showingPlayIcon = true  //if not is showing pause icon
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
+    var audioContentData: Data?
     private var contentView: UIView!
     
     override func awakeFromNib() {
@@ -123,7 +124,11 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
             let pauseImage =  UIImage(named: "pauseIcon")
             self.playButton.setImage(pauseImage, for: .normal)
             self.showingPlayIcon = false
-            self.preparePlayer()
+            if let audioData = self.audioContentData {
+                preparePlayer(data: audioData)
+            } else {
+                self.preparePlayer(url: self.getFileURL())
+            }
             self.soundPlayer.play()
         } else {
             let playImage =  UIImage(named: "playIcon")
@@ -134,19 +139,36 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     }
     
     ///Configuration before start recording
-    func preparePlayer() {
+    func preparePlayer(url: URL) {
         do {
-            try self.soundPlayer = AVAudioPlayer(contentsOf: getFileURL() as URL)
+            try self.soundPlayer = AVAudioPlayer(contentsOf: url)
             self.soundPlayer.delegate = self
             self.soundPlayer.prepareToPlay()
             self.soundPlayer.volume = 1.0
-            
+
             //Set slider maximum value as the duration of the audio
             self.slider.maximumValue = Float(soundPlayer.duration)
         } catch {
             print("Erro: Problemas para reproduzir um áudio")
         }
     }
+
+    ///Configuration before start recording
+    func preparePlayer(data: Data) {
+        do {
+            try self.soundPlayer = AVAudioPlayer(data: data)
+            self.soundPlayer.delegate = self
+            self.soundPlayer.prepareToPlay()
+            self.soundPlayer.volume = 1.0
+
+            //Set slider maximum value as the duration of the audio
+            self.slider.maximumValue = Float(soundPlayer.duration)
+        } catch {
+            print("Erro: Problemas para reproduzir um áudio")
+        }
+    }
+
+
     
     ///Enable record when finish playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
