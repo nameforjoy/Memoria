@@ -60,7 +60,8 @@ class DetailDAO: DAO {
             let question = record["question"] as? String
             let audio = record["audioAsset"] as? CKAsset
             let audioURL = audio?.fileURL
-            let newDetail = Detail(text: text, question: question, audio: audioURL)
+            let image = record["image"] as? CKAsset
+            let newDetail = Detail(text: text, question: question, audio: audioURL, image: image)
             allRecords.append(newDetail)
 
         }
