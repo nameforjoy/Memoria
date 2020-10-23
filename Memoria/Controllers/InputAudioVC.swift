@@ -35,7 +35,6 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
         self.setupRecorder()
         
         self.contentBackground.layer.cornerRadius = 20
-        self.audioPlayView.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
         self.dismissView.addGestureRecognizer(tap)

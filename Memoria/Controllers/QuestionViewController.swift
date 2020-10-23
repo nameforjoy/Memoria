@@ -76,6 +76,11 @@ class QuestionViewController: UIViewController {
 
         self.presentAsModal(show: recordAudioScreen, over: self)
     }
+    
+    @IBAction func selectImage(_ sender: Any) {
+        guard  let senderView = sender as? UIView else {return}
+        self.imagePicker.present(from: senderView)
+    }
 
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
