@@ -40,6 +40,7 @@
 		15CDC15B252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */; };
 		15CDC15C252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */; };
 		15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */; };
+		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
@@ -102,6 +103,7 @@
 		8D60F7EF25436681002A3F74 /* Circular Std Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Black.ttf"; sourceTree = "<group>"; };
 		8D60F7F025436681002A3F74 /* Circular Std Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Medium Italic.ttf"; sourceTree = "<group>"; };
 		8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Medium.ttf"; sourceTree = "<group>"; };
+		8D60F7F4254368B3002A3F74 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 				8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */,
 				8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */,
 				8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */,
-				8DDCAB99252EA0290012B671 /* Alerts.swift */,
 				8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */,
 				8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */,
 			);
@@ -181,8 +182,9 @@
 				15C8F23D252DF48C00DD9208 /* Controllers */,
 				15C8F23B252DF46B00DD9208 /* Views */,
 				15266D5E252BC7BE006A531D /* Extensions */,
-				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
+				8D60F7F32543686A002A3F74 /* Helpers */,
 				152EE5E7252B33A5002F379C /* SceneDelegate.swift */,
+				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
 				152EE5EE252B33A7002F379C /* Assets.xcassets */,
 				152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */,
 				152EE5F3252B33A7002F379C /* Info.plist */,
@@ -285,6 +287,15 @@
 				8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */,
 			);
 			path = "Circular Std";
+			sourceTree = "<group>";
+		};
+		8D60F7F32543686A002A3F74 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8DDCAB99252EA0290012B671 /* Alerts.swift */,
+				8D60F7F4254368B3002A3F74 /* Typography.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8DBA9F91253DCBBF00E564E9 /* IconTextButton */ = {
@@ -439,6 +450,7 @@
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
+				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,

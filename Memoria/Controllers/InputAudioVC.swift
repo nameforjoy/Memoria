@@ -88,11 +88,9 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
     /// Set up question texts in its respective labels.
     func setUpText() {
         // Set up dynamic font
-        let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
-        self.subtitleLabel.dynamicFont = font
-        
-        let fontBold = UIFont(name: "SFProDisplay-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24)
-        self.titleLabel.dynamicFont = fontBold
+        let typography = Typography()
+        self.subtitleLabel.dynamicFont = typography.bodyRegular
+        self.titleLabel.dynamicFont = typography.title2Bold
         
         // Accessibility configurations
         self.changeTextForAccessibility()

@@ -163,15 +163,13 @@ class QuestionViewController: UIViewController {
     /// Set up question texts in its respective labels.
     func setUpText() {
         // Set up dynamic font
-        let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
-        self.subtitle.dynamicFont = font
-        self.saveMemoryButton.dynamicFont = font
-        self.textAnswer.dynamicFont = font
-        self.audioSubtitle.dynamicFont = font
-        self.audioRecordLabel.dynamicFont = font
-        
-        let fontBold = UIFont(name: "SFProDisplay-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24)
-        self.audioTitle.dynamicFont = fontBold
+        let typography = Typography()
+        self.subtitle.dynamicFont = typography.bodyRegular
+        self.textAnswer.dynamicFont = typography.bodyRegular
+        self.audioSubtitle.dynamicFont = typography.bodyRegular
+        self.saveMemoryButton.dynamicFont = typography.calloutSemibold
+        self.audioRecordLabel.dynamicFont = typography.calloutSemibold
+        self.audioTitle.dynamicFont = typography.title2Bold
         
         // Accessibility configurations
         self.changeTextForAccessibility()
