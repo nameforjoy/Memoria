@@ -12,11 +12,12 @@ class MemoryCollectionViewController: UIViewController {
     
     // MARK: Attributes
     
+    @IBOutlet weak var testAudioPlayer: AudioPlayerView!
+    
     var didJustSaveAMemory: Bool = false
     var userMemoryDetails: [Detail]?
     var audio: URL?
     var timesPressed = 0
-    @IBOutlet weak var testAudioPlayer: AudioPlayerView!
 
     // MARK: Life cycle
     
@@ -31,12 +32,13 @@ class MemoryCollectionViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
 
+        // Find recorded audio
         DetailDAO.findAll { (details) in
             for detail in details {
                 if let audioURL = detail.audio {
                     self.audio = audioURL
                     self.testAudioPlayer.audioURL = self.audio
-                    print(self.audio?.absoluteURL)
+                    print(self.audio?.absoluteURL ?? "URL not found")
                     break
                 }
             }
@@ -57,6 +59,8 @@ class MemoryCollectionViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
     }
+    
+    // MARK: Actions
     
     @IBAction func testButton(_ sender: Any) {
     }
