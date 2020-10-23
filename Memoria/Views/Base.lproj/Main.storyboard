@@ -58,16 +58,6 @@
             </objects>
             <point key="canvasLocation" x="197.10144927536234" y="123.88392857142857"/>
         </scene>
-        <!--ImageSelection-->
-        <scene sceneID="Mg0-6B-6xX">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ImageSelection" id="Gvf-bE-14V" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="BmS-zq-lga"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cLc-pU-1Wg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="198" y="543"/>
-        </scene>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
             <objects>
