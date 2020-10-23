@@ -291,11 +291,11 @@
                         <constraints>
                             <constraint firstItem="IbD-VR-kDA" firstAttribute="top" secondItem="SdM-oM-xjk" secondAttribute="top" id="2gc-DG-raE"/>
                             <constraint firstAttribute="bottom" secondItem="pIj-SU-j3O" secondAttribute="bottom" id="95E-LH-Vjf"/>
-                            <constraint firstItem="IbD-VR-kDA" firstAttribute="leading" secondItem="nVO-kz-C4x" secondAttribute="leading" id="GYm-Ad-CEZ"/>
+                            <constraint firstItem="IbD-VR-kDA" firstAttribute="leading" secondItem="SdM-oM-xjk" secondAttribute="leading" id="GYm-Ad-CEZ"/>
                             <constraint firstItem="pIj-SU-j3O" firstAttribute="top" secondItem="IbD-VR-kDA" secondAttribute="bottom" id="HUT-U7-9sf"/>
                             <constraint firstItem="pIj-SU-j3O" firstAttribute="trailing" secondItem="nVO-kz-C4x" secondAttribute="trailing" id="Hfw-s8-cMM"/>
                             <constraint firstItem="pIj-SU-j3O" firstAttribute="leading" secondItem="nVO-kz-C4x" secondAttribute="leading" id="IUa-Rk-J8n"/>
-                            <constraint firstItem="IbD-VR-kDA" firstAttribute="trailing" secondItem="nVO-kz-C4x" secondAttribute="trailing" id="k86-JL-zQQ"/>
+                            <constraint firstItem="IbD-VR-kDA" firstAttribute="trailing" secondItem="SdM-oM-xjk" secondAttribute="trailing" id="k86-JL-zQQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Wk-aG-c3e"/>
