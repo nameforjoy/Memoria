@@ -205,25 +205,12 @@ extension QuestionViewController: ImagePickerDelegate {
             self.imageView.contentMode = .scaleToFill
             self.imageView.frame.size.height = ajustImageHeight(image: contentImage)
             self.imageView.image = contentImage
-            self.imageURL = getURL(image: contentImage)
+            self.imageURL = MediaManager.getURL(image: contentImage)
         }
     }
     
     func ajustImageHeight(image: UIImage) -> CGFloat {
         let newHeight = imageView.frame.width / ( image.size.width / image.size.height)
         return newHeight
-    }
-    
-    func getURL(image: UIImage) -> URL? {
-        let data = image.pngData()
-        if let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat") {
-            do {
-                try data?.write(to: url)
-            } catch let err as NSError {
-                print("Error! \(err)")
-            }
-            return url
-        }
-        return nil
     }
 }

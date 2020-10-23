@@ -17,6 +17,7 @@
 		15AA50CC254069D600EC2E4B /* ImageSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15AA50CB254069D600EC2E4B /* ImageSelection.storyboard */; };
 		15AA50CF254069F900EC2E4B /* ImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA50CE254069F900EC2E4B /* ImageSelectionViewController.swift */; };
 		15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA50D125406CFF00EC2E4B /* ImagePicker.swift */; };
+		15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA50DE2543175C00EC2E4B /* MediaManager.swift */; };
 		15BB4A772535FE5900CECE25 /* AudioPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 152471E425307E06006B39B4 /* AudioPlayerView.xib */; };
 		15C8F242252DFE5600DD9208 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F241252DFE5600DD9208 /* Memory.swift */; };
 		15C8F246252DFF6600DD9208 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C8F245252DFF6600DD9208 /* Detail.swift */; };
@@ -71,6 +72,7 @@
 		15AA50CB254069D600EC2E4B /* ImageSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageSelection.storyboard; sourceTree = "<group>"; };
 		15AA50CE254069F900EC2E4B /* ImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionViewController.swift; sourceTree = "<group>"; };
 		15AA50D125406CFF00EC2E4B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		15AA50DE2543175C00EC2E4B /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		15C8F241252DFE5600DD9208 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		15C8F245252DFF6600DD9208 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		15C8F259252E08B300DD9208 /* Memoria.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memoria.entitlements; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				B39CA72425372C7C003E1059 /* MemoryDAO.swift */,
 				B39CA72725372C8B003E1059 /* DetailDAO.swift */,
 				B39CA72A25372CC6003E1059 /* DAO.swift */,
+				15AA50DE2543175C00EC2E4B /* MediaManager.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */,
 				8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */,
+				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
