@@ -62,7 +62,7 @@ class QuestionViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func recordAudio(_ sender: Any) {
-        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
 
         // Ties up this class as delegate for InputAudioVC
         recordAudioScreen.audioDelegate = self

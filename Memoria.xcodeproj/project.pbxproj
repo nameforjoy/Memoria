@@ -36,7 +36,7 @@
 		15CDC15A252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC148252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf */; };
 		15CDC15B252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */; };
 		15CDC15C252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */; };
-		15CDC160252CBFF000BD9A11 /* InputAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioViewController.swift */; };
+		15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
@@ -87,7 +87,7 @@
 		15CDC148252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
 		15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
-		15CDC15F252CBFF000BD9A11 /* InputAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioViewController.swift; sourceTree = "<group>"; };
+		15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioVC.swift; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		15C8F23D252DF48C00DD9208 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				15CDC15F252CBFF000BD9A11 /* InputAudioViewController.swift */,
+				15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */,
 				8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */,
 				8DDCAB85252E20570012B671 /* QuestionViewController.swift */,
 			);
@@ -407,7 +407,7 @@
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
-				15CDC160252CBFF000BD9A11 /* InputAudioViewController.swift in Sources */,
+				15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

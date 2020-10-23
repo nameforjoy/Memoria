@@ -64,7 +64,6 @@
                 <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -244,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="1069.5652173913045" y="123.88392857142857"/>
         </scene>
-        <!--Input Audio View Controller-->
+        <!--Input AudioVC-->
         <scene sceneID="AyG-dy-ZVO">
             <objects>
-                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioVC" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SdM-oM-xjk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
