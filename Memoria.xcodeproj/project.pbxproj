@@ -94,6 +94,14 @@
 		15CDC149252C884A00BD9A11 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
 		15CDC14A252C884A00BD9A11 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioVC.swift; sourceTree = "<group>"; };
+		8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold Italic.ttf"; sourceTree = "<group>"; };
+		8D60F7EB25436680002A3F74 /* Circular Std Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold.ttf"; sourceTree = "<group>"; };
+		8D60F7EC25436680002A3F74 /* Circular Std Black Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Black Italic.ttf"; sourceTree = "<group>"; };
+		8D60F7ED25436680002A3F74 /* Circular Std Book Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Book Italic.ttf"; sourceTree = "<group>"; };
+		8D60F7EE25436681002A3F74 /* Circular Std Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Book.ttf"; sourceTree = "<group>"; };
+		8D60F7EF25436681002A3F74 /* Circular Std Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Black.ttf"; sourceTree = "<group>"; };
+		8D60F7F025436681002A3F74 /* Circular Std Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Medium Italic.ttf"; sourceTree = "<group>"; };
+		8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Medium.ttf"; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
@@ -166,12 +174,12 @@
 		152EE5E4252B33A5002F379C /* Memoria */ = {
 			isa = PBXGroup;
 			children = (
+				8D60F7E8254365CA002A3F74 /* Fonts */,
 				15C8F259252E08B300DD9208 /* Memoria.entitlements */,
 				15C8F240252DF6EF00DD9208 /* Xibs */,
 				15C8F23E252DF49800DD9208 /* Models */,
 				15C8F23D252DF48C00DD9208 /* Controllers */,
 				15C8F23B252DF46B00DD9208 /* Views */,
-				15CDC138252C880000BD9A11 /* SF-Pro-Font */,
 				15266D5E252BC7BE006A531D /* Extensions */,
 				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
 				152EE5E7252B33A5002F379C /* SceneDelegate.swift */,
@@ -230,7 +238,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		15CDC138252C880000BD9A11 /* SF-Pro-Font */ = {
+		15CDC138252C880000BD9A11 /* SF Pro */ = {
 			isa = PBXGroup;
 			children = (
 				15CDC13E252C884900BD9A11 /* SF-Pro-Display-Black.otf */,
@@ -252,7 +260,31 @@
 				15CDC147252C884A00BD9A11 /* SF-Pro-Display-Ultralight.otf */,
 				15CDC13F252C884900BD9A11 /* SF-Pro-Display-UltralightItalic.otf */,
 			);
-			path = "SF-Pro-Font";
+			path = "SF Pro";
+			sourceTree = "<group>";
+		};
+		8D60F7E8254365CA002A3F74 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8D60F7E9254365D9002A3F74 /* Circular Std */,
+				15CDC138252C880000BD9A11 /* SF Pro */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8D60F7E9254365D9002A3F74 /* Circular Std */ = {
+			isa = PBXGroup;
+			children = (
+				8D60F7EC25436680002A3F74 /* Circular Std Black Italic.ttf */,
+				8D60F7EF25436681002A3F74 /* Circular Std Black.ttf */,
+				8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */,
+				8D60F7EB25436680002A3F74 /* Circular Std Bold.ttf */,
+				8D60F7ED25436680002A3F74 /* Circular Std Book Italic.ttf */,
+				8D60F7EE25436681002A3F74 /* Circular Std Book.ttf */,
+				8D60F7F025436681002A3F74 /* Circular Std Medium Italic.ttf */,
+				8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */,
+			);
+			path = "Circular Std";
 			sourceTree = "<group>";
 		};
 		8DBA9F91253DCBBF00E564E9 /* IconTextButton */ = {
