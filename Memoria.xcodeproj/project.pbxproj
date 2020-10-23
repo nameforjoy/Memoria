@@ -23,6 +23,9 @@
 		15C8F25D252E08C000DD9208 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8F25C252E08C000DD9208 /* CloudKit.framework */; };
 		15CDC160252CBFF000BD9A11 /* InputAudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioVC.swift */; };
 		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
+		8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7FE25438109002A3F74 /* TimerManager.swift */; };
+		8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F801254384FC002A3F74 /* DoubleRound.swift */; };
+		8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
@@ -68,6 +71,9 @@
 		8D60F7F025436681002A3F74 /* Circular Std Medium Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Medium Italic.ttf"; sourceTree = "<group>"; };
 		8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Medium.ttf"; sourceTree = "<group>"; };
 		8D60F7F4254368B3002A3F74 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		8D60F7FE25438109002A3F74 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		8D60F801254384FC002A3F74 /* DoubleRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRound.swift; sourceTree = "<group>"; };
+		8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontMonospace.swift; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 				8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */,
 				8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */,
 				8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */,
+				8D60F801254384FC002A3F74 /* DoubleRound.swift */,
+				8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 			children = (
 				8DDCAB99252EA0290012B671 /* Alerts.swift */,
 				8D60F7F4254368B3002A3F74 /* Typography.swift */,
+				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -373,13 +382,16 @@
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
+				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */,
 				8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */,
+				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
+				8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */,
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,

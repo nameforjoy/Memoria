@@ -272,17 +272,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-SU-j3O">
-                                <rect key="frame" x="0.0" y="546.5" width="414" height="349.5"/>
+                                <rect key="frame" x="0.0" y="524.5" width="414" height="371.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ech-AU-zcx" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="237.5" width="374" height="70"/>
+                                        <rect key="frame" x="20" y="259.5" width="374" height="70"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="rzx-I5-2z4"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9j-Ic-AZp">
-                                        <rect key="frame" x="167" y="119.5" width="80" height="80"/>
+                                        <rect key="frame" x="167" y="171.5" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="V9j-Ic-AZp" secondAttribute="height" multiplier="1:1" id="5pN-W0-lS0"/>
                                             <constraint firstAttribute="height" constant="80" id="TR2-6y-HBb"/>
@@ -305,25 +305,34 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00,00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDY-VI-E3c">
+                                        <rect key="frame" x="20" y="129.5" width="374" height="22"/>
+                                        <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1186349937" green="0.1186349937" blue="0.1186349937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="c6F-O4-ICT" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="9QC-qV-sN5"/>
                                     <constraint firstItem="Dgm-Go-dZ4" firstAttribute="top" secondItem="pIj-SU-j3O" secondAttribute="top" constant="40" id="FV4-OI-Sgu"/>
                                     <constraint firstItem="Dgm-Go-dZ4" firstAttribute="leading" secondItem="pIj-SU-j3O" secondAttribute="leading" constant="20" id="HRT-5p-Rfm"/>
                                     <constraint firstItem="Dgm-Go-dZ4" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="Ift-eo-J3f"/>
                                     <constraint firstItem="c6F-O4-ICT" firstAttribute="top" secondItem="Dgm-Go-dZ4" secondAttribute="bottom" constant="10" id="Pn5-W3-XG4"/>
+                                    <constraint firstItem="V9j-Ic-AZp" firstAttribute="top" secondItem="jDY-VI-E3c" secondAttribute="bottom" constant="20" id="RA4-Kt-zwU"/>
                                     <constraint firstItem="c6F-O4-ICT" firstAttribute="leading" secondItem="Dgm-Go-dZ4" secondAttribute="leading" id="T9E-F9-ZIa"/>
+                                    <constraint firstItem="jDY-VI-E3c" firstAttribute="leading" secondItem="c6F-O4-ICT" secondAttribute="leading" id="W9A-ap-Gyp"/>
                                     <constraint firstAttribute="bottom" secondItem="ech-AU-zcx" secondAttribute="bottom" constant="42" id="ZMz-Fy-bf1"/>
+                                    <constraint firstItem="jDY-VI-E3c" firstAttribute="top" secondItem="c6F-O4-ICT" secondAttribute="bottom" constant="30" id="ZPg-0t-xrc"/>
                                     <constraint firstItem="ech-AU-zcx" firstAttribute="leading" secondItem="pIj-SU-j3O" secondAttribute="leading" constant="20" symbolic="YES" id="a6E-13-Yns"/>
                                     <constraint firstAttribute="trailing" secondItem="ech-AU-zcx" secondAttribute="trailing" constant="20" symbolic="YES" id="eKc-H4-eCr"/>
-                                    <constraint firstAttribute="bottom" secondItem="V9j-Ic-AZp" secondAttribute="bottom" constant="150" id="eeN-xr-3cf"/>
-                                    <constraint firstItem="V9j-Ic-AZp" firstAttribute="top" secondItem="c6F-O4-ICT" secondAttribute="bottom" constant="20" id="qi6-Ih-zZI"/>
+                                    <constraint firstAttribute="bottom" secondItem="V9j-Ic-AZp" secondAttribute="bottom" constant="120" id="eeN-xr-3cf"/>
+                                    <constraint firstItem="jDY-VI-E3c" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="ppe-xM-aGn"/>
                                     <constraint firstItem="V9j-Ic-AZp" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="siq-pN-76I"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbD-VR-kDA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="546.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="524.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -346,6 +355,7 @@
                         <outlet property="dismissView" destination="IbD-VR-kDA" id="m8f-li-Zvw"/>
                         <outlet property="recordButton" destination="V9j-Ic-AZp" id="jbg-8g-p2R"/>
                         <outlet property="subtitleLabel" destination="c6F-O4-ICT" id="Mia-AQ-wMe"/>
+                        <outlet property="timerLabel" destination="jDY-VI-E3c" id="WaQ-um-2Rs"/>
                         <outlet property="titleLabel" destination="Dgm-Go-dZ4" id="40g-zW-A9c"/>
                     </connections>
                 </viewController>
