@@ -9,6 +9,7 @@ import Foundation
 import CloudKit
 
 class Detail {
+    
     var audio: URL?
     var image: CKAsset?
     var text: String?
@@ -20,5 +21,4 @@ class Detail {
         self.audio = audio
         self.image = image
     }
-    
 }

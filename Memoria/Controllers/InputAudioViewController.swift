@@ -9,20 +9,24 @@ import UIKit
 import AVFoundation
 import CloudKit
 
-protocol AudioRecordingDelegate {
+protocol AudioRecordingDelegate: AnyObject {
     func finishedRecording(audioURL: URL)
 }
 
-class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
+    
+    // MARK: Attributes
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var audioPlayView: AudioPlayerView!
     @IBOutlet weak var contentBackground: UIView!
     @IBOutlet weak var dismissView: UIView!
 
-    var audioDelegate: AudioRecordingDelegate?
+    weak var audioDelegate: AudioRecordingDelegate?
     var soundRecorder = AVAudioRecorder()
 
+    // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupRecorder()
@@ -33,9 +37,25 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
         self.dismissView.addGestureRecognizer(tap)
     }
     
+    // MARK: Actions
+    
+    ///Change states when recording or stop recording
+    @IBAction func record(_ sender: Any) {
+        if self.recordButton.titleLabel?.text == "Record" {
+            soundRecorder.record()
+            self.recordButton.setTitle("Stop", for: UIControl.State.normal)
+        } else {
+            soundRecorder.stop()
+            self.recordButton.setTitle("Record", for: UIControl.State.normal)
+        }
+    }
+    
+    /// Dismissthis View Controller when tapping outside the content view
     @objc func dismissAudioInputView() {
         self.dismiss(animated: true)
     }
+    
+    // MARK: Audio Player set up
     
     ///Initial configuration for the recorder
     func setupRecorder() {
@@ -52,7 +72,19 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
         } catch {
             print("Error: Problemas para preparar a gravação")
         }
+    }
+}
 
+// MARK: Record audio
+
+extension InputAudioViewController: AVAudioRecorderDelegate {
+    
+    /// Creates Data object based on audio URL sends it to delegate method
+    // TODO: Change to CKAsset
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        
+        // guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
+        self.audioDelegate?.finishedRecording(audioURL: getFileURL())
     }
     
     ///Gets documents diretory used as temporary location for audio storage
@@ -61,23 +93,4 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDele
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
         return audioFilename
     }
-    
-    ///Change states when recording or stop recording
-    @IBAction func record(_ sender: Any) {
-        if self.recordButton.titleLabel?.text == "Record" {
-            soundRecorder.record()
-            self.recordButton.setTitle("Stop", for: UIControl.State.normal)
-        } else {
-            soundRecorder.stop()
-            self.recordButton.setTitle("Record", for: UIControl.State.normal)
-        }
-    }
-    
-    /// Creates Data object based on audio URL sends it to delegate method
-    // TODO: Change to CKAsset
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-//        guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
-        self.audioDelegate?.finishedRecording(audioURL: getFileURL())
-    }
-    
 }

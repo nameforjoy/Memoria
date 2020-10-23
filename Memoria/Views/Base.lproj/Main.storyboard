@@ -244,10 +244,10 @@
             </objects>
             <point key="canvasLocation" x="1069.5652173913045" y="123.88392857142857"/>
         </scene>
-        <!--Input AudioVC-->
+        <!--Input Audio View Controller-->
         <scene sceneID="AyG-dy-ZVO">
             <objects>
-                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioVC" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SdM-oM-xjk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

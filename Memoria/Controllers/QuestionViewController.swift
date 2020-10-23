@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-class QuestionViewController: UIViewController, AudioRecordingDelegate {
+class QuestionViewController: UIViewController {
+    
     // MARK: Attributes
     
     @IBOutlet weak var subtitle: UILabel!
@@ -58,24 +59,12 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
     // MARK: Actions
     
     @IBAction func recordAudio(_ sender: Any) {
-        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
 
         // Ties up this class as delegate for InputAudioVC
         recordAudioScreen.audioDelegate = self
 
-        self.presentAsAlert(show: recordAudioScreen, over: self)
-    }
-    
-    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
-        
-        // Set up presentation mode
-        viewController.providesPresentationContextTransitionStyle = true
-        viewController.definesPresentationContext = true
-        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        // Present alert
-        context.present(viewController, animated: true, completion: nil)
+        self.presentAsModal(show: recordAudioScreen, over: self)
     }
 
     /// Saves memory to database and return to main screen
@@ -96,12 +85,6 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
 
         // Return to main screen
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
-    }
-
-    /// Delegate method to populate audio data
-    func finishedRecording(audioURL: URL) {
-        // This content will be used on saveMemory()
-        self.audioContent = audioURL
     }
     
     // MARK: Keyboard
@@ -182,5 +165,31 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         } else {
             self.navigationItem.title = "Conta pra mim!"
         }
+    }
+}
+
+// MARK: Audio Recorder
+
+extension QuestionViewController: AudioRecordingDelegate {
+    
+    /// Delegate method to populate audio data
+    func finishedRecording(audioURL: URL) {
+        // This content will be used on saveMemory()
+        self.audioContent = audioURL
+    }
+    
+    func presentAsModal(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set up background to mimic the iOS native Alert
+        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
     }
 }
