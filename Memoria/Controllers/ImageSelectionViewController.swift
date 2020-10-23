@@ -22,63 +22,12 @@ class ImageSelectionViewController: UIViewController {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)
 //        getImageFromBD(completion: { asset in
-//            let uiImage = self.getUiImage(imageAsset: asset[0])
+//            let uiImage = self.getUIImage(imageAsset: asset[0])
 //            self.imageView.image = uiImage
 //        })
     }
-    
-    func saveImageBD() {
-        let privateDatabase = CKContainer.default().privateCloudDatabase
-        let record = CKRecord(recordType: "Detail")
         
-        let image = getImageAsset(image: self.imageView.image!)
-
-        record.setValue(image, forKey: "image")
-        
-        privateDatabase.save(record) { (savedRecord, error) in
-
-            if error == nil {
-                print("Record Saved")
-                print(savedRecord?.object(forKey: "image") ?? "Nil")
-
-            } else {
-                print("Record Not Saved")
-                print(error ?? "Nil")
-                
-            }
-        }
-    }
-    
-    func getImageFromBD(completion: @escaping ([CKAsset]) -> Void) {
-        let privateDatabase = CKContainer.default().privateCloudDatabase
-        
-        var allRecords = [CKAsset]()
-
-        let predicate = NSPredicate(value: true)
-
-        let query = CKQuery(recordType: "Detail", predicate: predicate)
-
-        let operation = CKQueryOperation(query: query)
-
-        operation.recordFetchedBlock = { record in
-            if let image = record["image"] as? CKAsset {
-                allRecords.append(image)
-                print(image)
-            }
-        }
-        
-        operation.queryCompletionBlock = { cursor, error in
-
-            DispatchQueue.main.async {
-                completion(allRecords)
-            }
-
-        }
-
-        privateDatabase.add(operation)
-    }
-    
-    func getUiImage(imageAsset: CKAsset) -> UIImage? {
+    func getUIImage(imageAsset: CKAsset) -> UIImage? {
         if let url = imageAsset.fileURL,
            let data = try? Data(contentsOf: (url)),
            let image = UIImage(data: data) {
