@@ -60,12 +60,17 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
     
     ///Change states when recording or stop recording
     @IBAction func record(_ sender: Any) {
-        if self.recordButton.titleLabel?.text == "Record" {
+        if !self.isRecording {
             soundRecorder.record()
-            self.recordButton.setTitle("Stop", for: UIControl.State.normal)
+            guard let stopImage = UIImage(named: "stopRecording") else {return}
+            self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
+            self.isRecording = true
         } else {
             soundRecorder.stop()
-            self.recordButton.setTitle("Record", for: UIControl.State.normal)
+            guard let startImage = UIImage(named: "startRecording") else {return}
+            self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
+            self.isRecording = false
+            self.audioPlayView.isHidden = false
         }
     }
     
@@ -137,7 +142,6 @@ extension InputAudioVC: AVAudioRecorderDelegate {
     /// Creates Data object based on audio URL sends it to delegate method
     // TODO: Change to CKAsset
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
         // guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
         self.audioDelegate?.finishedRecording(audioURL: getFileURL())
     }
@@ -147,29 +151,6 @@ extension InputAudioVC: AVAudioRecorderDelegate {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
         return audioFilename
-    }
-    
-    ///Change states when recording or stop recording
-    @IBAction func record(_ sender: Any) {
-        if !self.isRecording {
-            soundRecorder.record()
-            guard let stopImage = UIImage(named: "stopRecording") else {return}
-            self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
-            self.isRecording = true
-        } else {
-            soundRecorder.stop()
-            guard let startImage = UIImage(named: "startRecording") else {return}
-            self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
-            self.isRecording = false
-            self.audioPlayView.isHidden = false
-        }
-    }
-    
-    /// Creates Data object based on audio URL sends it to delegate method
-    // TODO: Change to CKAsset
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-//        guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
-        self.audioDelegate?.finishedRecording(audioURL: getFileURL())
     }
     
 }
