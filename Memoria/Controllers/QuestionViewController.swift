@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class QuestionViewController: UIViewController {
-
+    
     // MARK: Attributes
     
     @IBOutlet weak var subtitle: UILabel!
@@ -20,15 +20,14 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioTitle: UILabel!
     @IBOutlet weak var audioSubtitle: UILabel!
     @IBOutlet weak var audioButtonBackground: UIView!
-    
+
+    var audioContent: URL?
     var scrollOffsetBeforeKeyboard = CGPoint()
     
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setUpText()
         
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -47,6 +46,11 @@ class QuestionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setUpText()
+    }
+    
     deinit {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
@@ -58,31 +62,31 @@ class QuestionViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func recordAudio(_ sender: Any) {
-        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
-        
-        self.presentAsAlert(show: recordAudioScreen, over: self)
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
+
+        // Ties up this class as delegate for InputAudioVC
+        recordAudioScreen.audioDelegate = self
+
+        self.presentAsModal(show: recordAudioScreen, over: self)
     }
-    
-    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
-        
-        // Set up presentation mode
-        viewController.providesPresentationContextTransitionStyle = true
-        viewController.definesPresentationContext = true
-        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        // Present alert
-        context.present(viewController, animated: true, completion: nil)
-    }
-    
+
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
-        // Save memory on database
-        // Goes back to memory box screen
+        // Organize content given by user
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
-        let newMemoryDetail = Detail(text: text, question: question)
+        let audio = self.audioContent
+
+        // TODO: Puxar imagem da ImageSelectionViewController
+        // let image: CKAsset? = nil
+
+        // Creates detail object
+        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: nil)
+
+        // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
+
+        // Return to main screen
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
     
@@ -122,7 +126,7 @@ class QuestionViewController: UIViewController {
         }
     }
     
-    // MARK: Text Acessibility
+    // MARK: Acessibility
     
     /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged(_ notification: Notification) {
@@ -164,5 +168,31 @@ class QuestionViewController: UIViewController {
         } else {
             self.navigationItem.title = "Conta pra mim!"
         }
+    }
+}
+
+// MARK: Audio Recorder
+
+extension QuestionViewController: AudioRecordingDelegate {
+    
+    /// Delegate method to populate audio data
+    func finishedRecording(audioURL: URL) {
+        // This content will be used on saveMemory()
+        self.audioContent = audioURL
+    }
+    
+    func presentAsModal(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set up background to mimic the iOS native Alert
+        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
     }
 }
