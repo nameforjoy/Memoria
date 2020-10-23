@@ -20,8 +20,9 @@ class DetailDAO: DAO {
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
 
-        if let image = detail.image {
-            record.setValue(image, forKey: "image")
+        if let imageURL = detail.image {
+            let imageCKAsset = CKAsset(fileURL: imageURL)
+            record.setValue(imageCKAsset, forKey: "image")
         }
 
         if let audioURL = detail.audio {
@@ -65,7 +66,8 @@ class DetailDAO: DAO {
             let audio = record["audioAsset"] as? CKAsset
             let audioURL = audio?.fileURL
             let image = record["image"] as? CKAsset
-            let newDetail = Detail(text: text, question: question, audio: audioURL, image: image)
+            let imageURL = image?.fileURL
+            let newDetail = Detail(text: text, question: question, audio: audioURL, image: imageURL)
             allRecords.append(newDetail)
         }
         

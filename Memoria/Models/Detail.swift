@@ -11,11 +11,11 @@ import CloudKit
 class Detail {
     
     var audio: URL?
-    var image: CKAsset?
+    var image: URL?
     var text: String?
     var question: String?
 
-    init(text: String?, question: String?, audio: URL?, image: CKAsset?) {
+    init(text: String?, question: String?, audio: URL?, image: URL?) {
         self.text = text
         self.question = question
         self.audio = audio

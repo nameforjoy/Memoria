@@ -121,8 +121,8 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Change state when pressed play or pause button
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
-            let pauseImage =  UIImage(named: "pauseIcon")
-            self.playButton.setImage(pauseImage, for: .normal)
+            let pauseImage = UIImage(named: "pauseAudio")
+            self.playButton.setBackgroundImage(pauseImage, for: .normal)
             
             // Prepare document URL in which tthe audio is saved
             self.showingPlayIcon = false
@@ -135,8 +135,8 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
             // Play audio
             self.soundPlayer.play()
         } else {
-            let playImage =  UIImage(named: "playIcon")
-            self.playButton.setImage(playImage, for: .normal)
+            let playImage =  UIImage(named: "playAudio")
+            self.playButton.setBackgroundImage(playImage, for: .normal)
             self.showingPlayIcon = true
             self.soundPlayer.stop()
         }
@@ -175,7 +175,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Enable record when finish playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         let playImage =  UIImage(named: "playIcon")
-        self.playButton.setImage(playImage, for: .normal)
+        self.playButton.setBackgroundImage(playImage, for: .normal)
         self.showingPlayIcon = true
     }
     

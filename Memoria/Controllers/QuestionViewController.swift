@@ -20,9 +20,13 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioTitle: UILabel!
     @IBOutlet weak var audioSubtitle: UILabel!
     @IBOutlet weak var audioButtonBackground: UIView!
-
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var selectImageButton: UIButton!
+    
     var audioContent: URL?
+    var imageURL: URL?
     var scrollOffsetBeforeKeyboard = CGPoint()
+    var imagePicker: ImagePicker!
     
     // MARK: Life cycle
     
@@ -44,6 +48,9 @@ class QuestionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //Initialize ImagePicker
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,19 +76,37 @@ class QuestionViewController: UIViewController {
 
         self.presentAsModal(show: recordAudioScreen, over: self)
     }
-
+    
+    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func selectImage(_ sender: Any) {
+        guard let senderView = sender as? UIView else { return }
+        self.imagePicker.present(from: senderView)
+    }
+    
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
         // Organize content given by user
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
+        let image = self.imageURL
 
         // TODO: Puxar imagem da ImageSelectionViewController
         // let image: CKAsset? = nil
 
         // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: nil)
+        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
 
         // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
@@ -194,5 +219,22 @@ extension QuestionViewController: AudioRecordingDelegate {
         
         // Present alert
         context.present(viewController, animated: true, completion: nil)
+    }
+}
+
+///Extension For ImagePicker
+extension QuestionViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let contentImage = image {
+            self.imageView.contentMode = .scaleToFill
+            self.imageView.frame.size.height = ajustImageHeight(image: contentImage)
+            self.imageView.image = contentImage
+            self.imageURL = MediaManager.getURL(image: contentImage)
+        }
+    }
+    
+    func ajustImageHeight(image: UIImage) -> CGFloat {
+        let newHeight = imageView.frame.width / ( image.size.width / image.size.height)
+        return newHeight
     }
 }

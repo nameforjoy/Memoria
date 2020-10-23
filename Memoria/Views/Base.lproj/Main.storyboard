@@ -64,6 +64,7 @@
                 <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -159,6 +160,18 @@
                                                     <action selector="recordAudio:" destination="6OU-zm-CFT" eventType="touchUpInside" id="ZC8-np-wdx"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-oS-4wR">
+                                                <rect key="frame" x="142" y="561" width="131" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Selecionar Imagem"/>
+                                                <connections>
+                                                    <action selector="selectImage:" destination="6OU-zm-CFT" eventType="touchUpInside" id="7K8-zC-suN"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u99-6a-PBj">
+                                                <rect key="frame" x="25" y="619" width="364" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -205,7 +218,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="kBB-WP-jGP"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Salvar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -231,8 +244,10 @@
                         <outlet property="audioRecordLabel" destination="sgc-ZD-OMg" id="lE6-jK-FpT"/>
                         <outlet property="audioSubtitle" destination="GLR-Nl-4U7" id="U4w-Hr-XXz"/>
                         <outlet property="audioTitle" destination="tZh-gJ-ico" id="2F3-fy-im0"/>
+                        <outlet property="imageView" destination="u99-6a-PBj" id="eYG-2N-lcS"/>
                         <outlet property="saveMemoryButton" destination="Kzz-dF-agT" id="T0L-lo-KVD"/>
                         <outlet property="scrollView" destination="mkS-b1-4HN" id="wOm-5O-IuZ"/>
+                        <outlet property="selectImageButton" destination="4UV-oS-4wR" id="tXm-Ez-8D4"/>
                         <outlet property="subtitle" destination="wd9-8e-muY" id="oCG-70-4xy"/>
                         <outlet property="textAnswer" destination="O2x-MF-M3z" id="Aff-SL-Rug"/>
                         <segue destination="Wnv-gd-wsS" kind="unwind" identifier="unwindSaveMemoryToCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="SqR-L3-dXi"/>
@@ -252,18 +267,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-SU-j3O">
-                                <rect key="frame" x="0.0" y="596.5" width="414" height="299.5"/>
+                                <rect key="frame" x="0.0" y="546.5" width="414" height="349.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ech-AU-zcx" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="187.5" width="374" height="70"/>
+                                        <rect key="frame" x="20" y="237.5" width="374" height="70"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="rzx-I5-2z4"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9j-Ic-AZp">
-                                        <rect key="frame" x="182.5" y="119.5" width="49" height="30"/>
-                                        <state key="normal" title="Record"/>
+                                        <rect key="frame" x="167" y="119.5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="V9j-Ic-AZp" secondAttribute="height" multiplier="1:1" id="5pN-W0-lS0"/>
+                                            <constraint firstAttribute="height" constant="80" id="TR2-6y-HBb"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="startRecording"/>
                                         <connections>
                                             <action selector="record:" destination="ill-wr-s90" eventType="touchUpInside" id="DZB-KK-T69"/>
                                             <action selector="recordAudio:" destination="euA-L0-ydR" eventType="touchUpInside" id="35b-zB-VPt"/>
@@ -299,7 +318,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbD-VR-kDA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="596.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="546.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -332,7 +351,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="microphone" width="159.5" height="230"/>
+        <image name="microphone" width="14" height="19.5"/>
+        <image name="startRecording" width="74" height="74"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
