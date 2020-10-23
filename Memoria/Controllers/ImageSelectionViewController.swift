@@ -87,6 +87,14 @@ class ImageSelectionViewController: UIViewController {
         return nil
     }
     
+    func getUIImage(imageURL: URL) -> UIImage? {
+        if let data = try? Data(contentsOf: (imageURL)),
+           let image = UIImage(data: data) {
+            return image
+        }
+        return nil
+    }
+    
     func getImageAsset(image: UIImage) -> CKAsset? {
         let data = image.pngData()
         if let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat") {
@@ -96,6 +104,19 @@ class ImageSelectionViewController: UIViewController {
                 print("Error! \(err)")
             }
             return CKAsset(fileURL: url)
+        }
+        return nil
+    }
+    
+    func getUIImageURL(image: UIImage) -> URL? {
+        let data = image.pngData()
+        if let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat") {
+            do {
+                try data?.write(to: url)
+            } catch let err as NSError {
+                print("Error! \(err)")
+            }
+            return url
         }
         return nil
     }

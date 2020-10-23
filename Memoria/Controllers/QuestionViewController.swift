@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class QuestionViewController: UIViewController {
-
+class QuestionViewController: UIViewController, AudioRecordingDelegate {
     // MARK: Attributes
     
     @IBOutlet weak var subtitle: UILabel!
@@ -20,8 +19,13 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioTitle: UILabel!
     @IBOutlet weak var audioSubtitle: UILabel!
     @IBOutlet weak var audioButtonBackground: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var selectImageButton: UIButton!
     
+    var audioContent: URL?
+    var imageURL: URL?
     var scrollOffsetBeforeKeyboard = CGPoint()
+    var imagePicker: ImagePicker!
     
     // MARK: Life cycle
     
@@ -45,6 +49,9 @@ class QuestionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //Initialize ImagePicker
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     deinit {
@@ -59,7 +66,10 @@ class QuestionViewController: UIViewController {
     
     @IBAction func recordAudio(_ sender: Any) {
         guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
-        
+
+        // Ties up this class as delegate for InputAudioVC
+        recordAudioScreen.audioDelegate = self
+
         self.presentAsAlert(show: recordAudioScreen, over: self)
     }
     
@@ -75,15 +85,36 @@ class QuestionViewController: UIViewController {
         context.present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func selectImage(_ sender: Any) {
+        guard let senderView = sender as? UIView else { return }
+        self.imagePicker.present(from: senderView)
+    }
+    
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
-        // Save memory on database
-        // Goes back to memory box screen
+        // Organize content given by user
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
-        let newMemoryDetail = Detail(text: text, question: question)
+        let audio = self.audioContent
+        let image = self.imageURL
+
+        // TODO: Puxar imagem da ImageSelectionViewController
+        // let image: CKAsset? = nil
+
+        // Creates detail object
+        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
+
+        // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
+
+        // Return to main screen
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+    }
+
+    /// Delegate method to populate audio data
+    func finishedRecording(audioURL: URL) {
+        // This content will be used on saveMemory()
+        self.audioContent = audioURL
     }
     
     // MARK: Keyboard
@@ -164,5 +195,34 @@ class QuestionViewController: UIViewController {
         } else {
             self.navigationItem.title = "Conta pra mim!"
         }
+    }
+}
+
+extension QuestionViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let contentImage = image {
+            self.imageView.contentMode = .scaleToFill
+            self.imageView.frame.size.height = ajustImageHeight(image: contentImage)
+            self.imageView.image = contentImage
+            self.imageURL = getURL(image: contentImage)
+        }
+    }
+    
+    func ajustImageHeight(image: UIImage) -> CGFloat {
+        let newHeight = imageView.frame.width / ( image.size.width / image.size.height)
+        return newHeight
+    }
+    
+    func getURL(image: UIImage) -> URL? {
+        let data = image.pngData()
+        if let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat") {
+            do {
+                try data?.write(to: url)
+            } catch let err as NSError {
+                print("Error! \(err)")
+            }
+            return url
+        }
+        return nil
     }
 }

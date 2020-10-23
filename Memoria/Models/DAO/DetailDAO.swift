@@ -18,13 +18,23 @@ class DetailDAO: DAO {
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
 
+        if let imageURL = detail.image {
+            let imageCKAsset = CKAsset(fileURL: imageURL)
+            record.setValue(imageCKAsset, forKey: "image")
+        }
+
+        if let audioURL = detail.audio {
+            let audioCKAsset = CKAsset(fileURL: audioURL)
+            record.setValue(audioCKAsset, forKey: "audioAsset")
+        }
+
         self.privateDatabase.save(record) { (savedRecord, error) in
 
             if error == nil {
                 print("Record Saved")
                 print(savedRecord?.object(forKey: "question") ?? "Nil")
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
-
+                print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
             } else {
                 print("Record Not Saved")
                 print(error ?? "Nil")
@@ -47,12 +57,14 @@ class DetailDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            if let text = record["text"] as? String,
-               let question = record["question"] as? String {
-                let newDetail = Detail(text: text, question: question)
-                allRecords.append(newDetail)
-                print(newDetail.text!)
-            }
+            let text = record["text"] as? String
+            let question = record["question"] as? String
+            let audio = record["audioAsset"] as? CKAsset
+            let audioURL = audio?.fileURL
+            let image = record["image"] as? CKAsset
+            let imageURL = image?.fileURL
+            let newDetail = Detail(text: text, question: question, audio: audioURL, image: imageURL)
+            allRecords.append(newDetail)
 
         }
 
@@ -66,4 +78,5 @@ class DetailDAO: DAO {
 
         privateDatabase.add(operation)
     }
+    
 }
