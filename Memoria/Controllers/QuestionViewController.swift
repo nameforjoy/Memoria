@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-class QuestionViewController: UIViewController, AudioRecordingDelegate {
+class QuestionViewController: UIViewController {
+    
     // MARK: Attributes
     
     @IBOutlet weak var subtitle: UILabel!
@@ -32,8 +33,6 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setUpText()
-        
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -54,6 +53,11 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setUpText()
+    }
+    
     deinit {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
@@ -70,7 +74,7 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         // Ties up this class as delegate for InputAudioVC
         recordAudioScreen.audioDelegate = self
 
-        self.presentAsAlert(show: recordAudioScreen, over: self)
+        self.presentAsModal(show: recordAudioScreen, over: self)
     }
     
     func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
@@ -110,12 +114,6 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         // Return to main screen
         performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
-
-    /// Delegate method to populate audio data
-    func finishedRecording(audioURL: URL) {
-        // This content will be used on saveMemory()
-        self.audioContent = audioURL
-    }
     
     // MARK: Keyboard
     
@@ -153,7 +151,7 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         }
     }
     
-    // MARK: Text Acessibility
+    // MARK: Acessibility
     
     /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged(_ notification: Notification) {
@@ -195,6 +193,32 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         } else {
             self.navigationItem.title = "Conta pra mim!"
         }
+    }
+}
+
+// MARK: Audio Recorder
+
+extension QuestionViewController: AudioRecordingDelegate {
+    
+    /// Delegate method to populate audio data
+    func finishedRecording(audioURL: URL) {
+        // This content will be used on saveMemory()
+        self.audioContent = audioURL
+    }
+    
+    func presentAsModal(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set up background to mimic the iOS native Alert
+        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
     }
 }
 

@@ -13,6 +13,8 @@ class DetailDAO: DAO {
     static let privateDatabase = CKContainer.default().privateCloudDatabase
 
     static public func create(detail: Detail) {
+        
+        // Turn Detail values into a CKRecord object to be recorded
         let record = CKRecord(recordType: "Detail")
 
         record.setValue(detail.question, forKey: "question")
@@ -28,6 +30,7 @@ class DetailDAO: DAO {
             record.setValue(audioCKAsset, forKey: "audioAsset")
         }
 
+        // Record detail in iCloud's private database
         self.privateDatabase.save(record) { (savedRecord, error) in
 
             if error == nil {
@@ -38,25 +41,26 @@ class DetailDAO: DAO {
             } else {
                 print("Record Not Saved")
                 print(error ?? "Nil")
-                
             }
         }
     }
 
     //This method is not workinng -- Maybe we'll need to use a closure instead of a return
     static public func findAll(completion: @escaping ([Detail]) -> Void) {
+        
+        // Fecthed details array
         var allRecords = [Detail]()
 
         let predicate = NSPredicate(value: true)
-
         //let predicate = NSPredicate(format: "detailID == %@", objectID as CVarArg)
 
+        //  Make query operation to fetch a detail
         let query = CKQuery(recordType: "Detail", predicate: predicate)
-
         let operation = CKQueryOperation(query: query)
 
         operation.recordFetchedBlock = { record in
 
+            // Make Detail object from query results
             let text = record["text"] as? String
             let question = record["question"] as? String
             let audio = record["audioAsset"] as? CKAsset
@@ -65,17 +69,14 @@ class DetailDAO: DAO {
             let imageURL = image?.fileURL
             let newDetail = Detail(text: text, question: question, audio: audioURL, image: imageURL)
             allRecords.append(newDetail)
-
         }
-
+        
         operation.queryCompletionBlock = { cursor, error in
-
             DispatchQueue.main.async {
                 completion(allRecords)
             }
-
         }
-
+        
         privateDatabase.add(operation)
     }
     

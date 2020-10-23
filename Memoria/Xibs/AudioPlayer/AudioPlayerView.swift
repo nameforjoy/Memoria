@@ -15,7 +15,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var containerView: UIView!
     
-    var showingPlayIcon = true  //if not is showing pause icon
+    var showingPlayIcon = true  // if false, then it's showing the pause icon
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
     var audioURL: URL?
@@ -121,14 +121,18 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Change state when pressed play or pause button
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
-            let pauseImage =  UIImage(named: "pauseAudio")
+            let pauseImage =  UIImage(named: "pauseIcon")
             self.playButton.setBackgroundImage(pauseImage, for: .normal)
+            
+            // Prepare document URL in which tthe audio is saved
             self.showingPlayIcon = false
             if let audioURL = self.audioURL {
                 preparePlayer(url: audioURL)
             } else {
                 self.preparePlayer(url: self.getFileURL())
             }
+            
+            // Play audio
             self.soundPlayer.play()
         } else {
             let playImage =  UIImage(named: "playAudio")
@@ -168,8 +172,6 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
 //        }
 //    }
 
-
-    
     ///Enable record when finish playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         let playImage =  UIImage(named: "playIcon")
