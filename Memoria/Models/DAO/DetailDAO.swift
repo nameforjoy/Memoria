@@ -18,6 +18,10 @@ class DetailDAO: DAO {
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
 
+        if let image = detail.image {
+            record.setValue(image, forKey: "image")
+        }
+
         if let audioURL = detail.audio {
             let audioCKAsset = CKAsset(fileURL: audioURL)
             record.setValue(audioCKAsset, forKey: "audioAsset")

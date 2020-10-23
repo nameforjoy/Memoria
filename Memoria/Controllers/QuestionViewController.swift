@@ -85,8 +85,11 @@ class QuestionViewController: UIViewController, AudioRecordingDelegate {
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
 
+        // TODO: Puxar imagem da ImageSelectionViewController
+        // let image: CKAsset? = nil
+
         // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, audio: audio)
+        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: nil)
 
         // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
