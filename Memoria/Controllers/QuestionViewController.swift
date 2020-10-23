@@ -29,8 +29,6 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setUpText()
-        
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -46,6 +44,11 @@ class QuestionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setUpText()
     }
     
     deinit {
@@ -123,7 +126,7 @@ class QuestionViewController: UIViewController {
         }
     }
     
-    // MARK: Text Acessibility
+    // MARK: Acessibility
     
     /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged(_ notification: Notification) {

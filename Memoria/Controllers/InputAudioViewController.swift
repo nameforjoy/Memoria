@@ -21,7 +21,9 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var audioPlayView: AudioPlayerView!
     @IBOutlet weak var contentBackground: UIView!
     @IBOutlet weak var dismissView: UIView!
-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
     weak var audioDelegate: AudioRecordingDelegate?
     var soundRecorder = AVAudioRecorder()
 
@@ -35,6 +37,21 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
         self.dismissView.addGestureRecognizer(tap)
+        
+        // Handle Notifications for Category Size Changes
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setUpText()
+    }
+    
+    deinit {
+        // Take notification observers off when de-initializing the class.
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
     }
     
     // MARK: Actions
@@ -53,6 +70,42 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     /// Dismissthis View Controller when tapping outside the content view
     @objc func dismissAudioInputView() {
         self.dismiss(animated: true)
+    }
+    
+    // MARK: Accessibility
+    
+    @objc func fontSizeChanged(_ notification: Notification) {
+        self.changeTextForAccessibility()
+    }
+    
+    /// Set up question texts in its respective labels.
+    func setUpText() {
+        // Set up dynamic font
+        let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
+        self.subtitleLabel.dynamicFont = font
+        
+        let fontBold = UIFont(name: "SFProDisplay-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24)
+        self.titleLabel.dynamicFont = fontBold
+        
+        // Accessibility configurations
+        self.changeTextForAccessibility()
+        
+        // Set text that will not change with accessibility
+        self.writeFixedText()
+    }
+    
+    func writeFixedText() {
+        self.subtitleLabel.text = "Ao pressionar o botão, a gravação será iniciada."
+    }
+    
+    /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
+    /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
+    func changeTextForAccessibility() {
+        if self.traitCollection.isAccessibleCategory {
+            self.titleLabel.text = "Podemos gravar?"
+        } else {
+            self.titleLabel.text = "Podemos começar a gravar?"
+        }
     }
     
     // MARK: Audio Player set up
