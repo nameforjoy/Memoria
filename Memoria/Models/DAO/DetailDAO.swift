@@ -20,6 +20,9 @@ class DetailDAO: DAO {
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
 
+        // TODO: Checar se schema do iCloud já tem o item "category"
+        // record.setValue(detail.category, forKey: "category")
+
         if let imageURL = detail.image {
             let imageCKAsset = CKAsset(fileURL: imageURL)
             record.setValue(imageCKAsset, forKey: "image")
@@ -63,11 +66,20 @@ class DetailDAO: DAO {
             // Make Detail object from query results
             let text = record["text"] as? String
             let question = record["question"] as? String
+
+            // TODO: Checar se schema do iCloud já tem o item "category"
+            // let category = record["category"] as? String
+            let category:String? = nil
+
+            // Converting Audio
             let audio = record["audioAsset"] as? CKAsset
             let audioURL = audio?.fileURL
+
+            // Converting Image
             let image = record["image"] as? CKAsset
             let imageURL = image?.fileURL
-            let newDetail = Detail(text: text, question: question, audio: audioURL, image: imageURL)
+
+            let newDetail = Detail(text: text, question: question, category: category, audio: audioURL, image: imageURL)
             allRecords.append(newDetail)
         }
         

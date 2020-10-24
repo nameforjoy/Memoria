@@ -97,6 +97,7 @@ class QuestionViewController: UIViewController {
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
         // Organize content given by user
+        let category = self.navigationItem.title
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
@@ -106,7 +107,7 @@ class QuestionViewController: UIViewController {
         // let image: CKAsset? = nil
 
         // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
+        let newMemoryDetail = Detail(text: text, question: question, category: category, audio: audio, image: image)
 
         // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
