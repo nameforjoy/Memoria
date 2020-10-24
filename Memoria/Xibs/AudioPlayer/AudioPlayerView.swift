@@ -128,8 +128,10 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
             self.showingPlayIcon = false
             if let audioURL = self.audioURL {
                 preparePlayer(url: audioURL)
+                print("Audio iCloud")
             } else {
                 self.preparePlayer(url: self.getFileURL())
+                print("Audio local")
             }
             
             // Play audio

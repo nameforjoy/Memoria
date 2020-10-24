@@ -11,13 +11,11 @@ import UIKit
 class MemoryCollectionViewController: UIViewController {
     
     // MARK: Attributes
-    
-    @IBOutlet weak var testAudioPlayer: AudioPlayerView!
-    
     var didJustSaveAMemory: Bool = false
+
+    // Temp atributes for testing data retrieve
     var userMemoryDetails: [Detail]?
-    var audio: URL?
-    var timesPressed = 0
+    var isDataLoaded: Bool = false
 
     // MARK: Life cycle
     
@@ -31,18 +29,6 @@ class MemoryCollectionViewController: UIViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
-
-        // Find recorded audio
-        DetailDAO.findAll { (details) in
-            for detail in details {
-                if let audioURL = detail.audio {
-                    self.audio = audioURL
-                    self.testAudioPlayer.audioURL = self.audio
-                    print(self.audio?.absoluteURL ?? "URL not found")
-                    break
-                }
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,8 +47,39 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     // MARK: Actions
-    
-    @IBAction func testButton(_ sender: Any) {
+
+    // Updates information from database
+    @IBAction func loadData(_ sender: Any) {
+        // Find recorded audio
+        self.isDataLoaded = false
+
+        DetailDAO.findAll { (details) in
+            self.userMemoryDetails = details
+            if !details.isEmpty {
+                self.isDataLoaded = true
+            }
+            print("Data has been loaded from database. \(details.count) records found.")
+        }
+    }
+
+    // View detail if data is available
+    @IBAction func clickToViewDetail(_ sender: Any) {
+        if isDataLoaded {
+            // Segue
+            performSegue(withIdentifier: "viewDetail", sender: self)
+        } else {
+            print("Can't access data right now. Check if database is empty or try again later.")
+        }
+    }
+
+    // MARK: Segue
+
+    // Passes Array of Detail Objects to DetailViewController
+    // Future: Passes only a single detail object as destination.currentDetail
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailViewController {
+            destination.details = userMemoryDetails
+        }
     }
 
     // MARK: Unwind segue

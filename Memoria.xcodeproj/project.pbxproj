@@ -52,6 +52,8 @@
 		8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB85252E20570012B671 /* QuestionViewController.swift */; };
 		8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* Alerts.swift */; };
 		8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */; };
+		B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3042A99254383B20086AE9E /* ViewDetail.storyboard */; };
+		B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3042A9C254385650086AE9E /* DetailViewController.swift */; };
 		B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72425372C7C003E1059 /* MemoryDAO.swift */; };
 		B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72725372C8B003E1059 /* DetailDAO.swift */; };
 		B39CA72B25372CC6003E1059 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72A25372CC6003E1059 /* DAO.swift */; };
@@ -106,6 +108,8 @@
 		8DDCAB85252E20570012B671 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB99252EA0290012B671 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitCollectionAccessibility.swift; sourceTree = "<group>"; };
+		B3042A99254383B20086AE9E /* ViewDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewDetail.storyboard; sourceTree = "<group>"; };
+		B3042A9C254385650086AE9E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B39CA72425372C7C003E1059 /* MemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDAO.swift; sourceTree = "<group>"; };
 		B39CA72725372C8B003E1059 /* DetailDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDAO.swift; sourceTree = "<group>"; };
 		B39CA72A25372CC6003E1059 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			children = (
 				152EE5EB252B33A5002F379C /* Main.storyboard */,
 				15AA50CB254069D600EC2E4B /* ImageSelection.storyboard */,
+				B3042A99254383B20086AE9E /* ViewDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */,
 				8DDCAB85252E20570012B671 /* QuestionViewController.swift */,
 				15AA50D125406CFF00EC2E4B /* ImagePicker.swift */,
+				B3042A9C254385650086AE9E /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 				8DBA9F94253DCBF600E564E9 /* GradientButtonView.xib in Resources */,
 				15CDC14E252C884A00BD9A11 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				15CDC15A252C884A00BD9A11 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */,
 				15CDC155252C884A00BD9A11 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				15CDC14C252C884A00BD9A11 /* SF-Pro-Display-Regular.otf in Resources */,
 				15CDC151252C884A00BD9A11 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
@@ -412,6 +419,7 @@
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */,
 				8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */,
+				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
