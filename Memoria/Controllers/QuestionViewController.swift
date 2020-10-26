@@ -14,7 +14,6 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var textAnswer: UITextView!
-    @IBOutlet weak var saveMemoryButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var audioRecordLabel: UILabel!
     @IBOutlet weak var audioTitle: UILabel!
@@ -22,6 +21,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioButtonBackground: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var selectImageButton: UIButton!
+    @IBOutlet weak var saveButtonView: GradientButton!
     
     var audioContent: URL?
     var imageURL: URL?
@@ -38,8 +38,7 @@ class QuestionViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         // Configures buttons
-        self.saveMemoryButton.layer.cornerRadius = self.saveMemoryButton.frame.height/4
-        self.saveMemoryButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
+        self.saveButtonView.delegate = self
         self.audioButtonBackground.layer.cornerRadius = self.audioButtonBackground.frame.height/6
         
         // Handle Notifications
@@ -91,27 +90,6 @@ class QuestionViewController: UIViewController {
     @IBAction func selectImage(_ sender: Any) {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)
-    }
-    
-    /// Saves memory to database and return to main screen
-    @IBAction func saveMemory(_ sender: Any) {
-        // Organize content given by user
-        let question = self.subtitle.text ?? ""
-        let text = self.textAnswer.text ?? ""
-        let audio = self.audioContent
-        let image = self.imageURL
-
-        // TODO: Puxar imagem da ImageSelectionViewController
-        // let image: CKAsset? = nil
-
-        // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
-
-        // Calls DAO to object to database
-        DetailDAO.create(detail: newMemoryDetail)
-
-        // Return to main screen
-        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
     
     // MARK: Keyboard
@@ -167,7 +145,6 @@ class QuestionViewController: UIViewController {
         self.subtitle.dynamicFont = typography.bodyRegular
         self.textAnswer.dynamicFont = typography.bodyRegular
         self.audioSubtitle.dynamicFont = typography.bodyRegular
-        self.saveMemoryButton.dynamicFont = typography.calloutSemibold
         self.audioRecordLabel.dynamicFont = typography.calloutSemibold
         self.audioTitle.dynamicFont = typography.title2Bold
         
@@ -183,6 +160,7 @@ class QuestionViewController: UIViewController {
         self.textAnswer.text = "Descreva sua memória aqui..."
         self.audioTitle.text = "Que tal gravar?"
         self.audioSubtitle.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
+        self.saveButtonView.gradientButton.titleLabel?.text = "Salvar"
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
@@ -198,8 +176,25 @@ class QuestionViewController: UIViewController {
 
 // MARK: Save memory button
 extension QuestionViewController: GradientButtonDelegate {
+    
     func gradientButtonAction() {
-        
+        // Organize content given by user
+        let question = self.subtitle.text ?? ""
+        let text = self.textAnswer.text ?? ""
+        let audio = self.audioContent
+        let image = self.imageURL
+
+        // TODO: Puxar imagem da ImageSelectionViewController
+        // let image: CKAsset? = nil
+
+        // Creates detail object
+        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
+
+        // Calls DAO to object to database
+        DetailDAO.create(detail: newMemoryDetail)
+
+        // Return to main screen
+        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
     }
 }
 

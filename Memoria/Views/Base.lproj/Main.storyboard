@@ -39,21 +39,9 @@
                                     <action selector="loadData:" destination="upX-eD-PW6" eventType="touchUpInside" id="7Jr-Jj-6qZ"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrK-Wm-3Cp" customClass="GradientButton" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="234" width="364" height="44"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="44" id="xU3-dh-8xi"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="BrK-Wm-3Cp" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="KPh-wt-TFs"/>
-                            <constraint firstItem="BrK-Wm-3Cp" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="25" id="Kd6-Vy-JG0"/>
-                            <constraint firstItem="BrK-Wm-3Cp" firstAttribute="top" secondItem="e5p-nX-PYi" secondAttribute="top" constant="94" id="Nbh-X5-K2c"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Caixa de Memórias" id="cce-3W-jOh">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="LHh-Nh-cwe">
@@ -184,6 +172,13 @@
                                                 <rect key="frame" x="25" y="619" width="364" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="534-Ki-cXM" customClass="GradientButton" customModule="Memoria" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="653" width="364" height="44"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="500" constant="44" id="7zQ-HX-cGd"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -224,28 +219,15 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="ZfS-hO-vgR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="LaR-f4-6DY"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzz-dF-agT">
-                                <rect key="frame" x="25" y="822" width="364" height="40"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="kBB-WP-jGP"/>
-                                </constraints>
-                                <state key="normal" title="Salvar">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveMemory:" destination="6OU-zm-CFT" eventType="touchUpInside" id="45i-rY-EgP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TTR-GR-XYr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Kzz-dF-agT" firstAttribute="leading" secondItem="TTR-GR-XYr" secondAttribute="leading" constant="25" id="1Ec-LY-Dos"/>
-                            <constraint firstItem="TTR-GR-XYr" firstAttribute="bottom" secondItem="Kzz-dF-agT" secondAttribute="bottom" id="8Oe-Ic-PVQ"/>
+                            <constraint firstItem="534-Ki-cXM" firstAttribute="leading" secondItem="TTR-GR-XYr" secondAttribute="leading" constant="25" id="7lK-b8-LSk"/>
+                            <constraint firstItem="534-Ki-cXM" firstAttribute="centerX" secondItem="TTR-GR-XYr" secondAttribute="centerX" id="9p0-35-r3F"/>
+                            <constraint firstItem="TTR-GR-XYr" firstAttribute="bottom" secondItem="534-Ki-cXM" secondAttribute="bottom" constant="40" id="TiS-kb-nMc"/>
                             <constraint firstItem="mkS-b1-4HN" firstAttribute="leading" secondItem="TTR-GR-XYr" secondAttribute="leading" id="W5X-Kc-38a"/>
                             <constraint firstItem="TTR-GR-XYr" firstAttribute="bottom" secondItem="mkS-b1-4HN" secondAttribute="bottom" constant="40" id="dhb-kh-RbB"/>
-                            <constraint firstItem="Kzz-dF-agT" firstAttribute="centerX" secondItem="TTR-GR-XYr" secondAttribute="centerX" id="hCs-l5-t6p"/>
                             <constraint firstItem="TTR-GR-XYr" firstAttribute="trailing" secondItem="mkS-b1-4HN" secondAttribute="trailing" id="m2M-bh-B26"/>
                             <constraint firstItem="mkS-b1-4HN" firstAttribute="top" secondItem="TTR-GR-XYr" secondAttribute="top" id="t0k-vh-WVU"/>
                         </constraints>
@@ -257,7 +239,7 @@
                         <outlet property="audioSubtitle" destination="GLR-Nl-4U7" id="U4w-Hr-XXz"/>
                         <outlet property="audioTitle" destination="tZh-gJ-ico" id="2F3-fy-im0"/>
                         <outlet property="imageView" destination="u99-6a-PBj" id="eYG-2N-lcS"/>
-                        <outlet property="saveMemoryButton" destination="Kzz-dF-agT" id="T0L-lo-KVD"/>
+                        <outlet property="saveButtonView" destination="534-Ki-cXM" id="SgJ-Lx-A5u"/>
                         <outlet property="scrollView" destination="mkS-b1-4HN" id="wOm-5O-IuZ"/>
                         <outlet property="selectImageButton" destination="4UV-oS-4wR" id="tXm-Ez-8D4"/>
                         <outlet property="subtitle" destination="wd9-8e-muY" id="oCG-70-4xy"/>
@@ -385,9 +367,6 @@
     <resources>
         <image name="microphone" width="14" height="19.5"/>
         <image name="startRecording" width="74" height="74"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="grayDark">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
