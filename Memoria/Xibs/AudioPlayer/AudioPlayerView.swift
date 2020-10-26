@@ -157,24 +157,9 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
         }
     }
 
-//    ///Configuration before start recording
-//    func preparePlayer(data: Data) {
-//        do {
-//            try self.soundPlayer = AVAudioPlayer(data: data)
-//            self.soundPlayer.delegate = self
-//            self.soundPlayer.prepareToPlay()
-//            self.soundPlayer.volume = 1.0
-//
-//            //Set slider maximum value as the duration of the audio
-//            self.slider.maximumValue = Float(soundPlayer.duration)
-//        } catch {
-//            print("Erro: Problemas para reproduzir um áudio")
-//        }
-//    }
-
     ///Enable record when finish playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        let playImage =  UIImage(named: "playIcon")
+        let playImage =  UIImage(named: "playAudio")
         self.playButton.setBackgroundImage(playImage, for: .normal)
         self.showingPlayIcon = true
     }

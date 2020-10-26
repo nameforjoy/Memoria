@@ -27,6 +27,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
     weak var audioDelegate: AudioRecordingDelegate?
     var soundRecorder = AVAudioRecorder()
     var isRecording: Bool = false
+    var audioURL: URL?
 
     // MARK: Life cycle
     
@@ -142,8 +143,10 @@ extension InputAudioVC: AVAudioRecorderDelegate {
     /// Creates Data object based on audio URL sends it to delegate method
     // TODO: Change to CKAsset
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        // guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
-        self.audioDelegate?.finishedRecording(audioURL: getFileURL())
+        let url = getFileURL()
+        self.audioDelegate?.finishedRecording(audioURL: url)
+        //Passa a url do audio para AudioPlayerView
+        self.audioPlayView.audioURL = url
     }
     
     ///Gets documents diretory used as temporary location for audio storage
