@@ -13,7 +13,7 @@ protocol AudioRecordingDelegate: AnyObject {
     func finishedRecording(audioURL: URL)
 }
 
-class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
+class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     
     // MARK: Attributes
     
@@ -179,7 +179,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
 
 // MARK: Record audio
 
-extension InputAudioVC: AVAudioRecorderDelegate {
+extension InputAudioViewController: AVAudioRecorderDelegate {
     
     /// Creates Data object based on audio URL sends it to delegate method
     // TODO: Change to CKAsset

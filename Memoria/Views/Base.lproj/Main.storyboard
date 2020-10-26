@@ -88,16 +88,16 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="682"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d8-Mz-rMq" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="860"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="866"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd9-8e-muY">
-                                                <rect key="frame" x="25" y="10" width="364" height="20"/>
+                                                <rect key="frame" x="25" y="10" width="364" height="22"/>
                                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descreva sua memória aqui..." translatesAutoresizingMaskIntoConstraints="NO" id="O2x-MF-M3z">
-                                                <rect key="frame" x="25" y="40" width="364" height="300"/>
+                                                <rect key="frame" x="25" y="42" width="364" height="300"/>
                                                 <color key="backgroundColor" name="grayLight"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="fv7-no-Uq2"/>
@@ -107,23 +107,23 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZh-gJ-ico">
-                                                <rect key="frame" x="25" y="360" width="68.5" height="20"/>
+                                                <rect key="frame" x="25" y="362" width="70" height="22"/>
                                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLR-Nl-4U7">
-                                                <rect key="frame" x="25" y="385" width="99.5" height="20"/>
+                                                <rect key="frame" x="25" y="389" width="99.5" height="22"/>
                                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-7d-5WU" userLabel="Button background">
-                                                <rect key="frame" x="25" y="420" width="364" height="40"/>
+                                                <rect key="frame" x="25" y="426" width="364" height="40"/>
                                                 <color key="backgroundColor" name="purpleLight"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4e-dg-fww" userLabel="Label+icon view">
-                                                <rect key="frame" x="131.5" y="420" width="151" height="40"/>
+                                                <rect key="frame" x="131.5" y="426" width="151" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gravar áudio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgc-ZD-OMg">
                                                         <rect key="frame" x="37.5" y="4.5" width="103.5" height="31"/>
@@ -151,7 +151,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAN-P1-EI2">
-                                                <rect key="frame" x="25" y="420" width="364" height="40"/>
+                                                <rect key="frame" x="25" y="426" width="364" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1SU-ls-dq5"/>
@@ -268,10 +268,10 @@
             </objects>
             <point key="canvasLocation" x="198" y="534"/>
         </scene>
-        <!--Input AudioVC-->
+        <!--Input Audio View Controller-->
         <scene sceneID="AyG-dy-ZVO">
             <objects>
-                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioVC" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inputAudioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ill-wr-s90" customClass="InputAudioViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SdM-oM-xjk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
