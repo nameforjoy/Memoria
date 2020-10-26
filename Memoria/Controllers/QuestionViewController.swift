@@ -196,6 +196,13 @@ class QuestionViewController: UIViewController {
     }
 }
 
+// MARK: Save memory button
+extension QuestionViewController: GradientButtonDelegate {
+    func gradientButtonAction() {
+        
+    }
+}
+
 // MARK: Audio Recorder
 
 extension QuestionViewController: AudioRecordingDelegate {
