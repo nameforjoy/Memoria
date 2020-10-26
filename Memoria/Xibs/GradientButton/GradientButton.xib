@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Circular Std Medium.ttf">
+            <string>CircularStd-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GradientButton" customModule="Memoria" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="ChP-aB-6dJ" id="MeR-QN-vDQ"/>
+                <outlet property="gradientButton" destination="4KD-dj-psg" id="3hT-Hc-Yl9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChP-aB-6dJ" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KD-dj-psg">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                            <color key="backgroundColor" name="purpleDark"/>
+                            <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="16"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="gradientButtonAction:" destination="-1" eventType="touchUpInside" id="3qX-Y5-D7F"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="4KD-dj-psg" firstAttribute="leading" secondItem="ChP-aB-6dJ" secondAttribute="leading" id="CPM-eH-FIC"/>
+                        <constraint firstAttribute="bottom" secondItem="4KD-dj-psg" secondAttribute="bottom" id="Gmv-p0-yua"/>
+                        <constraint firstItem="4KD-dj-psg" firstAttribute="top" secondItem="ChP-aB-6dJ" secondAttribute="top" id="TQ2-rj-G0P"/>
+                        <constraint firstAttribute="trailing" secondItem="4KD-dj-psg" secondAttribute="trailing" id="h8V-Ul-lwU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ChP-aB-6dJ" secondAttribute="bottom" id="BHT-WR-8Xi"/>
+                <constraint firstItem="ChP-aB-6dJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CEB-aP-KRj"/>
+                <constraint firstAttribute="trailing" secondItem="ChP-aB-6dJ" secondAttribute="trailing" id="sgO-Yx-fKJ"/>
+                <constraint firstItem="ChP-aB-6dJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uXe-Ex-JR9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-217.39130434782609" y="-168.75"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="purpleDark">
+            <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
