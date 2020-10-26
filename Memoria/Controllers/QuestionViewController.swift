@@ -22,9 +22,11 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioButtonBackground: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var selectImageButton: UIButton!
-    
+
+    // User Input
     var audioContent: URL?
     var imageURL: URL?
+
     var scrollOffsetBeforeKeyboard = CGPoint()
     var imagePicker: ImagePicker!
     
@@ -95,23 +97,33 @@ class QuestionViewController: UIViewController {
     
     /// Saves memory to database and return to main screen
     @IBAction func saveMemory(_ sender: Any) {
+        let newMemoryDetail = self.getDetailFromInterface()
+
+        // Calls DAO to object to database
+        DetailDAO.create(detail: newMemoryDetail) { error in
+            if error == nil {
+                // Return to main screen
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+                }
+            } else {
+                print(error.debugDescription)
+                // TODO: Treat error
+            }
+        }
+    }
+
+    func getDetailFromInterface() -> Detail {
         // Organize content given by user
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
         let image = self.imageURL
 
-        // TODO: Puxar imagem da ImageSelectionViewController
-        // let image: CKAsset? = nil
-
         // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
+        let detail = Detail(text: text, question: question, audio: audio, image: image)
 
-        // Calls DAO to object to database
-        DetailDAO.create(detail: newMemoryDetail)
-
-        // Return to main screen
-        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+        return detail
     }
     
     // MARK: Keyboard
