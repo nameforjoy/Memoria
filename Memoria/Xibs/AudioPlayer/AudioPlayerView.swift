@@ -129,7 +129,8 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
             if let audioURL = self.audioURL {
                 preparePlayer(url: audioURL)
             } else {
-                self.preparePlayer(url: self.getFileURL())
+                //self.preparePlayer(url: self.getFileURL())
+                print("Audio URL não foi populada")
             }
             
             // Play audio
