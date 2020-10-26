@@ -28,10 +28,6 @@
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
-		8DBA9F8F253DCB9100E564E9 /* IconTextButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBA9F8E253DCB9100E564E9 /* IconTextButton.xib */; };
-		8DBA9F94253DCBF600E564E9 /* GradientButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBA9F93253DCBF600E564E9 /* GradientButtonView.xib */; };
-		8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F96253DCC5A00E564E9 /* GradientButtonView.swift */; };
-		8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F99253DCC6F00E564E9 /* IconTextButtonView.swift */; };
 		8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */; };
 		8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */; };
 		8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB85252E20570012B671 /* QuestionViewController.swift */; };
@@ -77,10 +73,6 @@
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
-		8DBA9F8E253DCB9100E564E9 /* IconTextButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconTextButton.xib; sourceTree = "<group>"; };
-		8DBA9F93253DCBF600E564E9 /* GradientButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButtonView.xib; sourceTree = "<group>"; };
-		8DBA9F96253DCC5A00E564E9 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
-		8DBA9F99253DCC6F00E564E9 /* IconTextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextButtonView.swift; sourceTree = "<group>"; };
 		8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
 		8DDCAB85252E20570012B671 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
@@ -200,8 +192,6 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				8DBA9F92253DCBE000E564E9 /* GradientButton */,
-				8DBA9F91253DCBBF00E564E9 /* IconTextButton */,
 				152471E325307DB3006B39B4 /* AudioPlayer */,
 			);
 			path = Xibs;
@@ -246,24 +236,6 @@
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		8DBA9F91253DCBBF00E564E9 /* IconTextButton */ = {
-			isa = PBXGroup;
-			children = (
-				8DBA9F8E253DCB9100E564E9 /* IconTextButton.xib */,
-				8DBA9F99253DCC6F00E564E9 /* IconTextButtonView.swift */,
-			);
-			path = IconTextButton;
-			sourceTree = "<group>";
-		};
-		8DBA9F92253DCBE000E564E9 /* GradientButton */ = {
-			isa = PBXGroup;
-			children = (
-				8DBA9F93253DCBF600E564E9 /* GradientButtonView.xib */,
-				8DBA9F96253DCC5A00E564E9 /* GradientButtonView.swift */,
-			);
-			path = GradientButton;
 			sourceTree = "<group>";
 		};
 		B39CA72325372C61003E1059 /* DAO */ = {
@@ -338,10 +310,8 @@
 				15BB4A772535FE5900CECE25 /* AudioPlayerView.xib in Resources */,
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
-				8DBA9F94253DCBF600E564E9 /* GradientButtonView.xib in Resources */,
 				B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
-				8DBA9F8F253DCB9100E564E9 /* IconTextButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,8 +357,6 @@
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
-				8DBA9F97253DCC5A00E564E9 /* GradientButtonView.swift in Sources */,
-				8DBA9F9A253DCC6F00E564E9 /* IconTextButtonView.swift in Sources */,
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
 				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
