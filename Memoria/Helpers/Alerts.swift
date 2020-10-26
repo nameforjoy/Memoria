@@ -13,8 +13,8 @@ class Alerts {
     // Memory has been successfully saved
     var memorySaved: UIAlertController {
         // Text
-        let title: String = "Parabéns"
-        let message: String = "Sua memória foi salva"
+        let title: String = "Sua memória foi guardada!"
+        let message: String = "Está disponível para ser acessada e gerar boas lembranças"
         let myalert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         // Buttons
         let actionTitle = "OK"
