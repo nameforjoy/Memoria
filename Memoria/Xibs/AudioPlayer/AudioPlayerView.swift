@@ -129,7 +129,8 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
             if let audioURL = self.audioURL {
                 preparePlayer(url: audioURL)
             } else {
-                self.preparePlayer(url: self.getFileURL())
+                //self.preparePlayer(url: self.getFileURL())
+                print("Audio URL não foi populada")
             }
             
             // Play audio
@@ -145,6 +146,13 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Configuration before start recording
     func preparePlayer(url: URL) {
         do {
+            //Configuração do device sobre condições de gravação do áudio
+            //Fazer antes do play e do record - garantia que será configurada antes
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSession.Category.playAndRecord)
+            try session.setMode(AVAudioSession.Mode.default)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            
             try self.soundPlayer = AVAudioPlayer(contentsOf: url)
             self.soundPlayer.delegate = self
             self.soundPlayer.prepareToPlay()
@@ -157,24 +165,9 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
         }
     }
 
-//    ///Configuration before start recording
-//    func preparePlayer(data: Data) {
-//        do {
-//            try self.soundPlayer = AVAudioPlayer(data: data)
-//            self.soundPlayer.delegate = self
-//            self.soundPlayer.prepareToPlay()
-//            self.soundPlayer.volume = 1.0
-//
-//            //Set slider maximum value as the duration of the audio
-//            self.slider.maximumValue = Float(soundPlayer.duration)
-//        } catch {
-//            print("Erro: Problemas para reproduzir um áudio")
-//        }
-//    }
-
     ///Enable record when finish playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        let playImage =  UIImage(named: "playIcon")
+        let playImage =  UIImage(named: "playAudio")
         self.playButton.setBackgroundImage(playImage, for: .normal)
         self.showingPlayIcon = true
     }
