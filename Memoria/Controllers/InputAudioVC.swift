@@ -127,6 +127,13 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
                               AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
 
         do {
+            //Configuração do device sobre condições de gravação do áudio
+            //Fazer antes do play e do record - garantia que será configurada antes
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSession.Category.playAndRecord)
+            try session.setMode(AVAudioSession.Mode.default)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            
             self.soundRecorder =  try AVAudioRecorder(url: self.getFileURL(), settings: recordSettings)
             soundRecorder.delegate = self
             soundRecorder.prepareToRecord()

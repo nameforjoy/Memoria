@@ -145,6 +145,13 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Configuration before start recording
     func preparePlayer(url: URL) {
         do {
+            //Configuração do device sobre condições de gravação do áudio
+            //Fazer antes do play e do record - garantia que será configurada antes
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSession.Category.playAndRecord)
+            try session.setMode(AVAudioSession.Mode.default)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            
             try self.soundPlayer = AVAudioPlayer(contentsOf: url)
             self.soundPlayer.delegate = self
             self.soundPlayer.prepareToPlay()
