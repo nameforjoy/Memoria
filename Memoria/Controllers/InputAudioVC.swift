@@ -28,6 +28,7 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
     weak var audioDelegate: AudioRecordingDelegate?
     var soundRecorder = AVAudioRecorder()
     var isRecording: Bool = false
+    var audioURL: URL?
     var timer: Timer?
     var timerCount: Double = 0
     var timerManager: TimerManager?
@@ -160,6 +161,13 @@ class InputAudioVC: UIViewController, AVAudioPlayerDelegate {
                               AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
 
         do {
+            //Configuração do device sobre condições de gravação do áudio
+            //Fazer antes do play e do record - garantia que será configurada antes
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSession.Category.playAndRecord)
+            try session.setMode(AVAudioSession.Mode.default)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            
             self.soundRecorder =  try AVAudioRecorder(url: self.getFileURL(), settings: recordSettings)
             soundRecorder.delegate = self
             soundRecorder.prepareToRecord()
@@ -176,8 +184,10 @@ extension InputAudioVC: AVAudioRecorderDelegate {
     /// Creates Data object based on audio URL sends it to delegate method
     // TODO: Change to CKAsset
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        // guard let audioCKAsset = try? Data(contentsOf: getFileURL()) else { return }
-        self.audioDelegate?.finishedRecording(audioURL: getFileURL())
+        let url = getFileURL()
+        self.audioDelegate?.finishedRecording(audioURL: url)
+        //Passa a url do audio para AudioPlayerView
+        self.audioPlayView.audioURL = url
     }
     
     ///Gets documents diretory used as temporary location for audio storage

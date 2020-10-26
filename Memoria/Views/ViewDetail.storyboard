@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6K-pw-hRF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="EZt-eW-INs">
+            <objects>
+                <viewController id="A6K-pw-hRF" customClass="DetailViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g7Z-JL-noy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ba1-SV-RmJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvd-Ph-ouA">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                        <state key="normal" title="&gt;&gt; Próximo Detalhe"/>
+                                        <connections>
+                                            <action selector="changeDetail:" destination="A6K-pw-hRF" eventType="touchUpInside" id="TmY-KF-sRv"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Texto da pergunta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tb-pk-3yD" userLabel="Texto da pergunta">
+                                        <rect key="frame" x="0.0" y="46" width="414" height="219.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto da resposta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-y5-3L6">
+                                        <rect key="frame" x="0.0" y="281.5" width="414" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5YB-im-B1x" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="318" width="414" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="xqL-c1-Kxv"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Awk-HJ-ZZc">
+                                        <rect key="frame" x="0.0" y="404" width="414" height="414"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Awk-HJ-ZZc" secondAttribute="height" id="X9R-gY-b9h"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fry-KH-KvR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ba1-SV-RmJ" firstAttribute="top" secondItem="fry-KH-KvR" secondAttribute="top" id="5Li-JL-uTY"/>
+                            <constraint firstItem="ba1-SV-RmJ" firstAttribute="leading" secondItem="fry-KH-KvR" secondAttribute="leading" id="8cb-9S-svW"/>
+                            <constraint firstItem="fry-KH-KvR" firstAttribute="bottom" secondItem="ba1-SV-RmJ" secondAttribute="bottom" id="Z8X-YF-OQd"/>
+                            <constraint firstItem="ba1-SV-RmJ" firstAttribute="trailing" secondItem="fry-KH-KvR" secondAttribute="trailing" id="w1i-an-YBy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answerImageView" destination="Awk-HJ-ZZc" id="tVw-pT-sf1"/>
+                        <outlet property="answerLabel" destination="Cjl-y5-3L6" id="7UA-Yp-oyG"/>
+                        <outlet property="audioPlayer" destination="5YB-im-B1x" id="ScO-dy-O4B"/>
+                        <outlet property="questionLabel" destination="8Tb-pk-3yD" id="u9u-0y-JVC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ado-fE-4qa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-373" y="-508"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
