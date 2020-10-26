@@ -40,7 +40,6 @@ class QuestionViewController: UIViewController {
         // Configures buttons
         self.saveMemoryButton.layer.cornerRadius = self.saveMemoryButton.frame.height/4
         self.saveMemoryButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
-        self.saveMemoryButton.clipsToBounds = true
         self.audioButtonBackground.layer.cornerRadius = self.audioButtonBackground.frame.height/6
         
         // Handle Notifications
@@ -69,7 +68,7 @@ class QuestionViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func recordAudio(_ sender: Any) {
-        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioVC else {return}
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
 
         // Ties up this class as delegate for InputAudioVC
         recordAudioScreen.audioDelegate = self
@@ -156,20 +155,21 @@ class QuestionViewController: UIViewController {
     /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged(_ notification: Notification) {
         self.changeTextForAccessibility()
+        
+        // Apply gradient again since the button bounds will change
+        // self.saveMemoryButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
     }
     
     /// Set up question texts in its respective labels.
     func setUpText() {
         // Set up dynamic font
-        let font = UIFont(name: "SFProDisplay-Light", size: 18) ?? UIFont.systemFont(ofSize: 18)
-        self.subtitle.dynamicFont = font
-        self.saveMemoryButton.dynamicFont = font
-        self.textAnswer.dynamicFont = font
-        self.audioSubtitle.dynamicFont = font
-        self.audioRecordLabel.dynamicFont = font
-        
-        let fontBold = UIFont(name: "SFProDisplay-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24)
-        self.audioTitle.dynamicFont = fontBold
+        let typography = Typography()
+        self.subtitle.dynamicFont = typography.bodyRegular
+        self.textAnswer.dynamicFont = typography.bodyRegular
+        self.audioSubtitle.dynamicFont = typography.bodyRegular
+        self.saveMemoryButton.dynamicFont = typography.calloutSemibold
+        self.audioRecordLabel.dynamicFont = typography.calloutSemibold
+        self.audioTitle.dynamicFont = typography.title2Bold
         
         // Accessibility configurations
         self.changeTextForAccessibility()

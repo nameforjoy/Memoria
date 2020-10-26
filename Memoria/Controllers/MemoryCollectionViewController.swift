@@ -117,5 +117,9 @@ class MemoryCollectionViewController: UIViewController {
     /// Configure back button of navigation flux
     func setUpNavigationController() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        
+        // Set navigation title font
+        let attributes = [NSAttributedString.Key.font: Typography().largeTitleBold]
+        UINavigationBar.appearance().titleTextAttributes = attributes
     }
 }
