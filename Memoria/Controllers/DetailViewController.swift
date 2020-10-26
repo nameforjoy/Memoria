@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
         // Updates current detail
         currentDetail = details?[position]
 
-        //Changing detail view content
+        // Changing detail view content
         populateView(detail: currentDetail)
         print("Changing to detail #\(position)")
     }

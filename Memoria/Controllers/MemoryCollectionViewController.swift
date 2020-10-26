@@ -11,6 +11,7 @@ import UIKit
 class MemoryCollectionViewController: UIViewController {
     
     // MARK: Attributes
+    
     var didJustSaveAMemory: Bool = false
 
     // Temp atributes for testing data retrieve
@@ -37,6 +38,7 @@ class MemoryCollectionViewController: UIViewController {
         // Present alert if a memory has just been saved
         if didJustSaveAMemory {
             self.present(Alerts().memorySaved, animated: true)
+            self.didJustSaveAMemory = false
         }
     }
     
