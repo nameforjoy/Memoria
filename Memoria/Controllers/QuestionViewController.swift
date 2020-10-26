@@ -27,6 +27,9 @@ class QuestionViewController: UIViewController {
     var imageURL: URL?
     var scrollOffsetBeforeKeyboard = CGPoint()
     var imagePicker: ImagePicker!
+
+    // Placeholder control
+    var shouldDisplayPlaceholderText: Bool = true
     
     // MARK: Life cycle
     
@@ -54,6 +57,7 @@ class QuestionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.textAnswer.delegate = self
         self.setUpText()
     }
     
@@ -179,10 +183,16 @@ class QuestionViewController: UIViewController {
     }
     
     func writeFixedText() {
+        // Fixed content
         self.subtitle.text = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
-        self.textAnswer.text = "Descreva sua memória aqui..."
         self.audioTitle.text = "Que tal gravar?"
         self.audioSubtitle.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
+
+        // Placeholder text
+        if self.shouldDisplayPlaceholderText {
+            self.textAnswer.text = "Descreva sua memória aqui..."
+            self.textAnswer.textColor = UIColor.lightGray
+        }
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
@@ -192,6 +202,29 @@ class QuestionViewController: UIViewController {
             self.navigationItem.title = "Me conta"
         } else {
             self.navigationItem.title = "Conta pra mim!"
+        }
+    }
+}
+
+// MARK: TextView Delegate
+
+extension QuestionViewController: UITextViewDelegate {
+
+    // Removes placeholder once user starts editing textview
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+            self.shouldDisplayPlaceholderText = false
+        }
+    }
+
+    // Display placeholder if user left texview empty
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Descreva sua memória aqui..."
+            textView.textColor = UIColor.lightGray
+            self.shouldDisplayPlaceholderText = true
         }
     }
 }
