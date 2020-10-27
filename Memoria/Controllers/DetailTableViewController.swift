@@ -11,6 +11,7 @@ class DetailTableViewController: UITableViewController {
     let titleSubtitleCellIdentifier: String = "TitleSubtitleCell"
     let subtitleCellIdentifier: String = "SubtitleCell"
     let photoCellIdentifier: String = "PhotoCell"
+    let textViewIdentifier: String = "TextViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,9 @@ class DetailTableViewController: UITableViewController {
         
         let nibTitle = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
         self.tableView.register(nibTitle, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
+        
+        let nibTextView = UINib.init(nibName: self.textViewIdentifier, bundle: nil)
+        self.tableView.register(nibTextView, forCellReuseIdentifier: self.textViewIdentifier)
         
         let nibSubtitle = UINib.init(nibName: self.subtitleCellIdentifier, bundle: nil)
         self.tableView.register(nibSubtitle, forCellReuseIdentifier: self.subtitleCellIdentifier)
@@ -35,7 +39,7 @@ class DetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,11 +49,16 @@ class DetailTableViewController: UITableViewController {
                 return cellType
             }
         } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.textViewIdentifier, for: indexPath)
+            if let cellType = cell as? TextViewCell {
+                return cellType
+            }
+        } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 return cellType
             }
-        } else if indexPath.row == 2 {
+        } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 return cellType
