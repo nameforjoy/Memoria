@@ -12,19 +12,23 @@ class DetailDAO: DAO {
 
     static let privateDatabase = CKContainer.default().privateCloudDatabase
 
-    static public func create(detail: Detail) {
+    static public func create(detail: Detail, completion: @escaping (Error?) -> Void) {
         
         // Turn Detail values into a CKRecord object to be recorded
         let record = CKRecord(recordType: "Detail")
 
+        // Sets text content to record
         record.setValue(detail.question, forKey: "question")
         record.setValue(detail.text, forKey: "text")
+        record.setValue(detail.category, forKey: "category")
 
+        // Converts image
         if let imageURL = detail.image {
             let imageCKAsset = CKAsset(fileURL: imageURL)
             record.setValue(imageCKAsset, forKey: "image")
         }
 
+        // Converts audio
         if let audioURL = detail.audio {
             let audioCKAsset = CKAsset(fileURL: audioURL)
             record.setValue(audioCKAsset, forKey: "audioAsset")
@@ -34,13 +38,17 @@ class DetailDAO: DAO {
         self.privateDatabase.save(record) { (savedRecord, error) in
 
             if error == nil {
+                // Debug prints
                 print("Record Saved")
                 print(savedRecord?.object(forKey: "question") ?? "Nil")
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
                 print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
+                completion(nil)
             } else {
+                // TODO: Treat error
                 print("Record Not Saved")
                 print(error ?? "Nil")
+                completion(error)
             }
         }
     }
@@ -60,14 +68,23 @@ class DetailDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            // Make Detail object from query results
+            // Converting Texts
             let text = record["text"] as? String
             let question = record["question"] as? String
+            let category = record["category"] as? String
+
+            // Converting Audio
             let audio = record["audioAsset"] as? CKAsset
             let audioURL = audio?.fileURL
+
+            // Converting Image
             let image = record["image"] as? CKAsset
             let imageURL = image?.fileURL
-            let newDetail = Detail(text: text, question: question, audio: audioURL, image: imageURL)
+
+            // Make Detail object from query results
+            let newDetail = Detail(text: text, question: question, category: category, audio: audioURL, image: imageURL)
+
+            // Add new detail to array
             allRecords.append(newDetail)
         }
         
