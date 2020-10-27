@@ -107,7 +107,8 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
         let minutes = total/60
         let seconds = total - minutes / 60
 
-        timerLabel.text = NSString(format: "%02d:%02d", minutes,seconds) as String
+        self.timerLabel.text = NSString(format: "%02d:%02d", minutes,seconds) as String
+        self.timerLabel.dynamicFont = Typography().caption2Regular.monospacedDigitFont
     }
     
     // MARK: Audio play methods
