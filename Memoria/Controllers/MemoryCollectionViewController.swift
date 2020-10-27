@@ -12,6 +12,9 @@ class MemoryCollectionViewController: UIViewController {
     
     // MARK: Attributes
     
+    @IBOutlet weak var noMemoriesLabel: UILabel!
+    @IBOutlet weak var addFirstMemoryButton: IconButtonView!
+    
     var didJustSaveAMemory: Bool = false
 
     // Temp atributes for testing data retrieve
@@ -26,6 +29,8 @@ class MemoryCollectionViewController: UIViewController {
         // Navigation set up
         self.setUpNavigationBar()
         self.setUpNavigationController()
+        self.setUpText()
+        self.addFirstMemoryButton.delegate = self
         
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
@@ -49,6 +54,10 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     // MARK: Actions
+    
+    @IBAction func addMemory(_ sender: Any) {
+        performSegue(withIdentifier: "addMemory", sender: self)
+    }
 
     // Updates information from database
     @IBAction func loadData(_ sender: Any) {
@@ -75,7 +84,10 @@ class MemoryCollectionViewController: UIViewController {
     }
 
     // MARK: Segue
-
+    
+    /// Unwind segue to get back to this view controller after saving a memory
+    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
+    
     // Passes Array of Detail Objects to DetailViewController
     // Future: Passes only a single detail object as destination.currentDetail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,11 +95,6 @@ class MemoryCollectionViewController: UIViewController {
             destination.details = userMemoryDetails
         }
     }
-
-    // MARK: Unwind segue
-    
-    /// Unwind segue to get back to this view controller after saving a memory
-    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
     
     // MARK: Acessibility text
     
@@ -105,11 +112,18 @@ class MemoryCollectionViewController: UIViewController {
         }
     }
     
+    func setUpText() {
+        self.changeTextForAccessibility()
+        self.noMemoriesLabel.dynamicFont = Typography().bodyRegular
+        self.noMemoriesLabel.text = "Você ainda não guardou nenhuma memória. Vamos guardar uma?"
+        self.addFirstMemoryButton.title.text = "Adicionar memória"
+        self.addFirstMemoryButton.icon.image = UIImage(named: "plusSign")
+    }
+    
     // MARK: Navigation
     
     /// Navigation bar configuration
     func setUpNavigationBar() {
-        self.changeTextForAccessibility()
         guard let addButton = self.navigationItem.rightBarButtonItem else {return}
         addButton.title = "Adicionar"
     }
@@ -121,5 +135,12 @@ class MemoryCollectionViewController: UIViewController {
         // Set navigation title font
         let attributes = [NSAttributedString.Key.font: Typography().largeTitleBold]
         UINavigationBar.appearance().titleTextAttributes = attributes
+    }
+}
+
+extension MemoryCollectionViewController: IconButtonDelegate {
+    
+    func iconButtonAction() {
+        performSegue(withIdentifier: "addMemory", sender: self)
     }
 }

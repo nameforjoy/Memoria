@@ -305,7 +305,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					152EE5E1252B33A5002F379C = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -392,7 +392,6 @@
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
 				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
-				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */,

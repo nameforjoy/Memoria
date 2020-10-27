@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol IconTextButtonDelegate: AnyObject {
-    func iconTextButtonAction()
+protocol IconButtonDelegate: AnyObject {
+    func iconButtonAction()
 }
 
 @IBDesignable class IconButtonView: UIView {
@@ -21,7 +21,7 @@ protocol IconTextButtonDelegate: AnyObject {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var icon: UIImageView!
     
-    weak var delegate: IconTextButtonDelegate?
+    weak var delegate: IconButtonDelegate?
     
     // MARK: Initializers
     
@@ -44,7 +44,7 @@ protocol IconTextButtonDelegate: AnyObject {
     // MARK: Action
     
     @IBAction func iconTextButtonAction(_ sender: Any) {
-        self.delegate?.iconTextButtonAction()
+        self.delegate?.iconButtonAction()
     }
     
     // MARK: Set up
@@ -57,7 +57,7 @@ protocol IconTextButtonDelegate: AnyObject {
     }
     
     private func visualSetUp() {
-        self.backgroundView.layer.cornerRadius = self.backgroundView.frame.height/6
+        self.backgroundView.layer.cornerRadius = self.backgroundView.frame.height/4
         self.title.dynamicFont = Typography().calloutSemibold
     }
 }

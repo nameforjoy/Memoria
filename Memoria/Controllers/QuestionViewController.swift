@@ -160,7 +160,7 @@ class QuestionViewController: UIViewController {
         self.textAnswer.text = "Descreva sua memória aqui..."
         self.audioTitle.text = "Que tal gravar?"
         self.audioSubtitle.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
-        self.saveButtonView.gradientButton.titleLabel?.text = "Salvar"
+        self.saveButtonView.gradientButton.setTitle("Salvar", for: .normal)
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
