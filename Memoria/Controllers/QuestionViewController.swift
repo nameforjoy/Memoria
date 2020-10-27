@@ -25,6 +25,7 @@ class QuestionViewController: UIViewController {
     
     var audioContent: URL?
     var imageURL: URL?
+
     var scrollOffsetBeforeKeyboard = CGPoint()
     var imagePicker: ImagePicker!
 
@@ -95,6 +96,7 @@ class QuestionViewController: UIViewController {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)
     }
+    
     // MARK: Keyboard
     
     // Adjusts the position of the scroll view when the keyboard appears
@@ -189,24 +191,34 @@ extension QuestionViewController: GradientButtonDelegate {
     
     func gradientButtonAction() {
 
+        let newMemoryDetail = self.getDetailFromInterface()
+        
+        // Calls DAO to object to database
+        DetailDAO.create(detail: newMemoryDetail) { error in
+            if error == nil {
+                // Return to main screen
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+                }
+            } else {
+                print(error.debugDescription)
+                // TODO: Treat error
+            }
+        }
+    }
+    
+    func getDetailFromInterface() -> Detail {
+        
         // Organize content given by user
         let category = self.navigationItem.title
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
         let image = self.imageURL
-
-        // TODO: Puxar imagem da ImageSelectionViewController
-        // let image: CKAsset? = nil
-
+        
         // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, category: category, audio: audio, image: image)
-
-        // Calls DAO to object to database
-        DetailDAO.create(detail: newMemoryDetail)
-
-        // Return to main screen
-        performSegue(withIdentifier: "unwindSaveMemoryToCollection", sender: self)
+        let detail = Detail(text: text, question: question, category: category, audio: audio, image: image)
+        return detail
     }
 }
 

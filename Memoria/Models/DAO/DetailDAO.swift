@@ -12,7 +12,7 @@ class DetailDAO: DAO {
 
     static let privateDatabase = CKContainer.default().privateCloudDatabase
 
-    static public func create(detail: Detail) {
+    static public func create(detail: Detail, completion: @escaping (Error?) -> Void) {
         
         // Turn Detail values into a CKRecord object to be recorded
         let record = CKRecord(recordType: "Detail")
@@ -43,10 +43,12 @@ class DetailDAO: DAO {
                 print(savedRecord?.object(forKey: "question") ?? "Nil")
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
                 print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
+                completion(nil)
             } else {
                 // TODO: Treat error
                 print("Record Not Saved")
                 print(error ?? "Nil")
+                completion(error)
             }
         }
     }
