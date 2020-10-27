@@ -21,7 +21,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var audioButtonBackground: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var selectImageButton: UIButton!
-    @IBOutlet weak var saveButtonView: GradientButton!
+    @IBOutlet weak var saveButtonView: GradientButtonView!
     
     var audioContent: URL?
     var imageURL: URL?

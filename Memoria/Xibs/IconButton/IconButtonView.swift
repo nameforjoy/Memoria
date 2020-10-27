@@ -1,5 +1,5 @@
 //
-//  GradientButton.swift
+//  IconButton.swift
 //  Memoria
 //
 //  Created by Joyce Simão Clímaco on 26/10/20.
@@ -7,18 +7,21 @@
 
 import UIKit
 
-protocol GradientButtonDelegate: AnyObject {
-    func gradientButtonAction()
+protocol IconTextButtonDelegate: AnyObject {
+    func iconTextButtonAction()
 }
 
-@IBDesignable class GradientButton: UIView {
+@IBDesignable class IconButtonView: UIView {
     
-    // MARK: Atributes
+    // MARK: Attributes
     
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var gradientButton: UIButton!
+    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     
-    weak var delegate: GradientButtonDelegate?
+    weak var delegate: IconTextButtonDelegate?
     
     // MARK: Initializers
     
@@ -40,22 +43,21 @@ protocol GradientButtonDelegate: AnyObject {
     
     // MARK: Action
     
-    @IBAction func gradientButtonAction(_ sender: Any) {
-        self.delegate?.gradientButtonAction()
+    @IBAction func iconTextButtonAction(_ sender: Any) {
+        self.delegate?.iconTextButtonAction()
     }
     
     // MARK: Set up
     
     private func xibSetUp() {
-        Bundle.main.loadNibNamed("GradientButton", owner: self, options: nil)
+        Bundle.main.loadNibNamed("IconButton", owner: self, options: nil)
         addSubview(self.contentView)
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     private func visualSetUp() {
-        self.gradientButton.layer.cornerRadius = self.gradientButton.frame.height/3
-        self.gradientButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
-        self.gradientButton.dynamicFont = Typography().calloutSemibold
+        self.backgroundView.layer.cornerRadius = self.backgroundView.frame.height/6
+        self.title.dynamicFont = Typography().calloutSemibold
     }
 }
