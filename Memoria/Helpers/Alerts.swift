@@ -12,14 +12,29 @@ class Alerts {
     
     // Memory has been successfully saved
     var memorySaved: UIAlertController {
-        // Text
+        
         let title: String = "Sua memória foi guardada!"
         let message: String = "Está disponível para ser acessada e gerar boas lembranças"
-        let myalert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        // Buttons
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
         let actionTitle = "OK"
-        myalert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
-        return myalert
+        myAlert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+        
+        return myAlert
     }
     
+    // Allow access to microphone in Settings to preoceed
+    var changeMicrophonePermission: UIAlertController {
+        
+        let title = "Ops, não temos acesso ao seu microfone"
+        let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        myAlert.addAction(UIAlertAction(title: "Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        myAlert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        
+        return myAlert
+    }
 }
