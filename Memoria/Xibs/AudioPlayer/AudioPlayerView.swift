@@ -112,7 +112,7 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     }
     
     // MARK: Audio play methods
-    ///Get documents diretory - permission to Microfone usage add in info.plist
+    
     func getFileURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
@@ -147,8 +147,8 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
     ///Configuration before start recording
     func preparePlayer(url: URL) {
         do {
-            //Configuração do device sobre condições de gravação do áudio
-            //Fazer antes do play e do record - garantia que será configurada antes
+            // Device configuration regarding audio recording conditions
+            // Should be done before play and record, to garatee it will be configured when performing those actions
             let session = AVAudioSession.sharedInstance()
             try session.setCategory(AVAudioSession.Category.playAndRecord)
             try session.setMode(AVAudioSession.Mode.default)
@@ -158,8 +158,15 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
             self.soundPlayer.delegate = self
             self.soundPlayer.prepareToPlay()
             self.soundPlayer.volume = 1.0
+            
+            // Use bottom speaker for higher volume (overrides default upper speaker)
+            do {
+                try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+               } catch _ {
+                print("Unable to use bottom speaker")
+            }
 
-            //Set slider maximum value as the duration of the audio
+            // Set slider maximum value as the duration of the audio
             self.slider.maximumValue = Float(soundPlayer.duration)
         } catch {
             print("Erro: Problemas para reproduzir um áudio")
