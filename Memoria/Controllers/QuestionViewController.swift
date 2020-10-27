@@ -95,7 +95,6 @@ class QuestionViewController: UIViewController {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)
     }
-    
     // MARK: Keyboard
     
     // Adjusts the position of the scroll view when the keyboard appears
@@ -189,7 +188,9 @@ class QuestionViewController: UIViewController {
 extension QuestionViewController: GradientButtonDelegate {
     
     func gradientButtonAction() {
+
         // Organize content given by user
+        let category = self.navigationItem.title
         let question = self.subtitle.text ?? ""
         let text = self.textAnswer.text ?? ""
         let audio = self.audioContent
@@ -199,7 +200,7 @@ extension QuestionViewController: GradientButtonDelegate {
         // let image: CKAsset? = nil
 
         // Creates detail object
-        let newMemoryDetail = Detail(text: text, question: question, audio: audio, image: image)
+        let newMemoryDetail = Detail(text: text, question: question, category: category, audio: audio, image: image)
 
         // Calls DAO to object to database
         DetailDAO.create(detail: newMemoryDetail)
