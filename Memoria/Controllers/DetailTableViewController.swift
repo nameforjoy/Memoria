@@ -16,8 +16,8 @@ class DetailTableViewController: UITableViewController {
         
         self.tableView.separatorStyle = .none
         
-        let nib = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
+        let nib = UINib.init(nibName: self.subtitleCellIdentifier, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: self.subtitleCellIdentifier)
     }
 
     // MARK: - Table view data source
@@ -31,8 +31,8 @@ class DetailTableViewController: UITableViewController {
     }
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
-        if let cellType = cell as? TitleSubtitleCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
+        if let cellType = cell as? SubtitleCell {
             return cellType
         }
         return cell

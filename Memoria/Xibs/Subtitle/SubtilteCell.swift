@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SubtilteCell: UITableViewCell {
+class SubtitleCell: UITableViewCell {
     
     @IBOutlet weak var subtitleLabel: UILabel!
     
