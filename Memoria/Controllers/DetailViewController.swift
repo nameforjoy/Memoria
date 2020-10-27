@@ -51,14 +51,39 @@ class DetailViewController: UIViewController {
 
     // Updates view with input detail
     func populateView(detail: Detail?) {
+
+        // Sets category as navigation title
+        self.navigationItem.title = detail?.category
+
+        // Sets labels
         questionLabel.text = detail?.question
         answerLabel.text = detail?.text
-        audioPlayer.audioURL = detail?.audio
 
-        // Checks if there's an image available
-        if let image = detail?.image {
+        // Audio & Image Setup
+        self.updateAudio(audio: detail?.audio)
+        self.updateImage(image: detail?.image)
+    }
+
+    // Check if there's an audio available and update its view
+    func updateAudio(audio: URL?) {
+        if let audio = audio {
+            // Populate audio player view
+            audioPlayer.audioURL = audio
+            // Display audio player view
+            audioPlayer.isHidden = false
+        } else {
+            // Hides audio player view
+            audioPlayer.isHidden = true
+            print("Audio not found.")
+        }
+    }
+
+    // Checks if there's an image available and update its view
+    func updateImage(image: URL?) {
+        if let image = image {
             answerImageView.image = MediaManager.getUIImage(imageURL: image)
         } else {
+            print("Image not found.")
             answerImageView.image = nil
         }
     }

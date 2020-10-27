@@ -14,11 +14,13 @@ class Detail {
     var image: URL?
     var text: String?
     var question: String?
+    var category: String?
 
-    init(text: String?, question: String?, audio: URL?, image: URL?) {
+    init(text: String?, question: String?, category: String?, audio: URL?, image: URL?) {
         self.text = text
         self.question = question
         self.audio = audio
         self.image = image
+        self.category = category
     }
 }
