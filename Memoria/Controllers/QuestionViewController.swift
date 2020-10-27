@@ -185,6 +185,7 @@ class QuestionViewController: UIViewController {
 }
 
 // MARK: Save memory button
+
 extension QuestionViewController: GradientButtonDelegate {
     
     func gradientButtonAction() {
