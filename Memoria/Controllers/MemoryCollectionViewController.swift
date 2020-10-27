@@ -107,8 +107,10 @@ class MemoryCollectionViewController: UIViewController {
     func changeTextForAccessibility() {
         if self.traitCollection.isAccessibleCategory {
             self.navigationItem.title = "Memórias"
+            self.addFirstMemoryButton.title.text = "Adicionar"
         } else {
             self.navigationItem.title = "Caixa de memórias"
+            self.addFirstMemoryButton.title.text = "Adicionar memória"
         }
     }
     
@@ -116,7 +118,6 @@ class MemoryCollectionViewController: UIViewController {
         self.changeTextForAccessibility()
         self.noMemoriesLabel.dynamicFont = Typography().bodyRegular
         self.noMemoriesLabel.text = "Você ainda não guardou nenhuma memória. Vamos guardar uma?"
-        self.addFirstMemoryButton.title.text = "Adicionar memória"
         self.addFirstMemoryButton.icon.image = UIImage(named: "plusSign")
     }
     
