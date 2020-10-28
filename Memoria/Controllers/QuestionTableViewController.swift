@@ -13,6 +13,7 @@ class QuestionTableViewController: UITableViewController {
     let subtitleCellIdentifier: String = "SubtitleCell"
     let photoCellIdentifier: String = "PhotoCell"
     let textViewIdentifier: String = "TextViewCell"
+    let iconButtonCellIdentifier: String = "IconButtonCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,9 @@ class QuestionTableViewController: UITableViewController {
         
         let nibPhoto = UINib.init(nibName: self.photoCellIdentifier, bundle: nil)
         self.tableView.register(nibPhoto, forCellReuseIdentifier: self.photoCellIdentifier)
+        
+        let nibIconButton = UINib.init(nibName: self.iconButtonCellIdentifier, bundle: nil)
+        self.tableView.register(nibIconButton, forCellReuseIdentifier: self.iconButtonCellIdentifier)
     }
     
     // MARK: Acessibility
@@ -86,7 +90,7 @@ class QuestionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,6 +115,27 @@ class QuestionTableViewController: UITableViewController {
             if let cellType = cell as? TitleSubtitleCell {
                 cellType.titleLabel.text = "Que tal gravar?"
                 cellType.subtitleLabel.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
+                cell = cellType
+            }
+        case 3:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.iconButtonCellIdentifier, for: indexPath)
+            if let cellType = cell as? IconButtonCell {
+                cellType.icon.image = UIImage(named: "microphone")
+                cellType.title.text = "Gravar áudio"
+                cell = cellType
+            }
+        case 4:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            if let cellType = cell as? TitleSubtitleCell {
+                cellType.titleLabel.text = "E uma foto?"
+                cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que esteja relacionada a essa memória."
+                cell = cellType
+            }
+        case 5:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.iconButtonCellIdentifier, for: indexPath)
+            if let cellType = cell as? IconButtonCell {
+                cellType.icon.image = UIImage(named: "camera")
+                cellType.title.text = "Adicionar foto"
                 cell = cellType
             }
         default:
