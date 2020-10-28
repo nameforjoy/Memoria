@@ -46,14 +46,14 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="431" width="364" height="44"/>
+                                <rect key="frame" x="25" y="432.5" width="364" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0s-xi-24m">
-                                <rect key="frame" x="172.5" y="685.5" width="69" height="30"/>
+                                <rect key="frame" x="172.5" y="687" width="69" height="30"/>
                                 <state key="normal" title="TableView"/>
                                 <connections>
                                     <segue destination="t6u-Vq-Uny" kind="show" id="Qtc-4J-3ae"/>
@@ -130,7 +130,7 @@ Vamos guardar uma? </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrP-hX-oat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="310" y="931"/>
+            <point key="canvasLocation" x="196" y="959"/>
         </scene>
         <!--Question-->
         <scene sceneID="nvh-aE-BPr">
@@ -144,16 +144,16 @@ Vamos guardar uma? </string>
                                 <rect key="frame" x="0.0" y="140" width="414" height="682"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d8-Mz-rMq" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="860"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="866"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd9-8e-muY">
-                                                <rect key="frame" x="25" y="10" width="364" height="20"/>
+                                                <rect key="frame" x="25" y="10" width="364" height="22"/>
                                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descreva sua memória aqui..." translatesAutoresizingMaskIntoConstraints="NO" id="O2x-MF-M3z">
-                                                <rect key="frame" x="25" y="40" width="364" height="300"/>
+                                                <rect key="frame" x="25" y="42" width="364" height="300"/>
                                                 <color key="backgroundColor" name="grayLight"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="fv7-no-Uq2"/>
@@ -163,23 +163,23 @@ Vamos guardar uma? </string>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZh-gJ-ico">
-                                                <rect key="frame" x="25" y="360" width="68.5" height="20"/>
+                                                <rect key="frame" x="25" y="362" width="70" height="22"/>
                                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLR-Nl-4U7">
-                                                <rect key="frame" x="25" y="385" width="99.5" height="20"/>
+                                                <rect key="frame" x="25" y="389" width="99.5" height="22"/>
                                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-7d-5WU" userLabel="Button background">
-                                                <rect key="frame" x="25" y="420" width="364" height="40"/>
+                                                <rect key="frame" x="25" y="426" width="364" height="40"/>
                                                 <color key="backgroundColor" name="purpleLight"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4e-dg-fww" userLabel="Label+icon view">
-                                                <rect key="frame" x="131.5" y="420" width="151" height="40"/>
+                                                <rect key="frame" x="131.5" y="426" width="151" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gravar áudio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgc-ZD-OMg">
                                                         <rect key="frame" x="37.5" y="4.5" width="103.5" height="31"/>
@@ -207,7 +207,7 @@ Vamos guardar uma? </string>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAN-P1-EI2">
-                                                <rect key="frame" x="25" y="420" width="364" height="40"/>
+                                                <rect key="frame" x="25" y="426" width="364" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1SU-ls-dq5"/>
@@ -217,7 +217,7 @@ Vamos guardar uma? </string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-oS-4wR">
-                                                <rect key="frame" x="141.5" y="482" width="131" height="30"/>
+                                                <rect key="frame" x="141.5" y="488" width="131" height="30"/>
                                                 <state key="normal" title="Selecionar Imagem"/>
                                                 <connections>
                                                     <action selector="selectImage:" destination="6OU-zm-CFT" eventType="touchUpInside" id="7K8-zC-suN"/>
@@ -317,7 +317,7 @@ Vamos guardar uma? </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBa-O5-tc1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="588"/>
+            <point key="canvasLocation" x="-204" y="557"/>
         </scene>
         <!--Input Audio View Controller-->
         <scene sceneID="AyG-dy-ZVO">

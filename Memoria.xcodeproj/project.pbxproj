@@ -27,8 +27,6 @@
 		15C8F25D252E08C000DD9208 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8F25C252E08C000DD9208 /* CloudKit.framework */; };
 		15CDC160252CBFF000BD9A11 /* InputAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDC15F252CBFF000BD9A11 /* InputAudioViewController.swift */; };
 		15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D24CDD2548381B00D0D746 /* TitleSubtitleCell.xib */; };
-		15D24CE125483AC500D0D746 /* TableViewDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D24CE025483AC500D0D746 /* TableViewDetail.storyboard */; };
-		15D24CE825483B1600D0D746 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D24CE725483B1600D0D746 /* DetailTableViewController.swift */; };
 		15D24CEB25483D4400D0D746 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D24CEA25483D4400D0D746 /* TitleSubtitleCell.swift */; };
 		15D24CF02548433A00D0D746 /* SubtilteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D24CEF2548433A00D0D746 /* SubtilteCell.swift */; };
 		15D24CF32548434600D0D746 /* SubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D24CF22548434600D0D746 /* SubtitleCell.xib */; };
@@ -81,8 +79,6 @@
 		15C8F25C252E08C000DD9208 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		15CDC15F252CBFF000BD9A11 /* InputAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioViewController.swift; sourceTree = "<group>"; };
 		15D24CDD2548381B00D0D746 /* TitleSubtitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleSubtitleCell.xib; sourceTree = "<group>"; };
-		15D24CE025483AC500D0D746 /* TableViewDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TableViewDetail.storyboard; sourceTree = "<group>"; };
-		15D24CE725483B1600D0D746 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		15D24CEA25483D4400D0D746 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
 		15D24CEF2548433A00D0D746 /* SubtilteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtilteCell.swift; sourceTree = "<group>"; };
 		15D24CF22548434600D0D746 /* SubtitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubtitleCell.xib; sourceTree = "<group>"; };
@@ -215,7 +211,6 @@
 			children = (
 				152EE5EB252B33A5002F379C /* Main.storyboard */,
 				B3042A99254383B20086AE9E /* ViewDetail.storyboard */,
-				15D24CE025483AC500D0D746 /* TableViewDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,7 +223,6 @@
 				8DDCAB85252E20570012B671 /* QuestionViewController.swift */,
 				15AA50D125406CFF00EC2E4B /* ImagePicker.swift */,
 				B3042A9C254385650086AE9E /* DetailViewController.swift */,
-				15D24CE725483B1600D0D746 /* DetailTableViewController.swift */,
 				15514E842549930600918E8B /* QuestionTableViewController.swift */,
 			);
 			path = Controllers;
@@ -425,7 +419,6 @@
 				15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */,
 				B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */,
 				8DF6DB3525477CF30057898E /* IconButton.xib in Resources */,
-				15D24CE125483AC500D0D746 /* TableViewDetail.storyboard in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,7 +450,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D24CE825483B1600D0D746 /* DetailTableViewController.swift in Sources */,
 				8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */,
 				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
