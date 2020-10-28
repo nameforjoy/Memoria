@@ -1,58 +1,40 @@
 //
-//  AudioPlayerView.swift
+//  AudioPlayerCell.swift
 //  Memoria
 //
-//  Created by Luma Gabino Vasconcelos on 09/10/20.
+//  Created by Luma Gabino Vasconcelos on 28/10/20.
 //
 
 import UIKit
 import AVFoundation
 
-class AudioPlayerView: UIView, AVAudioPlayerDelegate {
-    
+class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
+
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
     var showingPlayIcon = true  // if false, then it's showing the pause icon
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
     var audioURL: URL?
-    private var contentView: UIView!
+    //private var contentView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        xibSetup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        xibSetup()
-    }
-    
-    func xibSetup() {
-        loadXib(targetView: &contentView, xibName: "AudioPlayerView")
         
         self.setupSlider()
         self.setupTimer()
         self.setupLayout()
     }
-    
-    ///Method for load the xib view in the view controller
-    func loadXib(targetView contentView: inout UIView?, xibName xib: String) {
-        //load xib into content view
-        contentView = Bundle.main.loadNibNamed(xib, owner: self, options: nil)![0] as? UIView
-        self.addSubview(contentView!)
-        
-        contentView!.frame = self.bounds
-        contentView!.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
-    
+
     // MARK: Setups
     ///Style setup for slider
     func setupSlider() {
@@ -119,7 +101,6 @@ class AudioPlayerView: UIView, AVAudioPlayerDelegate {
         return audioFilename
     }
     
-    ///Change state when pressed play or pause button
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
             let pauseImage = UIImage(named: "pauseAudio")

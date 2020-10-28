@@ -60,6 +60,7 @@
                         <constraint firstItem="A2g-Px-cH3" firstAttribute="centerY" secondItem="VFd-0y-QvE" secondAttribute="centerY" id="oJw-Fw-35S"/>
                         <constraint firstItem="vk8-ig-Ooo" firstAttribute="trailing" secondItem="MJC-5Y-tsN" secondAttribute="trailing" id="oeh-gf-qHy"/>
                         <constraint firstItem="MJC-5Y-tsN" firstAttribute="leading" secondItem="A2g-Px-cH3" secondAttribute="trailing" constant="16" id="uXR-Z2-f2k"/>
+                        <constraint firstItem="A2g-Px-cH3" firstAttribute="leading" secondItem="VFd-0y-QvE" secondAttribute="leading" constant="11" id="vBw-Nx-5Mb"/>
                     </constraints>
                 </view>
             </subviews>

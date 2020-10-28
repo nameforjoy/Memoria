@@ -12,11 +12,14 @@ class DetailTableViewController: UITableViewController {
     let subtitleCellIdentifier: String = "SubtitleCell"
     let photoCellIdentifier: String = "PhotoCell"
     let textViewIdentifier: String = "TextViewCell"
+    let audioPlayerIdentifier: String = "AudioPlayerCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
+        self.tableView.isUserInteractionEnabled = true
         
         let nibTitle = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
         self.tableView.register(nibTitle, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
@@ -29,6 +32,9 @@ class DetailTableViewController: UITableViewController {
         
         let nibPhoto = UINib.init(nibName: self.photoCellIdentifier, bundle: nil)
         self.tableView.register(nibPhoto, forCellReuseIdentifier: self.photoCellIdentifier)
+        
+        let nibAudio = UINib.init(nibName: self.audioPlayerIdentifier, bundle: nil)
+        self.tableView.register(nibAudio, forCellReuseIdentifier: self.audioPlayerIdentifier)
         
         self.navigationItem.title = "Conta pra mim!"
     }
@@ -61,6 +67,11 @@ class DetailTableViewController: UITableViewController {
         } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
+                return cellType
+            }
+        } else if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.audioPlayerIdentifier, for: indexPath)
+            if let cellType = cell as? AudioPlayerCell {
                 return cellType
             }
         } else {
