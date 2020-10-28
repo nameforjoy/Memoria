@@ -18,12 +18,13 @@ class QuestionTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
+        self.tableView.isUserInteractionEnabled = true
         
         self.registerNibs()
         
-        // Handle Notifications
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+        // Observers for keyboard andchanges in font size
+        self.addObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +34,24 @@ class QuestionTableViewController: UITableViewController {
     }
     
     deinit {
-        // Take notification observers off when de-initializing the class.
+        self.removeObservers()
+    }
+    
+    func addObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeObservers() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func registerNibs() {
-        
         let nibTitle = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
         self.tableView.register(nibTitle, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
         
@@ -69,6 +81,24 @@ class QuestionTableViewController: UITableViewController {
             self.navigationItem.title = "Conta pra mim!"
         }
     }
+    
+    // MARK: Keyboard
+    
+    // Adjusts the position of the scroll view when the keyboard appears
+    @objc func keyboardWillShow(notification: Notification) {
+        
+        guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        let _ = keyboardSize.cgRectValue
+    }
+
+    // Adjusts the position of the scroll view when the keyboard hides back to where it was
+    @objc func keyboardWillHide(notification: Notification) {
+    }
+    
+    // Dismisses keyboard after tapping outside keyboard
+    @objc func dismissKeyboard() {
+    }
 
     // MARK: - Table view
     
@@ -89,6 +119,12 @@ class QuestionTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 cellType.subtitleLabel.text = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
+                cell = cellType
+            }
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.textViewIdentifier, for: indexPath)
+            if let cellType = cell as? TextViewCell {
+                cellType.placeholderText = "Descreva sua memória aqui..."
                 cell = cellType
             }
         default:
