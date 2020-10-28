@@ -13,6 +13,7 @@ class DetailTableViewController: UITableViewController {
     let subtitleCellIdentifier: String = "SubtitleCell"
     let photoCellIdentifier: String = "PhotoCell"
     let textViewIdentifier: String = "TextViewCell"
+    let iconButtonCellIdentifier: String = "IconButtonCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,9 @@ class DetailTableViewController: UITableViewController {
         let nibPhoto = UINib.init(nibName: self.photoCellIdentifier, bundle: nil)
         self.tableView.register(nibPhoto, forCellReuseIdentifier: self.photoCellIdentifier)
         
+        let nibIconButton = UINib.init(nibName: self.iconButtonCellIdentifier, bundle: nil)
+        self.tableView.register(nibIconButton, forCellReuseIdentifier: self.iconButtonCellIdentifier)
+        
         self.navigationItem.title = "Conta pra mim!"
     }
 
@@ -40,43 +44,45 @@ class DetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
   
+    // swiftlint:disable cyclomatic_complexity
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = UITableViewCell()
+        
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 return cellType
             }
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.textViewIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: self.textViewIdentifier, for: indexPath)
             if let cellType = cell as? TextViewCell {
                 return cellType
             }
         } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 return cellType
             }
         } else if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 return cellType
             }
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.photoCellIdentifier, for: indexPath)
+        } else if indexPath.row == 4 {
+            cell = tableView.dequeueReusableCell(withIdentifier: self.photoCellIdentifier, for: indexPath)
             if let cellType = cell as? PhotoCell {
                 return cellType
             }
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: self.iconButtonCellIdentifier, for: indexPath)
+            if let cellType = cell as? IconButtonCell {
+                return cellType
+            }
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.photoCellIdentifier, for: indexPath)
-        if let cellType = cell as? PhotoCell {
-            return cellType
-        }
-
         return cell
     }
-
 }
