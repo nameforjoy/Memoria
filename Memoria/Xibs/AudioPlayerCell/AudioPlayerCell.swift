@@ -41,7 +41,7 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
         self.slider.tintColor = .systemGray2
         
         //Set style for thumbImage
-        let thumb = self.thumbImage(radius: 10)
+        let thumb = self.thumbImage(radius: 8)
         self.slider.setThumbImage(thumb, for: .normal)
     }
     
