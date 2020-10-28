@@ -11,7 +11,7 @@ protocol IconButtonDelegate: AnyObject {
     func iconButtonAction()
 }
 
-@IBDesignable class IconButtonView: UIView {
+class IconButtonView: UIView {
     
     // MARK: Attributes
     

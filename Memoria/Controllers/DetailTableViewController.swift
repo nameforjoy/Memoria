@@ -18,8 +18,7 @@ class DetailTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.separatorStyle = .none
-        self.tableView.allowsSelection = false
-        
+            
         let nibTitle = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
         self.tableView.register(nibTitle, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
         

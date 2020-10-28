@@ -57,7 +57,7 @@ Vamos guardar uma? </string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="TableView"/>
                                 <connections>
-                                    <segue destination="3mB-pp-g70" kind="show" id="BgB-G4-P4W"/>
+                                    <segue destination="t6u-Vq-Uny" kind="show" id="Qtc-4J-3ae"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -111,6 +111,35 @@ Vamos guardar uma? </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Me-uc-kUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-699" y="134"/>
+        </scene>
+        <!--Question Table View Controller-->
+        <scene sceneID="miM-7k-Tnf">
+            <objects>
+                <tableViewController id="t6u-Vq-Uny" customClass="QuestionTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Okw-rV-sJX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lQr-Yj-DGq">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lQr-Yj-DGq" id="SYN-5M-pma">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t6u-Vq-Uny" id="cN2-L3-N9M"/>
+                            <outlet property="delegate" destination="t6u-Vq-Uny" id="EbB-6L-p46"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="KeS-GA-Rij"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PrP-hX-oat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="310" y="931"/>
         </scene>
         <!--Question-->
         <scene sceneID="nvh-aE-BPr">
@@ -298,16 +327,6 @@ Vamos guardar uma? </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBa-O5-tc1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="198" y="534"/>
-        </scene>
-        <!--DetailTableViewController-->
-        <scene sceneID="JI1-N4-EuB">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DetailTableViewController" storyboardName="TableViewDetail" referencedIdentifier="DetailTableViewController" id="3mB-pp-g70" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ahq-Kf-DbV"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aam-ee-bIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="460" y="532"/>
         </scene>
         <!--Input Audio View Controller-->
         <scene sceneID="AyG-dy-ZVO">

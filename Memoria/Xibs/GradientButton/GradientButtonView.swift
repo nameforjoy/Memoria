@@ -11,7 +11,7 @@ protocol GradientButtonDelegate: AnyObject {
     func gradientButtonAction()
 }
 
-@IBDesignable class GradientButtonView: UIView {
+class GradientButtonView: UIView {
     
     // MARK: Atributes
     

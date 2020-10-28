@@ -26,6 +26,7 @@ class TextViewCell: UITableViewCell {
         // Set up dynamic font
         let typography = Typography()
         self.textView.dynamicFont = typography.bodyRegular
+        self.textView.textColor = UIColor.lightGray
     }
 
 }
