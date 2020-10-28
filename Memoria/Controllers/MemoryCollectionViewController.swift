@@ -30,7 +30,7 @@ class MemoryCollectionViewController: UIViewController {
         self.setUpNavigationBar()
         self.setUpNavigationController()
         self.setUpText()
-        self.addFirstMemoryButton.delegate = self
+        self.addFirstMemoryButton.buttonDelegate = self
         
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default

@@ -52,12 +52,11 @@ Vamos guardar uma? </string>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0s-xi-24m">
-                                <rect key="frame" x="173" y="687" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0s-xi-24m">
+                                <rect key="frame" x="172.5" y="685.5" width="69" height="30"/>
                                 <state key="normal" title="TableView"/>
                                 <connections>
-                                    <segue destination="3mB-pp-g70" kind="show" id="BgB-G4-P4W"/>
+                                    <segue destination="t6u-Vq-Uny" kind="show" id="Qtc-4J-3ae"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,6 +69,8 @@ Vamos guardar uma? </string>
                             <constraint firstItem="uBd-86-ivj" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="F6F-Sp-Byw"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerY" secondItem="e5p-nX-PYi" secondAttribute="centerY" multiplier="0.8" id="Jkt-6K-VkQ"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="NAE-4O-Ve8"/>
+                            <constraint firstItem="g0s-xi-24m" firstAttribute="centerX" secondItem="uBd-86-ivj" secondAttribute="centerX" id="RX1-RA-OJE"/>
+                            <constraint firstItem="g0s-xi-24m" firstAttribute="top" secondItem="uBd-86-ivj" secondAttribute="bottom" constant="41" id="YZ7-3T-Mqj"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="top" secondItem="YcP-aD-e4p" secondAttribute="bottom" constant="10" id="cEL-kU-Klp"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="diD-x7-JTE"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="leading" secondItem="YcP-aD-e4p" secondAttribute="leading" id="eNZ-Ke-s8L"/>
@@ -111,6 +112,25 @@ Vamos guardar uma? </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Me-uc-kUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-699" y="134"/>
+        </scene>
+        <!--Question Table View Controller-->
+        <scene sceneID="miM-7k-Tnf">
+            <objects>
+                <tableViewController id="t6u-Vq-Uny" customClass="QuestionTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Okw-rV-sJX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="t6u-Vq-Uny" id="cN2-L3-N9M"/>
+                            <outlet property="delegate" destination="t6u-Vq-Uny" id="EbB-6L-p46"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="KeS-GA-Rij"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PrP-hX-oat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="959"/>
         </scene>
         <!--Question-->
         <scene sceneID="nvh-aE-BPr">
@@ -297,17 +317,7 @@ Vamos guardar uma? </string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBa-O5-tc1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="534"/>
-        </scene>
-        <!--DetailTableViewController-->
-        <scene sceneID="JI1-N4-EuB">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DetailTableViewController" storyboardName="TableViewDetail" referencedIdentifier="DetailTableViewController" id="3mB-pp-g70" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ahq-Kf-DbV"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aam-ee-bIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="460" y="532"/>
+            <point key="canvasLocation" x="-204" y="557"/>
         </scene>
         <!--Input Audio View Controller-->
         <scene sceneID="AyG-dy-ZVO">
