@@ -15,6 +15,8 @@
 		152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EE252B33A7002F379C /* Assets.xcassets */; };
 		152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */; };
 		15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E842549930600918E8B /* QuestionTableViewController.swift */; };
+		15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15514E7C2549890C00918E8B /* AudioPlayerCell.xib */; };
+		15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E7F2549891F00918E8B /* AudioPlayerCell.swift */; };
 		159F629925484A240011DB9F /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 159F629825484A240011DB9F /* PhotoCell.xib */; };
 		159F629C25484A330011DB9F /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F629B25484A330011DB9F /* PhotoCell.swift */; };
 		159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F62A5254861FB0011DB9F /* TextViewCell.swift */; };
@@ -67,6 +69,8 @@
 		152EE5F1252B33A7002F379C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		152EE5F3252B33A7002F379C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15514E842549930600918E8B /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
+		15514E7C2549890C00918E8B /* AudioPlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioPlayerCell.xib; sourceTree = "<group>"; };
+		15514E7F2549891F00918E8B /* AudioPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerCell.swift; sourceTree = "<group>"; };
 		159F629825484A240011DB9F /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		159F629B25484A330011DB9F /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		159F62A5254861FB0011DB9F /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +192,15 @@
 			path = Memoria;
 			sourceTree = "<group>";
 		};
+		15514E7B254988EE00918E8B /* AudioPlayerCell */ = {
+			isa = PBXGroup;
+			children = (
+				15514E7C2549890C00918E8B /* AudioPlayerCell.xib */,
+				15514E7F2549891F00918E8B /* AudioPlayerCell.swift */,
+			);
+			path = AudioPlayerCell;
+			sourceTree = "<group>";
+		};
 		159F629725484A160011DB9F /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +256,7 @@
 			children = (
 				8DF6DB3025477C8E0057898E /* IconButton */,
 				8D55D3FF25486CB0004A0BF4 /* IconButtonCell */,
+				15514E7B254988EE00918E8B /* AudioPlayerCell */,
 				159F62A4254861EA0011DB9F /* TextView */,
 				159F629725484A160011DB9F /* Photo */,
 				15D24CEE254842C000D0D746 /* Subtitle */,
@@ -410,6 +424,7 @@
 			files = (
 				15BB4A772535FE5900CECE25 /* AudioPlayerView.xib in Resources */,
 				8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */,
+				15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */,
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
 				159F629925484A240011DB9F /* PhotoCell.xib in Resources */,
@@ -467,6 +482,7 @@
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */,
+				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */,
