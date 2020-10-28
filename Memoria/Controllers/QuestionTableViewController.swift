@@ -14,6 +14,13 @@ class QuestionTableViewController: UITableViewController {
     let photoCellIdentifier: String = "PhotoCell"
     let textViewIdentifier: String = "TextViewCell"
     let iconButtonCellIdentifier: String = "IconButtonCell"
+    let audioPlayerCellIdentifier: String = "AudioPlayerCell"
+    
+    var imageURL: URL?
+    var imagePicker: ImagePicker?
+    var selectedImage: UIImage?
+    
+    var hiddenRows: [Int] = [7]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +38,9 @@ class QuestionTableViewController: UITableViewController {
         // Observers for changes in font size
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+        
+        // Image Picker
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +74,9 @@ class QuestionTableViewController: UITableViewController {
         
         let nibIconButton = UINib.init(nibName: self.iconButtonCellIdentifier, bundle: nil)
         self.tableView.register(nibIconButton, forCellReuseIdentifier: self.iconButtonCellIdentifier)
+        
+        let nibAudioPlayer = UINib.init(nibName: self.audioPlayerCellIdentifier, bundle: nil)
+        self.tableView.register(nibAudioPlayer, forCellReuseIdentifier: self.audioPlayerCellIdentifier)
     }
     
     // MARK: Acessibility
@@ -90,9 +103,19 @@ class QuestionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 8
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        if self.hiddenRows.contains(indexPath.row) {
+            return 0.0  // collapsed
+        }
+        // expanded with row height of parent
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    
+    //swiftlint:disable cyclomatic_complexity
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
@@ -122,27 +145,69 @@ class QuestionTableViewController: UITableViewController {
             if let cellType = cell as? IconButtonCell {
                 cellType.icon.image = UIImage(named: "microphone")
                 cellType.title.text = "Gravar áudio"
+                cellType.buttonType = .addAudio
+                cellType.buttonDelegate = self
                 cell = cellType
             }
         case 4:
+            // NÃO ESTÁ FUNCIONANDO
+            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            if let cellTypeAudio = cell as? AudioPlayerCell {
+                cell = cellTypeAudio
+                // NÃO ENTRA AQUI
+            }
+        case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 cellType.titleLabel.text = "E uma foto?"
                 cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que esteja relacionada a essa memória."
                 cell = cellType
             }
-        case 5:
+        case 6:
             cell = tableView.dequeueReusableCell(withIdentifier: self.iconButtonCellIdentifier, for: indexPath)
             if let cellType = cell as? IconButtonCell {
                 cellType.icon.image = UIImage(named: "camera")
                 cellType.title.text = "Adicionar foto"
+                cellType.buttonType = .addImage
+                cellType.buttonDelegate = self
+                cell = cellType
+            }
+        case 7:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.photoCellIdentifier, for: indexPath)
+            if let cellType = cell as? PhotoCell {
+                cellType.imageView?.image = self.selectedImage
                 cell = cellType
             }
         default:
             print("Default")
         }
-
         return cell
     }
+}
 
+extension QuestionTableViewController: IconButtonCellDelegate {
+    
+    func iconButtonCellAction(buttonType: ButtonType, sender: Any) {
+        switch buttonType {
+        case .addImage:
+            guard let senderView = sender as? UIView else { return }
+            guard let imagePicker: ImagePicker = self.imagePicker else {return}
+            imagePicker.present(from: senderView)
+        default:
+            print(buttonType)
+        }
+    }
+}
+
+///Extension For ImagePicker
+extension QuestionTableViewController: ImagePickerDelegate {
+    
+    func didSelect(image: UIImage?) {
+        self.selectedImage = image
+        
+        // Hide button to add photo and display cell with chosen photo
+        self.hiddenRows = self.hiddenRows.filter { $0 != 7 } // remove image cell from hiddenRows array
+        self.hiddenRows.append(6) // put add image button cell in hiddenRows array
+        self.tableView.reloadData()
+    }
 }

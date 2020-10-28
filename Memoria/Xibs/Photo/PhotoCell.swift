@@ -22,10 +22,10 @@ class PhotoCell: UITableViewCell {
         self.imageSelected = UIImage(named: "photo2")
         self.imageCellView.contentMode = .scaleAspectFit
         self.imageCellView?.image = imageSelected
+        self.imageCellView.layer.cornerRadius = 30
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
 }
