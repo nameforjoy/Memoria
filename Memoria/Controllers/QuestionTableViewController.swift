@@ -23,8 +23,13 @@ class QuestionTableViewController: UITableViewController {
         
         self.registerNibs()
         
-        // Observers for keyboard andchanges in font size
-        self.addObservers()
+        // Adds tap gesture on the main view to dismiss text view keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
+        // Observers for changes in font size
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,21 +39,13 @@ class QuestionTableViewController: UITableViewController {
     }
     
     deinit {
-        self.removeObservers()
-    }
-    
-    func addObservers() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    func removeObservers() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
-        notificationCenter.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
-        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // Dismisses keyboard after tapping outside keyboard
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func registerNibs() {
@@ -80,24 +77,6 @@ class QuestionTableViewController: UITableViewController {
         } else {
             self.navigationItem.title = "Conta pra mim!"
         }
-    }
-    
-    // MARK: Keyboard
-    
-    // Adjusts the position of the scroll view when the keyboard appears
-    @objc func keyboardWillShow(notification: Notification) {
-        
-        guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        let _ = keyboardSize.cgRectValue
-    }
-
-    // Adjusts the position of the scroll view when the keyboard hides back to where it was
-    @objc func keyboardWillHide(notification: Notification) {
-    }
-    
-    // Dismisses keyboard after tapping outside keyboard
-    @objc func dismissKeyboard() {
     }
 
     // MARK: - Table view
