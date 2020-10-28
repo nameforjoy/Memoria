@@ -106,6 +106,13 @@ class QuestionTableViewController: UITableViewController {
                 cellType.placeholderText = "Descreva sua memória aqui..."
                 cell = cellType
             }
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            if let cellType = cell as? TitleSubtitleCell {
+                cellType.titleLabel.text = "Que tal gravar?"
+                cellType.subtitleLabel.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
+                cell = cellType
+            }
         default:
             print("Default")
         }
