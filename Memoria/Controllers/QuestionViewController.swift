@@ -80,18 +80,6 @@ class QuestionViewController: UIViewController {
         self.presentAsModal(show: recordAudioScreen, over: self)
     }
     
-    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
-        
-        // Set up presentation mode
-        viewController.providesPresentationContextTransitionStyle = true
-        viewController.definesPresentationContext = true
-        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        // Present alert
-        context.present(viewController, animated: true, completion: nil)
-    }
-    
     @IBAction func selectImage(_ sender: Any) {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)

@@ -20,6 +20,8 @@ class QuestionTableViewController: UITableViewController {
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
+    var audioURL: URL?
+    
     var hiddenRows: [Int] = [4,7]
 
     override func viewDidLoad() {
@@ -186,14 +188,44 @@ class QuestionTableViewController: UITableViewController {
 extension QuestionTableViewController: IconButtonCellDelegate {
     
     func iconButtonCellAction(buttonType: ButtonType, sender: Any) {
+        
         switch buttonType {
         case .addImage:
             guard let senderView = sender as? UIView else { return }
             guard let imagePicker: ImagePicker = self.imagePicker else {return}
             imagePicker.present(from: senderView)
+        case .addAudio:
+            guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
+            // Ties up this class as delegate for InputAudioVC
+            recordAudioScreen.audioDelegate = self
+            self.presentAsModal(show: recordAudioScreen, over: self)
         default:
             print(buttonType)
         }
+    }
+    
+    func presentAsModal(show viewController: UIViewController, over context: UIViewController) {
+        
+        // Set up presentation mode
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set up background to mimic the iOS native Alert
+        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        // Present alert
+        context.present(viewController, animated: true, completion: nil)
+    }
+}
+
+extension QuestionTableViewController: AudioRecordingDelegate {
+    
+    /// Delegate method to populate audio data
+    func finishedRecording(audioURL: URL) {
+        // This content will be used on saveMemory()
+        self.audioURL = audioURL
     }
 }
 
