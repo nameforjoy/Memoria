@@ -11,33 +11,18 @@ class Memory {
     let memoryID: UUID
     let title: String?
     let description: String?
-    let timePassedBy: Int?
-    var timeUnit: Calendar.Component?
     let hasDate: Bool
+    let timePassedBy: Int?
+    let timeUnit: String?
 
-    var timeUnitAsString: String? {
-        get {
-            guard let timeUnit = self.timeUnit else {return nil}
-            return self.getCalendarComponentAsString(component: timeUnit)
-        }
-    }
-
+    // This is only to be used when ordering memories on the UI
+    // Every label on the UI uses timePassedBy and timeUnit instead
     var date: Date? {
-        get {
-            return self.getEstimatedDate(timePassedBy: self.timePassedBy, timeUnit: self.timeUnit)
-        }
+            return DateManager.getEstimatedDate(timePassedBy: self.timePassedBy, timeUnit: self.timeUnit)
     }
 
-//    init(memoryID: UUID, title: String, description: String, hasDate: Bool, timePassedBy: Int?, timeUnitAsString: String?) {
-//        self.memoryID = memoryID
-//        self.title = title
-//        self.description = description
-//        self.hasDate = hasDate
-//        self.timeUnitAsString = timeUnitAsString
-//        self.timePassedBy = timePassedBy
-//    }
-
-    init(memoryID: UUID, title: String, description: String, hasDate: Bool, timePassedBy: Int?, timeUnit: Calendar.Component?) {
+    // Initialize class with existing UUID
+    init(memoryID: UUID, title: String, description: String, hasDate: Bool, timePassedBy: Int?, timeUnit: String?) {
         self.memoryID = memoryID
         self.title = title
         self.description = description
@@ -46,46 +31,14 @@ class Memory {
         self.timePassedBy = timePassedBy
     }
 
-
-    
-    ///Method to calculate date from number of days, months or years
-    func getEstimatedDate(timePassedBy: Int?, timeUnit: Calendar.Component?) -> Date? {
-        guard let timePassedBy = timePassedBy else {return nil}
-        guard let timeUnit = timeUnit else {return nil}
-
-        var estimatedDate = Date()
-
-        if let modifiedDate = Calendar.current.date(byAdding: timeUnit, value: -timePassedBy, to: estimatedDate) {
-            estimatedDate = modifiedDate
-        }
-
-        return estimatedDate
-    }
-
-    func getCalendarComponentAsString(component: Calendar.Component) -> String? {
-        switch component {
-        case .day:
-            return "dias"
-        case .month:
-            return "meses"
-        case .year:
-            return "anos"
-        default:
-            return nil
-        }
-    }
-
-    func getStringAsCalendarComponent(stringComponent: String) -> Calendar.Component? {
-        switch stringComponent {
-        case "dias":
-            return .day
-        case "meses":
-            return .month
-        case "anos":
-            return .year
-        default:
-            return nil
-        }
+    // Initialize class without existing UUID
+    init(title: String, description: String, hasDate: Bool, timePassedBy: Int?, timeUnit: String?) {
+        self.memoryID = UUID()
+        self.title = title
+        self.description = description
+        self.hasDate = hasDate
+        self.timeUnit = timeUnit
+        self.timePassedBy = timePassedBy
     }
     
 }
