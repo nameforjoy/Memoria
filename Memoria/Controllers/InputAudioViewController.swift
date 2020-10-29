@@ -53,7 +53,6 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setUpText()
-        self.askPermissionIfNeeded()
     }
     
     deinit {
@@ -196,36 +195,5 @@ extension InputAudioViewController: AVAudioRecorderDelegate {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
         return audioFilename
-    }
-    
-    /// Ask for microphone usage authorization.
-    /// Procceed with recording if allowed,  dismisses view if denied.
-    public func askMicrophoneAuthorization() {
-        
-        AVAudioSession.sharedInstance().requestRecordPermission { allowed in
-            DispatchQueue.main.async {
-                if allowed {
-                    print("microphone access allowed. We can proceed with the recording.")
-                } else {
-                    self.dismiss(animated: true)
-                }
-            }
-        }
-    }
-    
-    /// Check microphone authorization status.
-    /// Ask user to change permission in Settings if it is currently denied
-    func askPermissionIfNeeded() {
-        
-        switch AVAudioSession.sharedInstance().recordPermission {
-        case .undetermined:
-            self.askMicrophoneAuthorization()
-        case .denied:
-            present(Alerts().changeMicrophonePermission, animated: true, completion: nil)
-        case .granted:
-            print("microphone access allowed. We can proceed with the recording.")
-        @unknown default:
-            print("Error: microphone permission is unknown")
-        }
     }
 }

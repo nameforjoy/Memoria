@@ -70,7 +70,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
-	<string>.light</string>
+	<string>Light</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Precisamos acessar sua galeria para que você possa registrar suas memórias</string>
 	<key>NSCameraUsageDescription</key>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class QuestionTableViewController: UITableViewController {
     
@@ -195,13 +196,17 @@ extension QuestionTableViewController: IconButtonCellDelegate {
             guard let imagePicker: ImagePicker = self.imagePicker else {return}
             imagePicker.present(from: senderView)
         case .addAudio:
-            guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
-            // Ties up this class as delegate for InputAudioVC
-            recordAudioScreen.audioDelegate = self
-            self.presentAsModal(show: recordAudioScreen, over: self)
+            self.recordAudioWithMicrophonePermission()
         default:
             print(buttonType)
         }
+    }
+    
+    func openAudioRecorder() {
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
+        // Ties up this class as delegate for InputAudioVC
+        recordAudioScreen.audioDelegate = self
+        self.presentAsModal(show: recordAudioScreen, over: self)
     }
     
     func presentAsModal(show viewController: UIViewController, over context: UIViewController) {
@@ -226,6 +231,38 @@ extension QuestionTableViewController: AudioRecordingDelegate {
     func finishedRecording(audioURL: URL) {
         // This content will be used on saveMemory()
         self.audioURL = audioURL
+    }
+    
+    /// Ask for microphone usage authorization.
+    /// Procceed with recording if allowed.
+    public func askMicrophoneAccessAuthorization() {
+        
+        AVAudioSession.sharedInstance().requestRecordPermission { allowed in
+            DispatchQueue.main.async {
+                if allowed {
+                    self.openAudioRecorder()
+                } else {
+                    print("No microphone access")
+                }
+            }
+        }
+    }
+    
+    /// Check microphone authorization status.
+    /// Ask user to change permission in Settings if it is currently denied.
+    /// Open  recorder if permission is granted.
+    func recordAudioWithMicrophonePermission() {
+        
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case .undetermined:
+            self.askMicrophoneAccessAuthorization()
+        case .denied:
+            present(Alerts().changeMicrophonePermission, animated: true, completion: nil)
+        case .granted:
+            self.openAudioRecorder()
+        @unknown default:
+            print("Error: microphone permission is unknown")
+        }
     }
 }
 

@@ -30,7 +30,7 @@ class Alerts {
         let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        myAlert.addAction(UIAlertAction(title: "Configurações", style: .default, handler: { _ in
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }))
         myAlert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
