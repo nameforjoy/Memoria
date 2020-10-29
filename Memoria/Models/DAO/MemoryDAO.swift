@@ -15,9 +15,20 @@ class MemoryDAO: DAO {
     static public func create(memory: Memory) {
         let record = CKRecord(recordType: "Memory")
 
+        // Simple record setup
         record.setValue(memory.title, forKey: "title")
         record.setValue(memory.description, forKey: "description")
         record.setValue(memory.date, forKey: "date")
+        record.setValue(memory.timePassedBy, forKey: "timePassedBy")
+        record.setValue(memory.timeUnitAsString, forKey: "timeUnit")
+
+        // Converts UUID to String
+        let memoryIDAsString = memory.memoryID.uuidString
+        record.setValue(memoryIDAsString, forKey: "memoryID")
+
+        // Converts Bool to Int
+        let hasDateAsNumber = NSNumber(value: memory.hasDate)
+        record.setValue(hasDateAsNumber, forKey: "hasDate")
 
         self.privateDatabase.save(record) { (savedRecord, error) in
 
@@ -49,13 +60,8 @@ class MemoryDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            if let title = record["title"] as? String,
-               let description = record["description"] as? String,
-                let date = record["date"] as? Date {
-                let newMemory = Memory(title: title, description: description, date: date)
-                allRecords.append(newMemory)
-                print(newMemory.description ?? "Detail description returned nil")
-            }
+            let newRecord = self.getMemoryFromRecord(record: record)
+            allRecords.append(newRecord)
 
         }
 
@@ -68,5 +74,32 @@ class MemoryDAO: DAO {
         }
 
         privateDatabase.add(operation)
+    }
+
+    static private func getMemoryFromRecord(record: CKRecord) -> Memory {
+
+        // Converting Texts
+        let title = record["title"] as? String
+        let description = record["description"] as? String
+        let date = record["date"] as? Date
+        let timeBasseBy = record["timePassedBy"] as? Int
+
+        // Converts
+        let timeUnitAsString = record["timeUnit"] as? String
+
+        // TODO: Converts String to UUID
+//        guard let memoryIDAsString = record["memoryID"] as? String else {return nil}
+//        let memoryUUID = UUID(uuidString: memoryIDAsString)
+
+
+        // TODO: Converts NSNumber to Bool
+//        let hasDateAsNumber = record["hasDate"] as? NSNumber
+//        let hasDate = Bool(hasDateAsNumber as NSNumber)
+
+        // Make Memory object from query results
+        // TODO: Get real information from record
+        let newMemory = Memory(memoryID: UUID(), title: "", description: "", hasDate: true, timePassedBy: 3, timeUnit: .day)
+
+        return newMemory
     }
 }
