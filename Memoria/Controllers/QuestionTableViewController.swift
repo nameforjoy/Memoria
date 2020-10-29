@@ -20,7 +20,7 @@ class QuestionTableViewController: UITableViewController {
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
-    var hiddenRows: [Int] = [7]
+    var hiddenRows: [Int] = [4,7]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,7 +201,11 @@ extension QuestionTableViewController: IconButtonCellDelegate {
 extension QuestionTableViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
-        self.selectedImage = image
+        
+        // Set chosen photo as the image to be displayed and get photo URL
+        guard let photo: UIImage = image else {return}
+        self.imageURL = MediaManager.getURL(image: photo)
+        self.selectedImage = photo
         
         // Hide button to add photo and display cell with chosen photo
         self.hiddenRows = self.hiddenRows.filter { $0 != 7 } // remove image cell from hiddenRows array
