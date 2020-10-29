@@ -62,7 +62,7 @@ class MemoryDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            // let newRecord = self.getMemoryFromRecord(record: record)
+            let newRecord = self.getMemoryFromRecord(record: record)
             // allRecords.append(newRecord)
 
         }
@@ -78,36 +78,40 @@ class MemoryDAO: DAO {
         privateDatabase.add(operation)
     }
 
-//    static private func getMemoryFromRecord(record: CKRecord) -> Memory? {
-//
-//        // TODO: Converts String to UUID
-//        guard let memoryIDAsString = record["memoryID"] as? String else {
-//            print("Couldn't cast memoryIDAsString record as a string.")
-//            return nil
-//        }
-//
-//        // Checks
-//        guard let hasDateAsNumber = record["hasDate"] as? NSNumber else {
-//            print("Couldn't cast hasDateAsNumber record as a NSNumber.")
-//            return nil
-//        }
-//
-//
-//        // Converting Texts
-//        let title = record["title"] as? String
-//        let description = record["description"] as? String
-//        let date = record["date"] as? Date
-//        let timeBasseBy = record["timePassedBy"] as? Int
-//
-//        // Converts iCloud types to model types
-//        let memoryUUID = UUID(uuidString: memoryIDAsString)
-//        let hasDate = Bool(truncating: hasDateAsNumber as NSNumber)
-//        let
-//
-//        // Make Memory object from query results
-//        // TODO: Get real information from record
-//        let newMemory = Memory(memoryID: UUID(), title: "", description: "", hasDate: true, timePassedBy: 3, timeUnit: .day)
-//
-//        return newMemory
-//    }
+    static private func getMemoryFromRecord(record: CKRecord) -> Memory? {
+
+        // Casting record value to String
+        guard let memoryIDAsString = record["memoryID"] as? String else {
+            print("Couldn't cast memoryIDAsString record as a string.")
+            return nil
+        }
+
+        // Casting record value to NSNumber
+        guard let hasDateAsNumber = record["hasDate"] as? NSNumber else {
+            print("Couldn't cast hasDateAsNumber record as a NSNumber.")
+            return nil
+        }
+
+        // Casting record value to NSNumber
+        guard let timePassedByAsNumber = record["timePassedBy"] as? NSNumber else {
+            print("Couldn't cast timePassedByAsNumber record as a NSNumber.")
+            return nil
+        }
+
+        // Converting Texts
+        guard let title = record["title"] as? String else { return nil }
+        guard let description = record["description"] as? String else { return nil }
+        let date = record["date"] as? Date
+        let timeUnit = record["timeUnit"] as? String
+
+        // Converts iCloud types to model types
+        guard let memoryUUID = UUID(uuidString: memoryIDAsString) else { return nil }
+        let hasDate = Bool(truncating: hasDateAsNumber as NSNumber)
+        let timePassedBy = Int(truncating: timePassedByAsNumber)
+
+        // Make Memory object from query results
+        let newMemory = Memory(memoryID: memoryUUID, title: title, description: description, hasDate: hasDate, timePassedBy: timePassedBy, timeUnit: timeUnit)
+
+        return newMemory
+    }
 }
