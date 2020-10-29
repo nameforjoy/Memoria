@@ -26,6 +26,7 @@ class QuestionTableViewController: UITableViewController {
     
     var audioURL: URL?
     var writtenText: String?
+    var question: String? = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
     
     var hiddenRows: [Int] = [4,7]
     
@@ -138,7 +139,7 @@ class QuestionTableViewController: UITableViewController {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
             if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
+                cellType.subtitleLabel.text = self.question
                 cell = cellType
             }
         case 1:
@@ -220,7 +221,36 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     
     // Saves detail in memory
     func gradientButtonCellAction() {
-        print("Detail saved")
+
+        let newMemoryDetail = self.getDetailFromInterface()
+        
+        // Calls DAO to object to database
+        DetailDAO.create(detail: newMemoryDetail) { error in
+            if error == nil {
+                // Return to main screen
+                DispatchQueue.main.async {
+                    print("Detail saved")
+                    self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                }
+            } else {
+                print(error.debugDescription)
+                // TODO: Treat error
+            }
+        }
+    }
+    
+    func getDetailFromInterface() -> Detail {
+        
+        // Organize content given by user
+        let category = self.navigationItem.title
+        let question = self.question ?? ""
+        let text = self.writtenText ?? ""
+        let audio = self.audioURL
+        let image = self.imageURL
+        
+        // Creates detail object
+        let detail = Detail(text: text, question: question, category: category, audio: audio, image: image)
+        return detail
     }
     
     // MARK: Segue

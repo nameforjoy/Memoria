@@ -127,8 +127,12 @@ Vamos guardar uma? </string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="KeS-GA-Rij"/>
+                    <connections>
+                        <segue destination="sgH-RD-Vd6" kind="unwind" identifier="unwindToMemoryCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="3r9-Qx-HTj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrP-hX-oat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="sgH-RD-Vd6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="196" y="923"/>
         </scene>
