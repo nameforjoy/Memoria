@@ -10,6 +10,8 @@ import AVFoundation
 
 class QuestionTableViewController: UITableViewController {
     
+    // MARK: Attributes
+    
     let titleSubtitleCellIdentifier: String = "TitleSubtitleCell"
     let subtitleCellIdentifier: String = "SubtitleCell"
     let photoCellIdentifier: String = "PhotoCell"
@@ -24,6 +26,8 @@ class QuestionTableViewController: UITableViewController {
     var audioURL: URL?
     
     var hiddenRows: [Int] = [4,7]
+    
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +66,8 @@ class QuestionTableViewController: UITableViewController {
         self.view.endEditing(true)
     }
     
+    // MARK: Instantiate Nibs
+    
     func registerNibs() {
         let nibTitle = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
         self.tableView.register(nibTitle, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
@@ -99,7 +105,7 @@ class QuestionTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view
+    // MARK: Table view
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -154,8 +160,9 @@ class QuestionTableViewController: UITableViewController {
             }
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: self.audioPlayerCellIdentifier, for: indexPath)
-            if let cellTypeAudio = cell as? AudioPlayerCell {
-                cell = cellTypeAudio
+            if let cellType = cell as? AudioPlayerCell {
+                cellType.audioURL = self.audioURL
+                cell = cellType
             }
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
@@ -186,6 +193,8 @@ class QuestionTableViewController: UITableViewController {
     }
 }
 
+// MARK: Icon Button
+
 extension QuestionTableViewController: IconButtonCellDelegate {
     
     func iconButtonCellAction(buttonType: ButtonType, sender: Any) {
@@ -201,29 +210,9 @@ extension QuestionTableViewController: IconButtonCellDelegate {
             print(buttonType)
         }
     }
-    
-    func openAudioRecorder() {
-        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
-        // Ties up this class as delegate for InputAudioVC
-        recordAudioScreen.audioDelegate = self
-        self.presentAsModal(show: recordAudioScreen, over: self)
-    }
-    
-    func presentAsModal(show viewController: UIViewController, over context: UIViewController) {
-        
-        // Set up presentation mode
-        viewController.providesPresentationContextTransitionStyle = true
-        viewController.definesPresentationContext = true
-        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        // Set up background to mimic the iOS native Alert
-        viewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        
-        // Present alert
-        context.present(viewController, animated: true, completion: nil)
-    }
 }
+
+// MARK: Audio Recording
 
 extension QuestionTableViewController: AudioRecordingDelegate {
     
@@ -231,6 +220,10 @@ extension QuestionTableViewController: AudioRecordingDelegate {
     func finishedRecording(audioURL: URL) {
         // This content will be used on saveMemory()
         self.audioURL = audioURL
+        // Hide button to add photo and display audio player
+        self.hiddenRows = self.hiddenRows.filter { $0 != 4 } // remove audio player cell from hiddenRows array
+        self.hiddenRows.append(3) // put add audio button cell in hiddenRows array
+        self.tableView.reloadData()
     }
     
     /// Ask for microphone usage authorization.
@@ -264,7 +257,16 @@ extension QuestionTableViewController: AudioRecordingDelegate {
             print("Error: microphone permission is unknown")
         }
     }
+    
+    func openAudioRecorder() {
+        guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
+        // Ties up this class as delegate for InputAudioVC
+        recordAudioScreen.audioDelegate = self
+        PresentationManager().presentAsModal(show: recordAudioScreen, over: self)
+    }
 }
+
+// MARK: Image Picker
 
 ///Extension For ImagePicker
 extension QuestionTableViewController: ImagePickerDelegate {

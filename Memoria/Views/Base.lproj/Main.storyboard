@@ -328,15 +328,8 @@ Vamos guardar uma? </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-SU-j3O">
-                                <rect key="frame" x="0.0" y="524.5" width="414" height="371.5"/>
+                                <rect key="frame" x="0.0" y="584.5" width="414" height="311.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ech-AU-zcx" customClass="AudioPlayerView" customModule="Memoria" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="259.5" width="374" height="70"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="rzx-I5-2z4"/>
-                                        </constraints>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9j-Ic-AZp">
                                         <rect key="frame" x="167" y="171.5" width="80" height="80"/>
                                         <constraints>
@@ -378,17 +371,14 @@ Vamos guardar uma? </string>
                                     <constraint firstItem="V9j-Ic-AZp" firstAttribute="top" secondItem="jDY-VI-E3c" secondAttribute="bottom" constant="20" id="RA4-Kt-zwU"/>
                                     <constraint firstItem="c6F-O4-ICT" firstAttribute="leading" secondItem="Dgm-Go-dZ4" secondAttribute="leading" id="T9E-F9-ZIa"/>
                                     <constraint firstItem="jDY-VI-E3c" firstAttribute="leading" secondItem="c6F-O4-ICT" secondAttribute="leading" id="W9A-ap-Gyp"/>
-                                    <constraint firstAttribute="bottom" secondItem="ech-AU-zcx" secondAttribute="bottom" constant="42" id="ZMz-Fy-bf1"/>
                                     <constraint firstItem="jDY-VI-E3c" firstAttribute="top" secondItem="c6F-O4-ICT" secondAttribute="bottom" constant="30" id="ZPg-0t-xrc"/>
-                                    <constraint firstItem="ech-AU-zcx" firstAttribute="leading" secondItem="pIj-SU-j3O" secondAttribute="leading" constant="20" symbolic="YES" id="a6E-13-Yns"/>
-                                    <constraint firstAttribute="trailing" secondItem="ech-AU-zcx" secondAttribute="trailing" constant="20" symbolic="YES" id="eKc-H4-eCr"/>
-                                    <constraint firstAttribute="bottom" secondItem="V9j-Ic-AZp" secondAttribute="bottom" constant="120" id="eeN-xr-3cf"/>
+                                    <constraint firstAttribute="bottom" secondItem="V9j-Ic-AZp" secondAttribute="bottom" constant="60" id="eeN-xr-3cf"/>
                                     <constraint firstItem="jDY-VI-E3c" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="ppe-xM-aGn"/>
                                     <constraint firstItem="V9j-Ic-AZp" firstAttribute="centerX" secondItem="pIj-SU-j3O" secondAttribute="centerX" id="siq-pN-76I"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbD-VR-kDA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="524.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="584.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -406,7 +396,6 @@ Vamos guardar uma? </string>
                     </view>
                     <navigationItem key="navigationItem" id="2Wk-aG-c3e"/>
                     <connections>
-                        <outlet property="audioPlayView" destination="ech-AU-zcx" id="HUx-Vt-zew"/>
                         <outlet property="contentBackground" destination="pIj-SU-j3O" id="uyd-4C-fk1"/>
                         <outlet property="dismissView" destination="IbD-VR-kDA" id="m8f-li-Zvw"/>
                         <outlet property="recordButton" destination="V9j-Ic-AZp" id="jbg-8g-p2R"/>

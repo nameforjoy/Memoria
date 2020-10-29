@@ -18,7 +18,6 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     // MARK: Attributes
     
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var audioPlayView: AudioPlayerView!
     @IBOutlet weak var contentBackground: UIView!
     @IBOutlet weak var dismissView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -37,10 +36,9 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupRecorder()
         
+        self.setupRecorder()
         self.contentBackground.layer.cornerRadius = 20
-        self.audioPlayView.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
         self.dismissView.addGestureRecognizer(tap)
@@ -84,7 +82,6 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
             // Stop recording
             self.soundRecorder.stop()
             self.isRecording = false
-            self.audioPlayView.isHidden = false
             
             // Change button image
             guard let startImage = UIImage(named: "startRecording") else {return}
@@ -93,6 +90,9 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
             // Stop and reset timer
             self.timerCount = 0
             self.timer?.invalidate()
+            
+            // Dismiss Audio Recorder
+            self.dismiss(animated: true)
         }
     }
     
@@ -186,8 +186,6 @@ extension InputAudioViewController: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         let url = getFileURL()
         self.audioDelegate?.finishedRecording(audioURL: url)
-        //Passa a url do audio para AudioPlayerView
-        self.audioPlayView.audioURL = url
     }
     
     ///Gets documents diretory used as temporary location for audio storage
