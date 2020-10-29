@@ -23,7 +23,7 @@ class PhotoCell: UITableViewCell {
         self.imageSelected = UIImage(named: "photo2")
         self.imageCellView.contentMode = .scaleAspectFill
         self.imageCellView?.image = self.imageSelected
-        self.imageCellView.layer.cornerRadius = 30
+        self.imageCellView.layer.cornerRadius = 20
         self.imageCellView.clipsToBounds = true
     }
 
