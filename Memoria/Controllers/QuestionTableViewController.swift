@@ -204,8 +204,9 @@ class QuestionTableViewController: UITableViewController {
         case 8:
             cell = tableView.dequeueReusableCell(withIdentifier: self.gradientButtonCellIdentifier, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
-                cellType.gradientButton.setTitle("Salvar", for: .normal)
+                cellType.title = "Salvar"
                 cellType.buttonDelegate = self
+                cellType.isEnabled = self.shouldEnableSaveButton()
                 cell = cellType
             }
         default:
@@ -218,6 +219,10 @@ class QuestionTableViewController: UITableViewController {
 // MARK: Gradient Button
 
 extension QuestionTableViewController: GradientButtonCellDelegate {
+    
+    func disabledButtonAction() {
+        present(Alerts().unableToSave, animated: true, completion: nil)
+    }
     
     // Saves detail in memory
     func gradientButtonCellAction() {
@@ -253,6 +258,21 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         return detail
     }
     
+    func shouldEnableSaveButton() -> Bool {
+        
+        if self.audioURL == nil &&
+            self.imageURL == nil {
+            
+            if let text = self.writtenText,
+               text.trimmingCharacters(in: .whitespaces).isEmpty {
+                return false
+            } else if self.writtenText == nil {
+                return false
+            }
+        }
+        return true
+    }
+    
     // MARK: Segue
     
     // Passes needed information the the next screen
@@ -271,6 +291,7 @@ extension QuestionTableViewController: TextViewCellDelegate {
     
     func didFinishWriting(text: String) {
         self.writtenText = text
+        self.tableView.reloadData()
     }
 }
 

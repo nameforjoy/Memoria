@@ -66,12 +66,6 @@ extension TextViewCell: UITextViewDelegate {
 
     // Display placeholder if user left texview empty
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty || textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
-            textView.text = self.placeholderText
-            textView.textColor = UIColor.lightGray
-            self.shouldDisplayPlaceholderText = true
-        } else {
-            self.textViewCellDelegate?.didFinishWriting(text: textView.text)
-        }
+        self.textViewCellDelegate?.didFinishWriting(text: textView.text)
     }
 }
