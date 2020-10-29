@@ -150,11 +150,9 @@ class QuestionTableViewController: UITableViewController {
                 cell = cellType
             }
         case 4:
-            // NÃO ESTÁ FUNCIONANDO
-            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: self.audioPlayerCellIdentifier, for: indexPath)
             if let cellTypeAudio = cell as? AudioPlayerCell {
                 cell = cellTypeAudio
-                // NÃO ENTRA AQUI
             }
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
