@@ -256,6 +256,8 @@ extension QuestionViewController: AudioRecordingDelegate {
     }
 }
 
+// MARK: Image Picker
+
 ///Extension For ImagePicker
 extension QuestionViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {

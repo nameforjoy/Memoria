@@ -54,7 +54,10 @@ extension TextViewCell: UITextViewDelegate {
 
     // Removes placeholder once user starts editing textview
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        
+        // Configure text view for person to write in
+        // If placeholder is displayed, erase it and change text color to black
+        if self.shouldDisplayPlaceholderText {
             textView.text = nil
             textView.textColor = UIColor.black
             self.shouldDisplayPlaceholderText = false

@@ -18,6 +18,7 @@ class QuestionTableViewController: UITableViewController {
     let textViewIdentifier: String = "TextViewCell"
     let iconButtonCellIdentifier: String = "IconButtonCell"
     let audioPlayerCellIdentifier: String = "AudioPlayerCell"
+    let gradientButtonCellIdentifier: String = "GradientButtonCell"
     
     var imageURL: URL?
     var imagePicker: ImagePicker?
@@ -87,6 +88,9 @@ class QuestionTableViewController: UITableViewController {
         
         let nibAudioPlayer = UINib.init(nibName: self.audioPlayerCellIdentifier, bundle: nil)
         self.tableView.register(nibAudioPlayer, forCellReuseIdentifier: self.audioPlayerCellIdentifier)
+        
+        let nibGradientButton = UINib.init(nibName: self.gradientButtonCellIdentifier, bundle: nil)
+        self.tableView.register(nibGradientButton, forCellReuseIdentifier: self.gradientButtonCellIdentifier)
     }
     
     // MARK: Acessibility
@@ -113,7 +117,7 @@ class QuestionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -147,6 +151,8 @@ class QuestionTableViewController: UITableViewController {
                    !text.trimmingCharacters(in: .whitespaces).isEmpty {
                     cellType.writtenText = text
                     cellType.shouldDisplayPlaceholderText = false
+                } else {
+                    cellType.shouldDisplayPlaceholderText = true
                 }
                 cell = cellType
             }
@@ -194,12 +200,42 @@ class QuestionTableViewController: UITableViewController {
                 cellType.imageView?.image = self.selectedImage
                 cell = cellType
             }
+        case 8:
+            cell = tableView.dequeueReusableCell(withIdentifier: self.gradientButtonCellIdentifier, for: indexPath)
+            if let cellType = cell as? GradientButtonCell {
+                cellType.gradientButton.setTitle("Salvar", for: .normal)
+                cellType.buttonDelegate = self
+                cell = cellType
+            }
         default:
             print("Default")
         }
         return cell
     }
 }
+
+// MARK: Gradient Button
+
+extension QuestionTableViewController: GradientButtonCellDelegate {
+    
+    // Saves detail in memory
+    func gradientButtonCellAction() {
+        print("Detail saved")
+    }
+    
+    // MARK: Segue
+    
+    // Passes needed information the the next screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
+        if let destination = segue.destination as? MemoryCollectionViewController {
+            destination.didJustSaveAMemory = true
+        }
+    }
+}
+
+// MARK: Text View
 
 extension QuestionTableViewController: TextViewCellDelegate {
     
