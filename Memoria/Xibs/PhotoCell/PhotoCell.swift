@@ -20,7 +20,7 @@ class PhotoCell: UITableViewCell {
         super.awakeFromNib()
         
         self.imageSelected = UIImage(named: "photo2")
-        self.imageCellView.contentMode = .scaleAspectFit
+        self.imageCellView.contentMode = .scaleAspectFill
         self.imageCellView?.image = imageSelected
         self.imageCellView.layer.cornerRadius = 30
     }

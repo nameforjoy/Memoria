@@ -198,7 +198,7 @@ class QuestionTableViewController: UITableViewController {
         case 7:
             cell = tableView.dequeueReusableCell(withIdentifier: self.photoCellIdentifier, for: indexPath)
             if let cellType = cell as? PhotoCell {
-                cellType.imageView?.image = self.selectedImage
+                cellType.imageSelected = self.selectedImage
                 cell = cellType
             }
         case 8:
