@@ -38,7 +38,7 @@ class Alerts {
     
     var unableToSave: UIAlertController {
         let title = "Ops, não podemos salvar sua resposta assim!"
-        let message = "Preencha ao menos um dos campos para poder salvar sua resposta, ou pule essa pergunta"
+        let message = "Preencha ao menos um dos campos ou pule essa pergunta"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
