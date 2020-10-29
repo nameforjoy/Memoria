@@ -24,6 +24,7 @@ class QuestionTableViewController: UITableViewController {
     var selectedImage: UIImage?
     
     var audioURL: URL?
+    var writtenText: String?
     
     var hiddenRows: [Int] = [4,7]
     
@@ -140,6 +141,13 @@ class QuestionTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: self.textViewIdentifier, for: indexPath)
             if let cellType = cell as? TextViewCell {
                 cellType.placeholderText = "Descreva sua memória aqui..."
+                cellType.textViewCellDelegate = self
+                
+                if let text: String = self.writtenText,
+                   !text.trimmingCharacters(in: .whitespaces).isEmpty {
+                    cellType.writtenText = text
+                    cellType.shouldDisplayPlaceholderText = false
+                }
                 cell = cellType
             }
         case 2:
@@ -190,6 +198,13 @@ class QuestionTableViewController: UITableViewController {
             print("Default")
         }
         return cell
+    }
+}
+
+extension QuestionTableViewController: TextViewCellDelegate {
+    
+    func didFinishWriting(text: String) {
+        self.writtenText = text
     }
 }
 

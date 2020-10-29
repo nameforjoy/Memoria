@@ -7,37 +7,47 @@
 
 import UIKit
 
+protocol TextViewCellDelegate: AnyObject {
+    func didFinishWriting(text: String)
+}
+
 class TextViewCell: UITableViewCell {
 
     @IBOutlet weak var textView: UITextView!
+    
     // Placeholder control
+    weak var textViewCellDelegate: TextViewCellDelegate?
     var shouldDisplayPlaceholderText: Bool = true
+    
     var placeholderText: String = "" {
         didSet {
-            self.textView.text = placeholderText
+            self.textView.text = self.placeholderText
+            self.textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    var writtenText: String = "" {
+        didSet {
+            if !self.writtenText.trimmingCharacters(in: .whitespaces).isEmpty {
+                self.textView.text = self.writtenText
+                self.textView.textColor = UIColor.black
+            }
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setUpText()
+        // Set up dynamic font
+        let typography = Typography()
+        self.textView.dynamicFont = typography.bodyRegular
+        
         self.textView.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
-    func setUpText() {
-        self.textView.text = placeholderText
-        
-        // Set up dynamic font
-        let typography = Typography()
-        self.textView.dynamicFont = typography.bodyRegular
-        self.textView.textColor = UIColor.lightGray
-    }
-
 }
 
 extension TextViewCell: UITextViewDelegate {
@@ -53,10 +63,12 @@ extension TextViewCell: UITextViewDelegate {
 
     // Display placeholder if user left texview empty
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = placeholderText
+        if textView.text.isEmpty || textView.text.trimmingCharacters(in: .whitespaces).isEmpty {
+            textView.text = self.placeholderText
             textView.textColor = UIColor.lightGray
             self.shouldDisplayPlaceholderText = true
+        } else {
+            self.textViewCellDelegate?.didFinishWriting(text: textView.text)
         }
     }
 }
