@@ -14,9 +14,9 @@
 		152EE5ED252B33A5002F379C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EB252B33A5002F379C /* Main.storyboard */; };
 		152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5EE252B33A7002F379C /* Assets.xcassets */; };
 		152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */; };
-		15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E842549930600918E8B /* QuestionTableViewController.swift */; };
 		15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15514E7C2549890C00918E8B /* AudioPlayerCell.xib */; };
 		15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E7F2549891F00918E8B /* AudioPlayerCell.swift */; };
+		15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E842549930600918E8B /* QuestionTableViewController.swift */; };
 		159F629925484A240011DB9F /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 159F629825484A240011DB9F /* PhotoCell.xib */; };
 		159F629C25484A330011DB9F /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F629B25484A330011DB9F /* PhotoCell.swift */; };
 		159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F62A5254861FB0011DB9F /* TextViewCell.swift */; };
@@ -41,6 +41,9 @@
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */; };
+		8D9AA2E0254A756B00C394FF /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2DF254A756B00C394FF /* PresentationManager.swift */; };
+		8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */; };
+		8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */; };
 		8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */; };
 		8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */; };
 		8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BE254739190008DBF8 /* GradientButton.xib */; };
@@ -68,9 +71,9 @@
 		152EE5EE252B33A7002F379C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		152EE5F1252B33A7002F379C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		152EE5F3252B33A7002F379C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15514E842549930600918E8B /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
 		15514E7C2549890C00918E8B /* AudioPlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioPlayerCell.xib; sourceTree = "<group>"; };
 		15514E7F2549891F00918E8B /* AudioPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerCell.swift; sourceTree = "<group>"; };
+		15514E842549930600918E8B /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
 		159F629825484A240011DB9F /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		159F629B25484A330011DB9F /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		159F62A5254861FB0011DB9F /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +106,9 @@
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* ScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewKeyboard.swift; sourceTree = "<group>"; };
+		8D9AA2DF254A756B00C394FF /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
+		8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonCell.swift; sourceTree = "<group>"; };
+		8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButtonCell.xib; sourceTree = "<group>"; };
 		8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
 		8DCEE7BE254739190008DBF8 /* GradientButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButton.xib; sourceTree = "<group>"; };
@@ -201,22 +207,22 @@
 			path = AudioPlayerCell;
 			sourceTree = "<group>";
 		};
-		159F629725484A160011DB9F /* Photo */ = {
+		159F629725484A160011DB9F /* PhotoCell */ = {
 			isa = PBXGroup;
 			children = (
 				159F629825484A240011DB9F /* PhotoCell.xib */,
 				159F629B25484A330011DB9F /* PhotoCell.swift */,
 			);
-			path = Photo;
+			path = PhotoCell;
 			sourceTree = "<group>";
 		};
-		159F62A4254861EA0011DB9F /* TextView */ = {
+		159F62A4254861EA0011DB9F /* TextViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				159F62A5254861FB0011DB9F /* TextViewCell.swift */,
 				159F62A9254862080011DB9F /* TextViewCell.xib */,
 			);
-			path = TextView;
+			path = TextViewCell;
 			sourceTree = "<group>";
 		};
 		15C8F23B252DF46B00DD9208 /* Views */ = {
@@ -254,15 +260,16 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				152471E325307DB3006B39B4 /* AudioPlayer */,
+				15514E7B254988EE00918E8B /* AudioPlayerCell */,
+				8DCEE7BA254738D50008DBF8 /* GradientButton */,
+				8D9AA2E2254A87DA00C394FF /* GradientButtonCell */,
 				8DF6DB3025477C8E0057898E /* IconButton */,
 				8D55D3FF25486CB0004A0BF4 /* IconButtonCell */,
-				15514E7B254988EE00918E8B /* AudioPlayerCell */,
-				159F62A4254861EA0011DB9F /* TextView */,
-				159F629725484A160011DB9F /* Photo */,
-				15D24CEE254842C000D0D746 /* Subtitle */,
-				15D24CDC254837CE00D0D746 /* TitleSubtitle */,
-				8DCEE7BA254738D50008DBF8 /* GradientButton */,
-				152471E325307DB3006B39B4 /* AudioPlayer */,
+				159F629725484A160011DB9F /* PhotoCell */,
+				15D24CEE254842C000D0D746 /* SubtitleCell */,
+				159F62A4254861EA0011DB9F /* TextViewCell */,
+				15D24CDC254837CE00D0D746 /* TitleSubtitleCell */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -275,22 +282,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		15D24CDC254837CE00D0D746 /* TitleSubtitle */ = {
+		15D24CDC254837CE00D0D746 /* TitleSubtitleCell */ = {
 			isa = PBXGroup;
 			children = (
 				15D24CDD2548381B00D0D746 /* TitleSubtitleCell.xib */,
 				15D24CEA25483D4400D0D746 /* TitleSubtitleCell.swift */,
 			);
-			path = TitleSubtitle;
+			path = TitleSubtitleCell;
 			sourceTree = "<group>";
 		};
-		15D24CEE254842C000D0D746 /* Subtitle */ = {
+		15D24CEE254842C000D0D746 /* SubtitleCell */ = {
 			isa = PBXGroup;
 			children = (
 				15D24CEF2548433A00D0D746 /* SubtilteCell.swift */,
 				15D24CF22548434600D0D746 /* SubtitleCell.xib */,
 			);
-			path = Subtitle;
+			path = SubtitleCell;
 			sourceTree = "<group>";
 		};
 		8D55D3FF25486CB0004A0BF4 /* IconButtonCell */ = {
@@ -331,8 +338,18 @@
 				8DDCAB99252EA0290012B671 /* Alerts.swift */,
 				8D60F7F4254368B3002A3F74 /* Typography.swift */,
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
+				8D9AA2DF254A756B00C394FF /* PresentationManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8D9AA2E2254A87DA00C394FF /* GradientButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */,
+				8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */,
+			);
+			path = GradientButtonCell;
 			sourceTree = "<group>";
 		};
 		8DCEE7BA254738D50008DBF8 /* GradientButton */ = {
@@ -427,6 +444,7 @@
 				15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */,
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
+				8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */,
 				159F629925484A240011DB9F /* PhotoCell.xib in Resources */,
 				15D24CF32548434600D0D746 /* SubtitleCell.xib in Resources */,
 				159F62AA254862080011DB9F /* TextViewCell.xib in Resources */,
@@ -483,10 +501,12 @@
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */,
 				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,
+				8D9AA2E0254A756B00C394FF /* PresentationManager.swift in Sources */,
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */,
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
+				8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */,
 				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15D24CF02548433A00D0D746 /* SubtilteCell.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,

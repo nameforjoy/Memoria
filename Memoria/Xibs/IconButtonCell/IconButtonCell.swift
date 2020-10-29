@@ -7,6 +7,16 @@
 
 import UIKit
 
+enum ButtonType {
+    case addImage
+    case addAudio
+    case undefined
+}
+
+protocol IconButtonCellDelegate: AnyObject {
+    func iconButtonCellAction(buttonType: ButtonType, sender: Any)
+}
+
 class IconButtonCell: UITableViewCell {
 
     @IBOutlet weak var button: UIButton!
@@ -14,7 +24,8 @@ class IconButtonCell: UITableViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var background: UIView!
     
-    weak var buttonDelegate: IconButtonDelegate?
+    weak var buttonDelegate: IconButtonCellDelegate?
+    var buttonType: ButtonType = .undefined
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +42,6 @@ class IconButtonCell: UITableViewCell {
     }
     
     @IBAction func iconButtonAction(_ sender: Any) {
-        self.buttonDelegate?.iconButtonAction()
+        self.buttonDelegate?.iconButtonCellAction(buttonType: self.buttonType, sender: sender)
     }
-    
 }
