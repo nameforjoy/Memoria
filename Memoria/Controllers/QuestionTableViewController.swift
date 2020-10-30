@@ -19,9 +19,6 @@ class QuestionTableViewController: UITableViewController {
     let iconButtonCellIdentifier: String = "IconButtonCell"
     let audioPlayerCellIdentifier: String = "AudioPlayerCell"
     let gradientButtonCellIdentifier: String = "GradientButtonCell"
-    let datePickerCellIdentifier: String = "DatePickerCell"
-    let dontRememberCellIdentifier: String = "DontRemeberCell"
-    let happenedCellIdentifier: String = "HappenedCell"
     
     var imageURL: URL?
     var imagePicker: ImagePicker?
@@ -95,15 +92,6 @@ class QuestionTableViewController: UITableViewController {
         
         let nibGradientButton = UINib.init(nibName: self.gradientButtonCellIdentifier, bundle: nil)
         self.tableView.register(nibGradientButton, forCellReuseIdentifier: self.gradientButtonCellIdentifier)
-        
-        let nibDatePicker = UINib.init(nibName: self.datePickerCellIdentifier, bundle: nil)
-        self.tableView.register(nibDatePicker, forCellReuseIdentifier: self.datePickerCellIdentifier)
-        
-        let nibDontRemember = UINib.init(nibName: self.dontRememberCellIdentifier, bundle: nil)
-        self.tableView.register(nibDontRemember, forCellReuseIdentifier: self.dontRememberCellIdentifier)
-        
-        let nibHappened = UINib.init(nibName: self.happenedCellIdentifier, bundle: nil)
-        self.tableView.register(nibHappened, forCellReuseIdentifier: self.happenedCellIdentifier)
     }
     
     // MARK: Acessibility
@@ -130,7 +118,7 @@ class QuestionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -219,30 +207,6 @@ class QuestionTableViewController: UITableViewController {
                 cellType.title = "Salvar"
                 cellType.buttonDelegate = self
                 cellType.isEnabled = self.shouldEnableSaveButton()
-                cell = cellType
-            }
-        
-        case 9:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.happenedCellIdentifier, for: indexPath)
-            if let cellType = cell as? HappenedCell {
-                cell = cellType
-            }
-        case 10:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
-            if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = "Não se preocupe com a exatidão! Pode ser uma estimativa, tá bem?"
-                cellType.subtitleLabel.dynamicFont = Typography().calloutRegular
-                cellType.subtitleLabel.textColor = .darkGray
-                cell = cellType
-            }
-        case 11:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.datePickerCellIdentifier, for: indexPath)
-            if let cellType = cell as? DatePickerCell {
-                cell = cellType
-            }
-        case 12:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.dontRememberCellIdentifier, for: indexPath)
-            if let cellType = cell as? DontRemeberCell {
                 cell = cellType
             }
         default:
