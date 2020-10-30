@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
             <connections>
-                <outlet property="backgroundView" destination="fTu-1y-JUG" id="LkL-UE-CtB"/>
+                <outlet property="background" destination="fTu-1y-JUG" id="LkL-UE-CtB"/>
                 <outlet property="button" destination="oTm-d1-7mp" id="EwZ-qA-S5F"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Rmk-GC-B7s"/>
                 <outlet property="icon" destination="bgy-IX-1Ll" id="42w-TU-ksm"/>
@@ -58,7 +58,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTm-d1-7mp">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                     <connections>
-                        <action selector="iconTextButtonAction:" destination="-1" eventType="touchUpInside" id="W0S-qt-TBg"/>
+                        <action selector="iconButtonAction:" destination="-1" eventType="touchUpInside" id="W0S-qt-TBg"/>
                     </connections>
                 </button>
             </subviews>

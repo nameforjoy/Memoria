@@ -16,9 +16,7 @@ class Alerts {
         let title: String = "Sua memória foi guardada!"
         let message: String = "Está disponível para ser acessada e gerar boas lembranças"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let actionTitle = "OK"
-        myAlert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         return myAlert
     }
@@ -26,14 +24,23 @@ class Alerts {
     // Allow access to microphone in Settings to preoceed
     var changeMicrophonePermission: UIAlertController {
         
-        let title = "Ops, não temos acesso ao seu microfone"
+        let title = "Ops, não temos acesso ao seu microfone!"
         let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        myAlert.addAction(UIAlertAction(title: "Configurações", style: .default, handler: { _ in
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }))
         myAlert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        
+        return myAlert
+    }
+    
+    var unableToSave: UIAlertController {
+        let title = "Ops, não podemos salvar sua resposta assim!"
+        let message = "Preencha ao menos um dos campos ou pule essa pergunta"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         return myAlert
     }

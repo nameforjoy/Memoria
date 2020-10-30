@@ -80,18 +80,6 @@ class QuestionViewController: UIViewController {
         self.presentAsModal(show: recordAudioScreen, over: self)
     }
     
-    func presentAsAlert(show viewController: UIViewController, over context: UIViewController) {
-        
-        // Set up presentation mode
-        viewController.providesPresentationContextTransitionStyle = true
-        viewController.definesPresentationContext = true
-        viewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        viewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        // Present alert
-        context.present(viewController, animated: true, completion: nil)
-    }
-    
     @IBAction func selectImage(_ sender: Any) {
         guard let senderView = sender as? UIView else { return }
         self.imagePicker.present(from: senderView)
@@ -138,9 +126,6 @@ class QuestionViewController: UIViewController {
     /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged(_ notification: Notification) {
         self.changeTextForAccessibility()
-        
-        // Apply gradient again since the button bounds will change
-        // self.saveMemoryButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
     }
     
     /// Set up question texts in its respective labels.
@@ -270,6 +255,8 @@ extension QuestionViewController: AudioRecordingDelegate {
         context.present(viewController, animated: true, completion: nil)
     }
 }
+
+// MARK: Image Picker
 
 ///Extension For ImagePicker
 extension QuestionViewController: ImagePickerDelegate {

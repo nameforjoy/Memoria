@@ -11,17 +11,17 @@ protocol IconButtonDelegate: AnyObject {
     func iconButtonAction()
 }
 
-@IBDesignable class IconButtonView: UIView {
+class IconButtonView: UIView {
     
     // MARK: Attributes
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var background: UIView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var icon: UIImageView!
     
-    weak var delegate: IconButtonDelegate?
+    weak var buttonDelegate: IconButtonDelegate?
     
     // MARK: Initializers
     
@@ -43,8 +43,8 @@ protocol IconButtonDelegate: AnyObject {
     
     // MARK: Action
     
-    @IBAction func iconTextButtonAction(_ sender: Any) {
-        self.delegate?.iconButtonAction()
+    @IBAction func iconButtonAction(_ sender: Any) {
+        self.buttonDelegate?.iconButtonAction()
     }
     
     // MARK: Set up
@@ -57,7 +57,7 @@ protocol IconButtonDelegate: AnyObject {
     }
     
     private func visualSetUp() {
-        self.backgroundView.layer.cornerRadius = self.backgroundView.frame.height/4
+        self.background.layer.cornerRadius = self.background.frame.height/4
         self.title.dynamicFont = Typography().calloutSemibold
     }
 }
