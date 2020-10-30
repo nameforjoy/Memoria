@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TextFieldCellDelegate: AnyObject {
+    func didFinishWriting(text: String)
+}
+
 class DatePickerCell: UITableViewCell {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -14,18 +18,19 @@ class DatePickerCell: UITableViewCell {
     
     var timeUnit: Calendar.Component?
     var timePassedBy: Int?
+//    weak var textFieldCellDelegate: TextFieldCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.textField.keyboardType = UIKeyboardType.decimalPad
+        self.textField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
-        
     @IBAction func rangeSelected(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -42,9 +47,11 @@ class DatePickerCell: UITableViewCell {
 
 extension DatePickerCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text, let timeInt = Int(text) {
-            self.timePassedBy = timeInt
+        if let text = textField.text {
+            if let timeInt = Int(text) {
+                self.timePassedBy = timeInt
+            }
+//            self.textFieldCellDelegate?.didFinishWriting(text: text)
         }
-        //chamar delegate
     }
 }
