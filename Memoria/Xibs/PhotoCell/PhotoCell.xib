@@ -9,15 +9,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="240" id="Mz5-Zj-jtV" customClass="PhotoCell" customModule="Memoria" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="398" id="Mz5-Zj-jtV" customClass="PhotoCell" customModule="Memoria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="398"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mz5-Zj-jtV" id="qtA-Qb-sSm">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="398"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uxO-7q-xVD">
-                        <rect key="frame" x="16" y="8" width="382" height="224"/>
+                        <rect key="frame" x="16" y="8" width="382" height="382"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="uxO-7q-xVD" secondAttribute="height" multiplier="1:1" id="hw1-LJ-j70"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
@@ -30,7 +33,7 @@
             <connections>
                 <outlet property="imageCellView" destination="uxO-7q-xVD" id="tIy-uH-bK5"/>
             </connections>
-            <point key="canvasLocation" x="57.971014492753625" y="-178.79464285714286"/>
+            <point key="canvasLocation" x="57.971014492753625" y="-125.89285714285714"/>
         </tableViewCell>
     </objects>
 </document>
