@@ -40,6 +40,54 @@ class DateManager {
         return estimatedDate
     }
 
+    // Method to convert estimatedDate to TimePassedBy + TimeUnit
+    // Pegar do lifeTree
+    func getTimeSinceLastEntry(lastDate: Date) -> String {
+
+        let periodInSeconds = lastDate.distance(to: Date())
+        let periodInMinutes = Int(periodInSeconds / 60)
+
+        // Minutes
+        if periodInMinutes < 60 {
+            if periodInMinutes == 1 {
+                return "há \(periodInMinutes) minuto"
+            } else {
+                return "há \(periodInMinutes) minutos"
+            }
+        }
+        // Hours
+        else {
+            let periodInHours = Int(periodInMinutes / 60)
+            if periodInHours < 24 {
+                if periodInHours == 1 {
+                    return "há \(periodInHours) hora"
+                } else {
+                    return "há \(periodInHours) horas"
+                }
+            }
+            // Days
+            else {
+                let periodInDays = Int(periodInHours / 24)
+                if periodInDays < 7 {
+                    if periodInDays == 1 {
+                        return "há \(periodInDays) dia"
+                    } else {
+                        return "há \(periodInDays) dias"
+                    }
+                }
+                // Weeks
+                else {
+                    let periodInWeeks = Int(periodInDays / 7)
+                    if periodInWeeks == 1 {
+                        return "há \(periodInWeeks) semana"
+                    } else {
+                        return "há \(periodInWeeks) semanas"
+                    }
+                }
+            }
+        }
+    }
+
     ///Method to convert a Calendar.Component to a string in Portuguese, considering plural
     static func getStringFromCalendarComponent(timePasseBy: Int, component: Calendar.Component) -> String? {
         switch component {
