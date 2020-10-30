@@ -62,8 +62,13 @@ class MemoryDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            let newRecord = self.getMemoryFromRecord(record: record)
-            // allRecords.append(newRecord)
+            if let newRecord = self.getMemoryFromRecord(record: record) {
+                allRecords.append(newRecord)
+            } else {
+                print("Record #\(record.recordID) was not able to be converted into a Memory. Check if record has all data necessary.")
+                print(record.allKeys())
+                print(record.allTokens())
+            }
 
         }
 
@@ -78,6 +83,8 @@ class MemoryDAO: DAO {
         privateDatabase.add(operation)
     }
 
+    // *** INCOMPLETE METHOD ***
+    // TODO: Add date to Memory object
     static private func getMemoryFromRecord(record: CKRecord) -> Memory? {
 
         // Casting record value to String
@@ -99,13 +106,16 @@ class MemoryDAO: DAO {
         }
 
         // Converting Texts
-        guard let title = record["title"] as? String else { return nil }
-        guard let description = record["description"] as? String else { return nil }
+        let title = record["title"] as? String
+        let description = record["description"] as? String
         let date = record["date"] as? Date
         let timeUnit = record["timeUnit"] as? String
 
         // Converts iCloud types to model types
-        guard let memoryUUID = UUID(uuidString: memoryIDAsString) else { return nil }
+        guard let memoryUUID = UUID(uuidString: memoryIDAsString) else {
+            print("Invalid String for creating UUID.")
+            return nil
+        }
         let hasDate = Bool(truncating: hasDateAsNumber as NSNumber)
         let timePassedBy = Int(truncating: timePassedByAsNumber)
 
