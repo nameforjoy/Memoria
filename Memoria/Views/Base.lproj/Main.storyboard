@@ -52,13 +52,6 @@ Vamos guardar uma? </string>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0s-xi-24m">
-                                <rect key="frame" x="142.5" y="687" width="129" height="30"/>
-                                <state key="normal" title="QuestionVC Antiga"/>
-                                <connections>
-                                    <segue destination="6OU-zm-CFT" kind="show" id="RjR-xn-coF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -69,8 +62,6 @@ Vamos guardar uma? </string>
                             <constraint firstItem="uBd-86-ivj" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="F6F-Sp-Byw"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerY" secondItem="e5p-nX-PYi" secondAttribute="centerY" multiplier="0.8" id="Jkt-6K-VkQ"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="NAE-4O-Ve8"/>
-                            <constraint firstItem="g0s-xi-24m" firstAttribute="centerX" secondItem="uBd-86-ivj" secondAttribute="centerX" id="RX1-RA-OJE"/>
-                            <constraint firstItem="g0s-xi-24m" firstAttribute="top" secondItem="uBd-86-ivj" secondAttribute="bottom" constant="41" id="YZ7-3T-Mqj"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="top" secondItem="YcP-aD-e4p" secondAttribute="bottom" constant="10" id="cEL-kU-Klp"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="diD-x7-JTE"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="leading" secondItem="YcP-aD-e4p" secondAttribute="leading" id="eNZ-Ke-s8L"/>
@@ -129,7 +120,7 @@ Vamos guardar uma? </string>
                     <navigationItem key="navigationItem" id="KeS-GA-Rij"/>
                     <connections>
                         <segue destination="sgH-RD-Vd6" kind="unwind" identifier="unwindToMemoryCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="3r9-Qx-HTj"/>
-                        <segue destination="14s-zS-Ppn" kind="show" id="w2e-UO-M54"/>
+                        <segue destination="14s-zS-Ppn" kind="show" identifier="toMemoryTitleTVC" id="w2e-UO-M54"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrP-hX-oat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -155,183 +146,6 @@ Vamos guardar uma? </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbz-Vb-1CH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1003" y="923"/>
-        </scene>
-        <!--Question-->
-        <scene sceneID="nvh-aE-BPr">
-            <objects>
-                <viewController storyboardIdentifier="question" title="Question" id="6OU-zm-CFT" customClass="QuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lwf-Fw-7ku">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkS-b1-4HN">
-                                <rect key="frame" x="0.0" y="140" width="414" height="682"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1d8-Mz-rMq" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="866"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd9-8e-muY">
-                                                <rect key="frame" x="25" y="10" width="364" height="22"/>
-                                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descreva sua memória aqui..." translatesAutoresizingMaskIntoConstraints="NO" id="O2x-MF-M3z">
-                                                <rect key="frame" x="25" y="42" width="364" height="300"/>
-                                                <color key="backgroundColor" name="grayLight"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="fv7-no-Uq2"/>
-                                                </constraints>
-                                                <color key="textColor" name="grayDark"/>
-                                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZh-gJ-ico">
-                                                <rect key="frame" x="25" y="362" width="70" height="22"/>
-                                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLR-Nl-4U7">
-                                                <rect key="frame" x="25" y="389" width="99.5" height="22"/>
-                                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-7d-5WU" userLabel="Button background">
-                                                <rect key="frame" x="25" y="426" width="364" height="40"/>
-                                                <color key="backgroundColor" name="purpleLight"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4e-dg-fww" userLabel="Label+icon view">
-                                                <rect key="frame" x="131.5" y="426" width="151" height="40"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gravar áudio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgc-ZD-OMg">
-                                                        <rect key="frame" x="37.5" y="4.5" width="103.5" height="31"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <color key="textColor" name="purpleDark"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="is6-0N-iTa">
-                                                        <rect key="frame" x="12" y="10" width="17.5" height="20"/>
-                                                        <color key="tintColor" name="purple"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="is6-0N-iTa" secondAttribute="height" multiplier="6:7" id="ndc-C2-VAC"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ua5-4b-hBT"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="sgc-ZD-OMg" firstAttribute="leading" secondItem="is6-0N-iTa" secondAttribute="trailing" constant="8" symbolic="YES" id="B7g-Td-lSN"/>
-                                                    <constraint firstAttribute="trailing" secondItem="sgc-ZD-OMg" secondAttribute="trailing" constant="10" id="DU5-GG-XZl"/>
-                                                    <constraint firstItem="sgc-ZD-OMg" firstAttribute="centerY" secondItem="m4e-dg-fww" secondAttribute="centerY" id="TWu-7Y-FuK"/>
-                                                    <constraint firstItem="is6-0N-iTa" firstAttribute="centerY" secondItem="m4e-dg-fww" secondAttribute="centerY" id="gFL-bE-Bsc"/>
-                                                    <constraint firstItem="is6-0N-iTa" firstAttribute="height" secondItem="sgc-ZD-OMg" secondAttribute="height" multiplier="0.3" priority="900" id="iAd-p1-Z5f"/>
-                                                    <constraint firstItem="is6-0N-iTa" firstAttribute="leading" secondItem="m4e-dg-fww" secondAttribute="leading" constant="12" id="psE-e7-34g"/>
-                                                </constraints>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAN-P1-EI2">
-                                                <rect key="frame" x="25" y="426" width="364" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1SU-ls-dq5"/>
-                                                </constraints>
-                                                <connections>
-                                                    <action selector="recordAudio:" destination="6OU-zm-CFT" eventType="touchUpInside" id="ZC8-np-wdx"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4UV-oS-4wR">
-                                                <rect key="frame" x="141.5" y="488" width="131" height="30"/>
-                                                <state key="normal" title="Selecionar Imagem"/>
-                                                <connections>
-                                                    <action selector="selectImage:" destination="6OU-zm-CFT" eventType="touchUpInside" id="7K8-zC-suN"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="534-Ki-cXM" customClass="GradientButtonView" customModule="Memoria" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="638" width="364" height="44"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" priority="500" constant="44" id="7zQ-HX-cGd"/>
-                                                </constraints>
-                                            </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u99-6a-PBj">
-                                                <rect key="frame" x="25" y="526" width="364" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="4UV-oS-4wR" firstAttribute="top" secondItem="QAN-P1-EI2" secondAttribute="bottom" constant="22" id="10M-Zl-Njt"/>
-                                            <constraint firstItem="m4e-dg-fww" firstAttribute="height" secondItem="QAN-P1-EI2" secondAttribute="height" id="1I4-FU-rsb"/>
-                                            <constraint firstAttribute="bottom" secondItem="QAN-P1-EI2" secondAttribute="bottom" constant="400" id="3P9-zl-rRv"/>
-                                            <constraint firstItem="3sB-7d-5WU" firstAttribute="top" secondItem="QAN-P1-EI2" secondAttribute="top" id="53a-eP-Bka"/>
-                                            <constraint firstItem="3sB-7d-5WU" firstAttribute="leading" secondItem="QAN-P1-EI2" secondAttribute="leading" id="56i-Bi-YFc"/>
-                                            <constraint firstItem="O2x-MF-M3z" firstAttribute="centerX" secondItem="1d8-Mz-rMq" secondAttribute="centerX" id="6rg-bf-OuL"/>
-                                            <constraint firstItem="wd9-8e-muY" firstAttribute="leading" secondItem="tZh-gJ-ico" secondAttribute="leading" id="AsR-ep-0Ri"/>
-                                            <constraint firstItem="QAN-P1-EI2" firstAttribute="centerX" secondItem="1d8-Mz-rMq" secondAttribute="centerX" id="OHb-bx-F9O"/>
-                                            <constraint firstItem="wd9-8e-muY" firstAttribute="leading" secondItem="1d8-Mz-rMq" secondAttribute="leading" constant="25" id="Pej-iv-z73"/>
-                                            <constraint firstItem="3sB-7d-5WU" firstAttribute="trailing" secondItem="QAN-P1-EI2" secondAttribute="trailing" id="SmG-1D-lfk"/>
-                                            <constraint firstItem="m4e-dg-fww" firstAttribute="centerY" secondItem="QAN-P1-EI2" secondAttribute="centerY" id="UBb-DA-WHh"/>
-                                            <constraint firstItem="QAN-P1-EI2" firstAttribute="leading" secondItem="wd9-8e-muY" secondAttribute="leading" id="Vpa-Nr-jLZ"/>
-                                            <constraint firstItem="QAN-P1-EI2" firstAttribute="height" secondItem="sgc-ZD-OMg" secondAttribute="height" multiplier="1.3" id="ZLh-86-rK2"/>
-                                            <constraint firstItem="wd9-8e-muY" firstAttribute="top" secondItem="1d8-Mz-rMq" secondAttribute="top" constant="10" id="a9K-Bm-0LL"/>
-                                            <constraint firstItem="wd9-8e-muY" firstAttribute="centerX" secondItem="1d8-Mz-rMq" secondAttribute="centerX" id="eLY-TE-lKC"/>
-                                            <constraint firstItem="wd9-8e-muY" firstAttribute="leading" secondItem="GLR-Nl-4U7" secondAttribute="leading" id="kmR-wG-ofO"/>
-                                            <constraint firstItem="m4e-dg-fww" firstAttribute="centerX" secondItem="QAN-P1-EI2" secondAttribute="centerX" id="nhp-kS-EwY"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GLR-Nl-4U7" secondAttribute="trailing" constant="20" symbolic="YES" id="oRU-qE-utW"/>
-                                            <constraint firstItem="O2x-MF-M3z" firstAttribute="leading" secondItem="wd9-8e-muY" secondAttribute="leading" id="puX-Qm-LRk"/>
-                                            <constraint firstItem="GLR-Nl-4U7" firstAttribute="top" secondItem="tZh-gJ-ico" secondAttribute="bottom" constant="5" id="shX-X1-Y50"/>
-                                            <constraint firstItem="O2x-MF-M3z" firstAttribute="top" secondItem="wd9-8e-muY" secondAttribute="bottom" constant="10" id="tQY-RZ-d9T"/>
-                                            <constraint firstItem="tZh-gJ-ico" firstAttribute="top" secondItem="O2x-MF-M3z" secondAttribute="bottom" constant="20" id="u5w-eH-woU"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tZh-gJ-ico" secondAttribute="trailing" constant="20" symbolic="YES" id="vB2-0E-Zkv"/>
-                                            <constraint firstItem="QAN-P1-EI2" firstAttribute="top" secondItem="GLR-Nl-4U7" secondAttribute="bottom" constant="15" id="wDj-64-WtA"/>
-                                            <constraint firstItem="3sB-7d-5WU" firstAttribute="bottom" secondItem="QAN-P1-EI2" secondAttribute="bottom" id="xZ7-ir-Vw1"/>
-                                            <constraint firstItem="4UV-oS-4wR" firstAttribute="centerX" secondItem="QAN-P1-EI2" secondAttribute="centerX" id="yh8-O7-ShH"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="1d8-Mz-rMq" firstAttribute="leading" secondItem="ZfS-hO-vgR" secondAttribute="leading" id="7dB-pd-zeD"/>
-                                    <constraint firstItem="1d8-Mz-rMq" firstAttribute="trailing" secondItem="ZfS-hO-vgR" secondAttribute="trailing" id="9hA-R6-eRI"/>
-                                    <constraint firstItem="1d8-Mz-rMq" firstAttribute="top" secondItem="ZfS-hO-vgR" secondAttribute="top" id="WiU-ZN-lQZ"/>
-                                    <constraint firstItem="1d8-Mz-rMq" firstAttribute="bottom" secondItem="ZfS-hO-vgR" secondAttribute="bottom" id="XIC-Uu-zic"/>
-                                    <constraint firstItem="1d8-Mz-rMq" firstAttribute="width" secondItem="LaR-f4-6DY" secondAttribute="width" id="cdZ-R8-LTK"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="ZfS-hO-vgR"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="LaR-f4-6DY"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="TTR-GR-XYr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="534-Ki-cXM" firstAttribute="leading" secondItem="TTR-GR-XYr" secondAttribute="leading" constant="25" id="7lK-b8-LSk"/>
-                            <constraint firstItem="534-Ki-cXM" firstAttribute="centerX" secondItem="TTR-GR-XYr" secondAttribute="centerX" id="9p0-35-r3F"/>
-                            <constraint firstItem="TTR-GR-XYr" firstAttribute="bottom" secondItem="534-Ki-cXM" secondAttribute="bottom" constant="40" id="TiS-kb-nMc"/>
-                            <constraint firstItem="mkS-b1-4HN" firstAttribute="leading" secondItem="TTR-GR-XYr" secondAttribute="leading" id="W5X-Kc-38a"/>
-                            <constraint firstItem="TTR-GR-XYr" firstAttribute="bottom" secondItem="mkS-b1-4HN" secondAttribute="bottom" constant="40" id="dhb-kh-RbB"/>
-                            <constraint firstItem="TTR-GR-XYr" firstAttribute="trailing" secondItem="mkS-b1-4HN" secondAttribute="trailing" id="m2M-bh-B26"/>
-                            <constraint firstItem="mkS-b1-4HN" firstAttribute="top" secondItem="TTR-GR-XYr" secondAttribute="top" id="t0k-vh-WVU"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Question" id="C8O-jV-aaK"/>
-                    <connections>
-                        <outlet property="audioButtonBackground" destination="3sB-7d-5WU" id="NYo-d5-Vbj"/>
-                        <outlet property="audioRecordLabel" destination="sgc-ZD-OMg" id="lE6-jK-FpT"/>
-                        <outlet property="audioSubtitle" destination="GLR-Nl-4U7" id="U4w-Hr-XXz"/>
-                        <outlet property="audioTitle" destination="tZh-gJ-ico" id="2F3-fy-im0"/>
-                        <outlet property="imageView" destination="u99-6a-PBj" id="eYG-2N-lcS"/>
-                        <outlet property="saveButtonView" destination="534-Ki-cXM" id="SgJ-Lx-A5u"/>
-                        <outlet property="scrollView" destination="mkS-b1-4HN" id="wOm-5O-IuZ"/>
-                        <outlet property="selectImageButton" destination="4UV-oS-4wR" id="tXm-Ez-8D4"/>
-                        <outlet property="subtitle" destination="wd9-8e-muY" id="oCG-70-4xy"/>
-                        <outlet property="textAnswer" destination="O2x-MF-M3z" id="Aff-SL-Rug"/>
-                        <segue destination="Wnv-gd-wsS" kind="unwind" identifier="unwindSaveMemoryToCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="SqR-L3-dXi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XNY-Mt-vXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Wnv-gd-wsS" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1070" y="134"/>
         </scene>
         <!--ViewDetail-->
         <scene sceneID="S4D-lb-bWz">
@@ -435,22 +249,9 @@ Vamos guardar uma? </string>
         </scene>
     </scenes>
     <resources>
-        <image name="microphone" width="14" height="19.5"/>
         <image name="startRecording" width="74" height="74"/>
         <namedColor name="grayDark">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="grayLight">
-            <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="purple">
-            <color red="0.46700000762939453" green="0.39599999785423279" blue="0.6589999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="purpleDark">
-            <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="purpleLight">
-            <color red="0.9649999737739563" green="0.94900000095367432" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
