@@ -49,6 +49,7 @@
 		8DF6DB3525477CF30057898E /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF6DB3425477CF30057898E /* IconButton.xib */; };
 		B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3042A99254383B20086AE9E /* ViewDetail.storyboard */; };
 		B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3042A9C254385650086AE9E /* DetailViewController.swift */; };
+		B371E68E254AEDD500207D85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371E68D254AEDD500207D85 /* DateManager.swift */; };
 		B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72425372C7C003E1059 /* MemoryDAO.swift */; };
 		B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72725372C8B003E1059 /* DetailDAO.swift */; };
 		B39CA72B25372CC6003E1059 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72A25372CC6003E1059 /* DAO.swift */; };
@@ -108,6 +109,7 @@
 		8DF6DB3425477CF30057898E /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
 		B3042A99254383B20086AE9E /* ViewDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewDetail.storyboard; sourceTree = "<group>"; };
 		B3042A9C254385650086AE9E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B371E68D254AEDD500207D85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		B39CA72425372C7C003E1059 /* MemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDAO.swift; sourceTree = "<group>"; };
 		B39CA72725372C8B003E1059 /* DetailDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDAO.swift; sourceTree = "<group>"; };
 		B39CA72A25372CC6003E1059 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				B39CA72425372C7C003E1059 /* MemoryDAO.swift */,
+				B371E68D254AEDD500207D85 /* DateManager.swift */,
 				B39CA72725372C8B003E1059 /* DetailDAO.swift */,
 				B39CA72A25372CC6003E1059 /* DAO.swift */,
 				15AA50DE2543175C00EC2E4B /* MediaManager.swift */,
@@ -446,6 +449,7 @@
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				15D24CEB25483D4400D0D746 /* TitleSubtitleCell.swift in Sources */,
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
+				B371E68E254AEDD500207D85 /* DateManager.swift in Sources */,
 				8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
