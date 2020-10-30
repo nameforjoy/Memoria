@@ -19,13 +19,6 @@ class MemoryDAO: DAO {
         record.setValue(memory.title, forKey: "title")
         record.setValue(memory.description, forKey: "description")
         record.setValue(memory.date, forKey: "date")
-        record.setValue(memory.timeUnit, forKey: "timeUnit")
-
-        // Converts Int to NSNumber
-        if let timePassedBy = memory.timePassedBy {
-            let timePassedByAsNumber = NSNumber(integerLiteral: timePassedBy)
-            record.setValue(timePassedByAsNumber, forKey: "timePassedBy")
-        }
 
         // Converts UUID to String
         let memoryIDAsString = memory.memoryID.uuidString
@@ -47,8 +40,7 @@ class MemoryDAO: DAO {
         }
     }
 
-    // *** INCOMPLETE METHOD ***
-    //This method is not workinng -- Maybe we'll need to use a closure instead of a return
+    /// Retrieve all memories from database
     static public func findAll(completion: @escaping ([Memory]) -> Void) {
         var allRecords = [Memory]()
 
@@ -83,8 +75,7 @@ class MemoryDAO: DAO {
         privateDatabase.add(operation)
     }
 
-    // *** INCOMPLETE METHOD ***
-    // TODO: Add date to Memory object
+    /// Method to convert a Cloud Kit Record into a Memory
     static private func getMemoryFromRecord(record: CKRecord) -> Memory? {
 
         // Casting record value to String
@@ -99,17 +90,10 @@ class MemoryDAO: DAO {
             return nil
         }
 
-        // Casting record value to NSNumber
-        guard let timePassedByAsNumber = record["timePassedBy"] as? NSNumber else {
-            print("Couldn't cast timePassedByAsNumber record as a NSNumber.")
-            return nil
-        }
-
         // Converting Texts
         let title = record["title"] as? String
         let description = record["description"] as? String
         let date = record["date"] as? Date
-        let timeUnit = record["timeUnit"] as? String
 
         // Converts iCloud types to model types
         guard let memoryUUID = UUID(uuidString: memoryIDAsString) else {
@@ -117,10 +101,9 @@ class MemoryDAO: DAO {
             return nil
         }
         let hasDate = Bool(truncating: hasDateAsNumber as NSNumber)
-        let timePassedBy = Int(truncating: timePassedByAsNumber)
 
         // Make Memory object from query results
-        let newMemory = Memory(memoryID: memoryUUID, title: title, description: description, hasDate: hasDate, timePassedBy: timePassedBy, timeUnit: timeUnit)
+        let newMemory = Memory(memoryID: memoryUUID, title: title, description: description, hasDate: hasDate, date: date)
 
         return newMemory
     }

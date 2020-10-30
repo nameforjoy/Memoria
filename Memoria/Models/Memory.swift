@@ -12,33 +12,23 @@ class Memory {
     let title: String?
     let description: String?
     let hasDate: Bool
-    let timePassedBy: Int?
-    let timeUnit: String?
-
-    // This is only to be used when ordering memories on the UI
-    // Every label on the UI uses timePassedBy and timeUnit instead
-    var date: Date? {
-        // Fazer isso antes da criação do objeto em vez de aqui??
-        return DateManager.getEstimatedDate(timePassedBy: self.timePassedBy, timeUnit: self.timeUnit)
-    }
+    var date: Date?
 
     // Initialize class with existing UUID
-    init(memoryID: UUID, title: String?, description: String?, hasDate: Bool, timePassedBy: Int?, timeUnit: String?) {
+    init(memoryID: UUID, title: String?, description: String?, hasDate: Bool, date: Date?) {
         self.memoryID = memoryID
         self.title = title
         self.description = description
         self.hasDate = hasDate
-        self.timeUnit = timeUnit
-        self.timePassedBy = timePassedBy
+        self.date = date
     }
 
     // Initialize class without existing UUID
-    init(title: String, description: String, hasDate: Bool, timePassedBy: Int?, timeUnit: String?) {
+    init(title: String?, description: String?, hasDate: Bool, date: Date?) {
         self.memoryID = UUID()
         self.title = title
         self.description = description
         self.hasDate = hasDate
-        self.timeUnit = timeUnit
-        self.timePassedBy = timePassedBy
+        self.date = date
     }
 }
