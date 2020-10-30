@@ -357,7 +357,8 @@ extension QuestionTableViewController: ImagePickerDelegate {
         // Set chosen photo as the image to be displayed and get photo URL
         guard let photo: UIImage = image else {return}
         self.imageURL = MediaManager.getURL(image: photo)
-        self.selectedImage = photo
+//        self.selectedImage = photo
+        self.selectedImage = UIImage(named: "photo")
         
         // Hide button to add photo and display cell with chosen photo
         self.hiddenRows = self.hiddenRows.filter { $0 != 7 } // remove image cell from hiddenRows array
