@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="28" id="KIT-a5-N3c" customClass="DatePickerCell" customModule="Memoria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KIT-a5-N3c" id="9KE-fK-KM6">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-kH-i7m">
+                        <rect key="frame" x="113" y="61" width="281" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="281" id="FWV-do-vRR"/>
+                        </constraints>
+                        <segments>
+                            <segment title="Dias"/>
+                            <segment title="Meses"/>
+                            <segment title="Anos"/>
+                        </segments>
+                    </segmentedControl>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-1b-IWC">
+                        <rect key="frame" x="16" y="61" width="63" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="63" id="kRw-Pb-sGk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não se preocupe com  a exatidão para podermos guardar na sua caixinha de memórias " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-Zx-Mhh">
+                        <rect key="frame" x="16" y="8" width="382" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não lembro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzK-Or-gTP">
+                        <rect key="frame" x="16" y="120" width="89" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VLu-vg-abw">
+                        <rect key="frame" x="345" y="115" width="51" height="31"/>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zsk-kH-i7m" firstAttribute="top" secondItem="jOz-1b-IWC" secondAttribute="top" id="5iK-FG-YVL"/>
+                    <constraint firstItem="jOz-1b-IWC" firstAttribute="top" secondItem="m1p-Zx-Mhh" secondAttribute="bottom" constant="19.5" id="7xO-y1-WPd"/>
+                    <constraint firstItem="jOz-1b-IWC" firstAttribute="leading" secondItem="9KE-fK-KM6" secondAttribute="leading" constant="16" id="Ky1-ah-GlU"/>
+                    <constraint firstItem="m1p-Zx-Mhh" firstAttribute="top" secondItem="9KE-fK-KM6" secondAttribute="top" constant="8" id="Nue-ux-ZbS"/>
+                    <constraint firstAttribute="trailing" secondItem="m1p-Zx-Mhh" secondAttribute="trailing" constant="16" id="TyM-lQ-8cP"/>
+                    <constraint firstItem="VLu-vg-abw" firstAttribute="centerY" secondItem="lzK-Or-gTP" secondAttribute="centerY" id="Xpp-fC-nXs"/>
+                    <constraint firstAttribute="trailing" secondItem="zsk-kH-i7m" secondAttribute="trailing" constant="20" symbolic="YES" id="dKf-bc-jme"/>
+                    <constraint firstAttribute="bottom" secondItem="lzK-Or-gTP" secondAttribute="bottom" constant="23" id="etv-Gb-YLi"/>
+                    <constraint firstAttribute="trailing" secondItem="VLu-vg-abw" secondAttribute="trailing" constant="20" symbolic="YES" id="gqI-yK-Bjm"/>
+                    <constraint firstItem="lzK-Or-gTP" firstAttribute="top" secondItem="jOz-1b-IWC" secondAttribute="bottom" constant="25" id="jGu-Rs-PQb"/>
+                    <constraint firstItem="zsk-kH-i7m" firstAttribute="leading" secondItem="jOz-1b-IWC" secondAttribute="trailing" constant="34" id="tqW-Un-w6r"/>
+                    <constraint firstItem="m1p-Zx-Mhh" firstAttribute="leading" secondItem="9KE-fK-KM6" secondAttribute="leading" constant="16" id="ytA-vY-UJ8"/>
+                    <constraint firstItem="lzK-Or-gTP" firstAttribute="leading" secondItem="9KE-fK-KM6" secondAttribute="leading" constant="16" id="zO4-s1-Vn1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-75.362318840579718" y="-279.24107142857139"/>
+        </tableViewCell>
+    </objects>
+</document>
