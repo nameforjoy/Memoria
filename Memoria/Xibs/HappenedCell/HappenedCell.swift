@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol TappedHappenedDelegate: AnyObject {
+    func didTappedHappened()
+}
+
 class HappenedCell: UITableViewCell {
 
     @IBOutlet weak var happenedLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
+    weak var tappedDelegate: TappedHappenedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +41,6 @@ class HappenedCell: UITableViewCell {
     }
     
     @objc func tappedCell() {
-        
+        self.tappedDelegate?.didTappedHappened()
     }
 }
