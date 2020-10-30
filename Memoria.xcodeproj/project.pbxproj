@@ -45,6 +45,8 @@
 		8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */; };
 		8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */; };
 		8DAD8335254C400A009ED46C /* TitleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD8334254C400A009ED46C /* TitleTableViewController.swift */; };
+		8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833B254C4986009ED46C /* NibIdentifier.swift */; };
+		8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */; };
 		8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */; };
 		8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */; };
 		8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BE254739190008DBF8 /* GradientButton.xib */; };
@@ -111,6 +113,8 @@
 		8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonCell.swift; sourceTree = "<group>"; };
 		8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButtonCell.xib; sourceTree = "<group>"; };
 		8DAD8334254C400A009ED46C /* TitleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewController.swift; sourceTree = "<group>"; };
+		8DAD833B254C4986009ED46C /* NibIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifier.swift; sourceTree = "<group>"; };
+		8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewNibRegistering.swift; sourceTree = "<group>"; };
 		8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
 		8DCEE7BE254739190008DBF8 /* GradientButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButton.xib; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */,
 				8D60F801254384FC002A3F74 /* DoubleRound.swift */,
 				8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */,
+				8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				8D60F7F4254368B3002A3F74 /* Typography.swift */,
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 				8D9AA2DF254A756B00C394FF /* PresentationManager.swift */,
+				8DAD833B254C4986009ED46C /* NibIdentifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */,
+				8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */,
 				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
@@ -498,6 +505,7 @@
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8DDCAB86252E20570012B671 /* QuestionViewController.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
+				8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */,
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
 				159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
