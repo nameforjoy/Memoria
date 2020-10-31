@@ -38,6 +38,8 @@
 		15DCA482254C411000BCD7D0 /* DontRemeberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA481254C411000BCD7D0 /* DontRemeberCell.swift */; };
 		15DCA486254C4CAC00BCD7D0 /* HappenedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA485254C4CAC00BCD7D0 /* HappenedCell.swift */; };
 		15DCA489254C4CBB00BCD7D0 /* HappenedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DCA488254C4CBB00BCD7D0 /* HappenedCell.xib */; };
+		8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DF66E254CEF5900262918 /* TextFieldCell.swift */; };
+		8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DF66F254CEF5900262918 /* TextFieldCell.xib */; };
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
 		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
@@ -104,6 +106,8 @@
 		15DCA481254C411000BCD7D0 /* DontRemeberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontRemeberCell.swift; sourceTree = "<group>"; };
 		15DCA485254C4CAC00BCD7D0 /* HappenedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappenedCell.swift; sourceTree = "<group>"; };
 		15DCA488254C4CBB00BCD7D0 /* HappenedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HappenedCell.xib; sourceTree = "<group>"; };
+		8D1DF66E254CEF5900262918 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		8D1DF66F254CEF5900262918 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
 		8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold Italic.ttf"; sourceTree = "<group>"; };
@@ -238,8 +242,8 @@
 		159F62A4254861EA0011DB9F /* TextViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				159F62A5254861FB0011DB9F /* TextViewCell.swift */,
 				159F62A9254862080011DB9F /* TextViewCell.xib */,
+				159F62A5254861FB0011DB9F /* TextViewCell.swift */,
 			);
 			path = TextViewCell;
 			sourceTree = "<group>";
@@ -279,17 +283,18 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				15DCA484254C4C5600BCD7D0 /* HappenedCell */,
-				15DCA47C254C409200BCD7D0 /* DontRemeberCell */,
-				15DCA46D254AE2DC00BCD7D0 /* DatePicker */,
 				152471E325307DB3006B39B4 /* AudioPlayer */,
 				15514E7B254988EE00918E8B /* AudioPlayerCell */,
+				15DCA46D254AE2DC00BCD7D0 /* DatePicker */,
+				15DCA47C254C409200BCD7D0 /* DontRemeberCell */,
 				8DCEE7BA254738D50008DBF8 /* GradientButton */,
 				8D9AA2E2254A87DA00C394FF /* GradientButtonCell */,
+				15DCA484254C4C5600BCD7D0 /* HappenedCell */,
 				8DF6DB3025477C8E0057898E /* IconButton */,
 				8D55D3FF25486CB0004A0BF4 /* IconButtonCell */,
 				159F629725484A160011DB9F /* PhotoCell */,
 				15D24CEE254842C000D0D746 /* SubtitleCell */,
+				8D1DF66D254CEE5000262918 /* TextFieldCell */,
 				159F62A4254861EA0011DB9F /* TextViewCell */,
 				15D24CDC254837CE00D0D746 /* TitleSubtitleCell */,
 			);
@@ -347,6 +352,15 @@
 				15DCA488254C4CBB00BCD7D0 /* HappenedCell.xib */,
 			);
 			path = HappenedCell;
+			sourceTree = "<group>";
+		};
+		8D1DF66D254CEE5000262918 /* TextFieldCell */ = {
+			isa = PBXGroup;
+			children = (
+				8D1DF66F254CEF5900262918 /* TextFieldCell.xib */,
+				8D1DF66E254CEF5900262918 /* TextFieldCell.swift */,
+			);
+			path = TextFieldCell;
 			sourceTree = "<group>";
 		};
 		8D55D3FF25486CB0004A0BF4 /* IconButtonCell */ = {
@@ -501,6 +515,7 @@
 				159F62AA254862080011DB9F /* TextViewCell.xib in Resources */,
 				8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */,
 				15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */,
+				8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */,
 				15DCA47E254C40EF00BCD7D0 /* DontRemeberCell.xib in Resources */,
 				15DCA489254C4CBB00BCD7D0 /* HappenedCell.xib in Resources */,
 				B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */,
@@ -553,6 +568,7 @@
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */,
+				8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */,
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
 				159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
