@@ -12,14 +12,6 @@ class QuestionTableViewController: UITableViewController {
     
     // MARK: Attributes
     
-    let titleSubtitleCellIdentifier: String = "TitleSubtitleCell"
-    let subtitleCellIdentifier: String = "SubtitleCell"
-    let photoCellIdentifier: String = "PhotoCell"
-    let textViewIdentifier: String = "TextViewCell"
-    let iconButtonCellIdentifier: String = "IconButtonCell"
-    let audioPlayerCellIdentifier: String = "AudioPlayerCell"
-    let gradientButtonCellIdentifier: String = "GradientButtonCell"
-    
     var imageURL: URL?
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
@@ -72,26 +64,13 @@ class QuestionTableViewController: UITableViewController {
     // MARK: Instantiate Nibs
     
     func registerNibs() {
-        let nibTitle = UINib.init(nibName: self.titleSubtitleCellIdentifier, bundle: nil)
-        self.tableView.register(nibTitle, forCellReuseIdentifier: self.titleSubtitleCellIdentifier)
-        
-        let nibTextView = UINib.init(nibName: self.textViewIdentifier, bundle: nil)
-        self.tableView.register(nibTextView, forCellReuseIdentifier: self.textViewIdentifier)
-        
-        let nibSubtitle = UINib.init(nibName: self.subtitleCellIdentifier, bundle: nil)
-        self.tableView.register(nibSubtitle, forCellReuseIdentifier: self.subtitleCellIdentifier)
-        
-        let nibPhoto = UINib.init(nibName: self.photoCellIdentifier, bundle: nil)
-        self.tableView.register(nibPhoto, forCellReuseIdentifier: self.photoCellIdentifier)
-        
-        let nibIconButton = UINib.init(nibName: self.iconButtonCellIdentifier, bundle: nil)
-        self.tableView.register(nibIconButton, forCellReuseIdentifier: self.iconButtonCellIdentifier)
-        
-        let nibAudioPlayer = UINib.init(nibName: self.audioPlayerCellIdentifier, bundle: nil)
-        self.tableView.register(nibAudioPlayer, forCellReuseIdentifier: self.audioPlayerCellIdentifier)
-        
-        let nibGradientButton = UINib.init(nibName: self.gradientButtonCellIdentifier, bundle: nil)
-        self.tableView.register(nibGradientButton, forCellReuseIdentifier: self.gradientButtonCellIdentifier)
+        self.tableView.registerNib(nibIdentifier: .titleSubtitleCell)
+        self.tableView.registerNib(nibIdentifier: .textViewCell)
+        self.tableView.registerNib(nibIdentifier: .subtitleCell)
+        self.tableView.registerNib(nibIdentifier: .photoCell)
+        self.tableView.registerNib(nibIdentifier: .iconButtonCell)
+        self.tableView.registerNib(nibIdentifier: .audioPlayerCell)
+        self.tableView.registerNib(nibIdentifier: .gradientButtonCell)
     }
     
     // MARK: Acessibility
@@ -137,13 +116,13 @@ class QuestionTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.subtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 cellType.subtitleLabel.text = self.question
                 cell = cellType
             }
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.textViewIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textViewCell.rawValue, for: indexPath)
             if let cellType = cell as? TextViewCell {
                 cellType.placeholderText = "Descreva sua memória aqui..."
                 cellType.textViewCellDelegate = self
@@ -158,14 +137,14 @@ class QuestionTableViewController: UITableViewController {
                 cell = cellType
             }
         case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 cellType.titleLabel.text = "Que tal gravar?"
                 cellType.subtitleLabel.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
                 cell = cellType
             }
         case 3:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.iconButtonCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? IconButtonCell {
                 cellType.icon.image = UIImage(named: "microphone")
                 cellType.title.text = "Gravar áudio"
@@ -174,20 +153,20 @@ class QuestionTableViewController: UITableViewController {
                 cell = cellType
             }
         case 4:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.audioPlayerCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.audioPlayerCell.rawValue, for: indexPath)
             if let cellType = cell as? AudioPlayerCell {
                 cellType.audioURL = self.audioURL
                 cell = cellType
             }
         case 5:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.titleSubtitleCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 cellType.titleLabel.text = "E uma foto?"
                 cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que esteja relacionada a essa memória."
                 cell = cellType
             }
         case 6:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.iconButtonCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? IconButtonCell {
                 cellType.icon.image = UIImage(named: "camera")
                 cellType.title.text = "Adicionar foto"
@@ -196,13 +175,13 @@ class QuestionTableViewController: UITableViewController {
                 cell = cellType
             }
         case 7:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.photoCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
             if let cellType = cell as? PhotoCell {
                 cellType.imageSelected = self.selectedImage
                 cell = cellType
             }
         case 8:
-            cell = tableView.dequeueReusableCell(withIdentifier: self.gradientButtonCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
                 cellType.title = "Salvar"
                 cellType.buttonDelegate = self

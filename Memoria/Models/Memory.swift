@@ -7,26 +7,28 @@
 
 import Foundation
 
-class Memory: Codable {
+class Memory {
+    let memoryID: UUID
     let title: String?
     let description: String?
-    let date: Date?
-    
-    init(title: String, description: String, date: Date) {
+    let hasDate: Bool
+    var date: Date?
+
+    // Initialize class with existing UUID
+    init(memoryID: UUID, title: String?, description: String?, hasDate: Bool, date: Date?) {
+        self.memoryID = memoryID
         self.title = title
         self.description = description
+        self.hasDate = hasDate
         self.date = date
     }
-    
-    ///Method to calculate date from number of days, months or years
-    func getEstimatedDate(timePassedBy: Int, timeUnit: Calendar.Component) -> Date {
-        var estimatedDate = Date()
 
-        if let modifiedDate = Calendar.current.date(byAdding: timeUnit, value: -timePassedBy, to: estimatedDate) {
-            estimatedDate = modifiedDate
-        }
-
-        return estimatedDate
+    // Initialize class without existing UUID
+    init(title: String?, description: String?, hasDate: Bool, date: Date?) {
+        self.memoryID = UUID()
+        self.title = title
+        self.description = description
+        self.hasDate = hasDate
+        self.date = date
     }
-    
 }

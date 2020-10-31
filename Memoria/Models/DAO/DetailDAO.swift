@@ -68,21 +68,7 @@ class DetailDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            // Converting Texts
-            let text = record["text"] as? String
-            let question = record["question"] as? String
-            let category = record["category"] as? String
-
-            // Converting Audio
-            let audio = record["audioAsset"] as? CKAsset
-            let audioURL = audio?.fileURL
-
-            // Converting Image
-            let image = record["image"] as? CKAsset
-            let imageURL = image?.fileURL
-
-            // Make Detail object from query results
-            let newDetail = Detail(text: text, question: question, category: category, audio: audioURL, image: imageURL)
+            let newDetail = self.getDetailFromRecord(record: record)
 
             // Add new detail to array
             allRecords.append(newDetail)
@@ -95,6 +81,26 @@ class DetailDAO: DAO {
         }
         
         privateDatabase.add(operation)
+    }
+
+    static private func getDetailFromRecord(record: CKRecord) -> Detail {
+        // Converting Texts
+        let text = record["text"] as? String
+        let question = record["question"] as? String
+        let category = record["category"] as? String
+
+        // Converting Audio
+        let audio = record["audioAsset"] as? CKAsset
+        let audioURL = audio?.fileURL
+
+        // Converting Image
+        let image = record["image"] as? CKAsset
+        let imageURL = image?.fileURL
+
+        // Make Detail object from query results
+        let newDetail = Detail(text: text, question: question, category: category, audio: audioURL, image: imageURL)
+
+        return newDetail
     }
     
 }
