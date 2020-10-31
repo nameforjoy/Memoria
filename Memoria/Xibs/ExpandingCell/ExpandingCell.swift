@@ -11,7 +11,7 @@ protocol TappedHappenedDelegate: AnyObject {
     func didTappedHappened()
 }
 
-class HappenedCell: UITableViewCell {
+class ExpandingCell: UITableViewCell {
 
     @IBOutlet weak var happenedLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!

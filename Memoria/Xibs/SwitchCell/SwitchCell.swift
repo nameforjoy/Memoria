@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DontRemeberCell: UITableViewCell {
+class SwitchCell: UITableViewCell {
     
     @IBOutlet weak var dontRemeberLabel: UILabel!
     @IBOutlet weak var switchSelector: UISwitch!
