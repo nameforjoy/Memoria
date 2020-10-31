@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8IW-dE-7Gy" customClass="HappenedCell" customModule="Memoria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8IW-dE-7Gy" id="hcb-Tm-U8a">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 dias" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCJ-92-6zI">
+                        <rect key="frame" x="323" y="15.5" width="57" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" name="blue"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="rJm-nb-cHe">
+                        <rect key="frame" x="385" y="20" width="9" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="rJm-nb-cHe" secondAttribute="height" multiplier="3:4" id="Tvs-ta-bhs"/>
+                            <constraint firstAttribute="height" constant="12" id="fH3-Qu-gs9"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aconteceu há" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHk-Ob-gGs">
+                        <rect key="frame" x="16" y="16" width="105" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dHk-Ob-gGs" firstAttribute="top" secondItem="hcb-Tm-U8a" secondAttribute="top" constant="16" id="5ct-2Z-ije"/>
+                    <constraint firstItem="rJm-nb-cHe" firstAttribute="centerY" secondItem="BCJ-92-6zI" secondAttribute="centerY" id="Ayd-DW-7fp"/>
+                    <constraint firstAttribute="bottom" secondItem="dHk-Ob-gGs" secondAttribute="bottom" constant="8" id="IIC-rc-hh2"/>
+                    <constraint firstAttribute="trailing" secondItem="rJm-nb-cHe" secondAttribute="trailing" constant="20" id="d1y-12-QDG"/>
+                    <constraint firstItem="dHk-Ob-gGs" firstAttribute="leading" secondItem="hcb-Tm-U8a" secondAttribute="leading" constant="16" id="nN4-7k-dfU"/>
+                    <constraint firstItem="rJm-nb-cHe" firstAttribute="leading" secondItem="BCJ-92-6zI" secondAttribute="trailing" constant="5" id="tyD-5h-Cca"/>
+                    <constraint firstItem="BCJ-92-6zI" firstAttribute="centerY" secondItem="dHk-Ob-gGs" secondAttribute="centerY" id="w18-So-knF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="happenedLabel" destination="dHk-Ob-gGs" id="QIC-z7-N63"/>
+                <outlet property="timeLabel" destination="BCJ-92-6zI" id="nS1-RF-YnK"/>
+            </connections>
+            <point key="canvasLocation" x="-555" y="39"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rightArrow" width="512" height="878"/>
+        <namedColor name="blue">
+            <color red="0.32899999618530273" green="0.60399997234344482" blue="0.6940000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

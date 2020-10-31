@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="45" id="jEX-EB-nMg" customClass="DontRemeberCell" customModule="Memoria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jEX-EB-nMg" id="Mgp-Ze-gVz">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Não lembro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYk-8I-UtA">
+                        <rect key="frame" x="20" y="12" width="89" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Iyu-GY-cnc">
+                        <rect key="frame" x="345" y="7" width="51" height="31"/>
+                        <color key="onTintColor" name="blue"/>
+                        <connections>
+                            <action selector="dontRemberSwitch:" destination="jEX-EB-nMg" eventType="valueChanged" id="xBt-D0-F5n"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Iyu-GY-cnc" secondAttribute="trailing" constant="20" id="42X-pc-g4S"/>
+                    <constraint firstItem="Iyu-GY-cnc" firstAttribute="centerY" secondItem="NYk-8I-UtA" secondAttribute="centerY" id="A9x-lI-AGf"/>
+                    <constraint firstItem="NYk-8I-UtA" firstAttribute="leading" secondItem="Mgp-Ze-gVz" secondAttribute="leading" constant="20" symbolic="YES" id="dFG-1a-LH9"/>
+                    <constraint firstItem="NYk-8I-UtA" firstAttribute="top" secondItem="Mgp-Ze-gVz" secondAttribute="top" constant="12" id="e3H-Fb-i6X"/>
+                    <constraint firstAttribute="bottom" secondItem="NYk-8I-UtA" secondAttribute="bottom" constant="12" id="wGH-kM-PLU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dontRemeberLabel" destination="NYk-8I-UtA" id="UJS-n7-wUD"/>
+                <outlet property="switchSelector" destination="Iyu-GY-cnc" id="CAQ-Eb-V4v"/>
+            </connections>
+            <point key="canvasLocation" x="-39.130434782608695" y="-288.95089285714283"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="blue">
+            <color red="0.32899999618530273" green="0.60399997234344482" blue="0.6940000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

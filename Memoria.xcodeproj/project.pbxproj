@@ -32,6 +32,12 @@
 		15D24CEB25483D4400D0D746 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D24CEA25483D4400D0D746 /* TitleSubtitleCell.swift */; };
 		15D24CF02548433A00D0D746 /* SubtilteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D24CEF2548433A00D0D746 /* SubtilteCell.swift */; };
 		15D24CF32548434600D0D746 /* SubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D24CF22548434600D0D746 /* SubtitleCell.xib */; };
+		15DCA46F254AE30200BCD7D0 /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DCA46E254AE30200BCD7D0 /* DatePickerCell.xib */; };
+		15DCA472254AE31C00BCD7D0 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA471254AE31C00BCD7D0 /* DatePickerCell.swift */; };
+		15DCA47E254C40EF00BCD7D0 /* DontRemeberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DCA47D254C40EF00BCD7D0 /* DontRemeberCell.xib */; };
+		15DCA482254C411000BCD7D0 /* DontRemeberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA481254C411000BCD7D0 /* DontRemeberCell.swift */; };
+		15DCA486254C4CAC00BCD7D0 /* HappenedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA485254C4CAC00BCD7D0 /* HappenedCell.swift */; };
+		15DCA489254C4CBB00BCD7D0 /* HappenedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DCA488254C4CBB00BCD7D0 /* HappenedCell.xib */; };
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
 		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
@@ -92,6 +98,12 @@
 		15D24CEA25483D4400D0D746 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
 		15D24CEF2548433A00D0D746 /* SubtilteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtilteCell.swift; sourceTree = "<group>"; };
 		15D24CF22548434600D0D746 /* SubtitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubtitleCell.xib; sourceTree = "<group>"; };
+		15DCA46E254AE30200BCD7D0 /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
+		15DCA471254AE31C00BCD7D0 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		15DCA47D254C40EF00BCD7D0 /* DontRemeberCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DontRemeberCell.xib; sourceTree = "<group>"; };
+		15DCA481254C411000BCD7D0 /* DontRemeberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontRemeberCell.swift; sourceTree = "<group>"; };
+		15DCA485254C4CAC00BCD7D0 /* HappenedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappenedCell.swift; sourceTree = "<group>"; };
+		15DCA488254C4CBB00BCD7D0 /* HappenedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HappenedCell.xib; sourceTree = "<group>"; };
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
 		8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold Italic.ttf"; sourceTree = "<group>"; };
@@ -267,6 +279,9 @@
 		15C8F240252DF6EF00DD9208 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				15DCA484254C4C5600BCD7D0 /* HappenedCell */,
+				15DCA47C254C409200BCD7D0 /* DontRemeberCell */,
+				15DCA46D254AE2DC00BCD7D0 /* DatePicker */,
 				152471E325307DB3006B39B4 /* AudioPlayer */,
 				15514E7B254988EE00918E8B /* AudioPlayerCell */,
 				8DCEE7BA254738D50008DBF8 /* GradientButton */,
@@ -305,6 +320,33 @@
 				15D24CF22548434600D0D746 /* SubtitleCell.xib */,
 			);
 			path = SubtitleCell;
+			sourceTree = "<group>";
+		};
+		15DCA46D254AE2DC00BCD7D0 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				15DCA46E254AE30200BCD7D0 /* DatePickerCell.xib */,
+				15DCA471254AE31C00BCD7D0 /* DatePickerCell.swift */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		15DCA47C254C409200BCD7D0 /* DontRemeberCell */ = {
+			isa = PBXGroup;
+			children = (
+				15DCA47D254C40EF00BCD7D0 /* DontRemeberCell.xib */,
+				15DCA481254C411000BCD7D0 /* DontRemeberCell.swift */,
+			);
+			path = DontRemeberCell;
+			sourceTree = "<group>";
+		};
+		15DCA484254C4C5600BCD7D0 /* HappenedCell */ = {
+			isa = PBXGroup;
+			children = (
+				15DCA485254C4CAC00BCD7D0 /* HappenedCell.swift */,
+				15DCA488254C4CBB00BCD7D0 /* HappenedCell.xib */,
+			);
+			path = HappenedCell;
 			sourceTree = "<group>";
 		};
 		8D55D3FF25486CB0004A0BF4 /* IconButtonCell */ = {
@@ -459,7 +501,10 @@
 				159F62AA254862080011DB9F /* TextViewCell.xib in Resources */,
 				8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */,
 				15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */,
+				15DCA47E254C40EF00BCD7D0 /* DontRemeberCell.xib in Resources */,
+				15DCA489254C4CBB00BCD7D0 /* HappenedCell.xib in Resources */,
 				B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */,
+				15DCA46F254AE30200BCD7D0 /* DatePickerCell.xib in Resources */,
 				8DF6DB3525477CF30057898E /* IconButton.xib in Resources */,
 				152EE5ED252B33A5002F379C /* Main.storyboard in Resources */,
 			);
@@ -495,12 +540,14 @@
 				8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */,
 				8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */,
 				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
+				15DCA472254AE31C00BCD7D0 /* DatePickerCell.swift in Sources */,
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				15D24CEB25483D4400D0D746 /* TitleSubtitleCell.swift in Sources */,
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
 				B371E68E254AEDD500207D85 /* DateManager.swift in Sources */,
 				8D73C88B252FFE65008EF1FD /* ScrollViewKeyboard.swift in Sources */,
+				15DCA486254C4CAC00BCD7D0 /* HappenedCell.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
@@ -529,6 +576,7 @@
 				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
+				15DCA482254C411000BCD7D0 /* DontRemeberCell.swift in Sources */,
 				15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */,
 				15CDC160252CBFF000BD9A11 /* InputAudioViewController.swift in Sources */,
 			);
