@@ -25,8 +25,17 @@ class TitleTableViewController: UITableViewController {
         
         self.registerNibs()
         
+        // Adds tap gesture on the main view to dismiss text view keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         // Image Picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+    }
+    
+    // Dismisses keyboard after tapping outside keyboard
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func registerNibs() {
