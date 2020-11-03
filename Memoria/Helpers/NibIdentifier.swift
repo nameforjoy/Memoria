@@ -9,11 +9,15 @@ import Foundation
 
 enum NibIdentifier: String {
     
-    case titleSubtitleCell = "TitleSubtitleCell"
-    case subtitleCell = "SubtitleCell"
-    case photoCell = "PhotoCell"
-    case textViewCell = "TextViewCell"
-    case iconButtonCell = "IconButtonCell"
     case audioPlayerCell = "AudioPlayerCell"
+    case datePickerCell = "DatePickerCell"
     case gradientButtonCell = "GradientButtonCell"
+    case expandingCell = "ExpandingCell"
+    case iconButtonCell = "IconButtonCell"
+    case photoCell = "PhotoCell"
+    case subtitleCell = "SubtitleCell"
+    case switchCell = "SwitchCell"
+    case textFieldCell = "TextFieldCell"
+    case textViewCell = "TextViewCell"
+    case titleSubtitleCell = "TitleSubtitleCell"
 }

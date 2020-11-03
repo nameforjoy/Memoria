@@ -214,7 +214,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
                 // Return to main screen
                 DispatchQueue.main.async {
                     print("Detail saved")
-                    self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                    self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
                 }
             } else {
                 print(error.debugDescription)
@@ -250,17 +250,6 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
             }
         }
         return true
-    }
-    
-    // MARK: Segue
-    
-    // Passes needed information the the next screen
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
-        if let destination = segue.destination as? MemoryCollectionViewController {
-            destination.didJustSaveAMemory = true
-        }
     }
 }
 

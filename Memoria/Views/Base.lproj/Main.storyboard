@@ -104,7 +104,7 @@ Vamos guardar uma? </string>
             </objects>
             <point key="canvasLocation" x="-699" y="134"/>
         </scene>
-        <!--Question Table View Controller-->
+        <!--Pergunta-->
         <scene sceneID="miM-7k-Tnf">
             <objects>
                 <tableViewController id="t6u-Vq-Uny" customClass="QuestionTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,18 +117,16 @@ Vamos guardar uma? </string>
                             <outlet property="delegate" destination="t6u-Vq-Uny" id="EbB-6L-p46"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KeS-GA-Rij"/>
+                    <navigationItem key="navigationItem" title="Pergunta" id="KeS-GA-Rij"/>
                     <connections>
-                        <segue destination="sgH-RD-Vd6" kind="unwind" identifier="unwindToMemoryCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="3r9-Qx-HTj"/>
                         <segue destination="14s-zS-Ppn" kind="show" identifier="toMemoryTitleTVC" id="w2e-UO-M54"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrP-hX-oat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="sgH-RD-Vd6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="196" y="923"/>
         </scene>
-        <!--Title Table View Controller-->
+        <!--Informações-->
         <scene sceneID="WAU-L4-MYb">
             <objects>
                 <tableViewController id="14s-zS-Ppn" customClass="TitleTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
@@ -141,9 +139,13 @@ Vamos guardar uma? </string>
                             <outlet property="delegate" destination="14s-zS-Ppn" id="UCa-8J-kLs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RfC-xg-GrQ"/>
+                    <navigationItem key="navigationItem" title="Informações" id="RfC-xg-GrQ"/>
+                    <connections>
+                        <segue destination="X3O-Fd-rj7" kind="unwind" identifier="unwindToMemoryCollection" unwindAction="unwindToMemoryCollectionWithSegue:" id="jQb-Fv-6QP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbz-Vb-1CH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="X3O-Fd-rj7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1003" y="923"/>
         </scene>
