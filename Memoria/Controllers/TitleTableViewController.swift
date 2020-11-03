@@ -24,6 +24,7 @@ class TitleTableViewController: UITableViewController {
         self.tableView.isUserInteractionEnabled = true
         
         self.registerNibs()
+        self.navigationItem.title = "Informações"
         
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
