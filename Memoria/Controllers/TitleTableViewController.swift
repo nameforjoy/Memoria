@@ -29,9 +29,6 @@ class TitleTableViewController: UITableViewController {
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        
-        // Image Picker
-        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     // Dismisses keyboard after tapping outside keyboard
@@ -72,6 +69,7 @@ class TitleTableViewController: UITableViewController {
     }
 
     //swiftlint:disable cyclomatic_complexity
+    //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
@@ -136,28 +134,6 @@ class TitleTableViewController: UITableViewController {
                 cell = cellType
             }
         case 8:
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "Foto de capa"
-                cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que vai ser a capa da sua memória."
-                cell = cellType
-            }
-        case 9:
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
-            if let cellType = cell as? IconButtonCell {
-                cellType.icon.image = UIImage(named: "camera")
-                cellType.title.text = "Adicionar foto"
-                cellType.buttonType = .addImage
-                cellType.buttonDelegate = self
-                cell = cellType
-            }
-        case 10:
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
-            if let cellType = cell as? PhotoCell {
-                cellType.imageSelected = self.selectedImage
-                cell = cellType
-            }
-        case 11:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
                 cellType.title = "Salvar"
@@ -204,39 +180,5 @@ extension TitleTableViewController: GradientButtonCellDelegate {
         if let destination = segue.destination as? MemoryCollectionViewController {
             destination.didJustSaveAMemory = true
         }
-    }
-}
-
-// MARK: Icon Button
-
-extension TitleTableViewController: IconButtonCellDelegate {
-    
-    func iconButtonCellAction(buttonType: ButtonType, sender: Any) {
-        
-        switch buttonType {
-        case .addImage:
-            guard let senderView = sender as? UIView else { return }
-            guard let imagePicker: ImagePicker = self.imagePicker else {return}
-            imagePicker.present(from: senderView)
-        default:
-            print(buttonType)
-        }
-    }
-}
-
-///Extension For ImagePicker
-extension TitleTableViewController: ImagePickerDelegate {
-    
-    func didSelect(image: UIImage?) {
-        
-        // Set chosen photo as the image to be displayed and get photo URL
-        guard let photo: UIImage = image else {return}
-        self.imageURL = MediaManager.getURL(image: photo)
-        self.selectedImage = photo
-        
-        // Hide button to add photo and display cell with chosen photo
-        self.hiddenRows = self.hiddenRows.filter { $0 != 10 } // remove image cell from hiddenRows array
-        self.hiddenRows.append(9) // put add image button cell in hiddenRows array
-        self.tableView.reloadData()
     }
 }

@@ -110,6 +110,7 @@ class QuestionTableViewController: UITableViewController {
     }
     
     //swiftlint:disable cyclomatic_complexity
+    //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
