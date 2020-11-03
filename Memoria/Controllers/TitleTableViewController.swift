@@ -13,15 +13,16 @@ class TitleTableViewController: UITableViewController {
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
-    var writtenText: String?
-    var hiddenRows: [Int] = [10]
+    var memoryDescription: String?
+    var hiddenRows: [Int] = [3, 4, 5]
+    var isExpanded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
-        self.tableView.isUserInteractionEnabled = true
+        // self.tableView.isUserInteractionEnabled = true
         
         self.registerNibs()
         self.navigationItem.title = "Informações"
@@ -91,6 +92,7 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? ExpandingCell {
                 cellType.happenedLabel.text = "Aconteceu há"
                 cellType.timeLabel.text = "Hoje"
+                cellType.expansionDelegate = self
                 cell = cellType
             }
         case 3:
@@ -109,6 +111,7 @@ class TitleTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.switchCell.rawValue, for: indexPath)
             if let cellType = cell as? SwitchCell {
                 cellType.dontRemeberLabel.text = "Não lembro"
+                cellType.switchDelegate = self
                 cell = cellType
             }
         case 6:
@@ -124,7 +127,7 @@ class TitleTableViewController: UITableViewController {
                 cellType.placeholderText = "Descreva sua memória aqui..."
                 cellType.textViewCellDelegate = self
                 
-                if let text: String = self.writtenText,
+                if let text: String = self.memoryDescription,
                    !text.trimmingCharacters(in: .whitespaces).isEmpty {
                     cellType.writtenText = text
                     cellType.shouldDisplayPlaceholderText = false
@@ -144,7 +147,7 @@ class TitleTableViewController: UITableViewController {
         default:
             print("Default")
         }
-
+        
         return cell
     }
 }
@@ -154,7 +157,7 @@ class TitleTableViewController: UITableViewController {
 extension TitleTableViewController: TextViewCellDelegate {
     
     func didFinishWriting(text: String) {
-        self.writtenText = text
+        self.memoryDescription = text
         self.tableView.reloadData()
     }
 }
@@ -180,5 +183,35 @@ extension TitleTableViewController: GradientButtonCellDelegate {
         if let destination = segue.destination as? MemoryCollectionViewController {
             destination.didJustSaveAMemory = true
         }
+    }
+}
+
+// MARK: Expandable Cell
+
+extension TitleTableViewController: ExpandableCellDelegate {
+    
+    func expandCells() {
+        self.hiddenRows = []
+        self.tableView.reloadData()
+    }
+    
+    func hideCells() {
+        self.hiddenRows = [3, 4, 5]
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: Switch
+
+extension TitleTableViewController: SwitchCellDelegate {
+    
+    func switchIsOn() {
+        self.hiddenRows = [4]
+        self.tableView.reloadData()
+    }
+    
+    func switchIsOff() {
+        self.hiddenRows = []
+        self.tableView.reloadData()
     }
 }

@@ -15,7 +15,6 @@ class TextFieldCell: UITableViewCell {
         super.awakeFromNib()
         
         self.textField.dynamicFont = Typography().bodyRegular
-        self.textField.layer.borderWidth = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
