@@ -14,7 +14,7 @@ class TitleTableViewController: UITableViewController {
     var selectedImage: UIImage?
     
     var writtenText: String?
-    var hiddenRows: [Int] = [3, 4, 5, 10]
+    var hiddenRows: [Int] = [10]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +91,7 @@ class TitleTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.expandingCell.rawValue, for: indexPath)
             if let cellType = cell as? ExpandingCell {
                 cellType.happenedLabel.text = "Aconteceu há"
+                cellType.timeLabel.text = "Hoje"
                 cell = cellType
             }
         case 3:
@@ -186,11 +187,22 @@ extension TitleTableViewController: TextViewCellDelegate {
 extension TitleTableViewController: GradientButtonCellDelegate {
     
     func disabledButtonAction() {
-        print("hkbbbobu")
+        print("Save button is disabled")
     }
     
     func gradientButtonCellAction() {
-        print("wiiiiii")
+        performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+    }
+    
+    // MARK: Segue
+    
+    // Passes needed information the the next screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
+        if let destination = segue.destination as? MemoryCollectionViewController {
+            destination.didJustSaveAMemory = true
+        }
     }
 }
 
