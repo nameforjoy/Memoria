@@ -14,7 +14,7 @@ class TitleTableViewController: UITableViewController {
     var selectedImage: UIImage?
     
     var writtenText: String?
-    var hiddenRows: [Int] = []
+    var hiddenRows: [Int] = [3, 4, 5, 10]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -213,8 +213,8 @@ extension TitleTableViewController: ImagePickerDelegate {
         self.selectedImage = photo
         
         // Hide button to add photo and display cell with chosen photo
-//        self.hiddenRows = self.hiddenRows.filter { $0 != 7 } // remove image cell from hiddenRows array
-//        self.hiddenRows.append(6) // put add image button cell in hiddenRows array
+        self.hiddenRows = self.hiddenRows.filter { $0 != 10 } // remove image cell from hiddenRows array
+        self.hiddenRows.append(9) // put add image button cell in hiddenRows array
         self.tableView.reloadData()
     }
 }
