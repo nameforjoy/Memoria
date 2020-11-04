@@ -17,6 +17,10 @@ class TitleTableViewController: UITableViewController {
     var hiddenRows: [Int] = [3, 4, 5]
     var isExpanded: Bool = false
     
+    var dateString: String = "Hoje"
+    var previousDateString: String = ""
+    let dontRememberWhen: String = "Não sei"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,7 +95,7 @@ class TitleTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.expandingCell.rawValue, for: indexPath)
             if let cellType = cell as? ExpandingCell {
                 cellType.happenedLabel.text = "Aconteceu há"
-                cellType.timeLabel.text = "Hoje"
+                cellType.timeLabel.text = self.dateString
                 cellType.expansionDelegate = self
                 cell = cellType
             }
@@ -105,6 +109,7 @@ class TitleTableViewController: UITableViewController {
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.datePickerCell.rawValue, for: indexPath)
             if let cellType = cell as? DatePickerCell {
+                cellType.dateDelegate = self
                 cell = cellType
             }
         case 5:
@@ -152,6 +157,17 @@ class TitleTableViewController: UITableViewController {
     }
 }
 
+// MARK: Date Picker Cell
+
+extension TitleTableViewController: DatePickerCellDelegate {
+    
+    func didChangeDate(dateString: String) {
+        self.previousDateString = self.dateString
+        self.dateString = dateString
+        self.tableView.reloadData()
+    }
+}
+
 // MARK: Text View
 
 extension TitleTableViewController: TextViewCellDelegate {
@@ -192,6 +208,9 @@ extension TitleTableViewController: ExpandableCellDelegate {
     
     func expandCells() {
         self.hiddenRows = []
+        if self.dateString == dontRememberWhen {
+            self.hiddenRows.append(4)
+        }
         self.tableView.reloadData()
     }
     
@@ -207,11 +226,15 @@ extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOn() {
         self.hiddenRows = [4]
+        self.previousDateString = self.dateString
+        self.dateString = self.dontRememberWhen
         self.tableView.reloadData()
     }
     
     func switchIsOff() {
         self.hiddenRows = []
+        self.dateString = self.previousDateString
+        self.previousDateString = self.dontRememberWhen
         self.tableView.reloadData()
     }
 }
