@@ -94,7 +94,11 @@ class TitleTableViewController: UITableViewController {
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.expandingCell.rawValue, for: indexPath)
             if let cellType = cell as? ExpandingCell {
-                cellType.happenedLabel.text = "Aconteceu há"
+                if self.dateString == "Hoje" {
+                    cellType.happenedLabel.text = "Aconteceu"
+                } else {
+                    cellType.happenedLabel.text = "Aconteceu há"
+                }
                 cellType.timeLabel.text = self.dateString
                 cellType.expansionDelegate = self
                 cell = cellType
