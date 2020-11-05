@@ -17,7 +17,8 @@ class TitleTableViewController: UITableViewController {
     var memoryTitle: String?
     
     var hiddenRows: [Int] = [3, 4, 5]
-    var isExpanded: Bool = false
+    
+    var timePassed: Int?
     
     var dateString: String = "Hoje"
     var previousDate: Date?
@@ -130,7 +131,15 @@ class TitleTableViewController: UITableViewController {
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.datePickerCell.rawValue, for: indexPath)
             if let cellType = cell as? DatePickerCell {
+                
                 cellType.dateDelegate = self
+                if let time: Int = self.timePassed {
+                    cellType.textField.text = String(time)
+                    cellType.timePassed = time
+                } else {
+                    cellType.textField.text = nil
+                    cellType.timePassed = 0
+                }
                 cell = cellType
             }
         case 5:
@@ -183,7 +192,8 @@ class TitleTableViewController: UITableViewController {
 extension TitleTableViewController: DatePickerCellDelegate {
     
     func didChangeDate(timePassed: Int, component: Calendar.Component) {
-        
+
+        self.timePassed = timePassed
         let dateManager = DateManager()
         guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
         self.previousDate = self.date
@@ -210,6 +220,13 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     }
     
     func gradientButtonCellAction() {
+        
+        // Save memory
+        let memory = Memory(title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
+        print(memory)
+        MemoryDAO.create(memory: memory)
+        
+        // Segue
         performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
     }
     
