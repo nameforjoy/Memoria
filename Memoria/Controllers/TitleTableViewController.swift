@@ -17,10 +17,22 @@ class TitleTableViewController: UITableViewController {
     var hiddenRows: [Int] = [3, 4, 5]
     var isExpanded: Bool = false
     
-    var date: Date?
     var dateString: String = "Hoje"
-    var previousDateString: String = ""
-    let dontRememberWhen: String = "Não sei"
+    var previousDate: Date?
+    var date: Date? = Date() {
+        didSet {
+            guard let date: Date = self.date else {
+                self.dateString = "Não sei"
+                return
+            }
+            if Calendar.current.isDateInToday(date) {
+                self.dateString = "Hoje"
+            } else {
+                self.dateString = DateManager().getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
+            }
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,15 +182,8 @@ extension TitleTableViewController: DatePickerCellDelegate {
         
         let dateManager = DateManager()
         guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
-        
-        self.previousDateString = self.dateString
-        
-        if timePassed == 0 {
-            self.dateString = "Hoje"
-        } else if let dateString = dateManager.getTimeIntervalAsStringSinceDate(date) {
-            self.dateString = dateString
-        }
-        self.tableView.reloadData()
+        self.previousDate = self.date
+        self.date = date
     }
 }
 
@@ -222,7 +227,7 @@ extension TitleTableViewController: ExpandableCellDelegate {
     
     func expandCells() {
         self.hiddenRows = []
-        if self.dateString == dontRememberWhen {
+        if self.date == nil {
             self.hiddenRows.append(4)
         }
         self.tableView.reloadData()
@@ -240,15 +245,15 @@ extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOn() {
         self.hiddenRows = [4]
-        self.previousDateString = self.dateString
-        self.dateString = self.dontRememberWhen
+        self.previousDate = self.date
+        self.date = nil
         self.tableView.reloadData()
     }
     
     func switchIsOff() {
         self.hiddenRows = []
-        self.dateString = self.previousDateString
-        self.previousDateString = self.dontRememberWhen
+        self.date = self.previousDate
+        self.previousDate = nil
         self.tableView.reloadData()
     }
 }
