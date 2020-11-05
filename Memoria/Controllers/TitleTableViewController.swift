@@ -14,6 +14,8 @@ class TitleTableViewController: UITableViewController {
     var selectedImage: UIImage?
     
     var memoryDescription: String?
+    var memoryTitle: String?
+    
     var hiddenRows: [Int] = [3, 4, 5]
     var isExpanded: Bool = false
     
@@ -102,6 +104,8 @@ class TitleTableViewController: UITableViewController {
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textFieldCell.rawValue, for: indexPath)
             if let cellType = cell as? TextFieldCell {
+                cellType.delegate = self
+                cellType.textField.text = self.memoryTitle
                 cell = cellType
             }
         case 2:
@@ -236,6 +240,15 @@ extension TitleTableViewController: ExpandableCellDelegate {
     func hideCells() {
         self.hiddenRows = [3, 4, 5]
         self.tableView.reloadData()
+    }
+}
+
+// MARK: Text Field
+
+extension TitleTableViewController: TextFieldCellDelegate {
+    
+    func didFinishEditing(text: String?) {
+        self.memoryTitle = text
     }
 }
 
