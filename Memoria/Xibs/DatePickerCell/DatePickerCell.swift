@@ -65,7 +65,7 @@ class DatePickerCell: UITableViewCell {
         if self.timePassed == 0 {
             timestring = "Hoje"
         } else {
-            timestring = "Há \(self.timePassed) " // Obs: this method must change in English to " X years ago"
+            timestring = "\(self.timePassed) " // Obs: this method must change in English to " X years ago"
             if self.timePassed <= 1 {
                 timestring += self.timeUnitSingular
             } else {
