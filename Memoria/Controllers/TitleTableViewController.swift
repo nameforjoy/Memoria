@@ -13,15 +13,20 @@ class TitleTableViewController: UITableViewController {
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
-    var writtenText: String?
-    var hiddenRows: [Int] = [10]
+    var memoryDescription: String?
+    var hiddenRows: [Int] = [3, 4, 5]
+    var isExpanded: Bool = false
+    
+    var dateString: String = "Hoje"
+    var previousDateString: String = ""
+    let dontRememberWhen: String = "Não sei"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
-        self.tableView.isUserInteractionEnabled = true
+        // self.tableView.isUserInteractionEnabled = true
         
         self.registerNibs()
         self.navigationItem.title = "Informações"
@@ -29,9 +34,6 @@ class TitleTableViewController: UITableViewController {
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        
-        // Image Picker
-        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     // Dismisses keyboard after tapping outside keyboard
@@ -72,6 +74,7 @@ class TitleTableViewController: UITableViewController {
     }
 
     //swiftlint:disable cyclomatic_complexity
+    //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
@@ -91,8 +94,13 @@ class TitleTableViewController: UITableViewController {
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.expandingCell.rawValue, for: indexPath)
             if let cellType = cell as? ExpandingCell {
-                cellType.happenedLabel.text = "Aconteceu há"
-                cellType.timeLabel.text = "Hoje"
+                if self.dateString == "Hoje" {
+                    cellType.happenedLabel.text = "Aconteceu"
+                } else {
+                    cellType.happenedLabel.text = "Aconteceu há"
+                }
+                cellType.timeLabel.text = self.dateString
+                cellType.expansionDelegate = self
                 cell = cellType
             }
         case 3:
@@ -105,12 +113,14 @@ class TitleTableViewController: UITableViewController {
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.datePickerCell.rawValue, for: indexPath)
             if let cellType = cell as? DatePickerCell {
+                cellType.dateDelegate = self
                 cell = cellType
             }
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.switchCell.rawValue, for: indexPath)
             if let cellType = cell as? SwitchCell {
                 cellType.dontRemeberLabel.text = "Não lembro"
+                cellType.switchDelegate = self
                 cell = cellType
             }
         case 6:
@@ -126,7 +136,7 @@ class TitleTableViewController: UITableViewController {
                 cellType.placeholderText = "Descreva sua memória aqui..."
                 cellType.textViewCellDelegate = self
                 
-                if let text: String = self.writtenText,
+                if let text: String = self.memoryDescription,
                    !text.trimmingCharacters(in: .whitespaces).isEmpty {
                     cellType.writtenText = text
                     cellType.shouldDisplayPlaceholderText = false
@@ -136,28 +146,6 @@ class TitleTableViewController: UITableViewController {
                 cell = cellType
             }
         case 8:
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "Foto de capa"
-                cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que vai ser a capa da sua memória."
-                cell = cellType
-            }
-        case 9:
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
-            if let cellType = cell as? IconButtonCell {
-                cellType.icon.image = UIImage(named: "camera")
-                cellType.title.text = "Adicionar foto"
-                cellType.buttonType = .addImage
-                cellType.buttonDelegate = self
-                cell = cellType
-            }
-        case 10:
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
-            if let cellType = cell as? PhotoCell {
-                cellType.imageSelected = self.selectedImage
-                cell = cellType
-            }
-        case 11:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
                 cellType.title = "Salvar"
@@ -168,8 +156,19 @@ class TitleTableViewController: UITableViewController {
         default:
             print("Default")
         }
-
+        
         return cell
+    }
+}
+
+// MARK: Date Picker Cell
+
+extension TitleTableViewController: DatePickerCellDelegate {
+    
+    func didChangeDate(dateString: String) {
+        self.previousDateString = self.dateString
+        self.dateString = dateString
+        self.tableView.reloadData()
     }
 }
 
@@ -178,7 +177,7 @@ class TitleTableViewController: UITableViewController {
 extension TitleTableViewController: TextViewCellDelegate {
     
     func didFinishWriting(text: String) {
-        self.writtenText = text
+        self.memoryDescription = text
         self.tableView.reloadData()
     }
 }
@@ -207,36 +206,39 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     }
 }
 
-// MARK: Icon Button
+// MARK: Expandable Cell
 
-extension TitleTableViewController: IconButtonCellDelegate {
+extension TitleTableViewController: ExpandableCellDelegate {
     
-    func iconButtonCellAction(buttonType: ButtonType, sender: Any) {
-        
-        switch buttonType {
-        case .addImage:
-            guard let senderView = sender as? UIView else { return }
-            guard let imagePicker: ImagePicker = self.imagePicker else {return}
-            imagePicker.present(from: senderView)
-        default:
-            print(buttonType)
+    func expandCells() {
+        self.hiddenRows = []
+        if self.dateString == dontRememberWhen {
+            self.hiddenRows.append(4)
         }
+        self.tableView.reloadData()
+    }
+    
+    func hideCells() {
+        self.hiddenRows = [3, 4, 5]
+        self.tableView.reloadData()
     }
 }
 
-///Extension For ImagePicker
-extension TitleTableViewController: ImagePickerDelegate {
+// MARK: Switch
+
+extension TitleTableViewController: SwitchCellDelegate {
     
-    func didSelect(image: UIImage?) {
-        
-        // Set chosen photo as the image to be displayed and get photo URL
-        guard let photo: UIImage = image else {return}
-        self.imageURL = MediaManager.getURL(image: photo)
-        self.selectedImage = photo
-        
-        // Hide button to add photo and display cell with chosen photo
-        self.hiddenRows = self.hiddenRows.filter { $0 != 10 } // remove image cell from hiddenRows array
-        self.hiddenRows.append(9) // put add image button cell in hiddenRows array
+    func switchIsOn() {
+        self.hiddenRows = [4]
+        self.previousDateString = self.dateString
+        self.dateString = self.dontRememberWhen
+        self.tableView.reloadData()
+    }
+    
+    func switchIsOff() {
+        self.hiddenRows = []
+        self.dateString = self.previousDateString
+        self.previousDateString = self.dontRememberWhen
         self.tableView.reloadData()
     }
 }

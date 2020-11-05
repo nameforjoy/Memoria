@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol SwitchCellDelegate: AnyObject {
+    func switchIsOn()
+    func switchIsOff()
+}
+
 class SwitchCell: UITableViewCell {
     
     @IBOutlet weak var dontRemeberLabel: UILabel!
     @IBOutlet weak var switchSelector: UISwitch!
 
-    var hasDate: Bool = true
+    weak var switchDelegate: SwitchCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,9 +38,9 @@ class SwitchCell: UITableViewCell {
     
     @IBAction func dontRemberSwitch(_ sender: UISwitch) {
         if sender.isOn {
-            self.hasDate = false
+            self.switchDelegate?.switchIsOn()
         } else {
-            self.hasDate = true
+            self.switchDelegate?.switchIsOff()
         }
     }
 }

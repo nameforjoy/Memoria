@@ -48,10 +48,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="arrowImageView" destination="rJm-nb-cHe" id="tfC-4Q-AAu"/>
                 <outlet property="happenedLabel" destination="dHk-Ob-gGs" id="QIC-z7-N63"/>
                 <outlet property="timeLabel" destination="BCJ-92-6zI" id="nS1-RF-YnK"/>
             </connections>
-            <point key="canvasLocation" x="-555" y="39"/>
+            <point key="canvasLocation" x="-555.07246376811599" y="38.839285714285715"/>
         </tableViewCell>
     </objects>
     <resources>

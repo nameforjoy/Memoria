@@ -24,21 +24,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-aA-ToV">
-                                <rect key="frame" x="163.5" y="542" width="87" height="30"/>
+                                <rect key="frame" x="163.5" y="540.5" width="87" height="30"/>
                                 <state key="normal" title="Ver Memória"/>
                                 <connections>
                                     <action selector="clickToViewDetail:" destination="upX-eD-PW6" eventType="touchUpInside" id="5AO-W0-xbd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBd-86-ivj">
-                                <rect key="frame" x="152.5" y="616" width="109" height="30"/>
+                                <rect key="frame" x="152.5" y="614.5" width="109" height="30"/>
                                 <state key="normal" title="Carregar Dados"/>
                                 <connections>
                                     <action selector="loadData:" destination="upX-eD-PW6" eventType="touchUpInside" id="7Jr-Jj-6qZ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="25" y="379" width="364" height="43.5"/>
+                                <rect key="frame" x="25" y="381" width="364" height="40"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -46,12 +46,19 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="432.5" width="364" height="44"/>
+                                <rect key="frame" x="25" y="431" width="364" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHK-Xx-iaq">
+                                <rect key="frame" x="182.5" y="686" width="49" height="30"/>
+                                <state key="normal" title="TitleVC"/>
+                                <connections>
+                                    <segue destination="14s-zS-Ppn" kind="show" id="za4-C6-yTj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,6 +72,8 @@ Vamos guardar uma? </string>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="top" secondItem="YcP-aD-e4p" secondAttribute="bottom" constant="10" id="cEL-kU-Klp"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="diD-x7-JTE"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="leading" secondItem="YcP-aD-e4p" secondAttribute="leading" id="eNZ-Ke-s8L"/>
+                            <constraint firstItem="cHK-Xx-iaq" firstAttribute="top" secondItem="uBd-86-ivj" secondAttribute="bottom" constant="41.5" id="el2-ul-bQS"/>
+                            <constraint firstItem="cHK-Xx-iaq" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="lCp-6f-413"/>
                             <constraint firstItem="x8p-aA-ToV" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="nGJ-PV-StZ"/>
                         </constraints>
                     </view>
@@ -92,7 +101,7 @@ Vamos guardar uma? </string>
                 <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -250,6 +259,9 @@ Vamos guardar uma? </string>
             <point key="canvasLocation" x="196" y="1596"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="za4-C6-yTj"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="startRecording" width="74" height="74"/>
         <namedColor name="grayDark">
