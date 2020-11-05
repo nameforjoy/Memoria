@@ -41,7 +41,6 @@
 		8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D106A0D2551DCC300C4234B /* UITextFieldAccessibility.swift */; };
 		8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DF66E254CEF5900262918 /* TextFieldCell.swift */; };
 		8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DF66F254CEF5900262918 /* TextFieldCell.xib */; };
-		8D354609255322C8009F2CFF /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D354608255322C8009F2CFF /* DateManager.swift */; };
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
 		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
@@ -111,7 +110,6 @@
 		8D106A0D2551DCC300C4234B /* UITextFieldAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldAccessibility.swift; sourceTree = "<group>"; };
 		8D1DF66E254CEF5900262918 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8D1DF66F254CEF5900262918 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
-		8D354608255322C8009F2CFF /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
 		8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold Italic.ttf"; sourceTree = "<group>"; };
@@ -408,7 +406,6 @@
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 				8D9AA2DF254A756B00C394FF /* PresentationManager.swift */,
 				8DAD833B254C4986009ED46C /* NibIdentifier.swift */,
-				8D354608255322C8009F2CFF /* DateManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -574,7 +571,6 @@
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */,
-				8D354609255322C8009F2CFF /* DateManager.swift in Sources */,
 				8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */,
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
 				159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */,
