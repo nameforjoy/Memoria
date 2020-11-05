@@ -17,6 +17,7 @@ class TitleTableViewController: UITableViewController {
     var hiddenRows: [Int] = [3, 4, 5]
     var isExpanded: Bool = false
     
+    var date: Date?
     var dateString: String = "Hoje"
     var previousDateString: String = ""
     let dontRememberWhen: String = "Não sei"
@@ -61,7 +62,7 @@ class TitleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -154,7 +155,7 @@ class TitleTableViewController: UITableViewController {
                 cell = cellType
             }
         default:
-            print("Default")
+            print("Default cell was loaded in TitleTalbeViewController")
         }
         
         return cell
@@ -165,9 +166,18 @@ class TitleTableViewController: UITableViewController {
 
 extension TitleTableViewController: DatePickerCellDelegate {
     
-    func didChangeDate(dateString: String) {
+    func didChangeDate(timePassed: Int, component: Calendar.Component) {
+        
+        let dateManager = DateManager()
+        guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
+        
         self.previousDateString = self.dateString
-        self.dateString = dateString
+        
+        if timePassed == 0 {
+            self.dateString = "Hoje"
+        } else if let dateString = dateManager.getTimeIntervalAsStringSinceDate(date) {
+            self.dateString = dateString
+        }
         self.tableView.reloadData()
     }
 }

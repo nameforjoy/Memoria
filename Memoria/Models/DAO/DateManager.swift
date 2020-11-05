@@ -11,9 +11,10 @@ class DateManager {
 
     ///Method to calculate date from number of days, months or years
     // Input as CalendarComponent
-    static func getEstimatedDate(timePassedBy: Int?, timeUnit: Calendar.Component?) -> Date? {
-        guard let timePassedBy = timePassedBy else {return nil}
-        guard let timeUnit = timeUnit else {return nil}
+    func getEstimatedDate(timePassed: Int?, component: Calendar.Component?) -> Date? {
+        
+        guard let timePassedBy = timePassed else {return nil}
+        guard let timeUnit = component else {return nil}
 
         var estimatedDate = Date()
 
@@ -26,8 +27,9 @@ class DateManager {
 
     ///Method to calculate date from number of days, months or years
     // Input as String
-    static func getEstimatedDate(timePassedBy: Int?, timeUnit: String?) -> Date? {
-        guard let timePassedBy = timePassedBy else {return nil}
+    static func getEstimatedDate(timePassed: Int?, timeUnit: String?) -> Date? {
+        
+        guard let timePassedBy = timePassed else {return nil}
         guard let timeUnit = timeUnit else {return nil}
         guard let timeUnitAsComponent = getCalendarComponentFromString(stringComponent: timeUnit) else {return nil}
 
@@ -41,10 +43,10 @@ class DateManager {
     }
     
     /// Get time interval in the largest possible units (days, months or years) as a String.
-    func getTimeIntervalAsStringFromDate(date: Date?) -> String? {
+    func getTimeIntervalAsStringSinceDate(_ date: Date?) -> String? {
         
-        guard let (timePassed, component) = self.getTimeIntervalSinceDate(date: date) else { return nil }
-        guard let timeUnit: String = self.getStringFromCalendarComponent(timePassed: timePassed, component: component) else { return nil }
+        guard let (timePassed, component) = self.getTimeIntervalSinceDate(date: date) else {return nil}
+        guard let timeUnit: String = self.getStringFromCalendarComponent(timePassed: timePassed, component: component) else {return nil}
         
         return String(timePassed) + " " + timeUnit
     }
