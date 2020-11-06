@@ -83,6 +83,35 @@ class DetailDAO: DAO {
         privateDatabase.add(operation)
     }
 
+    /// Method to retrieve all Details from database related to the same Memory ID
+    static public func findByMemoryID(memoryID: UUID, completion: @escaping ([Detail]) -> Void) {
+        // Fecthed details array
+        var allRecords = [Detail]()
+
+        let predicate = NSPredicate(format: "memoryID == %@", memoryID as CVarArg)
+
+        //  Make query operation to fetch a detail
+        let query = CKQuery(recordType: "Detail", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+
+        operation.recordFetchedBlock = { record in
+
+            let newDetail = self.getDetailFromRecord(record: record)
+
+            // Add new detail to array
+            allRecords.append(newDetail)
+        }
+
+        operation.queryCompletionBlock = { cursor, error in
+            DispatchQueue.main.async {
+                completion(allRecords)
+            }
+        }
+
+        privateDatabase.add(operation)
+    }
+
+    /// Method to convert CKRecord into a Detail
     static private func getDetailFromRecord(record: CKRecord) -> Detail {
         // Converting Texts
         let text = record["text"] as? String
