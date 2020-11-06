@@ -16,7 +16,7 @@ class MemoryServices {
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
+            estimatedDate = DateManager.getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
@@ -36,7 +36,7 @@ class MemoryServices {
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
+            estimatedDate = DateManager.getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }

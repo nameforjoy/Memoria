@@ -32,7 +32,7 @@ class TitleTableViewController: UITableViewController {
             if Calendar.current.isDateInToday(date) {
                 self.dateString = "Hoje"
             } else {
-                self.dateString = DateManager().getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
+                self.dateString = DateManager.getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
             }
             self.tableView.reloadData()
         }
@@ -205,8 +205,8 @@ extension TitleTableViewController: DatePickerCellDelegate {
     func didChangeDate(timePassed: Int, component: Calendar.Component) {
 
         self.timePassed = timePassed
-        let dateManager = DateManager()
-        guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
+        //let dateManager = DateManager()
+        guard let date: Date = DateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
         self.previousDate = self.date
         self.date = date
     }
@@ -239,10 +239,21 @@ extension TitleTableViewController: GradientButtonCellDelegate {
         }
         let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
         print(memory)
-        MemoryDAO.create(memory: memory)
         
-        // Segue
-        performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+        MemoryDAO.create(memory: memory) { (error) in
+            if error == nil {
+                // Segue
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                }
+            } else {
+                print(error.debugDescription)
+                // Treat error
+                // Alert "Infelizmente não conseguimos salvar sua memória"
+            }
+        }
+        
+
     }
     
     func shouldEnableSaveButton() -> Bool {
