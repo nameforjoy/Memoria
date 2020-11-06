@@ -16,14 +16,16 @@ class MemoryServices {
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
+            estimatedDate = DateManager.getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
 
         let newMemory = Memory(title: title, description: description, hasDate: hasDate, date: estimatedDate)
 
-        MemoryDAO.create(memory: newMemory)
+        MemoryDAO.create(memory: newMemory) { (error) in
+            //Present alert "Infelizmente não conseguimos salvar sua memória :("
+        }
     }
 
     // swiftlint:disable function_parameter_count
@@ -34,14 +36,16 @@ class MemoryServices {
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
+            estimatedDate = DateManager.getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
 
         let newMemory = Memory(memoryID: memoryId, title: title, description: description, hasDate: hasDate, date: estimatedDate)
 
-        MemoryDAO.create(memory: newMemory)
+        MemoryDAO.create(memory: newMemory) { (error) in
+            //Present alert "Infelizmente não conseguimos salvar sua memória :("
+        }
     }
 
     /// Method to organize data from database before returning to de UI.

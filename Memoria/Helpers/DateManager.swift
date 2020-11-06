@@ -11,7 +11,7 @@ class DateManager {
 
     ///Method to calculate date from number of days, months or years
     // Input as CalendarComponent
-    func getEstimatedDate(timePassed: Int?, component: Calendar.Component?) -> Date? {
+    static func getEstimatedDate(timePassed: Int?, component: Calendar.Component?) -> Date? {
         
         guard let timePassedBy = timePassed else {return nil}
         guard let timeUnit = component else {return nil}
@@ -43,7 +43,7 @@ class DateManager {
     }
     
     /// Get time interval in the largest possible units (days, months or years) as a String.
-    func getTimeIntervalAsStringSinceDate(_ date: Date?) -> String? {
+    static func getTimeIntervalAsStringSinceDate(_ date: Date?) -> String? {
         
         guard let (timePassed, component) = self.getTimeIntervalSinceDate(date: date) else {return nil}
         guard let timeUnit: String = self.getStringFromCalendarComponent(timePassed: timePassed, component: component) else {return nil}
@@ -53,7 +53,7 @@ class DateManager {
     
     /// Get the time interval integer and its corresponding time unit.
     /// The time unit considered is the larges largest possible between day, month and year.
-    func getTimeIntervalSinceDate(date: Date?) -> (Int, Calendar.Component)? {
+    static func getTimeIntervalSinceDate(date: Date?) -> (Int, Calendar.Component)? {
         
         guard let referenceDate: Date = date else { return nil }
         
@@ -72,7 +72,7 @@ class DateManager {
     }
 
     ///Method to convert a Calendar.Component to a string in Portuguese, considering plural
-    func getStringFromCalendarComponent(timePassed: Int, component: Calendar.Component) -> String? {
+    static func getStringFromCalendarComponent(timePassed: Int, component: Calendar.Component) -> String? {
         
         switch component {
         case .day:
