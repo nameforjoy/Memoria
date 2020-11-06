@@ -404,6 +404,8 @@
 		8D60F7F32543686A002A3F74 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B371E68D254AEDD500207D85 /* DateManager.swift */,
+				15AA50DE2543175C00EC2E4B /* MediaManager.swift */,
 				8DDCAB99252EA0290012B671 /* Alerts.swift */,
 				8D60F7F4254368B3002A3F74 /* Typography.swift */,
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
@@ -453,10 +455,8 @@
 			isa = PBXGroup;
 			children = (
 				B39CA72425372C7C003E1059 /* MemoryDAO.swift */,
-				B371E68D254AEDD500207D85 /* DateManager.swift */,
 				B39CA72725372C8B003E1059 /* DetailDAO.swift */,
 				B39CA72A25372CC6003E1059 /* DAO.swift */,
-				15AA50DE2543175C00EC2E4B /* MediaManager.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
