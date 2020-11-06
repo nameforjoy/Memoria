@@ -20,7 +20,9 @@ class TitleTableViewController: UITableViewController {
     var hiddenRows: [Int] = [3, 4, 5]
     
     var timePassed: Int?
-    var timeUnitsegmentedIndex: Int = 0
+    var timeUnit: Calendar.Component = .day
+    
+    var isSwitchOn: Bool = false
     
     var dateString: String = "Hoje"
     var previousDate: Date?
@@ -145,7 +147,7 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? DatePickerCell {
                 
                 cellType.dateDelegate = self
-                cellType.segmentedIndex = self.timeUnitsegmentedIndex
+                cellType.segmentedIndex = self.getTimeUnitSegmentedIndex(component: self.timeUnit)
                 
                 if let time: Int = self.timePassed {
                     cellType.textField.text = String(time)
@@ -161,6 +163,7 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? SwitchCell {
                 cellType.dontRemeberLabel.text = "Não lembro"
                 cellType.switchDelegate = self
+                cellType.isSwitchOn = self.isSwitchOn
                 cell = cellType
             }
         case 6:
@@ -208,7 +211,7 @@ extension TitleTableViewController: DatePickerCellDelegate {
     func didChangeDate(timePassed: Int, component: Calendar.Component) {
 
         self.timePassed = timePassed
-        self.saveTimeUnitSegmentedIndex(component: component)
+        self.timeUnit = component
         
         let dateManager = DateManager()
         guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
@@ -216,17 +219,20 @@ extension TitleTableViewController: DatePickerCellDelegate {
         self.date = date
     }
     
-    func saveTimeUnitSegmentedIndex(component: Calendar.Component) {
+    func getTimeUnitSegmentedIndex(component: Calendar.Component) -> Int {
+        var timeUnitSegmentedIndex: Int = 0
+        
         switch component {
         case .day:
-            self.timeUnitsegmentedIndex = 0
+            timeUnitSegmentedIndex = 0
         case .month:
-            self.timeUnitsegmentedIndex = 1
+            timeUnitSegmentedIndex = 1
         case .year:
-            self.timeUnitsegmentedIndex = 3
+            timeUnitSegmentedIndex = 3
         default:
-            self.timeUnitsegmentedIndex = 0
+            timeUnitSegmentedIndex = 0
         }
+        return timeUnitSegmentedIndex
     }
 }
 
@@ -319,12 +325,14 @@ extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOn() {
         self.hiddenRows = [4]
+        self.isSwitchOn = true
         self.previousDate = self.date
         self.date = nil
         self.tableView.reloadData()
     }
     
     func switchIsOff() {
+        self.isSwitchOn = false
         self.hiddenRows = []
         self.date = self.previousDate
         self.previousDate = nil
