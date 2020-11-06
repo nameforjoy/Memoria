@@ -22,6 +22,7 @@ class QuestionTableViewController: UITableViewController {
     
     var memoryID: UUID?
     var hiddenRows: [Int] = [4,7]
+    var hasClickedOnSaveButton: Bool = false
     
     // MARK: Life Cycle
 
@@ -213,21 +214,24 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     
     // Saves detail in memory
     func gradientButtonCellAction() {
-
-        let newMemoryDetail = self.getDetailFromInterface()
         
-        // Calls DAO to object to database
-        DetailDAO.create(detail: newMemoryDetail) { error in
-            if error == nil {
-                // Return to main screen
-                DispatchQueue.main.async {
-                    print("Detail saved")
-                    self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
+        if !self.hasClickedOnSaveButton {
+            let newMemoryDetail = self.getDetailFromInterface()
+            
+            // Calls DAO to object to database
+            DetailDAO.create(detail: newMemoryDetail) { error in
+                if error == nil {
+                    // Return to main screen
+                    DispatchQueue.main.async {
+                        print("Detail saved")
+                        self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
+                    }
+                } else {
+                    print(error.debugDescription)
+                    // TODO: Treat error
                 }
-            } else {
-                print(error.debugDescription)
-                // TODO: Treat error
             }
+            self.hasClickedOnSaveButton = true
         }
     }
     

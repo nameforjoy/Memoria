@@ -43,6 +43,7 @@ class TitleTableViewController: UITableViewController {
 
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
+        self.navigationItem.hidesBackButton = true
         
         self.registerNibs()
         self.navigationItem.title = "Informações"
