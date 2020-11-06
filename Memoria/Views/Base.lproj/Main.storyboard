@@ -60,9 +60,12 @@ Vamos guardar uma? </string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqc-uq-dbq">
-                                <rect key="frame" x="155" y="754" width="106" height="30"/>
+                                <rect key="frame" x="174" y="754" width="69" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Collection View"/>
+                                <state key="normal" title="TableView"/>
+                                <connections>
+                                    <segue destination="FZw-xL-C5Z" kind="show" id="zB3-05-duP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
@@ -86,7 +89,6 @@ Vamos guardar uma? </string>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="LHh-Nh-cwe">
                             <connections>
                                 <action selector="addMemory:" destination="upX-eD-PW6" id="z8h-aQ-yrR"/>
-                                <segue destination="FZw-xL-C5Z" kind="show" id="Pmc-pA-swO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -101,10 +103,10 @@ Vamos guardar uma? </string>
             </objects>
             <point key="canvasLocation" x="195.6521739130435" y="133.92857142857142"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Memory Box Table View Controller-->
         <scene sceneID="cgc-9K-zWY">
             <objects>
-                <tableViewController id="FZw-xL-C5Z" sceneMemberID="viewController">
+                <tableViewController id="FZw-xL-C5Z" customClass="MemoryBoxTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Fw-MV-tMQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

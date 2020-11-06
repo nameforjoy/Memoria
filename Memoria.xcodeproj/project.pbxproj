@@ -16,6 +16,7 @@
 		152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */; };
 		1550DEFD25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1550DEFB25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift */; };
 		1550DEFE25556ADD007EC1A6 /* MemoryBoxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1550DEFC25556ADD007EC1A6 /* MemoryBoxTableViewCell.xib */; };
+		1550DF0325557217007EC1A6 /* MemoryBoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1550DF0225557217007EC1A6 /* MemoryBoxTableViewController.swift */; };
 		15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15514E7C2549890C00918E8B /* AudioPlayerCell.xib */; };
 		15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E7F2549891F00918E8B /* AudioPlayerCell.swift */; };
 		15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15514E842549930600918E8B /* QuestionTableViewController.swift */; };
@@ -87,6 +88,7 @@
 		152EE5F3252B33A7002F379C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1550DEFB25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBoxTableViewCell.swift; sourceTree = "<group>"; };
 		1550DEFC25556ADD007EC1A6 /* MemoryBoxTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryBoxTableViewCell.xib; sourceTree = "<group>"; };
+		1550DF0225557217007EC1A6 /* MemoryBoxTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBoxTableViewController.swift; sourceTree = "<group>"; };
 		15514E7C2549890C00918E8B /* AudioPlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioPlayerCell.xib; sourceTree = "<group>"; };
 		15514E7F2549891F00918E8B /* AudioPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerCell.swift; sourceTree = "<group>"; };
 		15514E842549930600918E8B /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				1550DEFB25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift */,
 				1550DEFC25556ADD007EC1A6 /* MemoryBoxTableViewCell.xib */,
+				152471E325307DB3006B39B4 /* AudioPlayer */,
 			);
 			path = MemoryBox;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				B3042A9C254385650086AE9E /* DetailViewController.swift */,
 				15514E842549930600918E8B /* QuestionTableViewController.swift */,
 				8DAD8334254C400A009ED46C /* TitleTableViewController.swift */,
+				1550DF0225557217007EC1A6 /* MemoryBoxTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				1550DEFA25556ABB007EC1A6 /* MemoryBox */,
-				152471E325307DB3006B39B4 /* AudioPlayer */,
 				15514E7B254988EE00918E8B /* AudioPlayerCell */,
 				15DCA46D254AE2DC00BCD7D0 /* DatePickerCell */,
 				8DCEE7BA254738D50008DBF8 /* GradientButton */,
@@ -596,6 +599,7 @@
 				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,
 				8D9AA2E0254A756B00C394FF /* PresentationManager.swift in Sources */,
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
+				1550DF0325557217007EC1A6 /* MemoryBoxTableViewController.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */,
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,

@@ -9,15 +9,30 @@ import UIKit
 
 class MemoryBoxTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupView()
+        setupFont()
+    }
+    
+    func setupView() {
+        self.containerView.layer.cornerRadius = 8
+        self.containerView.layer.borderWidth = 2
+        self.containerView.layer.borderColor = UIColor.systemGray6.cgColor
+    }
+    
+    func setupFont() {
+        let typography = Typography()
+        self.titleLabel.dynamicFont = typography.title2Semibold
+        self.timeLabel.dynamicFont = typography.title3Regular
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
