@@ -41,6 +41,7 @@ class TextViewCell: UITableViewCell {
         // Set up dynamic font
         let typography = Typography()
         self.textView.dynamicFont = typography.bodyRegular
+        self.textView.layer.cornerRadius = 10
         
         self.textView.delegate = self
     }

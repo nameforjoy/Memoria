@@ -13,7 +13,8 @@ class TextFieldCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.textField.dynamicFont = Typography().bodyRegular
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

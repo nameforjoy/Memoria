@@ -7,16 +7,19 @@
 
 import UIKit
 
-protocol TappedHappenedDelegate: AnyObject {
-    func didTappedHappened()
+protocol ExpandableCellDelegate: AnyObject {
+    func expandCells()
+    func hideCells()
 }
 
 class ExpandingCell: UITableViewCell {
 
     @IBOutlet weak var happenedLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var arrowImageView: UIImageView!
     
-    weak var tappedDelegate: TappedHappenedDelegate?
+    weak var expansionDelegate: ExpandableCellDelegate?
+    var isRotated: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +32,6 @@ class ExpandingCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -41,6 +43,13 @@ class ExpandingCell: UITableViewCell {
     }
     
     @objc func tappedCell() {
-        self.tappedDelegate?.didTappedHappened()
+        if self.isRotated {
+            self.arrowImageView.transform = CGAffineTransform(rotationAngle: 0)
+            self.expansionDelegate?.hideCells()
+        } else {
+            self.arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+            self.expansionDelegate?.expandCells()
+        }
+        self.isRotated = !self.isRotated
     }
 }
