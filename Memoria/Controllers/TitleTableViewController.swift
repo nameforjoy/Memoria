@@ -20,6 +20,7 @@ class TitleTableViewController: UITableViewController {
     var hiddenRows: [Int] = [3, 4, 5]
     
     var timePassed: Int?
+    var timeUnitsegmentedIndex: Int = 0
     
     var dateString: String = "Hoje"
     var previousDate: Date?
@@ -144,6 +145,8 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? DatePickerCell {
                 
                 cellType.dateDelegate = self
+                cellType.segmentedIndex = self.timeUnitsegmentedIndex
+                
                 if let time: Int = self.timePassed {
                     cellType.textField.text = String(time)
                     cellType.timePassed = time
@@ -205,10 +208,25 @@ extension TitleTableViewController: DatePickerCellDelegate {
     func didChangeDate(timePassed: Int, component: Calendar.Component) {
 
         self.timePassed = timePassed
+        self.saveTimeUnitSegmentedIndex(component: component)
+        
         let dateManager = DateManager()
         guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
         self.previousDate = self.date
         self.date = date
+    }
+    
+    func saveTimeUnitSegmentedIndex(component: Calendar.Component) {
+        switch component {
+        case .day:
+            self.timeUnitsegmentedIndex = 0
+        case .month:
+            self.timeUnitsegmentedIndex = 1
+        case .year:
+            self.timeUnitsegmentedIndex = 3
+        default:
+            self.timeUnitsegmentedIndex = 0
+        }
     }
 }
 
