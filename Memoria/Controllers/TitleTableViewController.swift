@@ -187,7 +187,7 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? GradientButtonCell {
                 cellType.title = "Salvar"
                 cellType.buttonDelegate = self
-                cellType.isEnabled = true
+                cellType.isEnabled = self.shouldEnableSaveButton()
                 cell = cellType
             }
         default:
@@ -227,7 +227,7 @@ extension TitleTableViewController: TextViewCellDelegate {
 extension TitleTableViewController: GradientButtonCellDelegate {
     
     func disabledButtonAction() {
-        print("Save button is disabled")
+        present(Alerts().giveTitleToSave, animated: true, completion: nil)
     }
     
     func gradientButtonCellAction() {
@@ -243,6 +243,16 @@ extension TitleTableViewController: GradientButtonCellDelegate {
         
         // Segue
         performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+    }
+    
+    func shouldEnableSaveButton() -> Bool {
+        if let title = self.memoryTitle,
+           title.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        } else if self.memoryTitle == nil {
+            return false
+        }
+        return true
     }
     
     // MARK: Segue
@@ -281,6 +291,7 @@ extension TitleTableViewController: TextFieldCellDelegate {
     
     func didFinishEditing(text: String?) {
         self.memoryTitle = text
+        self.tableView.reloadData()
     }
 }
 

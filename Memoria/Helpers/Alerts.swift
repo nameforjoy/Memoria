@@ -44,4 +44,13 @@ class Alerts {
         
         return myAlert
     }
+    
+    var giveTitleToSave: UIAlertController {
+        let title = "Ops, não podemos salvar sua memória assim!"
+        let message = "Insira um título para que possamos prosseguir"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        return myAlert
+    }
 }
