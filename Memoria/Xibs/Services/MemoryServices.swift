@@ -23,7 +23,9 @@ class MemoryServices {
 
         let newMemory = Memory(title: title, description: description, hasDate: hasDate, date: estimatedDate)
 
-        MemoryDAO.create(memory: newMemory)
+        MemoryDAO.create(memory: newMemory) { (error) in
+            //Present alert "Infelizmente não conseguimos salvar sua memória :("
+        }
     }
 
     /// Method to organize information from UI to conform the database
@@ -40,7 +42,9 @@ class MemoryServices {
 
         let newMemory = Memory(memoryID: memoryId, title: title, description: description, hasDate: hasDate, date: estimatedDate)
 
-        MemoryDAO.create(memory: newMemory)
+        MemoryDAO.create(memory: newMemory) { (error) in
+            //Present alert "Infelizmente não conseguimos salvar sua memória :("
+        }
     }
 
 
