@@ -214,7 +214,7 @@ extension TitleTableViewController: DatePickerCellDelegate {
 
         self.timePassed = timePassed
         self.timeUnit = component
-        //let dateManager = DateManager()
+      
         guard let date: Date = DateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
         self.previousDate = self.date
         self.date = date
