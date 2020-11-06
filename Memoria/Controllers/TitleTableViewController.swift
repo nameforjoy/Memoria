@@ -24,6 +24,8 @@ class TitleTableViewController: UITableViewController {
     
     var isSwitchOn: Bool = false
     
+    var justChangedFontSize: Bool = false
+    
     var dateString: String = "Hoje"
     var previousDate: Date?
     var date: Date? = Date() {
@@ -43,6 +45,8 @@ class TitleTableViewController: UITableViewController {
     
     var hasClickedOnSaveButton:Bool = false
     
+    // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,6 +60,10 @@ class TitleTableViewController: UITableViewController {
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        // Handle Notifications for Category Size Changes
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +73,19 @@ class TitleTableViewController: UITableViewController {
             print("Could not find ID for this memory")
         } else {
             print(self.memoryID ?? "ID returned nil")
+        }
+    }
+    
+    deinit {
+        // Take notification observers off when de-initializing the class.
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
+    }
+    
+    @objc func fontSizeChanged() {
+        self.justChangedFontSize = true
+        self.tableView.reloadData {
+            self.justChangedFontSize = false
         }
     }
     
@@ -122,7 +143,9 @@ class TitleTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textFieldCell.rawValue, for: indexPath)
             if let cellType = cell as? TextFieldCell {
                 cellType.delegate = self
-                cellType.textField.text = self.memoryTitle
+                if self.justChangedFontSize {
+                    cellType.textField.text = self.memoryTitle
+                }
                 cell = cellType
             }
         case 2:
@@ -149,14 +172,15 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? DatePickerCell {
                 
                 cellType.dateDelegate = self
-                cellType.segmentedIndex = self.getTimeUnitSegmentedIndex(component: self.timeUnit)
                 
-                if let time: Int = self.timePassed {
-                    cellType.textField.text = String(time)
-                    cellType.timePassed = time
-                } else {
-                    cellType.textField.text = nil
-                    cellType.timePassed = 0
+                if self.justChangedFontSize {
+                    if let time: Int = self.timePassed {
+                        cellType.textField.text = String(time)
+                        cellType.timePassed = time
+                    } else {
+                        cellType.textField.text = nil
+                        cellType.timePassed = 0
+                    }
                 }
                 cell = cellType
             }
@@ -165,7 +189,9 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? SwitchCell {
                 cellType.dontRemeberLabel.text = "Não lembro"
                 cellType.switchDelegate = self
-                cellType.isSwitchOn = self.isSwitchOn
+                if self.justChangedFontSize {
+                    cellType.isSwitchOn = self.isSwitchOn
+                }
                 cell = cellType
             }
         case 6:
@@ -218,22 +244,6 @@ extension TitleTableViewController: DatePickerCellDelegate {
         guard let date: Date = DateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
         self.previousDate = self.date
         self.date = date
-    }
-    
-    func getTimeUnitSegmentedIndex(component: Calendar.Component) -> Int {
-        var timeUnitSegmentedIndex: Int = 0
-        
-        switch component {
-        case .day:
-            timeUnitSegmentedIndex = 0
-        case .month:
-            timeUnitSegmentedIndex = 1
-        case .year:
-            timeUnitSegmentedIndex = 3
-        default:
-            timeUnitSegmentedIndex = 0
-        }
-        return timeUnitSegmentedIndex
     }
 }
 
