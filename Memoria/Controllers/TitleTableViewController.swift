@@ -38,6 +38,8 @@ class TitleTableViewController: UITableViewController {
         }
     }
     
+    var hasClickedOnSaveButton:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -232,28 +234,30 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     
     func gradientButtonCellAction() {
         
-        // Save memory
-        guard let memoryId: UUID = self.memoryID else {
-            print("Memory ID not found")
-            return
-        }
-        let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
-        print(memory)
-        
-        MemoryDAO.create(memory: memory) { (error) in
-            if error == nil {
-                // Segue
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+        if !self.hasClickedOnSaveButton {
+            // Save memory
+            guard let memoryId: UUID = self.memoryID else {
+                print("Memory ID not found")
+                return
+            }
+            let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
+            print(memory)
+            
+            MemoryDAO.create(memory: memory) { (error) in
+                if error == nil {
+                    // Segue
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                    }
+                } else {
+                    print(error.debugDescription)
+                    // Treat error
+                    // Alert "Infelizmente não conseguimos salvar sua memória"
                 }
-            } else {
-                print(error.debugDescription)
-                // Treat error
-                // Alert "Infelizmente não conseguimos salvar sua memória"
             }
         }
         
-
+        self.hasClickedOnSaveButton = true
     }
     
     func shouldEnableSaveButton() -> Bool {
