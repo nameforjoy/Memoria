@@ -12,7 +12,7 @@ class MemoryDAO: DAO {
 
     static let privateDatabase = CKContainer.default().privateCloudDatabase
 
-    static public func create(memory: Memory) {
+    static public func create(memory: Memory, completion: @escaping (Error?) -> Void) {
         let record = CKRecord(recordType: "Memory")
 
         // Simple record setup
@@ -32,10 +32,11 @@ class MemoryDAO: DAO {
 
             if error == nil {
                 print("Record Saved")
+                completion(nil)
             } else {
                 print("Record Not Saved")
                 print(error ?? "Nil")
-
+                completion(error)
             }
         }
     }

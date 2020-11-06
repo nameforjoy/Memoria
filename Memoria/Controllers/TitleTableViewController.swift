@@ -35,11 +35,13 @@ class TitleTableViewController: UITableViewController {
             if Calendar.current.isDateInToday(date) {
                 self.dateString = "Hoje"
             } else {
-                self.dateString = DateManager().getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
+                self.dateString = DateManager.getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
             }
             self.tableView.reloadData()
         }
     }
+    
+    var hasClickedOnSaveButton:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -212,9 +214,8 @@ extension TitleTableViewController: DatePickerCellDelegate {
 
         self.timePassed = timePassed
         self.timeUnit = component
-        
-        let dateManager = DateManager()
-        guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
+        //let dateManager = DateManager()
+        guard let date: Date = DateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
         self.previousDate = self.date
         self.date = date
     }
@@ -256,17 +257,30 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     
     func gradientButtonCellAction() {
         
-        // Save memory
-        guard let memoryId: UUID = self.memoryID else {
-            print("Memory ID not found")
-            return
+        if !self.hasClickedOnSaveButton {
+            // Save memory
+            guard let memoryId: UUID = self.memoryID else {
+                print("Memory ID not found")
+                return
+            }
+            let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
+            print(memory)
+            
+            MemoryDAO.create(memory: memory) { (error) in
+                if error == nil {
+                    // Segue
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                    }
+                } else {
+                    print(error.debugDescription)
+                    // Treat error
+                    // Alert "Infelizmente não conseguimos salvar sua memória"
+                }
+            }
         }
-        let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
-        print(memory)
-        MemoryDAO.create(memory: memory)
         
-        // Segue
-        performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+        self.hasClickedOnSaveButton = true
     }
     
     func shouldEnableSaveButton() -> Bool {
