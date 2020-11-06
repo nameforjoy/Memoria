@@ -16,6 +16,7 @@ class Typography {
     let title1Bold = UIFont(name: "Circular Std Bold", size: 28) ?? UIFont.systemFont(ofSize: 28, weight: .bold)
     let title2Regular = UIFont(name: "Circular Std Book", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .regular)
     let title2Bold = UIFont(name: "Circular Std Bold", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .bold)
+    let title2Semibold = UIFont(name: "Circular Std Bold", size: 22) ?? UIFont.systemFont(ofSize: 22, weight: .semibold)
     let title3Regular = UIFont(name: "Circular Std Book", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .regular)
     let title3Bold = UIFont(name: "Circular Std Bold", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: .bold)
     
