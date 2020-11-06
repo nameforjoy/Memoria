@@ -13,6 +13,7 @@ class TitleTableViewController: UITableViewController {
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
+    var memoryID: UUID?
     var memoryDescription: String?
     var memoryTitle: String?
     
@@ -42,7 +43,6 @@ class TitleTableViewController: UITableViewController {
 
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
-        // self.tableView.isUserInteractionEnabled = true
         
         self.registerNibs()
         self.navigationItem.title = "Informações"
@@ -50,6 +50,16 @@ class TitleTableViewController: UITableViewController {
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.memoryID == nil {
+            print("Could not find ID for this memory")
+        } else {
+            print(self.memoryID ?? "ID returned nil")
+        }
     }
     
     // Dismisses keyboard after tapping outside keyboard

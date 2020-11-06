@@ -20,6 +20,7 @@ class QuestionTableViewController: UITableViewController {
     var writtenText: String?
     var question: String? = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
     
+    var memoryID: UUID?
     var hiddenRows: [Int] = [4,7]
     
     // MARK: Life Cycle
@@ -49,6 +50,12 @@ class QuestionTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.changeTextForAccessibility()
+        
+        if self.memoryID == nil {
+            print("Could not find ID for this memory")
+        } else {
+            print(self.memoryID ?? "ID returned nil")
+        }
     }
     
     deinit {
@@ -196,7 +203,7 @@ class QuestionTableViewController: UITableViewController {
     }
 }
 
-// MARK: Gradient Button
+// MARK: Save Button
 
 extension QuestionTableViewController: GradientButtonCellDelegate {
     
@@ -251,6 +258,13 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
             }
         }
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? TitleTableViewController {
+            destination.memoryID = self.memoryID
+        }
     }
 }
 
