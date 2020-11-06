@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -127,10 +127,13 @@ Vamos guardar uma? </string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="lH4-MB-n4f"/>
+                    <connections>
+                        <segue destination="BwW-ST-TNg" kind="show" identifier="viewMemoryDetail" id="6lO-W3-Ipa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sU-kX-KVV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096" y="134"/>
+            <point key="canvasLocation" x="1080" y="134"/>
         </scene>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
@@ -138,7 +141,7 @@ Vamos guardar uma? </string>
                 <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -297,6 +300,7 @@ Vamos guardar uma? </string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="6lO-W3-Ipa"/>
         <segue reference="za4-C6-yTj"/>
     </inferredMetricsTieBreakers>
     <resources>
