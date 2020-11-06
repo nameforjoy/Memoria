@@ -18,7 +18,17 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
     var showingPlayIcon = true  // if false, then it's showing the pause icon
     var soundRecorder = AVAudioRecorder()
     var soundPlayer = AVAudioPlayer()
-    var audioURL: URL?
+    var audioURL: URL? {
+        didSet {
+            if let audioURL: URL = self.audioURL {
+                self.preparePlayer(url: audioURL)
+            } else {
+                // self.preparePlayer(url: self.getFileURL())
+                print("Audio URL não foi populada")
+            }
+            self.updateTimerLabel()
+        }
+    }
     //private var contentView: UIView!
     
     override func awakeFromNib() {
@@ -82,8 +92,8 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     @objc func updateTimerLabel() {
-        let currentTime = Int(soundPlayer.currentTime)
-        let duration = Int(soundPlayer.duration)
+        let currentTime = Int(self.soundPlayer.currentTime)
+        let duration = Int(self.soundPlayer.duration)
         let total = duration - currentTime
 
         let minutes = total/60
@@ -103,24 +113,18 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
     
     @IBAction func playAndPause(_ sender: Any) {
         if showingPlayIcon {
+            // Change button from play to pause
             let pauseImage = UIImage(named: "pauseAudio")
             self.playButton.setBackgroundImage(pauseImage, for: .normal)
-            
-            // Prepare document URL in which tthe audio is saved
             self.showingPlayIcon = false
-            if let audioURL = self.audioURL {
-                preparePlayer(url: audioURL)
-            } else {
-                // self.preparePlayer(url: self.getFileURL())
-                print("Audio URL não foi populada")
-            }
-            
             // Play audio
             self.soundPlayer.play()
         } else {
+            // Change button from pause to play
             let playImage =  UIImage(named: "playAudio")
             self.playButton.setBackgroundImage(playImage, for: .normal)
             self.showingPlayIcon = true
+            // Stop audio
             self.soundPlayer.stop()
         }
     }
@@ -148,7 +152,7 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
             }
 
             // Set slider maximum value as the duration of the audio
-            self.slider.maximumValue = Float(soundPlayer.duration)
+            self.slider.maximumValue = Float(self.soundPlayer.duration)
         } catch {
             print("Erro: Problemas para reproduzir um áudio")
         }
