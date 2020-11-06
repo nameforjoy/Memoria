@@ -9,14 +9,14 @@ import Foundation
 
 class MemoryServices {
 
-    /// Method to organize information from UI to conform the database
-    // Case without existing ID
-    static public func create(title: String?, hasDate: Bool, timePassedBy: Int?, timeUnit: Calendar.Component?, description: String?) {
+    /// Method to organize information from UI to conform the database.
+    /// Case without existing ID.
+    static public func create(title: String?, hasDate: Bool, timePassed: Int?, timeUnit: Calendar.Component?, description: String?) {
 
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager.getEstimatedDate(timePassedBy: timePassedBy, timeUnit: timeUnit)
+            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
@@ -26,14 +26,15 @@ class MemoryServices {
         MemoryDAO.create(memory: newMemory)
     }
 
-    /// Method to organize information from UI to conform the database
-    // Case with existing ID
-    static public func create(memoryId: UUID, title: String?, hasDate: Bool, timePassedBy: Int?, timeUnit: Calendar.Component?, description: String?) {
+    // swiftlint:disable function_parameter_count
+    /// Method to organize information from UI to conform the database.
+    /// Case with existing ID.
+    static public func create(memoryId: UUID, title: String?, hasDate: Bool, timePassed: Int?, timeUnit: Calendar.Component?, description: String?) {
 
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager.getEstimatedDate(timePassedBy: timePassedBy, timeUnit: timeUnit)
+            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
@@ -43,9 +44,8 @@ class MemoryServices {
         MemoryDAO.create(memory: newMemory)
     }
 
-
-    /// Method to organize data from database before returning to de UI
-    // Might be a good place to reorder the memory array by date or any other criteria
+    /// Method to organize data from database before returning to de UI.
+    /// Might be a good place to reorder the memory array by date or any other criteria.
     static public func findAll(completion: @escaping ([Memory]) -> Void) {
         MemoryDAO.findAll { (retievedMemories) in
             completion(retievedMemories)

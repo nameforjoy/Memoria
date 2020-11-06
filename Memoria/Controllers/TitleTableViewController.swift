@@ -13,20 +13,37 @@ class TitleTableViewController: UITableViewController {
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
+    var memoryID: UUID?
     var memoryDescription: String?
+    var memoryTitle: String?
+    
     var hiddenRows: [Int] = [3, 4, 5]
-    var isExpanded: Bool = false
+    
+    var timePassed: Int?
     
     var dateString: String = "Hoje"
-    var previousDateString: String = ""
-    let dontRememberWhen: String = "Não sei"
+    var previousDate: Date?
+    var date: Date? = Date() {
+        didSet {
+            guard let date: Date = self.date else {
+                self.dateString = "Não sei"
+                return
+            }
+            if Calendar.current.isDateInToday(date) {
+                self.dateString = "Hoje"
+            } else {
+                self.dateString = DateManager().getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
+            }
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
-        // self.tableView.isUserInteractionEnabled = true
+        self.navigationItem.hidesBackButton = true
         
         self.registerNibs()
         self.navigationItem.title = "Informações"
@@ -34,6 +51,16 @@ class TitleTableViewController: UITableViewController {
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.memoryID == nil {
+            print("Could not find ID for this memory")
+        } else {
+            print(self.memoryID ?? "ID returned nil")
+        }
     }
     
     // Dismisses keyboard after tapping outside keyboard
@@ -61,7 +88,7 @@ class TitleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,6 +116,8 @@ class TitleTableViewController: UITableViewController {
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textFieldCell.rawValue, for: indexPath)
             if let cellType = cell as? TextFieldCell {
+                cellType.delegate = self
+                cellType.textField.text = self.memoryTitle
                 cell = cellType
             }
         case 2:
@@ -113,7 +142,15 @@ class TitleTableViewController: UITableViewController {
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.datePickerCell.rawValue, for: indexPath)
             if let cellType = cell as? DatePickerCell {
+                
                 cellType.dateDelegate = self
+                if let time: Int = self.timePassed {
+                    cellType.textField.text = String(time)
+                    cellType.timePassed = time
+                } else {
+                    cellType.textField.text = nil
+                    cellType.timePassed = 0
+                }
                 cell = cellType
             }
         case 5:
@@ -150,11 +187,11 @@ class TitleTableViewController: UITableViewController {
             if let cellType = cell as? GradientButtonCell {
                 cellType.title = "Salvar"
                 cellType.buttonDelegate = self
-                cellType.isEnabled = true
+                cellType.isEnabled = self.shouldEnableSaveButton()
                 cell = cellType
             }
         default:
-            print("Default")
+            print("Default cell was loaded in TitleTalbeViewController")
         }
         
         return cell
@@ -165,10 +202,13 @@ class TitleTableViewController: UITableViewController {
 
 extension TitleTableViewController: DatePickerCellDelegate {
     
-    func didChangeDate(dateString: String) {
-        self.previousDateString = self.dateString
-        self.dateString = dateString
-        self.tableView.reloadData()
+    func didChangeDate(timePassed: Int, component: Calendar.Component) {
+
+        self.timePassed = timePassed
+        let dateManager = DateManager()
+        guard let date: Date = dateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
+        self.previousDate = self.date
+        self.date = date
     }
 }
 
@@ -187,11 +227,32 @@ extension TitleTableViewController: TextViewCellDelegate {
 extension TitleTableViewController: GradientButtonCellDelegate {
     
     func disabledButtonAction() {
-        print("Save button is disabled")
+        present(Alerts().giveTitleToSave, animated: true, completion: nil)
     }
     
     func gradientButtonCellAction() {
+        
+        // Save memory
+        guard let memoryId: UUID = self.memoryID else {
+            print("Memory ID not found")
+            return
+        }
+        let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
+        print(memory)
+        MemoryDAO.create(memory: memory)
+        
+        // Segue
         performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+    }
+    
+    func shouldEnableSaveButton() -> Bool {
+        if let title = self.memoryTitle,
+           title.trimmingCharacters(in: .whitespaces).isEmpty {
+            return false
+        } else if self.memoryTitle == nil {
+            return false
+        }
+        return true
     }
     
     // MARK: Segue
@@ -212,7 +273,7 @@ extension TitleTableViewController: ExpandableCellDelegate {
     
     func expandCells() {
         self.hiddenRows = []
-        if self.dateString == dontRememberWhen {
+        if self.date == nil {
             self.hiddenRows.append(4)
         }
         self.tableView.reloadData()
@@ -224,21 +285,31 @@ extension TitleTableViewController: ExpandableCellDelegate {
     }
 }
 
+// MARK: Text Field
+
+extension TitleTableViewController: TextFieldCellDelegate {
+    
+    func didFinishEditing(text: String?) {
+        self.memoryTitle = text
+        self.tableView.reloadData()
+    }
+}
+
 // MARK: Switch
 
 extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOn() {
         self.hiddenRows = [4]
-        self.previousDateString = self.dateString
-        self.dateString = self.dontRememberWhen
+        self.previousDate = self.date
+        self.date = nil
         self.tableView.reloadData()
     }
     
     func switchIsOff() {
         self.hiddenRows = []
-        self.dateString = self.previousDateString
-        self.previousDateString = self.dontRememberWhen
+        self.date = self.previousDate
+        self.previousDate = nil
         self.tableView.reloadData()
     }
 }
