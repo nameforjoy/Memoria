@@ -11,12 +11,12 @@ class MemoryServices {
 
     /// Method to organize information from UI to conform the database
     // Case without existing ID
-    static public func create(title: String?, hasDate: Bool, timePassedBy: Int?, timeUnit: Calendar.Component?, description: String?) {
+    static public func create(title: String?, hasDate: Bool, timePassed: Int?, timeUnit: Calendar.Component?, description: String?) {
 
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager.getEstimatedDate(timePassedBy: timePassedBy, timeUnit: timeUnit)
+            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
@@ -28,12 +28,12 @@ class MemoryServices {
 
     /// Method to organize information from UI to conform the database
     // Case with existing ID
-    static public func create(memoryId: UUID, title: String?, hasDate: Bool, timePassedBy: Int?, timeUnit: Calendar.Component?, description: String?) {
+    static public func create(memoryId: UUID, title: String?, hasDate: Bool, timePassed: Int?, timeUnit: Calendar.Component?, description: String?) {
 
         var estimatedDate: Date?
 
         if hasDate {
-            estimatedDate = DateManager.getEstimatedDate(timePassedBy: timePassedBy, timeUnit: timeUnit)
+            estimatedDate = DateManager().getEstimatedDate(timePassed: timePassed, component: timeUnit)
         } else {
             estimatedDate = nil
         }
