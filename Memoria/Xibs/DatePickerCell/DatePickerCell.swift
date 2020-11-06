@@ -19,6 +19,12 @@ class DatePickerCell: UITableViewCell {
     var timeUnit: Calendar.Component = .day
     var timePassed: Int = 0
     
+    var segmentedIndex: Int = 0 {
+        didSet {
+            self.segmentedControl.selectedSegmentIndex = self.segmentedIndex
+        }
+    }
+    
     weak var dateDelegate: DatePickerCellDelegate?
     
     override func awakeFromNib() {

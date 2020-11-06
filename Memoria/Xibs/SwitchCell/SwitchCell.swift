@@ -18,6 +18,11 @@ class SwitchCell: UITableViewCell {
     @IBOutlet weak var switchSelector: UISwitch!
 
     weak var switchDelegate: SwitchCellDelegate?
+    var isSwitchOn: Bool = false {
+        didSet {
+            self.switchSelector.isOn = self.isSwitchOn
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

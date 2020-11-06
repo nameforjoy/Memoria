@@ -22,17 +22,14 @@
                         <rect key="frame" x="16" y="0.0" width="382" height="72"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U56-MM-ZHp">
-                                <rect key="frame" x="16" y="18" width="32" height="36"/>
+                                <rect key="frame" x="16" y="16" width="35" height="40"/>
                                 <state key="normal" backgroundImage="playAudio"/>
                                 <connections>
                                     <action selector="playAndPause:" destination="Bpt-zu-lut" eventType="touchUpInside" id="aGg-ev-teH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1m-1G-oUZ">
-                                <rect key="frame" x="336" y="56.5" width="34" height="12"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="LoS-9S-54V"/>
-                                </constraints>
+                                <rect key="frame" x="341" y="52.5" width="29" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" name="grayDark"/>
                                 <nil key="highlightedColor"/>
@@ -41,21 +38,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="U56-MM-ZHp" firstAttribute="width" secondItem="U56-MM-ZHp" secondAttribute="height" multiplier="512:582" id="1aj-dq-Ild"/>
-                            <constraint firstItem="U56-MM-ZHp" firstAttribute="width" secondItem="b0l-M8-2uX" secondAttribute="width" multiplier="0.0772947" constant="2.4734246000000013" id="7qU-Dd-9K2"/>
+                            <constraint firstAttribute="height" secondItem="U56-MM-ZHp" secondAttribute="height" multiplier="1.8" id="ARL-rn-2oF"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="Awx-2I-0Bs"/>
                             <constraint firstItem="U56-MM-ZHp" firstAttribute="centerY" secondItem="b0l-M8-2uX" secondAttribute="centerY" id="YNc-HB-zbI"/>
-                            <constraint firstItem="U56-MM-ZHp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="b0l-M8-2uX" secondAttribute="top" constant="12" id="q1E-uv-Vv0"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U56-MM-ZHp" secondAttribute="bottom" constant="16" id="tNz-xW-NXt"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E1m-1G-oUZ" secondAttribute="bottom" constant="5" id="uKk-S6-ayx"/>
                             <constraint firstItem="U56-MM-ZHp" firstAttribute="leading" secondItem="b0l-M8-2uX" secondAttribute="leading" constant="16" id="yZt-LP-pUW"/>
                         </constraints>
                     </view>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9C6-cO-wN2">
-                        <rect key="frame" x="77" y="19.5" width="311" height="34"/>
+                        <rect key="frame" x="80" y="19.5" width="308" height="34"/>
                     </slider>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9C6-cO-wN2" firstAttribute="trailing" secondItem="b0l-M8-2uX" secondAttribute="trailing" constant="-12" id="5p0-kS-imD"/>
+                    <constraint firstItem="b0l-M8-2uX" firstAttribute="trailing" secondItem="9C6-cO-wN2" secondAttribute="trailing" constant="12" id="5p0-kS-imD"/>
                     <constraint firstItem="9C6-cO-wN2" firstAttribute="centerY" secondItem="b0l-M8-2uX" secondAttribute="centerY" id="EXB-2S-BgP"/>
-                    <constraint firstItem="E1m-1G-oUZ" firstAttribute="top" secondItem="9C6-cO-wN2" secondAttribute="bottom" constant="4" id="W59-oh-8CM"/>
+                    <constraint firstItem="E1m-1G-oUZ" firstAttribute="top" secondItem="9C6-cO-wN2" secondAttribute="bottom" id="W59-oh-8CM"/>
                     <constraint firstItem="b0l-M8-2uX" firstAttribute="top" secondItem="8s7-vT-XF7" secondAttribute="top" id="adN-be-MXh"/>
                     <constraint firstItem="9C6-cO-wN2" firstAttribute="leading" secondItem="U56-MM-ZHp" secondAttribute="trailing" constant="15" id="htk-HO-PMd"/>
                     <constraint firstAttribute="trailing" secondItem="b0l-M8-2uX" secondAttribute="trailing" constant="16" id="krQ-2q-F0O"/>
