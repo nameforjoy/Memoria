@@ -232,11 +232,11 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     func gradientButtonCellAction() {
         
         // Save memory
-        guard let id: UUID = self.memoryID else {
+        guard let memoryId: UUID = self.memoryID else {
             print("Memory ID not found")
             return
         }
-        let memory = Memory(memoryID: id, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
+        let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
         print(memory)
         MemoryDAO.create(memory: memory)
         
