@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DatePickerCellDelegate: AnyObject {
-    func didChangeDate(dateString: String)
+    func didChangeDate(timePassed: Int, component: Calendar.Component)
 }
 
 class DatePickerCell: UITableViewCell {
@@ -17,16 +17,14 @@ class DatePickerCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
     
     var timeUnit: Calendar.Component = .day
-    var timeUnitSingular: String = "dia"
-    var timeUnitPlural: String = "dias"
-    
     var timePassed: Int = 0
+    
     weak var dateDelegate: DatePickerCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.textField.keyboardType = UIKeyboardType.decimalPad
+        self.textField.keyboardType = UIKeyboardType.numberPad
         self.textField.dynamicFont = Typography().bodySemibold
         self.textField.delegate = self
     }
@@ -40,39 +38,14 @@ class DatePickerCell: UITableViewCell {
         switch sender.selectedSegmentIndex {
         case 0:
             self.timeUnit = .day
-            self.timeUnitSingular = "dia"
-            self.timeUnitPlural = "dias"
         case 1:
             self.timeUnit = .month
-            self.timeUnitSingular = "mês"
-            self.timeUnitPlural = "meses"
         case 2:
             self.timeUnit = .year
-            self.timeUnitSingular = "ano"
-            self.timeUnitPlural = "anos"
         default:
             self.timeUnit = .day
-            self.timeUnitSingular = "dia"
-            self.timeUnitPlural = "dias"
         }
-        let dateString = self.makeTimeString()
-        self.dateDelegate?.didChangeDate(dateString: dateString)
-    }
-    
-    func makeTimeString() -> String {
-        
-        var timestring = ""
-        if self.timePassed == 0 {
-            timestring = "Hoje"
-        } else {
-            timestring = "\(self.timePassed) " // Obs: this method must change in English to " X years ago"
-            if self.timePassed <= 1 {
-                timestring += self.timeUnitSingular
-            } else {
-                timestring += self.timeUnitPlural
-            }
-        }
-        return timestring
+        self.dateDelegate?.didChangeDate(timePassed: self.timePassed, component: self.timeUnit)
     }
 }
 
@@ -81,7 +54,6 @@ extension DatePickerCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         self.timePassed = Int(textField.text ?? "0") ?? 0
-        let dateString = self.makeTimeString()
-        self.dateDelegate?.didChangeDate(dateString: dateString)
+        self.dateDelegate?.didChangeDate(timePassed: self.timePassed, component: self.timeUnit)
     }
 }

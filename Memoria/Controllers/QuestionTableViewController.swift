@@ -20,7 +20,9 @@ class QuestionTableViewController: UITableViewController {
     var writtenText: String?
     var question: String? = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
     
+    var memoryID: UUID?
     var hiddenRows: [Int] = [4,7]
+    var hasClickedOnSaveButton: Bool = false
     
     // MARK: Life Cycle
 
@@ -49,6 +51,12 @@ class QuestionTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.changeTextForAccessibility()
+        
+        if self.memoryID == nil {
+            print("Could not find ID for this memory")
+        } else {
+            print(self.memoryID ?? "ID returned nil")
+        }
     }
     
     deinit {
@@ -196,7 +204,7 @@ class QuestionTableViewController: UITableViewController {
     }
 }
 
-// MARK: Gradient Button
+// MARK: Save Button
 
 extension QuestionTableViewController: GradientButtonCellDelegate {
     
@@ -206,21 +214,24 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     
     // Saves detail in memory
     func gradientButtonCellAction() {
-
-        let newMemoryDetail = self.getDetailFromInterface()
         
-        // Calls DAO to object to database
-        DetailDAO.create(detail: newMemoryDetail) { error in
-            if error == nil {
-                // Return to main screen
-                DispatchQueue.main.async {
-                    print("Detail saved")
-                    self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
+        if !self.hasClickedOnSaveButton {
+            let newMemoryDetail = self.getDetailFromInterface()
+            
+            // Calls DAO to object to database
+            DetailDAO.create(detail: newMemoryDetail) { error in
+                if error == nil {
+                    // Return to main screen
+                    DispatchQueue.main.async {
+                        print("Detail saved")
+                        self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
+                    }
+                } else {
+                    print(error.debugDescription)
+                    // TODO: Treat error
                 }
-            } else {
-                print(error.debugDescription)
-                // TODO: Treat error
             }
+            self.hasClickedOnSaveButton = true
         }
     }
     
@@ -251,6 +262,13 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
             }
         }
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? TitleTableViewController {
+            destination.memoryID = self.memoryID
+        }
     }
 }
 
