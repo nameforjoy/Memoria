@@ -14,7 +14,9 @@ class MemoryCollectionViewController: UIViewController {
     
     @IBOutlet weak var noMemoriesLabel: UILabel!
     @IBOutlet weak var addFirstMemoryButton: IconButtonView!
+    @IBOutlet weak var tableView: UITableView!
     
+    var memories = [Memory]()
     var didJustSaveAMemory: Bool = false
 
     // Temp atributes for testing data retrieve
@@ -35,6 +37,13 @@ class MemoryCollectionViewController: UIViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+        
+        //TableView set up
+        self.setupTableView()
+        self.registerNibs()
+        self.receiveData()
+        self.tableView.dataSource = self
+//        self.tableView.delegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,17 +68,15 @@ class MemoryCollectionViewController: UIViewController {
         performSegue(withIdentifier: "addMemory", sender: self)
     }
 
-    // Updates information from database
-    @IBAction func loadData(_ sender: Any) {
-        // Find recorded audio
-        self.isDataLoaded = false
-
-        DetailDAO.findAll { (details) in
-            self.userMemoryDetails = details
-            if !details.isEmpty {
-                self.isDataLoaded = true
+    func receiveData() {
+        MemoryDAO.findAll { (memories) in
+            self.memories = memories
+            if self.memories.isEmpty {
+                self.tableView.isHidden = true
+            } else {
+                self.tableView.isHidden = false
             }
-            print("Data has been loaded from database. \(details.count) records found.")
+            self.tableView.reloadData()
         }
     }
 
@@ -144,6 +151,17 @@ class MemoryCollectionViewController: UIViewController {
         let attributes = [NSAttributedString.Key.font: Typography().largeTitleBold]
         UINavigationBar.appearance().titleTextAttributes = attributes
     }
+    
+    // MARK: TableView
+    func setupTableView() {
+        self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
+        self.tableView.isUserInteractionEnabled = true
+    }
+    
+    func registerNibs() {
+        self.tableView.registerNib(nibIdentifier: .memoryBoxCell)
+    }
 }
 
 extension MemoryCollectionViewController: IconButtonDelegate {
@@ -151,4 +169,32 @@ extension MemoryCollectionViewController: IconButtonDelegate {
     func iconButtonAction() {
         performSegue(withIdentifier: "addMemory", sender: self)
     }
+}
+
+extension MemoryCollectionViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.memories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.memoryBoxCell.rawValue, for: indexPath)
+        if let cellType = cell as? MemoryBoxTableViewCell {
+            let memory = memories[indexPath.row]
+            
+            cellType.titleLabel.text = memory.title
+            
+            let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory.date)
+            
+            if let dateString = dateString {
+                cellType.timeLabel.text = "Há " + dateString
+            } else {
+                cellType.timeLabel.text = "Indefinido"
+            }
+        }
+        return cell
+    }
+}
+
+extension MemoryCollectionViewController: UITableViewDelegate {
+    
 }
