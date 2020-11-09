@@ -7,8 +7,8 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    
+class DetailViewController: UITableViewController {
+
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var audioPlayer: AudioPlayerView!
@@ -33,11 +33,22 @@ class DetailViewController: UIViewController {
             print("ID da memória: \(selectedMemory.memoryID) ")
         }
 
-        // Populates view with first detail
-//        if let details = details {
-//            self.populateView(detail: details[0])
-//            print("Loading detail #0")
-//        }
+        self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = false
+        self.tableView.isUserInteractionEnabled = true
+        self.tableView.delegate = self
+
+        self.registerNibs()
+
+    }
+
+    // MARK: Instantiate Nibs
+
+    func registerNibs() {
+        self.tableView.registerNib(nibIdentifier: .titleSubtitleCell)
+        self.tableView.registerNib(nibIdentifier: .subtitleCell)
+        self.tableView.registerNib(nibIdentifier: .photoCell)
+        self.tableView.registerNib(nibIdentifier: .audioPlayerCell)
     }
 
     func retrieveAllDetails() {
@@ -64,39 +75,19 @@ class DetailViewController: UIViewController {
         }
     }
 
-    // Temporary button for tests only
-    @IBAction func changeDetail(_ sender: Any) {
-//        guard let numberOfDetails = details?.count else { return }
-//
-//        // Moves to next detail
-//        position += 1
-//
-//        // Restarts counting when reaches last record
-//        if position >= numberOfDetails {
-//            position = 0
-//        }
-//
-//        // Updates current detail
-//        currentDetail = details?[position]
-//
-//        // Changing detail view content
-//        populateView(detail: currentDetail)
-//        print("Changing to detail #\(position)")
-    }
-
     // Updates view with input detail
     func populateView(detail: Detail?) {
 
         // Sets category as navigation title
-        self.navigationItem.title = detail?.category
+        self.navigationItem.title = selectedMemory?.title
 
         // Sets labels
-        questionLabel.text = detail?.question
-        answerLabel.text = detail?.text
+//        questionLabel.text = detail?.question
+//        answerLabel.text = detail?.text
 
         // Audio & Image Setup
-        self.updateAudio(audio: detail?.audio)
-        self.updateImage(image: detail?.image)
+//        self.updateAudio(audio: detail?.audio)
+//        self.updateImage(image: detail?.image)
     }
 
     // Check if there's an audio available and update its view
@@ -122,4 +113,13 @@ class DetailViewController: UIViewController {
             answerImageView.image = nil
         }
     }
+}
+
+extension DetailViewController {
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+
 }
