@@ -9,6 +9,8 @@ import UIKit
 
 class TitleTableViewController: UITableViewController {
 
+    // MARK: Attributes
+    
     var imageURL: URL?
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
@@ -26,18 +28,20 @@ class TitleTableViewController: UITableViewController {
     
     var justChangedFontSize: Bool = false
     
-    var dateString: String = "Hoje"
+    let texts = TitleTexts()
+    
+    var dateString: String = ""
     var previousDate: Date?
     var date: Date? = Date() {
         didSet {
             guard let date: Date = self.date else {
-                self.dateString = "Não sei"
+                self.dateString = self.texts.dontRememberWhen
                 return
             }
             if Calendar.current.isDateInToday(date) {
-                self.dateString = "Hoje"
+                self.dateString = self.texts.today
             } else {
-                self.dateString = DateManager.getTimeIntervalAsStringSinceDate(date) ?? "Não sei"
+                self.dateString = DateManager.getTimeIntervalAsStringSinceDate(date) ?? self.texts.dontRememberWhen
             }
             self.tableView.reloadData()
         }
@@ -55,7 +59,10 @@ class TitleTableViewController: UITableViewController {
         self.navigationItem.hidesBackButton = true
         
         self.registerNibs()
-        self.navigationItem.title = "Informações"
+        self.navigationItem.title = self.texts.navigationTitle
+        
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.dateString = self.texts.today
         
         // Adds tap gesture on the main view to dismiss text view keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -83,6 +90,7 @@ class TitleTableViewController: UITableViewController {
     }
     
     @objc func fontSizeChanged() {
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
         self.justChangedFontSize = true
         self.tableView.reloadData {
             self.justChangedFontSize = false
@@ -136,13 +144,14 @@ class TitleTableViewController: UITableViewController {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = "Qual será o título da sua memória? Como você quer resumi-la?"
+                cellType.subtitleLabel.text = self.texts.titleQuestion
                 cell = cellType
             }
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textFieldCell.rawValue, for: indexPath)
             if let cellType = cell as? TextFieldCell {
                 cellType.delegate = self
+                cellType.textField.placeholder = self.texts.titlePlaceholder
                 if self.justChangedFontSize {
                     cellType.textField.text = self.memoryTitle
                 }
@@ -151,10 +160,10 @@ class TitleTableViewController: UITableViewController {
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.expandingCell.rawValue, for: indexPath)
             if let cellType = cell as? ExpandingCell {
-                if self.dateString == "Hoje" {
-                    cellType.happenedLabel.text = "Aconteceu"
+                if self.dateString == self.texts.today {
+                    cellType.happenedLabel.text = self.texts.happened1
                 } else {
-                    cellType.happenedLabel.text = "Aconteceu há"
+                    cellType.happenedLabel.text = self.texts.happened2
                 }
                 cellType.timeLabel.text = self.dateString
                 cellType.expansionDelegate = self
@@ -163,7 +172,7 @@ class TitleTableViewController: UITableViewController {
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = "Não se preocupe com a exatidão! Pode ser uma estimativa, tá bem?"
+                cellType.subtitleLabel.text = self.texts.noNeedToBePrecise
                 cellType.subtitleLabel.textColor = UIColor.gray
                 cell = cellType
             }
@@ -187,7 +196,7 @@ class TitleTableViewController: UITableViewController {
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.switchCell.rawValue, for: indexPath)
             if let cellType = cell as? SwitchCell {
-                cellType.dontRemeberLabel.text = "Não lembro"
+                cellType.dontRemeberLabel.text = self.texts.dontRememberWhen
                 cellType.switchDelegate = self
                 if self.justChangedFontSize {
                     cellType.isSwitchOn = self.isSwitchOn
@@ -197,14 +206,14 @@ class TitleTableViewController: UITableViewController {
         case 6:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "Descrição"
-                cellType.subtitleLabel.text = "Faça uma breve descrição para podermos guardar na sua caixinha de memórias!"
+                cellType.titleLabel.text = self.texts.descriptionTitle
+                cellType.subtitleLabel.text = self.texts.descriptionSubtitle
                 cell = cellType
             }
         case 7:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textViewCell.rawValue, for: indexPath)
             if let cellType = cell as? TextViewCell {
-                cellType.placeholderText = "Descreva sua memória aqui..."
+                cellType.placeholderText = self.texts.descriptionTextPlaceholder
                 cellType.textViewCellDelegate = self
                 
                 if let text: String = self.memoryDescription,
@@ -219,7 +228,7 @@ class TitleTableViewController: UITableViewController {
         case 8:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
-                cellType.title = "Salvar"
+                cellType.title = self.texts.save
                 cellType.buttonDelegate = self
                 cellType.isEnabled = self.shouldEnableSaveButton()
                 cell = cellType
