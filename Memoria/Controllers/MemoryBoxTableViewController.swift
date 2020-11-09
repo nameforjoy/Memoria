@@ -29,7 +29,7 @@ class MemoryBoxTableViewController: UITableViewController {
     
     func setupTableView() {
         self.tableView.separatorStyle = .none
-        self.tableView.allowsSelection = false
+        self.tableView.allowsSelection = true
         self.tableView.isUserInteractionEnabled = true
     }
     
