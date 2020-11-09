@@ -59,6 +59,7 @@
 		8D9AA2E0254A756B00C394FF /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2DF254A756B00C394FF /* PresentationManager.swift */; };
 		8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */; };
 		8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */; };
+		8DA72A822559BBA1008FE574 /* InputAudioTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA72A812559BBA1008FE574 /* InputAudioTexts.swift */; };
 		8DAD8335254C400A009ED46C /* TitleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD8334254C400A009ED46C /* TitleTableViewController.swift */; };
 		8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833B254C4986009ED46C /* NibIdentifier.swift */; };
 		8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */; };
@@ -143,6 +144,7 @@
 		8D9AA2DF254A756B00C394FF /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonCell.swift; sourceTree = "<group>"; };
 		8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButtonCell.xib; sourceTree = "<group>"; };
+		8DA72A812559BBA1008FE574 /* InputAudioTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioTexts.swift; sourceTree = "<group>"; };
 		8DAD8334254C400A009ED46C /* TitleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewController.swift; sourceTree = "<group>"; };
 		8DAD833B254C4986009ED46C /* NibIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifier.swift; sourceTree = "<group>"; };
 		8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewNibRegistering.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				8D5AD8602559699800B33EA2 /* TitleTexts.swift */,
 				8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */,
 				8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */,
+				8DA72A812559BBA1008FE574 /* InputAudioTexts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				8D5AD8682559813C00B33EA2 /* MemoryBoxTexts.swift in Sources */,
 				159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
+				8DA72A822559BBA1008FE574 /* InputAudioTexts.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */,
 				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,

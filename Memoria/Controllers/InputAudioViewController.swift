@@ -32,6 +32,8 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     var timer: Timer?
     var timerCount: Double = 0
     var timerManager: TimerManager?
+    
+    var texts = InputAudioTexts()
 
     // MARK: Life cycle
     
@@ -144,26 +146,15 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         
         // Starts with empty timer label
         self.timerLabel.text = ""
-        
-        // Accessibility configurations
         self.changeTextForAccessibility()
-        
-        // Set text that will not change with accessibility
-        self.writeFixedText()
-    }
-    
-    func writeFixedText() {
-        self.subtitleLabel.text = "Ao pressionar o botão, a gravação será iniciada."
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
     /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
-        if self.traitCollection.isAccessibleCategory {
-            self.titleLabel.text = "Podemos gravar?"
-        } else {
-            self.titleLabel.text = "Podemos começar a gravar?"
-        }
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.titleLabel.text = self.texts.recordAudioTitle
+        self.subtitleLabel.text = self.texts.recordAudioSubtitle
     }
     
     // MARK: Audio Player set up
