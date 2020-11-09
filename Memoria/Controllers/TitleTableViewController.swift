@@ -29,25 +29,13 @@ class TitleTableViewController: UITableViewController {
     // "Don't know switch"
     var isSwitchOn: Bool = false
     
+    // "Happened when" expandable cell
+    var previousDateString: String = ""
+    var dateString: String = ""
+    
     // Date picker
     var timePassed: Int?
     var timeUnit: Calendar.Component = .day
-    var dateString: String = ""
-    var previousDate: Date?
-    var date: Date? = Date() {
-        didSet {
-            guard let date: Date = self.date else {
-                self.dateString = self.texts.dontRememberWhen
-                return
-            }
-            if Calendar.current.isDateInToday(date) {
-                self.dateString = self.texts.today
-            } else {
-                self.dateString = DateManager.getTimeIntervalAsStringSinceDate(date) ?? self.texts.dontRememberWhen
-            }
-            self.tableView.reloadData()
-        }
-    }
     
     // Save button
     var hasClickedOnSaveButton:  Bool = false
@@ -263,10 +251,10 @@ extension TitleTableViewController: DatePickerCellDelegate {
 
         self.timePassed = timePassed
         self.timeUnit = component
-      
-        guard let date: Date = DateManager.getEstimatedDate(timePassed: timePassed, component: component) else { return }
-        self.previousDate = self.date
-        self.date = date
+        
+        self.previousDateString = self.dateString
+        self.dateString = DateManager.getStrinigFromTimeAndComponent(timePassed: timePassed, component: component) ?? self.texts.dontRememberWhen
+        self.tableView.reloadData()
     }
 }
 
@@ -292,9 +280,11 @@ extension TitleTableViewController: GradientButtonCellDelegate {
                 print("Memory ID not found")
                 return
             }
-            let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: true, date: self.date)
-            print(memory)
             
+            let date: Date = DateManager.getEstimatedDate(timePassed: self.timePassed, component: self.timeUnit) ?? Date()
+            let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: !self.isSwitchOn, date: date)
+            print(memory)
+
             MemoryDAO.create(memory: memory) { (error) in
                 if error == nil {
                     // Segue
@@ -347,7 +337,7 @@ extension TitleTableViewController: ExpandableCellDelegate {
     
     func expandCells() {
         self.hiddenRows = []
-        if self.date == nil {
+        if self.isSwitchOn {
             self.hiddenRows.append(4)
         }
         self.tableView.reloadData()
@@ -376,16 +366,16 @@ extension TitleTableViewController: SwitchCellDelegate {
     func switchIsOn() {
         self.hiddenRows = [4] // hide date picker cell
         self.isSwitchOn = true
-        self.previousDate = self.date
-        self.date = nil
+        self.previousDateString = self.dateString
+        self.dateString = self.texts.dontRememberWhen
         self.tableView.reloadData()
     }
     
     func switchIsOff() {
         self.isSwitchOn = false
         self.hiddenRows = [] // unhide date picker cell
-        self.date = self.previousDate
-        self.previousDate = nil
+        self.dateString = self.previousDateString
+        self.previousDateString = self.texts.dontRememberWhen
         self.tableView.reloadData()
     }
 }
