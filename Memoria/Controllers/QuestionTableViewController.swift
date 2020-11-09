@@ -216,7 +216,10 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     func gradientButtonCellAction() {
         
         if !self.hasClickedOnSaveButton {
-            let newMemoryDetail = self.getDetailFromInterface()
+            guard let newMemoryDetail = self.getDetailFromInterface() else {
+                print("Coudn't get detail from interface.")
+                return
+            }
             
             // Calls DAO to object to database
             DetailDAO.create(detail: newMemoryDetail) { error in
@@ -235,8 +238,14 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         }
     }
     
-    func getDetailFromInterface() -> Detail {
-        
+    func getDetailFromInterface() -> Detail? {
+
+        // Check if ID is available
+        guard let memoryID = self.memoryID else {
+            print("Memory ID is nil, therefore Detail can't be generated.")
+            return nil
+        }
+
         // Organize content given by user
         let category = self.navigationItem.title
         let question = self.question ?? ""
@@ -245,7 +254,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         let image = self.imageURL
         
         // Creates detail object
-        let detail = Detail(text: text, question: question, category: category, audio: audio, image: image)
+        let detail = Detail(memoryID: memoryID, text: text, question: question, category: category, audio: audio, image: image)
         return detail
     }
     

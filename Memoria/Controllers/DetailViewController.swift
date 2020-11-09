@@ -15,30 +15,50 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var answerImageView: UIImageView!
     var currentDetail: Detail?
     var selectedMemory: Memory?
-    var memoryDetails: [Detail]?
 
     // Temporary properties for tests only
     var details: [Detail]?
-    var position: Int = 0
+    var allDetails: [Detail]?
+//    var position: Int = 0
 
     override func viewWillAppear(_ animated: Bool) {
+        retrieveAllDetails()
         retrieveDetailsFromCurrentMemory()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let selectedMemory = self.selectedMemory {
+            print("ID da memória: \(selectedMemory.memoryID) ")
+        }
+
         // Populates view with first detail
-        if let details = details {
-            self.populateView(detail: details[0])
-            print("Loading detail #0")
+//        if let details = details {
+//            self.populateView(detail: details[0])
+//            print("Loading detail #0")
+//        }
+    }
+
+    func retrieveAllDetails() {
+        DetailDAO.findAll { (details) in
+            self.allDetails = details
+
+            for detail in details {
+                print(detail.text)
+                print("ID do detalhe: \(detail.memoryID).")
+            }
         }
     }
 
     func retrieveDetailsFromCurrentMemory() {
         if let memoryID = selectedMemory?.memoryID {
             DetailDAO.findByMemoryID(memoryID: memoryID) { (details) in
-                self.memoryDetails = details
+                print("There is \(details.count) details for this memory.")
+                self.details = details
+                if !details.isEmpty {
+                    self.populateView(detail: details[0])
+                }
                 //reload tableView
             }
         }
@@ -46,22 +66,22 @@ class DetailViewController: UIViewController {
 
     // Temporary button for tests only
     @IBAction func changeDetail(_ sender: Any) {
-        guard let numberOfDetails = details?.count else { return }
-
-        // Moves to next detail
-        position += 1
-
-        // Restarts counting when reaches last record
-        if position >= numberOfDetails {
-            position = 0
-        }
-
-        // Updates current detail
-        currentDetail = details?[position]
-
-        // Changing detail view content
-        populateView(detail: currentDetail)
-        print("Changing to detail #\(position)")
+//        guard let numberOfDetails = details?.count else { return }
+//
+//        // Moves to next detail
+//        position += 1
+//
+//        // Restarts counting when reaches last record
+//        if position >= numberOfDetails {
+//            position = 0
+//        }
+//
+//        // Updates current detail
+//        currentDetail = details?[position]
+//
+//        // Changing detail view content
+//        populateView(detail: currentDetail)
+//        print("Changing to detail #\(position)")
     }
 
     // Updates view with input detail
