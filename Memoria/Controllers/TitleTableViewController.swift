@@ -11,25 +11,27 @@ class TitleTableViewController: UITableViewController {
 
     // MARK: Attributes
     
+    // Image
     var imageURL: URL?
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
+    // Memory
     var memoryID: UUID?
     var memoryDescription: String?
     var memoryTitle: String?
     
+    // Interface
     var hiddenRows: [Int] = [3, 4, 5]
-    
-    var timePassed: Int?
-    var timeUnit: Calendar.Component = .day
-    
-    var isSwitchOn: Bool = false
-    
     var justChangedFontSize: Bool = false
-    
     let texts = TitleTexts()
     
+    // "Don't know switch"
+    var isSwitchOn: Bool = false
+    
+    // Date picker
+    var timePassed: Int?
+    var timeUnit: Calendar.Component = .day
     var dateString: String = ""
     var previousDate: Date?
     var date: Date? = Date() {
@@ -47,21 +49,25 @@ class TitleTableViewController: UITableViewController {
         }
     }
     
-    var hasClickedOnSaveButton:Bool = false
+    // Save button
+    var hasClickedOnSaveButton:  Bool = false
     
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Table view setup
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
         self.navigationItem.hidesBackButton = true
         
+        // Register xibs to be displayed in this table view
         self.registerNibs()
-        self.navigationItem.title = self.texts.navigationTitle
         
+        // Initial text and accessibility setup
         self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.navigationItem.title = self.texts.navigationTitle
         self.dateString = self.texts.today
         
         // Adds tap gesture on the main view to dismiss text view keyboard
@@ -89,19 +95,27 @@ class TitleTableViewController: UITableViewController {
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
     }
     
+    // MARK: Responders
+    
+    /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged() {
         self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        // Set flag to indicate if table view was refreshed after font size was changed
+        // Needed because some information like status of switch button may be reset otherwise
         self.justChangedFontSize = true
         self.tableView.reloadData {
             self.justChangedFontSize = false
         }
     }
     
-    // Dismisses keyboard after tapping outside keyboard
+    /// Dismisses keyboard after tapping outside of it
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
+    // MARK: Instantiate Nibs
+    
+    /// Register xibs in this table view
     func registerNibs() {
         self.tableView.registerNib(nibIdentifier: .subtitleCell)
         self.tableView.registerNib(nibIdentifier: .textFieldCell)
@@ -115,7 +129,7 @@ class TitleTableViewController: UITableViewController {
         self.tableView.registerNib(nibIdentifier: .gradientButtonCell)
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -262,17 +276,13 @@ extension TitleTableViewController: TextViewCellDelegate {
     
     func didFinishWriting(text: String) {
         self.memoryDescription = text
-        self.tableView.reloadData()
+        self.tableView.reloadData() // so the save button cell is reloaded and its button enabled/disabled if needed
     }
 }
 
 // MARK: Gradient Button
 
 extension TitleTableViewController: GradientButtonCellDelegate {
-    
-    func disabledButtonAction() {
-        present(AlertManager().giveTitleToSave, animated: true, completion: nil)
-    }
     
     func gradientButtonCellAction() {
         
@@ -293,7 +303,7 @@ extension TitleTableViewController: GradientButtonCellDelegate {
                     }
                 } else {
                     print(error.debugDescription)
-                    // Treat error
+                    // TODO: Treat error
                     // Alert "Infelizmente não conseguimos salvar sua memória"
                 }
             }
@@ -302,6 +312,13 @@ extension TitleTableViewController: GradientButtonCellDelegate {
         self.hasClickedOnSaveButton = true
     }
     
+    // Present alert warning user they cannot procceed without at least one input.
+    // Only done when save button is disabled.
+    func disabledButtonAction() {
+        present(AlertManager().giveTitleToSave, animated: true, completion: nil)
+    }
+    
+    /// Check if user has input title for memory so that the save button is enabled/disabled
     func shouldEnableSaveButton() -> Bool {
         if let title = self.memoryTitle,
            title.trimmingCharacters(in: .whitespaces).isEmpty {
@@ -348,7 +365,7 @@ extension TitleTableViewController: TextFieldCellDelegate {
     
     func didFinishEditing(text: String?) {
         self.memoryTitle = text
-        self.tableView.reloadData()
+        self.tableView.reloadData() // so the placeholder text comes back when cell is loaded again if the user has erased their text
     }
 }
 
@@ -357,7 +374,7 @@ extension TitleTableViewController: TextFieldCellDelegate {
 extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOn() {
-        self.hiddenRows = [4]
+        self.hiddenRows = [4] // hide date picker cell
         self.isSwitchOn = true
         self.previousDate = self.date
         self.date = nil
@@ -366,7 +383,7 @@ extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOff() {
         self.isSwitchOn = false
-        self.hiddenRows = []
+        self.hiddenRows = [] // unhide date picker cell
         self.date = self.previousDate
         self.previousDate = nil
         self.tableView.reloadData()

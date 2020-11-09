@@ -43,6 +43,7 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         self.setupRecorder()
         self.contentBackground.layer.cornerRadius = 20
         
+        // Tap gesture on zone outside recorder
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
         self.dismissView.addGestureRecognizer(tap)
         
@@ -108,6 +109,8 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         self.timer?.invalidate()
         self.dismiss(animated: true)
     }
+    
+    // MARK: Timer
     
     @objc func fireTimer() {
         self.timerCount += 1
@@ -202,6 +205,8 @@ extension InputAudioViewController: AVAudioRecorderDelegate {
         return audioFilename
     }
 }
+
+// MARK: Alert
 
 extension InputAudioViewController: AlertManagerDelegate {
     
