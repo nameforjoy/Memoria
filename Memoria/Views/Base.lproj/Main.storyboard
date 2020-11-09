@@ -24,21 +24,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-aA-ToV">
-                                <rect key="frame" x="163.5" y="542" width="87" height="30"/>
+                                <rect key="frame" x="163.5" y="545.5" width="87" height="30"/>
                                 <state key="normal" title="Ver Memória"/>
                                 <connections>
                                     <action selector="clickToViewDetail:" destination="upX-eD-PW6" eventType="touchUpInside" id="5AO-W0-xbd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBd-86-ivj">
-                                <rect key="frame" x="152.5" y="616" width="109" height="30"/>
+                                <rect key="frame" x="152.5" y="619.5" width="109" height="30"/>
                                 <state key="normal" title="Carregar Dados"/>
                                 <connections>
                                     <action selector="loadData:" destination="upX-eD-PW6" eventType="touchUpInside" id="7Jr-Jj-6qZ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="25" y="379" width="364" height="43.5"/>
+                                <rect key="frame" x="25" y="382.5" width="364" height="43.5"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -46,14 +46,14 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="432.5" width="364" height="44"/>
+                                <rect key="frame" x="25" y="436" width="364" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHK-Xx-iaq">
-                                <rect key="frame" x="182.5" y="687.5" width="49" height="30"/>
+                                <rect key="frame" x="182.5" y="691" width="49" height="30"/>
                                 <state key="normal" title="TitleVC"/>
                                 <connections>
                                     <segue destination="14s-zS-Ppn" kind="show" id="za4-C6-yTj"/>
@@ -290,7 +290,7 @@ Vamos guardar uma? </string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6lO-W3-Ipa"/>
+        <segue reference="Sob-dv-5Fd"/>
         <segue reference="za4-C6-yTj"/>
     </inferredMetricsTieBreakers>
     <resources>

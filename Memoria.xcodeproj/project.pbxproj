@@ -47,6 +47,8 @@
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
 		8D5AD8612559699800B33EA2 /* TitleTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8602559699800B33EA2 /* TitleTexts.swift */; };
+		8D5AD8642559729D00B33EA2 /* QuestionTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */; };
+		8D5AD8682559813C00B33EA2 /* MemoryBoxTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */; };
 		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
 		8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7FE25438109002A3F74 /* TimerManager.swift */; };
 		8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F801254384FC002A3F74 /* DoubleRound.swift */; };
@@ -121,6 +123,8 @@
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
 		8D5AD8602559699800B33EA2 /* TitleTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTexts.swift; sourceTree = "<group>"; };
+		8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTexts.swift; sourceTree = "<group>"; };
+		8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBoxTexts.swift; sourceTree = "<group>"; };
 		8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold Italic.ttf"; sourceTree = "<group>"; };
 		8D60F7EB25436680002A3F74 /* Circular Std Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold.ttf"; sourceTree = "<group>"; };
 		8D60F7EC25436680002A3F74 /* Circular Std Black Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Black Italic.ttf"; sourceTree = "<group>"; };
@@ -224,7 +228,6 @@
 				15C8F23D252DF48C00DD9208 /* Controllers */,
 				15C8F23B252DF46B00DD9208 /* Views */,
 				15266D5E252BC7BE006A531D /* Extensions */,
-				8D5AD85F2559697900B33EA2 /* Texts */,
 				8D60F7F32543686A002A3F74 /* Helpers */,
 				8D60F7E8254365CA002A3F74 /* Fonts */,
 				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
@@ -398,14 +401,6 @@
 			path = IconButtonCell;
 			sourceTree = "<group>";
 		};
-		8D5AD85F2559697900B33EA2 /* Texts */ = {
-			isa = PBXGroup;
-			children = (
-				8D5AD8602559699800B33EA2 /* TitleTexts.swift */,
-			);
-			path = Texts;
-			sourceTree = "<group>";
-		};
 		8D60F7E8254365CA002A3F74 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +434,9 @@
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 				8D9AA2DF254A756B00C394FF /* PresentationManager.swift */,
 				8DAD833B254C4986009ED46C /* NibIdentifier.swift */,
+				8D5AD8602559699800B33EA2 /* TitleTexts.swift */,
+				8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */,
+				8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -617,6 +615,7 @@
 				B36DF378255418C900534A0E /* MemoryServices.swift in Sources */,
 				8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */,
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
+				8D5AD8682559813C00B33EA2 /* MemoryBoxTexts.swift in Sources */,
 				159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
@@ -641,6 +640,7 @@
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
 				8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */,
+				8D5AD8642559729D00B33EA2 /* QuestionTexts.swift in Sources */,
 				15DCA482254C411000BCD7D0 /* SwitchCell.swift in Sources */,
 				15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */,
 				15CDC160252CBFF000BD9A11 /* InputAudioViewController.swift in Sources */,

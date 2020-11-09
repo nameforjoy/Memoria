@@ -18,11 +18,13 @@ class QuestionTableViewController: UITableViewController {
     
     var audioURL: URL?
     var writtenText: String?
-    var question: String? = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
+    var question: String? = ""
     
     var memoryID: UUID?
     var hiddenRows: [Int] = [4,7]
     var hasClickedOnSaveButton: Bool = false
+    
+    var texts = QuestionTexts()
     
     // MARK: Life Cycle
 
@@ -32,6 +34,10 @@ class QuestionTableViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
         self.tableView.isUserInteractionEnabled = true
+        
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.question = self.texts.question
+        self.navigationItem.title = self.texts.category
         
         self.registerNibs()
         
@@ -49,8 +55,6 @@ class QuestionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.changeTextForAccessibility()
         
         if self.memoryID == nil {
             print("Could not find ID for this memory")
@@ -85,16 +89,11 @@ class QuestionTableViewController: UITableViewController {
     
     /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
     @objc func fontSizeChanged(_ notification: Notification) {
-        self.changeTextForAccessibility()
-    }
-    
-    /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
-    /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
-    func changeTextForAccessibility() {
-        if self.traitCollection.isAccessibleCategory {
-            self.navigationItem.title = "Me conta"
-        } else {
-            self.navigationItem.title = "Conta pra mim!"
+        if self.texts.isAccessibleCategory != self.traitCollection.isAccessibleCategory {
+            self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+            self.navigationItem.title = self.texts.category
+            self.question = self.texts.question
+            self.tableView.reloadData()
         }
     }
 
@@ -133,9 +132,8 @@ class QuestionTableViewController: UITableViewController {
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textViewCell.rawValue, for: indexPath)
             if let cellType = cell as? TextViewCell {
-                cellType.placeholderText = "Descreva sua memória aqui..."
+                cellType.placeholderText = self.texts.textAnswerPlaceholder
                 cellType.textViewCellDelegate = self
-                
                 if let text: String = self.writtenText,
                    !text.trimmingCharacters(in: .whitespaces).isEmpty {
                     cellType.writtenText = text
@@ -148,15 +146,15 @@ class QuestionTableViewController: UITableViewController {
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "Que tal gravar?"
-                cellType.subtitleLabel.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
+                cellType.titleLabel.text = self.texts.recordAudioTitle
+                cellType.subtitleLabel.text = self.texts.recordAudioSubtitle
                 cell = cellType
             }
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? IconButtonCell {
                 cellType.icon.image = UIImage(named: "microphone")
-                cellType.title.text = "Gravar áudio"
+                cellType.title.text = self.texts.recordAudioButtonTitle
                 cellType.buttonType = .addAudio
                 cellType.buttonDelegate = self
                 cell = cellType
@@ -170,15 +168,15 @@ class QuestionTableViewController: UITableViewController {
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "E uma foto?"
-                cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que esteja relacionada a essa memória."
+                cellType.titleLabel.text = self.texts.takePhotoTitle
+                cellType.subtitleLabel.text = self.texts.takePhotoSubtitle
                 cell = cellType
             }
         case 6:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? IconButtonCell {
                 cellType.icon.image = UIImage(named: "camera")
-                cellType.title.text = "Adicionar foto"
+                cellType.title.text = self.texts.takePhotoButtonTitle
                 cellType.buttonType = .addImage
                 cellType.buttonDelegate = self
                 cell = cellType
@@ -192,7 +190,7 @@ class QuestionTableViewController: UITableViewController {
         case 8:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
-                cellType.title = "Salvar"
+                cellType.title = self.texts.save
                 cellType.buttonDelegate = self
                 cellType.isEnabled = self.shouldEnableSaveButton()
                 cell = cellType

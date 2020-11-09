@@ -16,6 +16,8 @@ class MemoryCollectionViewController: UIViewController {
     @IBOutlet weak var addFirstMemoryButton: IconButtonView!
     
     var didJustSaveAMemory: Bool = false
+    
+    var texts = MemoryBoxTexts()
 
     // Temp atributes for testing data retrieve
     var userMemoryDetails: [Detail]?
@@ -29,8 +31,11 @@ class MemoryCollectionViewController: UIViewController {
         // Navigation set up
         self.setUpNavigationBar()
         self.setUpNavigationController()
-        self.setUpText()
+        
         self.addFirstMemoryButton.buttonDelegate = self
+        self.addFirstMemoryButton.icon.image = UIImage(named: "plusSign")
+        self.noMemoriesLabel.dynamicFont = Typography().bodyRegular
+        self.setUpText()
         
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
@@ -100,30 +105,25 @@ class MemoryCollectionViewController: UIViewController {
         }
     }
     
-    // MARK: Acessibility text
+    // MARK: Acessibility
     
     @objc func fontSizeChanged(_ notification: Notification) {
         self.changeTextForAccessibility()
     }
     
+    func setUpText() {
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.navigationItem.title = self.texts.navigationTitle
+        self.addFirstMemoryButton.title.text = self.texts.addMemoryButtonText
+        self.noMemoriesLabel.text = self.texts.addFirstMemory
+    }
+    
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
     /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
-        if self.traitCollection.isAccessibleCategory {
-            self.navigationItem.title = "Memórias"
-            self.addFirstMemoryButton.title.text = "Adicionar"
-            self.noMemoriesLabel.text = "Vamos adicionar sua primeira memória?"
-        } else {
-            self.navigationItem.title = "Caixa de memórias"
-            self.addFirstMemoryButton.title.text = "Adicionar memória"
-            self.noMemoriesLabel.text = "Você ainda não guardou nenhuma memória. Vamos guardar uma?"
+        if self.texts.isAccessibleCategory != self.traitCollection.isAccessibleCategory {
+            self.setUpText()
         }
-    }
-    
-    func setUpText() {
-        self.changeTextForAccessibility()
-        self.noMemoriesLabel.dynamicFont = Typography().bodyRegular
-        self.addFirstMemoryButton.icon.image = UIImage(named: "plusSign")
     }
     
     // MARK: Navigation
@@ -145,6 +145,8 @@ class MemoryCollectionViewController: UIViewController {
         UINavigationBar.appearance().titleTextAttributes = attributes
     }
 }
+
+// MARK: Icon button
 
 extension MemoryCollectionViewController: IconButtonDelegate {
     
