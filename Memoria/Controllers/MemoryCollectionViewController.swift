@@ -43,11 +43,11 @@ class MemoryCollectionViewController: UIViewController {
         self.registerNibs()
         self.receiveData()
         self.tableView.dataSource = self
-//        self.tableView.delegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.receiveData()
         
         // Present alert if a memory has just been saved
         if didJustSaveAMemory {
