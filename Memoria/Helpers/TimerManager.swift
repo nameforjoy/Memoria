@@ -26,7 +26,7 @@ class TimerManager {
         seconds -= Double(minutes) * 60
         let decimalSeconds = seconds.truncatingRemainder(dividingBy: 1) * pow(10.0, Double(places))
         
-        return String(format: "%02d:%02d,%02d",
+        return String(format: "%02d:%02d,%01d",
                       minutes,
                       Int(truncating: NSNumber(value: seconds)),
                       Int(Double(decimalSeconds).rounded()))

@@ -28,6 +28,7 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     var soundRecorder = AVAudioRecorder()
     var isRecording: Bool = false
     var audioURL: URL?
+    
     var timer: Timer?
     var timerCount: Double = 0
     var timerManager: TimerManager?
@@ -63,37 +64,41 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     
     ///Change states when recording or stop recording
     @IBAction func record(_ sender: Any) {
-        
         if !self.isRecording {
-            // Start recording
-            self.soundRecorder.record()
-            self.isRecording = true
-            
-            // Change button image
-            guard let stopImage = UIImage(named: "stopRecording") else {return}
-            self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
-            
-            // Starts timer
-            let timeInterval: Double = 0.1
-            self.timerManager = TimerManager(timeInterval: timeInterval)
-            self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-            
+            self.startRecording()
         } else {
-            // Stop recording
-            self.soundRecorder.stop()
-            self.isRecording = false
-            
-            // Change button image
-            guard let startImage = UIImage(named: "startRecording") else {return}
-            self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
-            
-            // Stop and reset timer
-            self.timerCount = 0
-            self.timer?.invalidate()
-            
+            self.stopRecording()
             // Dismiss Audio Recorder
             self.dismiss(animated: true)
         }
+    }
+    
+    func startRecording() {
+        self.soundRecorder.record()
+        self.isRecording = true
+        
+        // Change button image
+        guard let stopImage = UIImage(named: "stopRecording") else {return}
+        self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
+        
+        // Starts timer
+        let timeInterval: Double = 0.1 // seconds
+        self.timerManager = TimerManager(timeInterval: timeInterval)
+        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+    }
+    
+    func stopRecording() {
+        self.soundRecorder.stop()
+        self.isRecording = false
+        self.timerLabel.textColor = UIColor.white
+        
+        // Change button image
+        guard let startImage = UIImage(named: "startRecording") else {return}
+        self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
+        
+        // Stop and reset timer
+        self.timerCount = 0
+        self.timer?.invalidate()
     }
     
     /// Dismissthis View Controller when tapping outside the content view
@@ -106,9 +111,19 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         self.timerCount += 1
         guard let time: String = self.timerManager?.getTimeString(timerCount: self.timerCount) else {return}
         self.timerLabel.text = time
+        
+        if time == "00:05,0" {
+            self.timerLabel.textColor = UIColor.systemRed
+        } else if time == "00:08,0" {
+            self.stopRecording()
+            self.dismiss(animated: true) {
+                // Alert
+            }
+        }
 
         if !self.isRecording {
             self.timer?.invalidate()
+            self.timerLabel.text = "00:00,0"
         }
     }
     
