@@ -20,15 +20,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ba1-SV-RmJ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvd-Ph-ouA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvd-Ph-ouA">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
                                         <state key="normal" title="&gt;&gt; Próximo Detalhe"/>
                                         <connections>
                                             <action selector="changeDetail:" destination="A6K-pw-hRF" eventType="touchUpInside" id="TmY-KF-sRv"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Texto da pergunta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tb-pk-3yD" userLabel="Texto da pergunta">
-                                        <rect key="frame" x="0.0" y="46" width="414" height="219.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="265.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

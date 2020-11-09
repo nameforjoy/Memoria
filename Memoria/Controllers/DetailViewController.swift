@@ -14,10 +14,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var audioPlayer: AudioPlayerView!
     @IBOutlet weak var answerImageView: UIImageView!
     var currentDetail: Detail?
+    var selectedMemory: Memory?
+    var memoryDetails: [Detail]?
 
     // Temporary properties for tests only
     var details: [Detail]?
     var position: Int = 0
+
+    override func viewWillAppear(_ animated: Bool) {
+        retrieveDetailsFromCurrentMemory()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,15 @@ class DetailViewController: UIViewController {
         if let details = details {
             self.populateView(detail: details[0])
             print("Loading detail #0")
+        }
+    }
+
+    func retrieveDetailsFromCurrentMemory() {
+        if let memoryID = selectedMemory?.memoryID {
+            DetailDAO.findByMemoryID(memoryID: memoryID) { (details) in
+                self.memoryDetails = details
+                //reload tableView
+            }
         }
     }
 
