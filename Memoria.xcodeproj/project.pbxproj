@@ -66,7 +66,7 @@
 		8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */; };
 		8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BE254739190008DBF8 /* GradientButton.xib */; };
 		8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */; };
-		8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* Alerts.swift */; };
+		8DDCAB9A252EA0290012B671 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* AlertManager.swift */; };
 		8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */; };
 		8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6DB3125477CD20057898E /* IconButtonView.swift */; };
 		8DF6DB3525477CF30057898E /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF6DB3425477CF30057898E /* IconButton.xib */; };
@@ -150,7 +150,7 @@
 		8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
 		8DCEE7BE254739190008DBF8 /* GradientButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButton.xib; sourceTree = "<group>"; };
 		8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
-		8DDCAB99252EA0290012B671 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		8DDCAB99252EA0290012B671 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitCollectionAccessibility.swift; sourceTree = "<group>"; };
 		8DF6DB3125477CD20057898E /* IconButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonView.swift; sourceTree = "<group>"; };
 		8DF6DB3425477CF30057898E /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
@@ -429,7 +429,7 @@
 			children = (
 				B371E68D254AEDD500207D85 /* DateManager.swift */,
 				15AA50DE2543175C00EC2E4B /* MediaManager.swift */,
-				8DDCAB99252EA0290012B671 /* Alerts.swift */,
+				8DDCAB99252EA0290012B671 /* AlertManager.swift */,
 				8D60F7F4254368B3002A3F74 /* Typography.swift */,
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 				8D9AA2DF254A756B00C394FF /* PresentationManager.swift */,
@@ -636,7 +636,7 @@
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DAD8335254C400A009ED46C /* TitleTableViewController.swift in Sources */,
 				8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */,
-				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
+				8DDCAB9A252EA0290012B671 /* AlertManager.swift in Sources */,
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
 				8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */,

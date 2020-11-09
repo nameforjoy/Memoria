@@ -112,13 +112,14 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         guard let time: String = self.timerManager?.getTimeString(timerCount: self.timerCount) else {return}
         self.timerLabel.text = time
         
-        if time == "00:05,0" {
+        if time == "09:30,0" {
             self.timerLabel.textColor = UIColor.systemRed
-        } else if time == "00:08,0" {
+        } else if time == "10:00,0" {
             self.stopRecording()
-            self.dismiss(animated: true) {
-                // Alert
-            }
+            
+            let alertManager = AlertManager()
+            alertManager.delegate = self
+            self.present(alertManager.reachedAudioTimeLimit, animated: true)
         }
 
         if !self.isRecording {
@@ -208,5 +209,12 @@ extension InputAudioViewController: AVAudioRecorderDelegate {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
         return audioFilename
+    }
+}
+
+extension InputAudioViewController: AlertManagerDelegate {
+    
+    func buttonAction() {
+        self.dismiss(animated: true)
     }
 }

@@ -271,7 +271,7 @@ extension TitleTableViewController: TextViewCellDelegate {
 extension TitleTableViewController: GradientButtonCellDelegate {
     
     func disabledButtonAction() {
-        present(Alerts().giveTitleToSave, animated: true, completion: nil)
+        present(AlertManager().giveTitleToSave, animated: true, completion: nil)
     }
     
     func gradientButtonCellAction() {

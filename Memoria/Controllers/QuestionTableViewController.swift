@@ -207,7 +207,7 @@ class QuestionTableViewController: UITableViewController {
 extension QuestionTableViewController: GradientButtonCellDelegate {
     
     func disabledButtonAction() {
-        present(Alerts().unableToSave, animated: true, completion: nil)
+        present(AlertManager().unableToSave, animated: true, completion: nil)
     }
     
     // Saves detail in memory
@@ -337,7 +337,7 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         case .undetermined:
             self.askMicrophoneAccessAuthorization()
         case .denied:
-            present(Alerts().changeMicrophonePermission, animated: true, completion: nil)
+            present(AlertManager().changeMicrophonePermission, animated: true, completion: nil)
         case .granted:
             self.openAudioRecorder()
         @unknown default:

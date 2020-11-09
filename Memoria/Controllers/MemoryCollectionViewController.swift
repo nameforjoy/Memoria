@@ -46,8 +46,8 @@ class MemoryCollectionViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Present alert if a memory has just been saved
-        if didJustSaveAMemory {
-            self.present(Alerts().memorySaved, animated: true)
+        if self.didJustSaveAMemory {
+            self.present(AlertManager().memorySaved, animated: true)
             self.didJustSaveAMemory = false
         }
     }
