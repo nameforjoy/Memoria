@@ -15,7 +15,8 @@ class MemoryCollectionViewController: UIViewController {
     @IBOutlet weak var noMemoriesLabel: UILabel!
     @IBOutlet weak var addFirstMemoryButton: IconButtonView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var loadingIcon: UIActivityIndicatorView!
+
     var memories = [Memory]()
     var didJustSaveAMemory: Bool = false
     var selectedMemory: Memory?
@@ -43,6 +44,10 @@ class MemoryCollectionViewController: UIViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+
+        notificationCenter.addObserver(self, selector: #selector(networkNotResponding), name: NSNotification.Name(rawValue: CKErrorNotification.networkUnavailable.rawValue), object: nil)
+
+        notificationCenter.addObserver(self, selector: #selector(networkNotResponding), name: NSNotification.Name(rawValue: CKErrorNotification.networkFailure.rawValue), object: nil)
         
         //TableView set up
         self.setupTableView()
@@ -53,6 +58,7 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadingIcon.startAnimating()
         super.viewWillAppear(animated)
         self.receiveData()
         
@@ -77,6 +83,10 @@ class MemoryCollectionViewController: UIViewController {
 
     func receiveData() {
         MemoryDAO.findAll { (memories, error) in
+
+            // Disables loading icon
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.isHidden = true
 
             // Handle error
             if error != nil {
@@ -107,6 +117,18 @@ class MemoryCollectionViewController: UIViewController {
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
             destination.selectedMemory = self.selectedMemory
+        }
+    }
+
+    // MARK: Errors
+
+    @objc func networkNotResponding(_ notification: Notification) {
+
+        // Disables loading icon
+        DispatchQueue.main.async {
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.isHidden = true
+            self.present(AlertManager().poorNetworkConnection, animated: true)
         }
     }
     

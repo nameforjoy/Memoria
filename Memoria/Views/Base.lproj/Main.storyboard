@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -42,6 +42,9 @@ Vamos guardar uma? </string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="baj-Fk-iR2">
+                                <rect key="frame" x="188.5" y="482.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,6 +57,8 @@ Vamos guardar uma? </string>
                             <constraint firstItem="hLN-7Y-fZZ" firstAttribute="bottom" secondItem="e5p-nX-PYi" secondAttribute="bottom" id="dF2-ba-hB4"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="diD-x7-JTE"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="leading" secondItem="YcP-aD-e4p" secondAttribute="leading" id="eNZ-Ke-s8L"/>
+                            <constraint firstItem="baj-Fk-iR2" firstAttribute="centerY" secondItem="e5p-nX-PYi" secondAttribute="centerY" id="kQX-eg-UqY"/>
+                            <constraint firstItem="baj-Fk-iR2" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="mCf-Sv-UCH"/>
                             <constraint firstItem="hLN-7Y-fZZ" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" id="nDd-Yc-bUC"/>
                             <constraint firstItem="e5p-nX-PYi" firstAttribute="trailing" secondItem="hLN-7Y-fZZ" secondAttribute="trailing" id="wzm-KG-hQF"/>
                         </constraints>
@@ -67,6 +72,7 @@ Vamos guardar uma? </string>
                     </navigationItem>
                     <connections>
                         <outlet property="addFirstMemoryButton" destination="YmF-Fb-C8c" id="EwT-5y-gY6"/>
+                        <outlet property="loadingIcon" destination="baj-Fk-iR2" id="Soy-je-Kap"/>
                         <outlet property="noMemoriesLabel" destination="YcP-aD-e4p" id="44d-AZ-a2u"/>
                         <outlet property="tableView" destination="hLN-7Y-fZZ" id="ToS-fL-c2H"/>
                         <segue destination="BwW-ST-TNg" kind="show" identifier="viewDetail" id="Sob-dv-5Fd"/>

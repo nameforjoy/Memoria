@@ -70,4 +70,15 @@ class AlertManager {
         
         return myAlert
     }
+
+    var poorNetworkConnection: UIAlertController {
+        let title = "Sem acesso a internet"
+        let message = "Não conseguimos acessar os servidores. Cheque sua conexão com a internet e tente novamente!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.delegate?.buttonAction()
+        }))
+
+        return myAlert
+    }
 }
