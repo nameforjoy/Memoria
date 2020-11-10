@@ -96,7 +96,9 @@ class MemoryCollectionViewController: UIViewController {
     // MARK: Segue
     
     /// Unwind segue to get back to this view controller after saving a memory
-    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
     
     // Passes Array of Detail Objects to DetailViewController
     // Future: Passes only a single detail object as destination.currentDetail
