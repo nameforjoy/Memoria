@@ -56,7 +56,7 @@ class MemoryBoxTableViewController: UITableViewController {
             let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory.date)
             
             if let dateString = dateString {
-                cellType.timeLabel.text = "Há " + dateString
+                cellType.timeLabel.text = dateString
             } else {
                 cellType.timeLabel.text = "Indefinido"
             }

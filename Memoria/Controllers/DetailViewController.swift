@@ -80,7 +80,7 @@ extension DetailViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 if let dateString = DateManager.getTimeIntervalAsStringSinceDate(selectedMemory?.date) {
-                    cellType.subtitleLabel.text = "Há \(dateString)"
+                    cellType.subtitleLabel.text = "\(dateString)"
                     cellType.subtitleLabel.textColor = UIColor.gray
                 } else {
                     cellType.isHidden = true
