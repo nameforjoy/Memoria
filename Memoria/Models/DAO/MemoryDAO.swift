@@ -32,17 +32,20 @@ class MemoryDAO: DAO {
 
             if error == nil {
                 print("Record Saved")
+                print(savedRecord ?? "Unable to print saved record")
                 completion(nil)
+            } else if let ckerror = error as? CKError {
+                
             } else {
-                print("Record Not Saved")
-                print(error ?? "Nil")
+                print("Record not saved for uknown reasons")
+                print(error ?? "Unable to print error")
                 completion(error)
             }
         }
     }
 
     /// Retrieve all memories from database
-    static public func findAll(completion: @escaping ([Memory]) -> Void) {
+    static public func findAll(completion: @escaping ([Memory], Error?) -> Void) {
         var allRecords = [Memory]()
 
         let predicate = NSPredicate(value: true)
@@ -62,15 +65,19 @@ class MemoryDAO: DAO {
                 print(record.allKeys())
                 print(record.allTokens())
             }
-
         }
 
         operation.queryCompletionBlock = { cursor, error in
-
-            DispatchQueue.main.async {
-                completion(allRecords)
+            if error == nil {
+                DispatchQueue.main.async {
+                    completion(allRecords, nil)
+                }
+            } else if let ckError = error as? CKError {
+                CKErrorHandling.treatCKErrors(ckError: ckError)
+            } else {
+                print(error ?? "Unable to print error")
+                completion(allRecords, error)
             }
-
         }
 
         privateDatabase.add(operation)

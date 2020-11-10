@@ -50,9 +50,9 @@ class MemoryServices {
 
     /// Method to organize data from database before returning to de UI.
     /// Might be a good place to reorder the memory array by date or any other criteria.
-    static public func findAll(completion: @escaping ([Memory]) -> Void) {
-        MemoryDAO.findAll { (retievedMemories) in
-            completion(retievedMemories)
+    static public func findAll(completion: @escaping ([Memory], Error?) -> Void) {
+        MemoryDAO.findAll { (retievedMemories, error) in
+            completion(retievedMemories, error)
         }
     }
 }
