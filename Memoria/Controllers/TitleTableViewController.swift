@@ -26,7 +26,7 @@ class TitleTableViewController: UITableViewController {
     var justChangedFontSize: Bool = false
     let texts = TitleTexts()
     
-    // "Don't know switch"
+    // "Don't remember switch"
     var isSwitchOn: Bool = false
     
     // "Happened when" expandable cell
@@ -117,7 +117,7 @@ class TitleTableViewController: UITableViewController {
         self.tableView.registerNib(nibIdentifier: .gradientButtonCell)
     }
 
-    // MARK: - Table view
+    // MARK: Table view
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -145,94 +145,60 @@ class TitleTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = self.texts.titleQuestion
-                cell = cellType
+            if let memoryTitleQuestionCell = cell as? SubtitleCell {
+                memoryTitleQuestionCell.subtitleLabel.text = self.texts.titleQuestion
+                cell = memoryTitleQuestionCell
             }
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textFieldCell.rawValue, for: indexPath)
-            if let cellType = cell as? TextFieldCell {
-                cellType.delegate = self
-                cellType.textField.placeholder = self.texts.titlePlaceholder
-                if self.justChangedFontSize {
-                    cellType.textField.text = self.memoryTitle
-                }
-                cell = cellType
+            if let memoryTitleInputCell = cell as? TextFieldCell {
+                self.setUpMemoryTitleInputCell(memoryTitleInputCell)
+                cell = memoryTitleInputCell
             }
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.expandingCell.rawValue, for: indexPath)
-            if let cellType = cell as? ExpandingCell {
-                if self.dateString == self.texts.today {
-                    cellType.happenedLabel.text = self.texts.happened1
-                } else {
-                    cellType.happenedLabel.text = self.texts.happened2
-                }
-                cellType.timeLabel.text = self.dateString
-                cellType.expansionDelegate = self
-                cell = cellType
+            if let expandingDateCell = cell as? ExpandingCell {
+                self.setUpExpandingDateCell(expandingDateCell)
+                cell = expandingDateCell
             }
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = self.texts.noNeedToBePrecise
-                cellType.subtitleLabel.textColor = UIColor.gray
-                cell = cellType
+            if let noNeedToBePreciseCell = cell as? SubtitleCell {
+                noNeedToBePreciseCell.subtitleLabel.text = self.texts.noNeedToBePrecise
+                noNeedToBePreciseCell.subtitleLabel.textColor = UIColor.gray
+                cell = noNeedToBePreciseCell
             }
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.datePickerCell.rawValue, for: indexPath)
-            if let cellType = cell as? DatePickerCell {
-                
-                cellType.dateDelegate = self
-                
-                if self.justChangedFontSize {
-                    if let time: Int = self.timePassed {
-                        cellType.textField.text = String(time)
-                        cellType.timePassed = time
-                    } else {
-                        cellType.textField.text = nil
-                        cellType.timePassed = 0
-                    }
-                }
-                cell = cellType
+            if let datePickerCell = cell as? DatePickerCell {
+                self.setUpDatePickerCell(datePickerCell)
+                cell = datePickerCell
             }
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.switchCell.rawValue, for: indexPath)
-            if let cellType = cell as? SwitchCell {
-                cellType.dontRemeberLabel.text = self.texts.dontRememberWhen
-                cellType.switchDelegate = self
-                if self.justChangedFontSize {
-                    cellType.isSwitchOn = self.isSwitchOn
-                }
-                cell = cellType
+            if let dontRememberSwitchCell = cell as? SwitchCell {
+                self.setUpDontRememberSwitchCell(dontRememberSwitchCell)
+                cell = dontRememberSwitchCell
             }
         case 6:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = self.texts.descriptionTitle
-                cellType.subtitleLabel.text = self.texts.descriptionSubtitle
-                cell = cellType
+            if let descriptionTitleCell = cell as? TitleSubtitleCell {
+                descriptionTitleCell.titleLabel.text = self.texts.descriptionTitle
+                descriptionTitleCell.subtitleLabel.text = self.texts.descriptionSubtitle
+                cell = descriptionTitleCell
             }
         case 7:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textViewCell.rawValue, for: indexPath)
-            if let cellType = cell as? TextViewCell {
-                cellType.placeholderText = self.texts.descriptionTextPlaceholder
-                cellType.textViewCellDelegate = self
-                
-                if let text: String = self.memoryDescription,
-                   !text.trimmingCharacters(in: .whitespaces).isEmpty {
-                    cellType.writtenText = text
-                    cellType.shouldDisplayPlaceholderText = false
-                } else {
-                    cellType.shouldDisplayPlaceholderText = true
-                }
-                cell = cellType
+            if let textViewCell = cell as? TextViewCell {
+                self.setUpDescriptionTextViewCell(textViewCell)
+                cell = textViewCell
             }
         case 8:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
             if let cellType = cell as? GradientButtonCell {
                 cellType.title = self.texts.save
                 cellType.buttonDelegate = self
-                cellType.isEnabled = self.shouldEnableSaveButton()
+                cellType.isEnabled = self.shouldEnableSaveButton() // only enables save button if title input is not empty
                 cell = cellType
             }
         default:
@@ -256,6 +222,22 @@ extension TitleTableViewController: DatePickerCellDelegate {
         self.dateString = DateManager.getStrinigFromTimeAndComponent(timePassed: timePassed, component: component) ?? self.texts.dontRememberWhen
         self.tableView.reloadData()
     }
+    
+    /// Configure date picker cell
+    func setUpDatePickerCell(_ datePickerCell: DatePickerCell) {
+        datePickerCell.dateDelegate = self
+        
+        if self.justChangedFontSize {
+            // Preserve displayed data after changing font size
+            if let time: Int = self.timePassed {
+                datePickerCell.textField.text = String(time)
+                datePickerCell.timePassed = time
+            } else {
+                datePickerCell.textField.text = nil
+                datePickerCell.timePassed = 0
+            }
+        }
+    }
 }
 
 // MARK: Text View
@@ -265,6 +247,21 @@ extension TitleTableViewController: TextViewCellDelegate {
     func didFinishWriting(text: String) {
         self.memoryDescription = text
         self.tableView.reloadData() // so the save button cell is reloaded and its button enabled/disabled if needed
+    }
+    
+    /// Configure description text view
+    func setUpDescriptionTextViewCell(_ textViewCell: TextViewCell) {
+        textViewCell.placeholderText = self.texts.descriptionTextPlaceholder
+        textViewCell.textViewCellDelegate = self
+        
+        if let text: String = self.memoryDescription,
+           !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            // Display placeholder if there's no text
+            textViewCell.writtenText = text
+            textViewCell.shouldDisplayPlaceholderText = false
+        } else {
+            textViewCell.shouldDisplayPlaceholderText = true
+        }
     }
 }
 
@@ -312,9 +309,9 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     func shouldEnableSaveButton() -> Bool {
         if let title = self.memoryTitle,
            title.trimmingCharacters(in: .whitespaces).isEmpty {
-            return false
+            return false // string of only spaces
         } else if self.memoryTitle == nil {
-            return false
+            return false // no string
         }
         return true
     }
@@ -336,16 +333,27 @@ extension TitleTableViewController: GradientButtonCellDelegate {
 extension TitleTableViewController: ExpandableCellDelegate {
     
     func expandCells() {
-        self.hiddenRows = []
+        self.hiddenRows = [] // unhide all cells
         if self.isSwitchOn {
-            self.hiddenRows.append(4)
+            self.hiddenRows.append(4) // hide date picker
         }
         self.tableView.reloadData()
     }
     
     func hideCells() {
-        self.hiddenRows = [3, 4, 5]
+        self.hiddenRows = [3, 4, 5] // hide all date related cells
         self.tableView.reloadData()
+    }
+    
+    /// Configure expanding cell
+    func setUpExpandingDateCell(_ expandingCell: ExpandingCell) {
+        if self.dateString == self.texts.today {
+            expandingCell.happenedLabel.text = self.texts.happened1 // "Happened today"/"Aconteceu hoje"
+        } else {
+            expandingCell.happenedLabel.text = self.texts.happened2 // "Happened XX ago/"Aconteceu há XX"
+        }
+        expandingCell.timeLabel.text = self.dateString // Update date text
+        expandingCell.expansionDelegate = self
     }
 }
 
@@ -357,6 +365,16 @@ extension TitleTableViewController: TextFieldCellDelegate {
         self.memoryTitle = text
         self.tableView.reloadData() // so the placeholder text comes back when cell is loaded again if the user has erased their text
     }
+    
+    /// Configure title input text field cell
+    func setUpMemoryTitleInputCell(_ textFieldCell: TextFieldCell) {
+        textFieldCell.delegate = self
+        textFieldCell.textField.placeholder = self.texts.titlePlaceholder
+        if self.justChangedFontSize {
+            // keeps already written text even after user changes font size
+            textFieldCell.textField.text = self.memoryTitle
+        }
+    }
 }
 
 // MARK: Switch
@@ -365,17 +383,27 @@ extension TitleTableViewController: SwitchCellDelegate {
     
     func switchIsOn() {
         self.hiddenRows = [4] // hide date picker cell
-        self.isSwitchOn = true
-        self.previousDateString = self.dateString
-        self.dateString = self.texts.dontRememberWhen
-        self.tableView.reloadData()
+        self.isSwitchOn = true // store switch status
+        self.previousDateString = self.dateString  // store previous date
+        self.dateString = self.texts.dontRememberWhen // setnewdate as "don't remember"
+        self.tableView.reloadData() // so date label (expandable cell) changes and the proper cells are hidden
     }
     
     func switchIsOff() {
-        self.isSwitchOn = false
+        self.isSwitchOn = false // store switch status
         self.hiddenRows = [] // unhide date picker cell
         self.dateString = self.previousDateString
         self.previousDateString = self.texts.dontRememberWhen
-        self.tableView.reloadData()
+        self.tableView.reloadData() // unhide cells
+    }
+    
+    /// Configure switch cell
+    func setUpDontRememberSwitchCell(_ switchCell: SwitchCell) {
+        switchCell.dontRemeberLabel.text = self.texts.dontRememberWhen
+        switchCell.switchDelegate = self
+        if self.justChangedFontSize {
+            // preserve switch status after changing font
+            switchCell.isSwitchOn = self.isSwitchOn
+        }
     }
 }
