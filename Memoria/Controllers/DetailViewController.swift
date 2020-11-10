@@ -11,6 +11,7 @@ class DetailViewController: UITableViewController {
 
     var selectedMemory: Memory?
     var currentDetail: Detail?
+    var memoryDetails: [Detail]?
 
     // Temporary property
     var details: [Detail]?
@@ -49,6 +50,7 @@ class DetailViewController: UITableViewController {
         if let memoryID = selectedMemory?.memoryID {
             DetailDAO.findByMemoryID(memoryID: memoryID) { (details) in
                 print("There is \(details.count) details for this memory.")
+                self.memoryDetails = details
                 self.currentDetail = details[0]
                 if !details.isEmpty {
                     self.tableView.reloadData()
@@ -62,16 +64,25 @@ class DetailViewController: UITableViewController {
 extension DetailViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+//        return 1
+
+        return 1 + (memoryDetails?.count ?? 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+//        return 5
+
+        if section == 0 {
+            return 2
+        } else {
+            return 3
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         var cell = UITableViewCell()
+        var detailForSection = memoryDetails?[indexPath.section - 1]
 
         switch indexPath.row {
         case 0:
@@ -97,12 +108,14 @@ extension DetailViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 cellType.titleLabel.text = "Meus registros"
-                cellType.subtitleLabel.text = currentDetail?.text
+//                cellType.subtitleLabel.text = currentDetail?.text
+                cellType.subtitleLabel.text = detailForSection?.text
                 cell = cellType
             }
 
         case 3:
-            if let audioURL = currentDetail?.audio {
+            if let audioURL = detailForSection?.audio {
+//            if let audioURL = currentDetail?.audio {
                 cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.audioPlayerCell.rawValue, for: indexPath)
                 if let cellType = cell as? AudioPlayerCell {
                     cellType.audioURL = audioURL
@@ -113,7 +126,8 @@ extension DetailViewController {
             }
 
         case 4:
-            if let imageURL = currentDetail?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
+            if let imageURL = detailForSection?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
+//            if let imageURL = currentDetail?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
                 cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
                 if let cellType = cell as? PhotoCell {
                     cellType.imageSelected = image
