@@ -58,8 +58,12 @@ class MemoryCollectionViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadingIcon.startAnimating()
         super.viewWillAppear(animated)
+
+        // Loading Icon Setup
+        loadingIcon.startAnimating()
+        loadingIcon.color = UIColor(hexString: "7765A8")
+
         self.receiveData()
         
         // Present alert if a memory has just been saved
