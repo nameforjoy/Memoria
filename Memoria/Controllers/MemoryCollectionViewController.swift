@@ -18,6 +18,7 @@ class MemoryCollectionViewController: UIViewController {
     
     var memories = [Memory]()
     var didJustSaveAMemory: Bool = false
+    var selectedMemory: Memory?
     
     var texts = MemoryBoxTexts()
 
@@ -48,6 +49,7 @@ class MemoryCollectionViewController: UIViewController {
         self.registerNibs()
         self.receiveData()
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +77,12 @@ class MemoryCollectionViewController: UIViewController {
 
     func receiveData() {
         MemoryDAO.findAll { (memories, error) in
+
+            // Handle error
+            if error != nil {
+                print(error.debugDescription)
+            }
+
             self.memories = memories
             if self.memories.isEmpty {
                 self.tableView.isHidden = true
@@ -82,16 +90,6 @@ class MemoryCollectionViewController: UIViewController {
                 self.tableView.isHidden = false
             }
             self.tableView.reloadData()
-        }
-    }
-
-    // View detail if data is available
-    @IBAction func clickToViewDetail(_ sender: Any) {
-        if isDataLoaded {
-            // Segue
-            performSegue(withIdentifier: "viewDetail", sender: self)
-        } else {
-            print("Can't access data right now. Check if database is empty or try again later.")
         }
     }
 
@@ -108,7 +106,7 @@ class MemoryCollectionViewController: UIViewController {
             // Set ID for new memory being created
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
-            destination.details = userMemoryDetails
+            destination.selectedMemory = self.selectedMemory
         }
     }
     
@@ -155,7 +153,7 @@ class MemoryCollectionViewController: UIViewController {
     // MARK: TableView
     func setupTableView() {
         self.tableView.separatorStyle = .none
-        self.tableView.allowsSelection = false
+        self.tableView.allowsSelection = true
         self.tableView.isUserInteractionEnabled = true
     }
     
@@ -188,7 +186,7 @@ extension MemoryCollectionViewController: UITableViewDataSource {
             let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory.date)
             
             if let dateString = dateString {
-                cellType.timeLabel.text = "Há " + dateString
+                cellType.timeLabel.text = dateString
             } else {
                 cellType.timeLabel.text = "Indefinido"
             }
@@ -198,5 +196,8 @@ extension MemoryCollectionViewController: UITableViewDataSource {
 }
 
 extension MemoryCollectionViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMemory = memories[indexPath.row]
+        performSegue(withIdentifier: "viewDetail", sender: self)
+    }
 }

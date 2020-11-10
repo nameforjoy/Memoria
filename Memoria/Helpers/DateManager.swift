@@ -50,7 +50,7 @@ class DateManager {
             return TitleTexts().today
         }
         guard let timeUnit: String = self.getStringFromCalendarComponent(timePassed: timePassed, component: component) else {return nil}
-        return String(timePassed) + " " + timeUnit
+        return "Há " + String(timePassed) + " " + timeUnit
     }
     
     /// Get the time interval integer and its corresponding time unit.
