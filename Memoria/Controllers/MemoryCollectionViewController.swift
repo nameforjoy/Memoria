@@ -85,16 +85,6 @@ class MemoryCollectionViewController: UIViewController {
         }
     }
 
-    // View detail if data is available
-    @IBAction func clickToViewDetail(_ sender: Any) {
-        if isDataLoaded {
-            // Segue
-            performSegue(withIdentifier: "viewDetail", sender: self)
-        } else {
-            print("Can't access data right now. Check if database is empty or try again later.")
-        }
-    }
-
     // MARK: Segue
     
     /// Unwind segue to get back to this view controller after saving a memory
@@ -108,7 +98,7 @@ class MemoryCollectionViewController: UIViewController {
             // Set ID for new memory being created
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
-            destination.details = userMemoryDetails
+            // destination.selectedMemory =
         }
     }
     
@@ -155,7 +145,7 @@ class MemoryCollectionViewController: UIViewController {
     // MARK: TableView
     func setupTableView() {
         self.tableView.separatorStyle = .none
-        self.tableView.allowsSelection = false
+        self.tableView.allowsSelection = true
         self.tableView.isUserInteractionEnabled = true
     }
     

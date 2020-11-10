@@ -69,6 +69,8 @@ extension DetailViewController {
         return 5
     }
 
+    //swiftlint:disable cyclomatic_complexity
+    //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         var cell = UITableViewCell()
@@ -122,7 +124,6 @@ extension DetailViewController {
             } else {
                 cell.isHidden = true
             }
-
 
         default:
             print("Default cell was loaded in DetailViewController")

@@ -150,7 +150,6 @@ class DetailDAO: DAO {
             return nil
         }
 
-
         // Make Detail object from query results
         let newDetail = Detail(memoryID: memoryUUID, text: text, question: question, category: category, audio: audioURL, image: imageURL)
 

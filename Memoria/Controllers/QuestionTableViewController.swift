@@ -247,7 +247,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     }
     
     /// Create Detail object from the user's input
-    func getDetailFromInterface() -> Detail {
+    func getDetailFromInterface() -> Detail? {
 
         // Check if ID is available
         guard let memoryID = self.memoryID else {
