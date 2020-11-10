@@ -46,8 +46,10 @@ class DateManager {
     static func getTimeIntervalAsStringSinceDate(_ date: Date?) -> String? {
         
         guard let (timePassed, component) = self.getTimeIntervalSinceDate(date: date) else {return nil}
+        if timePassed == 0 {
+            return TitleTexts().today
+        }
         guard let timeUnit: String = self.getStringFromCalendarComponent(timePassed: timePassed, component: component) else {return nil}
-        
         return String(timePassed) + " " + timeUnit
     }
     
@@ -69,6 +71,16 @@ class DateManager {
             component = .month
         }
         return (timePassed, component)
+    }
+    
+    ///Method to convert the time passed in units of Calendar.Component as a String
+    static func getStrinigFromTimeAndComponent(timePassed: Int, component: Calendar.Component) -> String? {
+        
+        if timePassed == 0 {
+            return TitleTexts().today
+        }
+        guard let timeUnit: String = self.getStringFromCalendarComponent(timePassed: timePassed, component: component) else {return nil}
+        return String(timePassed) + " " + timeUnit
     }
 
     ///Method to convert a Calendar.Component to a string in Portuguese, considering plural

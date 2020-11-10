@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
-class Alerts {
+protocol AlertManagerDelegate: AnyObject {
+    func buttonAction()
+}
+
+class AlertManager {
+    
+    weak var delegate: AlertManagerDelegate?
     
     // Memory has been successfully saved
     var memorySaved: UIAlertController {
@@ -50,6 +56,17 @@ class Alerts {
         let message = "Insira um título para que possamos prosseguir"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        return myAlert
+    }
+    
+    var reachedAudioTimeLimit: UIAlertController {
+        let title = "Limite de tempo atingido"
+        let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.delegate?.buttonAction()
+        }))
         
         return myAlert
     }
