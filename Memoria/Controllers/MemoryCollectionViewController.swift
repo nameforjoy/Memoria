@@ -18,6 +18,7 @@ class MemoryCollectionViewController: UIViewController {
     
     var memories = [Memory]()
     var didJustSaveAMemory: Bool = false
+    var selectedMemory: Memory?
     
     var texts = MemoryBoxTexts()
 
@@ -48,6 +49,7 @@ class MemoryCollectionViewController: UIViewController {
         self.registerNibs()
         self.receiveData()
         self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +77,12 @@ class MemoryCollectionViewController: UIViewController {
 
     func receiveData() {
         MemoryDAO.findAll { (memories, error) in
+
+            // Handle error
+            if error != nil {
+                print(error.debugDescription)
+            }
+
             self.memories = memories
             if self.memories.isEmpty {
                 self.tableView.isHidden = true
@@ -98,7 +106,7 @@ class MemoryCollectionViewController: UIViewController {
             // Set ID for new memory being created
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
-            // destination.selectedMemory =
+            destination.selectedMemory = self.selectedMemory
         }
     }
     
@@ -188,5 +196,8 @@ extension MemoryCollectionViewController: UITableViewDataSource {
 }
 
 extension MemoryCollectionViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMemory = memories[indexPath.row]
+        performSegue(withIdentifier: "viewDetail", sender: self)
+    }
 }
