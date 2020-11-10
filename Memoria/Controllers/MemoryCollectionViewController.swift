@@ -74,7 +74,7 @@ class MemoryCollectionViewController: UIViewController {
     }
 
     func receiveData() {
-        MemoryDAO.findAll { (memories) in
+        MemoryDAO.findAll { (memories, error) in
             self.memories = memories
             if self.memories.isEmpty {
                 self.tableView.isHidden = true

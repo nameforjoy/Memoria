@@ -20,7 +20,7 @@ class MemoryBoxTableViewController: UITableViewController {
     }
     
     func receiveData() {
-        MemoryDAO.findAll { (memories) in
+        MemoryDAO.findAll { (memories, error) in
             self.memories = memories
             self.tableView.reloadData()
         }
