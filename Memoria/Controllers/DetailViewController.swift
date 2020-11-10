@@ -64,13 +64,11 @@ class DetailViewController: UITableViewController {
 extension DetailViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
 
         return 1 + (memoryDetails?.count ?? 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
 
         if section == 0 {
             return 2
@@ -79,15 +77,25 @@ extension DetailViewController {
         }
     }
 
-    //swiftlint:disable cyclomatic_complexity
-    //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         var cell = UITableViewCell()
-        var detailForSection = memoryDetails?[indexPath.section - 1]
 
-        switch indexPath.row {
-        case 0:
+        if indexPath.section == 0 {
+            cell = self.getHeaderCell(tableView: tableView, indexPath: indexPath)
+        } else {
+            cell = self.getDetailCell(tableView: tableView, indexPath: indexPath)
+        }
+
+        return cell
+    }
+
+    func getHeaderCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+
+        var cell = UITableViewCell()
+
+        // Time Passed By
+        if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 if let dateString = DateManager.getTimeIntervalAsStringSinceDate(selectedMemory?.date) {
@@ -98,26 +106,38 @@ extension DetailViewController {
                 }
                 cell = cellType
             }
-
-        case 1:
+        }
+        // Memory Description
+        else {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 cellType.subtitleLabel.text = selectedMemory?.description
                 cell = cellType
             }
+        }
 
-        case 2:
+        return cell
+    }
+
+    func getDetailCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+
+        let detailForSection = memoryDetails?[indexPath.section - 1]
+
+        switch indexPath.row {
+
+        // Detail Description
+        case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
                 cellType.titleLabel.text = "Meus registros"
-//                cellType.subtitleLabel.text = currentDetail?.text
                 cellType.subtitleLabel.text = detailForSection?.text
                 cell = cellType
             }
 
-        case 3:
+        // Detail Audio
+        case 1:
             if let audioURL = detailForSection?.audio {
-//            if let audioURL = currentDetail?.audio {
                 cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.audioPlayerCell.rawValue, for: indexPath)
                 if let cellType = cell as? AudioPlayerCell {
                     cellType.audioURL = audioURL
@@ -127,9 +147,9 @@ extension DetailViewController {
                 cell.isHidden = true
             }
 
-        case 4:
+        // Detail Image
+        case 2:
             if let imageURL = detailForSection?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
-//            if let imageURL = currentDetail?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
                 cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
                 if let cellType = cell as? PhotoCell {
                     cellType.imageSelected = image
@@ -145,5 +165,4 @@ extension DetailViewController {
 
         return cell
     }
-
 }
