@@ -9,20 +9,13 @@ import UIKit
 
 class DetailViewController: UITableViewController {
 
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var answerLabel: UILabel!
-    @IBOutlet weak var audioPlayer: AudioPlayerView!
-    @IBOutlet weak var answerImageView: UIImageView!
-    var currentDetail: Detail?
     var selectedMemory: Memory?
+    var currentDetail: Detail?
 
-    // Temporary properties for tests only
+    // Temporary property
     var details: [Detail]?
-    var allDetails: [Detail]?
-//    var position: Int = 0
 
     override func viewWillAppear(_ animated: Bool) {
-        retrieveAllDetails()
         retrieveDetailsFromCurrentMemory()
     }
 
@@ -31,6 +24,7 @@ class DetailViewController: UITableViewController {
 
         if let selectedMemory = self.selectedMemory {
             print("ID da memória: \(selectedMemory.memoryID) ")
+            self.navigationItem.title = selectedMemory.title
         }
 
         self.tableView.separatorStyle = .none
@@ -51,75 +45,90 @@ class DetailViewController: UITableViewController {
         self.tableView.registerNib(nibIdentifier: .audioPlayerCell)
     }
 
-    func retrieveAllDetails() {
-        DetailDAO.findAll { (details) in
-            self.allDetails = details
-
-            for detail in details {
-                print(detail.text)
-                print("ID do detalhe: \(detail.memoryID).")
-            }
-        }
-    }
-
     func retrieveDetailsFromCurrentMemory() {
         if let memoryID = selectedMemory?.memoryID {
             DetailDAO.findByMemoryID(memoryID: memoryID) { (details) in
                 print("There is \(details.count) details for this memory.")
-                self.details = details
+                self.currentDetail = details[0]
                 if !details.isEmpty {
-                    self.populateView(detail: details[0])
+                    self.tableView.reloadData()
                 }
-                //reload tableView
             }
-        }
-    }
-
-    // Updates view with input detail
-    func populateView(detail: Detail?) {
-
-        // Sets category as navigation title
-        self.navigationItem.title = selectedMemory?.title
-
-        // Sets labels
-//        questionLabel.text = detail?.question
-//        answerLabel.text = detail?.text
-
-        // Audio & Image Setup
-//        self.updateAudio(audio: detail?.audio)
-//        self.updateImage(image: detail?.image)
-    }
-
-    // Check if there's an audio available and update its view
-    func updateAudio(audio: URL?) {
-        if let audio = audio {
-            // Populate audio player view
-            audioPlayer.audioURL = audio
-            // Display audio player view
-            audioPlayer.isHidden = false
-        } else {
-            // Hides audio player view
-            audioPlayer.isHidden = true
-            print("Audio not found.")
-        }
-    }
-
-    // Checks if there's an image available and update its view
-    func updateImage(image: URL?) {
-        if let image = image {
-            answerImageView.image = MediaManager.getUIImage(imageURL: image)
-        } else {
-            print("Image not found.")
-            answerImageView.image = nil
         }
     }
 }
 
+// MARK: Table View Delegate Methods
 extension DetailViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        var cell = UITableViewCell()
+
+        switch indexPath.row {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
+            if let cellType = cell as? SubtitleCell {
+                if let dateString = DateManager.getTimeIntervalAsStringSinceDate(selectedMemory?.date) {
+                    cellType.subtitleLabel.text = "Há \(dateString)"
+                    cellType.subtitleLabel.textColor = UIColor.gray
+                } else {
+                    cellType.isHidden = true
+                }
+                cell = cellType
+            }
+
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
+            if let cellType = cell as? SubtitleCell {
+                cellType.subtitleLabel.text = selectedMemory?.description
+                cell = cellType
+            }
+
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
+            if let cellType = cell as? TitleSubtitleCell {
+                cellType.titleLabel.text = "Meus registros"
+                cellType.subtitleLabel.text = currentDetail?.text
+                cell = cellType
+            }
+
+        case 3:
+            if let audioURL = currentDetail?.audio {
+                cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.audioPlayerCell.rawValue, for: indexPath)
+                if let cellType = cell as? AudioPlayerCell {
+                    cellType.audioURL = audioURL
+                    cell = cellType
+                }
+            } else {
+                cell.isHidden = true
+            }
+
+        case 4:
+            if let imageURL = currentDetail?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
+                cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
+                if let cellType = cell as? PhotoCell {
+                    cellType.imageSelected = image
+                    cell = cellType
+                }
+            } else {
+                cell.isHidden = true
+            }
+
+
+        default:
+            print("Default cell was loaded in DetailViewController")
+        }
+
+        return cell
+    }
 
 }
