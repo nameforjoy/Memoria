@@ -479,6 +479,8 @@
 			isa = PBXGroup;
 			children = (
 				B36DF377255418C800534A0E /* MemoryServices.swift */,
+				8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */,
+				8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */,
 			);
 			name = Services;
 			path = Xibs/Services;
@@ -490,8 +492,6 @@
 				B39CA72425372C7C003E1059 /* MemoryDAO.swift */,
 				B39CA72725372C8B003E1059 /* DetailDAO.swift */,
 				B39CA72A25372CC6003E1059 /* DAO.swift */,
-				8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */,
-				8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
