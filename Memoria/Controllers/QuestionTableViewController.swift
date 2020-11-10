@@ -12,27 +12,42 @@ class QuestionTableViewController: UITableViewController {
     
     // MARK: Attributes
     
+    // Image
     var imageURL: URL?
     var imagePicker: ImagePicker?
     var selectedImage: UIImage?
     
+    // Audio
     var audioURL: URL?
-    var writtenText: String?
-    var question: String? = "O que aconteceu ou está acontecendo? Como você gostaria de se lembrar disso?"
     
+    // Text input
+    var writtenText: String?
+    var question: String? = ""
+    
+    // Associated memory ID
     var memoryID: UUID?
+    
+    // Interface
     var hiddenRows: [Int] = [4,7]
     var hasClickedOnSaveButton: Bool = false
+    var texts = QuestionTexts()
     
     // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Table view setup
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
         self.tableView.isUserInteractionEnabled = true
         
+        // Text setup
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.question = self.texts.question
+        self.navigationItem.title = self.texts.category
+        
+        // Register xibs to be displayed in this table view
         self.registerNibs()
         
         // Adds tap gesture on the main view to dismiss text view keyboard
@@ -50,8 +65,6 @@ class QuestionTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.changeTextForAccessibility()
-        
         if self.memoryID == nil {
             print("Could not find ID for this memory")
         } else {
@@ -60,17 +73,33 @@ class QuestionTableViewController: UITableViewController {
     }
     
     deinit {
+        // Remove font size change observer
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
     }
     
-    // Dismisses keyboard after tapping outside keyboard
+    // MARK: Responders
+    
+    /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
+    @objc func fontSizeChanged(_ notification: Notification) {
+        if self.texts.isAccessibleCategory != self.traitCollection.isAccessibleCategory {
+            // Tell text class accessibility trait has changed
+            self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+            // Change texts
+            self.navigationItem.title = self.texts.category
+            self.question = self.texts.question
+            self.tableView.reloadData() // refresh table view so texts inside are also updated
+        }
+    }
+    
+    /// Dismisses keyboard after tapping outside of it
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
     // MARK: Instantiate Nibs
     
+    /// Register xibs in this table view
     func registerNibs() {
         self.tableView.registerNib(nibIdentifier: .titleSubtitleCell)
         self.tableView.registerNib(nibIdentifier: .textViewCell)
@@ -79,23 +108,6 @@ class QuestionTableViewController: UITableViewController {
         self.tableView.registerNib(nibIdentifier: .iconButtonCell)
         self.tableView.registerNib(nibIdentifier: .audioPlayerCell)
         self.tableView.registerNib(nibIdentifier: .gradientButtonCell)
-    }
-    
-    // MARK: Acessibility
-    
-    /// Adjustments to be made if font size is changed through the dynamic type accessibility settings
-    @objc func fontSizeChanged(_ notification: Notification) {
-        self.changeTextForAccessibility()
-    }
-    
-    /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
-    /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
-    func changeTextForAccessibility() {
-        if self.traitCollection.isAccessibleCategory {
-            self.navigationItem.title = "Me conta"
-        } else {
-            self.navigationItem.title = "Conta pra mim!"
-        }
     }
 
     // MARK: Table view
@@ -109,7 +121,8 @@ class QuestionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
+        
+        // Hide cells with indexes contained in the hiddenRows array
         if self.hiddenRows.contains(indexPath.row) {
             return 0.0  // collapsed
         }
@@ -126,76 +139,59 @@ class QuestionTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = self.question
-                cell = cellType
+            if let questionCell = cell as? SubtitleCell {
+                questionCell.subtitleLabel.text = self.question
+                cell = questionCell
             }
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.textViewCell.rawValue, for: indexPath)
-            if let cellType = cell as? TextViewCell {
-                cellType.placeholderText = "Descreva sua memória aqui..."
-                cellType.textViewCellDelegate = self
-                
-                if let text: String = self.writtenText,
-                   !text.trimmingCharacters(in: .whitespaces).isEmpty {
-                    cellType.writtenText = text
-                    cellType.shouldDisplayPlaceholderText = false
-                } else {
-                    cellType.shouldDisplayPlaceholderText = true
-                }
-                cell = cellType
+            if let textAnswerCell = cell as? TextViewCell {
+                self.setUpTextAnswerCell(textAnswerCell)
+                cell = textAnswerCell
             }
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "Que tal gravar?"
-                cellType.subtitleLabel.text = "Você pode contar em áudio ou gravar algo que queira se lembrar futuramente!"
-                cell = cellType
+            if let audioTitleSubtitleCell = cell as? TitleSubtitleCell {
+                audioTitleSubtitleCell.titleLabel.text = self.texts.recordAudioTitle
+                audioTitleSubtitleCell.subtitleLabel.text = self.texts.recordAudioSubtitle
+                cell = audioTitleSubtitleCell
             }
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
-            if let cellType = cell as? IconButtonCell {
-                cellType.icon.image = UIImage(named: "microphone")
-                cellType.title.text = "Gravar áudio"
-                cellType.buttonType = .addAudio
-                cellType.buttonDelegate = self
-                cell = cellType
+            if let recordAudioButtonCell = cell as? IconButtonCell {
+                self.setUpRecordAudioButtonCell(recordAudioButtonCell)
+                cell = recordAudioButtonCell
             }
         case 4:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.audioPlayerCell.rawValue, for: indexPath)
-            if let cellType = cell as? AudioPlayerCell {
-                cellType.audioURL = self.audioURL
-                cell = cellType
+            if let audioPlayerCell = cell as? AudioPlayerCell {
+                audioPlayerCell.audioURL = self.audioURL
+                cell = audioPlayerCell
             }
         case 5:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "E uma foto?"
-                cellType.subtitleLabel.text = "Adicione uma foto, imagem ou desenho que esteja relacionada a essa memória."
-                cell = cellType
+            if let photoTitleSubtitleCell = cell as? TitleSubtitleCell {
+                photoTitleSubtitleCell.titleLabel.text = self.texts.takePhotoTitle
+                photoTitleSubtitleCell.subtitleLabel.text = self.texts.takePhotoSubtitle
+                cell = photoTitleSubtitleCell
             }
         case 6:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.iconButtonCell.rawValue, for: indexPath)
-            if let cellType = cell as? IconButtonCell {
-                cellType.icon.image = UIImage(named: "camera")
-                cellType.title.text = "Adicionar foto"
-                cellType.buttonType = .addImage
-                cellType.buttonDelegate = self
-                cell = cellType
+            if let addImageButtonCell = cell as? IconButtonCell {
+                self.setUpAddImageButtonCell(addImageButtonCell)
+                cell = addImageButtonCell
             }
         case 7:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.photoCell.rawValue, for: indexPath)
-            if let cellType = cell as? PhotoCell {
-                cellType.imageSelected = self.selectedImage
-                cell = cellType
+            if let photoCell = cell as? PhotoCell {
+                photoCell.imageSelected = self.selectedImage
+                cell = photoCell
             }
         case 8:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.gradientButtonCell.rawValue, for: indexPath)
-            if let cellType = cell as? GradientButtonCell {
-                cellType.title = "Salvar"
-                cellType.buttonDelegate = self
-                cellType.isEnabled = self.shouldEnableSaveButton()
-                cell = cellType
+            if let saveMemoryButtonCell = cell as? GradientButtonCell {
+                self.setUpSaveMemoryButtonCell(saveMemoryButtonCell)
+                cell = saveMemoryButtonCell
             }
         default:
             print("Default")
@@ -204,17 +200,15 @@ class QuestionTableViewController: UITableViewController {
     }
 }
 
-// MARK: Save Button
+// MARK: Gradient Button
 
 extension QuestionTableViewController: GradientButtonCellDelegate {
-    
-    func disabledButtonAction() {
-        present(Alerts().unableToSave, animated: true, completion: nil)
-    }
     
     // Saves detail in memory
     func gradientButtonCellAction() {
         
+        // Chack if button has already been clicked
+        // Prevent user from clicking on it (and saving the memory detail) twice
         if !self.hasClickedOnSaveButton {
             guard let newMemoryDetail = self.getDetailFromInterface() else {
                 print("Coudn't get detail from interface.")
@@ -232,12 +226,27 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
                 } else {
                     print(error.debugDescription)
                     // TODO: Treat error
+                    // Alert "Infelizmente não conseguimos salvar sua memória"
                 }
             }
             self.hasClickedOnSaveButton = true
         }
     }
+
+    // Present alert warning user they cannot procceed without at least one input.
+    // Only done when save button is disabled.
+    func disabledButtonAction() {
+        present(AlertManager().unableToSave, animated: true, completion: nil)
+    }
     
+    /// Configure gradient button cell as the save button
+    func setUpSaveMemoryButtonCell(_ gradientButtonCell: GradientButtonCell) {
+        gradientButtonCell.title = self.texts.save
+        gradientButtonCell.buttonDelegate = self
+        gradientButtonCell.isEnabled = self.shouldEnableSaveButton()
+    }
+    
+    /// Create Detail object from the user's input
     func getDetailFromInterface() -> Detail? {
 
         // Check if ID is available
@@ -245,7 +254,6 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
             print("Memory ID is nil, therefore Detail can't be generated.")
             return nil
         }
-
         // Organize content given by user
         let category = self.navigationItem.title
         let question = self.question ?? ""
@@ -258,11 +266,11 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         return detail
     }
     
+    /// Check if user has at least one non-empty input so we can enable the button to save this memory detail
     func shouldEnableSaveButton() -> Bool {
         
         if self.audioURL == nil &&
             self.imageURL == nil {
-            
             if let text = self.writtenText,
                text.trimmingCharacters(in: .whitespaces).isEmpty {
                 return false
@@ -274,7 +282,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        // Pass memory ID information to next screen
         if let destination = segue.destination as? TitleTableViewController {
             destination.memoryID = self.memoryID
         }
@@ -287,7 +295,22 @@ extension QuestionTableViewController: TextViewCellDelegate {
     
     func didFinishWriting(text: String) {
         self.writtenText = text
-        self.tableView.reloadData()
+        self.tableView.reloadData() // so the save button cell is reloaded and its button enabled/disabled if needed
+    }
+    
+    /// Configure text view cell as the view for the text anwer input
+    func setUpTextAnswerCell(_ textViewCell: TextViewCell) {
+        textViewCell.placeholderText = self.texts.textAnswerPlaceholder
+        textViewCell.textViewCellDelegate = self
+        
+        if let text: String = self.writtenText,
+           !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            // If text view input is empty, display placeholder text
+            textViewCell.writtenText = text
+            textViewCell.shouldDisplayPlaceholderText = false
+        } else {
+            textViewCell.shouldDisplayPlaceholderText = true
+        }
     }
 }
 
@@ -295,18 +318,36 @@ extension QuestionTableViewController: TextViewCellDelegate {
 
 extension QuestionTableViewController: IconButtonCellDelegate {
     
+    /// Configure action when clicking in an icon button
     func iconButtonCellAction(buttonType: ButtonType, sender: Any) {
-        
         switch buttonType {
         case .addImage:
+            // Open image picker
             guard let senderView = sender as? UIView else { return }
             guard let imagePicker: ImagePicker = self.imagePicker else {return}
             imagePicker.present(from: senderView)
         case .addAudio:
+            // Request permission (if not given already) and open audio recording view controller
             self.recordAudioWithMicrophonePermission()
         default:
             print(buttonType)
         }
+    }
+    
+    /// Configure button to record a new audio
+    func setUpRecordAudioButtonCell(_ iconButtonCell: IconButtonCell) {
+        iconButtonCell.icon.image = UIImage(named: "microphone")
+        iconButtonCell.title.text = self.texts.recordAudioButtonTitle
+        iconButtonCell.buttonType = .addAudio
+        iconButtonCell.buttonDelegate = self
+    }
+    
+    /// Configure button to choose a new photo
+    func setUpAddImageButtonCell(_ iconButtonCell: IconButtonCell) {
+        iconButtonCell.icon.image = UIImage(named: "camera")
+        iconButtonCell.title.text = self.texts.takePhotoButtonTitle
+        iconButtonCell.buttonType = .addImage
+        iconButtonCell.buttonDelegate = self
     }
 }
 
@@ -348,7 +389,7 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         case .undetermined:
             self.askMicrophoneAccessAuthorization()
         case .denied:
-            present(Alerts().changeMicrophonePermission, animated: true, completion: nil)
+            present(AlertManager().changeMicrophonePermission, animated: true, completion: nil)
         case .granted:
             self.openAudioRecorder()
         @unknown default:
@@ -356,6 +397,7 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         }
     }
     
+    /// Configure and present view controller to record audio
     func openAudioRecorder() {
         guard let recordAudioScreen = (self.storyboard?.instantiateViewController(identifier: "inputAudioVC")) as? InputAudioViewController else {return}
         // Ties up this class as delegate for InputAudioVC

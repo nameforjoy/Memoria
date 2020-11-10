@@ -28,9 +28,12 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     var soundRecorder = AVAudioRecorder()
     var isRecording: Bool = false
     var audioURL: URL?
+    
     var timer: Timer?
     var timerCount: Double = 0
     var timerManager: TimerManager?
+    
+    var texts = InputAudioTexts()
 
     // MARK: Life cycle
     
@@ -40,6 +43,7 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         self.setupRecorder()
         self.contentBackground.layer.cornerRadius = 20
         
+        // Tap gesture on zone outside recorder
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissAudioInputView))
         self.dismissView.addGestureRecognizer(tap)
         
@@ -63,37 +67,41 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     
     ///Change states when recording or stop recording
     @IBAction func record(_ sender: Any) {
-        
         if !self.isRecording {
-            // Start recording
-            self.soundRecorder.record()
-            self.isRecording = true
-            
-            // Change button image
-            guard let stopImage = UIImage(named: "stopRecording") else {return}
-            self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
-            
-            // Starts timer
-            let timeInterval: Double = 0.1
-            self.timerManager = TimerManager(timeInterval: timeInterval)
-            self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-            
+            self.startRecording()
         } else {
-            // Stop recording
-            self.soundRecorder.stop()
-            self.isRecording = false
-            
-            // Change button image
-            guard let startImage = UIImage(named: "startRecording") else {return}
-            self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
-            
-            // Stop and reset timer
-            self.timerCount = 0
-            self.timer?.invalidate()
-            
+            self.stopRecording()
             // Dismiss Audio Recorder
             self.dismiss(animated: true)
         }
+    }
+    
+    func startRecording() {
+        self.soundRecorder.record()
+        self.isRecording = true
+        
+        // Change button image
+        guard let stopImage = UIImage(named: "stopRecording") else {return}
+        self.recordButton.setBackgroundImage(stopImage, for: UIControl.State.normal)
+        
+        // Starts timer
+        let timeInterval: Double = 0.1 // seconds
+        self.timerManager = TimerManager(timeInterval: timeInterval)
+        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+    }
+    
+    func stopRecording() {
+        self.soundRecorder.stop()
+        self.isRecording = false
+        self.timerLabel.textColor = UIColor.white
+        
+        // Change button image
+        guard let startImage = UIImage(named: "startRecording") else {return}
+        self.recordButton.setBackgroundImage(startImage, for: UIControl.State.normal)
+        
+        // Stop and reset timer
+        self.timerCount = 0
+        self.timer?.invalidate()
     }
     
     /// Dismissthis View Controller when tapping outside the content view
@@ -102,13 +110,26 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         self.dismiss(animated: true)
     }
     
+    // MARK: Timer
+    
     @objc func fireTimer() {
         self.timerCount += 1
         guard let time: String = self.timerManager?.getTimeString(timerCount: self.timerCount) else {return}
         self.timerLabel.text = time
+        
+        if time == "09:30,0" {
+            self.timerLabel.textColor = UIColor.systemRed
+        } else if time == "10:00,0" {
+            self.stopRecording()
+            
+            let alertManager = AlertManager()
+            alertManager.delegate = self
+            self.present(alertManager.reachedAudioTimeLimit, animated: true)
+        }
 
         if !self.isRecording {
             self.timer?.invalidate()
+            self.timerLabel.text = "00:00,0"
         }
     }
     
@@ -128,26 +149,15 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
         
         // Starts with empty timer label
         self.timerLabel.text = ""
-        
-        // Accessibility configurations
         self.changeTextForAccessibility()
-        
-        // Set text that will not change with accessibility
-        self.writeFixedText()
-    }
-    
-    func writeFixedText() {
-        self.subtitleLabel.text = "Ao pressionar o botão, a gravação será iniciada."
     }
     
     /// Change texts to a shorter version in case the accessibility settings have a large dynammic type font.
     /// Needed so no texts are cut, and the screen doesn't need too much scrolling to go through the whole content.
     func changeTextForAccessibility() {
-        if self.traitCollection.isAccessibleCategory {
-            self.titleLabel.text = "Podemos gravar?"
-        } else {
-            self.titleLabel.text = "Podemos começar a gravar?"
-        }
+        self.texts.isAccessibleCategory = self.traitCollection.isAccessibleCategory
+        self.titleLabel.text = self.texts.recordAudioTitle
+        self.subtitleLabel.text = self.texts.recordAudioSubtitle
     }
     
     // MARK: Audio Player set up
@@ -193,5 +203,14 @@ extension InputAudioViewController: AVAudioRecorderDelegate {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let audioFilename = paths[0].appendingPathComponent("recording.m4a")
         return audioFilename
+    }
+}
+
+// MARK: Alert
+
+extension InputAudioViewController: AlertManagerDelegate {
+    
+    func buttonAction() {
+        self.dismiss(animated: true)
     }
 }

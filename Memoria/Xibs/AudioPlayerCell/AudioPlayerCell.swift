@@ -46,6 +46,7 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
     }
 
     // MARK: Setups
+    
     ///Style setup for slider
     func setupSlider() {
         self.slider.tintColor = .systemGray2
@@ -87,6 +88,7 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     // MARK: Timer updates
+    
     @objc func updateSlider() {
         slider.value = Float(soundPlayer.currentTime)
     }

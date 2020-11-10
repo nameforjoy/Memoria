@@ -79,6 +79,8 @@ extension DetailViewController {
         }
     }
 
+    //swiftlint:disable cyclomatic_complexity
+    //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         var cell = UITableViewCell()
@@ -89,7 +91,7 @@ extension DetailViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
                 if let dateString = DateManager.getTimeIntervalAsStringSinceDate(selectedMemory?.date) {
-                    cellType.subtitleLabel.text = "Há \(dateString)"
+                    cellType.subtitleLabel.text = dateString
                     cellType.subtitleLabel.textColor = UIColor.gray
                 } else {
                     cellType.isHidden = true
@@ -136,7 +138,6 @@ extension DetailViewController {
             } else {
                 cell.isHidden = true
             }
-
 
         default:
             print("Default cell was loaded in DetailViewController")

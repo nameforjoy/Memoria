@@ -13,4 +13,10 @@ extension UITableView {
         let nib = UINib.init(nibName: nibIdentifier.rawValue, bundle: bundle)
         self.register(nib, forCellReuseIdentifier: nibIdentifier.rawValue)
     }
+    
+    func reloadData(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0, animations: { self.reloadData()}) {_ in
+            completion()
+        }
+    }
 }

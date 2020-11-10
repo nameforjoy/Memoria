@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,22 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8p-aA-ToV">
-                                <rect key="frame" x="163.5" y="543.5" width="87" height="30"/>
-                                <state key="normal" title="Ver Memória"/>
-                                <connections>
-                                    <action selector="clickToViewDetail:" destination="upX-eD-PW6" eventType="touchUpInside" id="5AO-W0-xbd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBd-86-ivj">
-                                <rect key="frame" x="152.5" y="617.5" width="109" height="30"/>
-                                <state key="normal" title="Carregar Dados"/>
-                                <connections>
-                                    <action selector="loadData:" destination="upX-eD-PW6" eventType="touchUpInside" id="7Jr-Jj-6qZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="25" y="384" width="364" height="40"/>
+                                <rect key="frame" x="25" y="381" width="364" height="40"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -46,43 +32,30 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="434" width="364" height="44"/>
+                                <rect key="frame" x="25" y="431" width="364" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHK-Xx-iaq">
-                                <rect key="frame" x="182.5" y="689" width="49" height="30"/>
-                                <state key="normal" title="TitleVC"/>
-                                <connections>
-                                    <segue destination="14s-zS-Ppn" kind="show" id="za4-C6-yTj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqc-uq-dbq">
-                                <rect key="frame" x="174" y="754" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TableView"/>
-                                <connections>
-                                    <segue destination="FZw-xL-C5Z" kind="show" id="zB3-05-duP"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hLN-7Y-fZZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uBd-86-ivj" firstAttribute="top" secondItem="x8p-aA-ToV" secondAttribute="bottom" constant="44" id="9D7-Tq-4mj"/>
+                            <constraint firstItem="hLN-7Y-fZZ" firstAttribute="top" secondItem="izE-Oo-atp" secondAttribute="top" id="4Wp-tk-e6L"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="25" id="A9q-DQ-adf"/>
-                            <constraint firstItem="x8p-aA-ToV" firstAttribute="top" secondItem="YmF-Fb-C8c" secondAttribute="bottom" constant="65.5" id="CBK-Ld-hLM"/>
-                            <constraint firstItem="uBd-86-ivj" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="F6F-Sp-Byw"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerY" secondItem="e5p-nX-PYi" secondAttribute="centerY" multiplier="0.8" id="Jkt-6K-VkQ"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="NAE-4O-Ve8"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="top" secondItem="YcP-aD-e4p" secondAttribute="bottom" constant="10" id="cEL-kU-Klp"/>
+                            <constraint firstItem="hLN-7Y-fZZ" firstAttribute="bottom" secondItem="e5p-nX-PYi" secondAttribute="bottom" id="dF2-ba-hB4"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="diD-x7-JTE"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="leading" secondItem="YcP-aD-e4p" secondAttribute="leading" id="eNZ-Ke-s8L"/>
-                            <constraint firstItem="cHK-Xx-iaq" firstAttribute="top" secondItem="uBd-86-ivj" secondAttribute="bottom" constant="41.5" id="el2-ul-bQS"/>
-                            <constraint firstItem="cHK-Xx-iaq" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="lCp-6f-413"/>
-                            <constraint firstItem="x8p-aA-ToV" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="nGJ-PV-StZ"/>
+                            <constraint firstItem="hLN-7Y-fZZ" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" id="nDd-Yc-bUC"/>
+                            <constraint firstItem="e5p-nX-PYi" firstAttribute="trailing" secondItem="hLN-7Y-fZZ" secondAttribute="trailing" id="wzm-KG-hQF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Caixa de Memórias" id="cce-3W-jOh">
@@ -95,6 +68,7 @@ Vamos guardar uma? </string>
                     <connections>
                         <outlet property="addFirstMemoryButton" destination="YmF-Fb-C8c" id="EwT-5y-gY6"/>
                         <outlet property="noMemoriesLabel" destination="YcP-aD-e4p" id="44d-AZ-a2u"/>
+                        <outlet property="tableView" destination="hLN-7Y-fZZ" id="ToS-fL-c2H"/>
                         <segue destination="BwW-ST-TNg" kind="show" identifier="viewDetail" id="Sob-dv-5Fd"/>
                         <segue destination="t6u-Vq-Uny" kind="show" identifier="addMemory" id="GfM-e2-Bxu"/>
                     </connections>
@@ -102,28 +76,6 @@ Vamos guardar uma? </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7v-o0-zM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="195.6521739130435" y="133.92857142857142"/>
-        </scene>
-        <!--Memory Box Table View Controller-->
-        <scene sceneID="cgc-9K-zWY">
-            <objects>
-                <tableViewController id="FZw-xL-C5Z" customClass="MemoryBoxTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Fw-MV-tMQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="FZw-xL-C5Z" id="jBv-Zk-Uym"/>
-                            <outlet property="delegate" destination="FZw-xL-C5Z" id="lpS-oD-HZ1"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="lH4-MB-n4f"/>
-                    <connections>
-                        <segue destination="BwW-ST-TNg" kind="show" identifier="viewMemoryDetail" id="6lO-W3-Ipa"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7sU-kX-KVV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1080" y="134"/>
         </scene>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
@@ -289,10 +241,6 @@ Vamos guardar uma? </string>
             <point key="canvasLocation" x="196" y="1596"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="6lO-W3-Ipa"/>
-        <segue reference="w2e-UO-M54"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="startRecording" width="74" height="74"/>
         <namedColor name="grayDark">
