@@ -46,16 +46,22 @@
 		8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DF66F254CEF5900262918 /* TextFieldCell.xib */; };
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
+		8D5AD8612559699800B33EA2 /* TitleTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8602559699800B33EA2 /* TitleTexts.swift */; };
+		8D5AD8642559729D00B33EA2 /* QuestionTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */; };
+		8D5AD8682559813C00B33EA2 /* MemoryBoxTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */; };
 		8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7F4254368B3002A3F74 /* Typography.swift */; };
 		8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7FE25438109002A3F74 /* TimerManager.swift */; };
 		8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F801254384FC002A3F74 /* DoubleRound.swift */; };
 		8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */; };
+		8D6D619C255ACD8A0099E8D7 /* CKErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */; };
+		8D6D61A1255AD9D70099E8D7 /* CKErrorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* UIScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* UIScrollViewKeyboard.swift */; };
 		8D9AA2E0254A756B00C394FF /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2DF254A756B00C394FF /* PresentationManager.swift */; };
 		8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */; };
 		8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */; };
+		8DA72A822559BBA1008FE574 /* InputAudioTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA72A812559BBA1008FE574 /* InputAudioTexts.swift */; };
 		8DAD8335254C400A009ED46C /* TitleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD8334254C400A009ED46C /* TitleTableViewController.swift */; };
 		8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833B254C4986009ED46C /* NibIdentifier.swift */; };
 		8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */; };
@@ -63,7 +69,7 @@
 		8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */; };
 		8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BE254739190008DBF8 /* GradientButton.xib */; };
 		8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */; };
-		8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* Alerts.swift */; };
+		8DDCAB9A252EA0290012B671 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB99252EA0290012B671 /* AlertManager.swift */; };
 		8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */; };
 		8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6DB3125477CD20057898E /* IconButtonView.swift */; };
 		8DF6DB3525477CF30057898E /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF6DB3425477CF30057898E /* IconButton.xib */; };
@@ -119,6 +125,9 @@
 		8D1DF66F254CEF5900262918 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
+		8D5AD8602559699800B33EA2 /* TitleTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTexts.swift; sourceTree = "<group>"; };
+		8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTexts.swift; sourceTree = "<group>"; };
+		8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBoxTexts.swift; sourceTree = "<group>"; };
 		8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold Italic.ttf"; sourceTree = "<group>"; };
 		8D60F7EB25436680002A3F74 /* Circular Std Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Bold.ttf"; sourceTree = "<group>"; };
 		8D60F7EC25436680002A3F74 /* Circular Std Black Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Circular Std Black Italic.ttf"; sourceTree = "<group>"; };
@@ -131,12 +140,15 @@
 		8D60F7FE25438109002A3F74 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8D60F801254384FC002A3F74 /* DoubleRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRound.swift; sourceTree = "<group>"; };
 		8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontMonospace.swift; sourceTree = "<group>"; };
+		8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorHandling.swift; sourceTree = "<group>"; };
+		8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorNotification.swift; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* UIScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewKeyboard.swift; sourceTree = "<group>"; };
 		8D9AA2DF254A756B00C394FF /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		8D9AA2E4254A880600C394FF /* GradientButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonCell.swift; sourceTree = "<group>"; };
 		8D9AA2E5254A880600C394FF /* GradientButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButtonCell.xib; sourceTree = "<group>"; };
+		8DA72A812559BBA1008FE574 /* InputAudioTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAudioTexts.swift; sourceTree = "<group>"; };
 		8DAD8334254C400A009ED46C /* TitleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewController.swift; sourceTree = "<group>"; };
 		8DAD833B254C4986009ED46C /* NibIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifier.swift; sourceTree = "<group>"; };
 		8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewNibRegistering.swift; sourceTree = "<group>"; };
@@ -144,7 +156,7 @@
 		8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
 		8DCEE7BE254739190008DBF8 /* GradientButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButton.xib; sourceTree = "<group>"; };
 		8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
-		8DDCAB99252EA0290012B671 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		8DDCAB99252EA0290012B671 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		8DDCABA0252EACCA0012B671 /* TraitCollectionAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitCollectionAccessibility.swift; sourceTree = "<group>"; };
 		8DF6DB3125477CD20057898E /* IconButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonView.swift; sourceTree = "<group>"; };
 		8DF6DB3425477CF30057898E /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
@@ -227,7 +239,6 @@
 				152EE5E5252B33A5002F379C /* AppDelegate.swift */,
 				152EE5E7252B33A5002F379C /* SceneDelegate.swift */,
 				152EE5EE252B33A7002F379C /* Assets.xcassets */,
-				152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */,
 				152EE5F3252B33A7002F379C /* Info.plist */,
 			);
 			path = Memoria;
@@ -273,6 +284,7 @@
 		15C8F23B252DF46B00DD9208 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				152EE5F0252B33A7002F379C /* LaunchScreen.storyboard */,
 				152EE5EB252B33A5002F379C /* Main.storyboard */,
 				B3042A99254383B20086AE9E /* ViewDetail.storyboard */,
 			);
@@ -423,11 +435,15 @@
 			children = (
 				B371E68D254AEDD500207D85 /* DateManager.swift */,
 				15AA50DE2543175C00EC2E4B /* MediaManager.swift */,
-				8DDCAB99252EA0290012B671 /* Alerts.swift */,
+				8DDCAB99252EA0290012B671 /* AlertManager.swift */,
 				8D60F7F4254368B3002A3F74 /* Typography.swift */,
 				8D60F7FE25438109002A3F74 /* TimerManager.swift */,
 				8D9AA2DF254A756B00C394FF /* PresentationManager.swift */,
 				8DAD833B254C4986009ED46C /* NibIdentifier.swift */,
+				8D5AD8602559699800B33EA2 /* TitleTexts.swift */,
+				8D5AD8632559729D00B33EA2 /* QuestionTexts.swift */,
+				8D5AD8672559813C00B33EA2 /* MemoryBoxTexts.swift */,
+				8DA72A812559BBA1008FE574 /* InputAudioTexts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -463,6 +479,8 @@
 			isa = PBXGroup;
 			children = (
 				B36DF377255418C800534A0E /* MemoryServices.swift */,
+				8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */,
+				8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */,
 			);
 			name = Services;
 			path = Xibs/Services;
@@ -585,11 +603,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D6D61A1255AD9D70099E8D7 /* CKErrorNotification.swift in Sources */,
 				8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */,
 				8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */,
 				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
 				15DCA472254AE31C00BCD7D0 /* DatePickerCell.swift in Sources */,
 				15C8F242252DFE5600DD9208 /* Memory.swift in Sources */,
+				8D5AD8612559699800B33EA2 /* TitleTexts.swift in Sources */,
 				15C8F246252DFF6600DD9208 /* Detail.swift in Sources */,
 				15D24CEB25483D4400D0D746 /* TitleSubtitleCell.swift in Sources */,
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
@@ -605,8 +625,10 @@
 				B36DF378255418C900534A0E /* MemoryServices.swift in Sources */,
 				8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */,
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
+				8D5AD8682559813C00B33EA2 /* MemoryBoxTexts.swift in Sources */,
 				159F62A6254861FB0011DB9F /* TextViewCell.swift in Sources */,
 				152EE5E8252B33A5002F379C /* SceneDelegate.swift in Sources */,
+				8DA72A822559BBA1008FE574 /* InputAudioTexts.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */,
 				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,
@@ -625,10 +647,12 @@
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
 				8DAD8335254C400A009ED46C /* TitleTableViewController.swift in Sources */,
 				8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */,
-				8DDCAB9A252EA0290012B671 /* Alerts.swift in Sources */,
+				8DDCAB9A252EA0290012B671 /* AlertManager.swift in Sources */,
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
+				8D6D619C255ACD8A0099E8D7 /* CKErrorHandling.swift in Sources */,
 				8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */,
+				8D5AD8642559729D00B33EA2 /* QuestionTexts.swift in Sources */,
 				15DCA482254C411000BCD7D0 /* SwitchCell.swift in Sources */,
 				15514E852549930600918E8B /* QuestionTableViewController.swift in Sources */,
 				15CDC160252CBFF000BD9A11 /* InputAudioViewController.swift in Sources */,
