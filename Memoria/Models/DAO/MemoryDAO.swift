@@ -35,7 +35,7 @@ class MemoryDAO: DAO {
                 print(savedRecord ?? "Unable to print saved record")
                 completion(nil)
             } else if let ckerror = error as? CKError {
-                
+                CKErrorHandling.treatCKErrors(ckError: ckerror)
             } else {
                 print("Record not saved for uknown reasons")
                 print(error ?? "Unable to print error")
