@@ -22,6 +22,10 @@ class DetailDAO: DAO {
         record.setValue(detail.text, forKey: "text")
         record.setValue(detail.category, forKey: "category")
 
+        // Converts UUID to String
+        let memoryIDAsString = detail.memoryID.uuidString
+        record.setValue(memoryIDAsString, forKey: "memoryID")
+
         // Converts image
         if let imageURL = detail.image {
             let imageCKAsset = CKAsset(fileURL: imageURL)
@@ -60,7 +64,6 @@ class DetailDAO: DAO {
         var allRecords = [Detail]()
 
         let predicate = NSPredicate(value: true)
-        //let predicate = NSPredicate(format: "detailID == %@", objectID as CVarArg)
 
         //  Make query operation to fetch a detail
         let query = CKQuery(recordType: "Detail", predicate: predicate)
@@ -68,10 +71,14 @@ class DetailDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            let newDetail = self.getDetailFromRecord(record: record)
+            if let newDetail = self.getDetailFromRecord(record: record) {
+                // Add new detail to array
+                allRecords.append(newDetail)
+            } else {
+                print("Record couldn't be converted into Detail")
+                print("Record ID: \(record.recordID)")
+            }
 
-            // Add new detail to array
-            allRecords.append(newDetail)
         }
         
         operation.queryCompletionBlock = { cursor, error in
@@ -88,7 +95,9 @@ class DetailDAO: DAO {
         // Fecthed details array
         var allRecords = [Detail]()
 
-        let predicate = NSPredicate(format: "memoryID == %@", memoryID as CVarArg)
+        // Converts UUID to String
+        let memoryIDAsString = memoryID.uuidString
+        let predicate = NSPredicate(format: "memoryID == %@", memoryIDAsString as CVarArg)
 
         //  Make query operation to fetch a detail
         let query = CKQuery(recordType: "Detail", predicate: predicate)
@@ -96,10 +105,13 @@ class DetailDAO: DAO {
 
         operation.recordFetchedBlock = { record in
 
-            let newDetail = self.getDetailFromRecord(record: record)
-
-            // Add new detail to array
-            allRecords.append(newDetail)
+            if let newDetail = self.getDetailFromRecord(record: record) {
+                // Add new detail to array
+                allRecords.append(newDetail)
+            } else {
+                print("Record couldn't be converted into Detail")
+                print("Record ID: \(record.recordID)")
+            }
         }
 
         operation.queryCompletionBlock = { cursor, error in
@@ -112,7 +124,13 @@ class DetailDAO: DAO {
     }
 
     /// Method to convert CKRecord into a Detail
-    static private func getDetailFromRecord(record: CKRecord) -> Detail {
+    static private func getDetailFromRecord(record: CKRecord) -> Detail? {
+        // Casting record value to String
+        guard let memoryIDAsString = record["memoryID"] as? String else {
+            print("Couldn't cast memoryIDAsString record as a string.")
+            return nil
+        }
+
         // Converting Texts
         let text = record["text"] as? String
         let question = record["question"] as? String
@@ -126,8 +144,14 @@ class DetailDAO: DAO {
         let image = record["image"] as? CKAsset
         let imageURL = image?.fileURL
 
+        // Converting UUID
+        guard let memoryUUID = UUID(uuidString: memoryIDAsString) else {
+            print("Invalid String for creating UUID.")
+            return nil
+        }
+
         // Make Detail object from query results
-        let newDetail = Detail(text: text, question: question, category: category, audio: audioURL, image: imageURL)
+        let newDetail = Detail(memoryID: memoryUUID, text: text, question: question, category: category, audio: audioURL, image: imageURL)
 
         return newDetail
     }

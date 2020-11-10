@@ -10,6 +10,7 @@ import UIKit
 class MemoryBoxTableViewController: UITableViewController {
 
     var memories = [Memory]()
+    var selectedMemory: Memory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +21,15 @@ class MemoryBoxTableViewController: UITableViewController {
     }
     
     func receiveData() {
-        MemoryDAO.findAll { (memories, error) in
-            self.memories = memories
-            self.tableView.reloadData()
-        }
+//        MemoryDAO.findAll { (memories, error) in
+//            self.memories = memories
+//            self.tableView.reloadData()
+//        }
     }
     
     func setupTableView() {
         self.tableView.separatorStyle = .none
-        self.tableView.allowsSelection = false
+        self.tableView.allowsSelection = true
         self.tableView.isUserInteractionEnabled = true
     }
     
@@ -64,6 +65,14 @@ class MemoryBoxTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMemory = memories[indexPath.row]
         performSegue(withIdentifier: "viewMemoryDetail", sender: self)
+    }
+
+    // Passing selected memory to Detail View Controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailViewController {
+            destination.selectedMemory = self.selectedMemory
+        }
     }
 }
