@@ -64,19 +64,6 @@ class AlertManager {
         
         return myAlert
     }
-    
-    var reachedAudioTimeLimit: UIAlertController {
-        let title = "Limite de tempo atingido"
-        let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
-        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        // Pause audio recording and dismiss view
-        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.delegate?.buttonAction()
-        }))
-        
-        return myAlert
-    }
 
     var poorNetworkConnection: UIAlertController {
         let title = "Sem acesso a internet"
@@ -129,6 +116,18 @@ class AlertManager {
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
+        return myAlert
+    }
+    
+    func makeReachedAudioTimeLimitAlert(_ completion: @escaping () -> Void) -> UIAlertController {
+        let title = "Limite de tempo atingido"
+        let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Pause audio recording and dismiss view
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
+        }))
         return myAlert
     }
     
