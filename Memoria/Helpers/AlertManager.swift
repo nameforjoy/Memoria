@@ -132,14 +132,14 @@ class AlertManager {
         return myAlert
     }
     
-    var checkStorageQuota: UIAlertController {
+    func makeStorageQuotaCheckAlert(_ completion: @escaping () -> Void) -> UIAlertController {
         let title = "Atenção"
         let message = "Virifique se possui espaço livre de armazenamento no iCloud, pois é lá que guardaremos suas memórias para sua segurança!"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Procceed to add new memory
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.delegate?.buttonAction()
+            completion()
         }))
         // Go to settings
         myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
@@ -150,9 +150,8 @@ class AlertManager {
             let userDefault = UserDefaults.standard
             userDefault.set(true, forKey: "shouldNotDisplayStorageAlert") // save true flag to UserDefaults
             userDefault.synchronize()
-            self.delegate?.buttonAction()
+            completion()
         }))
-
         return myAlert
     }
 }
