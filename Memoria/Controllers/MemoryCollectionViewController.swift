@@ -22,6 +22,7 @@ class MemoryCollectionViewController: UIViewController {
     var selectedMemory: Memory?
     
     var texts = MemoryBoxTexts()
+    var ckErrorAlertPresenter: CKErrorAlertPresenter?
 
     // Temp atributes for testing data retrieve
     var userMemoryDetails: [Detail]?
@@ -44,15 +45,13 @@ class MemoryCollectionViewController: UIViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
-
-        notificationCenter.addObserver(self, selector: #selector(networkNotResponding), name: NSNotification.Name(rawValue: CKErrorNotification.networkUnavailable.rawValue), object: nil)
-
-        notificationCenter.addObserver(self, selector: #selector(networkNotResponding), name: NSNotification.Name(rawValue: CKErrorNotification.networkFailure.rawValue), object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
+        self.ckErrorAlertPresenter?.addObservers()
         
         //TableView set up
         self.setupTableView()
         self.registerNibs()
-        self.receiveData()
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -61,8 +60,8 @@ class MemoryCollectionViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // Loading Icon Setup
-        loadingIcon.startAnimating()
-        loadingIcon.color = UIColor(hexString: "7765A8")
+        self.loadingIcon.startAnimating()
+        self.loadingIcon.color = UIColor(hexString: "7765A8")
 
         self.receiveData()
         
@@ -77,6 +76,8 @@ class MemoryCollectionViewController: UIViewController {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Actions
@@ -121,18 +122,6 @@ class MemoryCollectionViewController: UIViewController {
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
             destination.selectedMemory = self.selectedMemory
-        }
-    }
-
-    // MARK: Errors
-
-    @objc func networkNotResponding(_ notification: Notification) {
-
-        // Disables loading icon
-        DispatchQueue.main.async {
-            self.loadingIcon.stopAnimating()
-            self.loadingIcon.isHidden = true
-            self.present(AlertManager().poorNetworkConnection, animated: true)
         }
     }
     
@@ -225,5 +214,23 @@ extension MemoryCollectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMemory = memories[indexPath.row]
         performSegue(withIdentifier: "viewDetail", sender: self)
+    }
+}
+
+// MARK: Errors
+
+extension MemoryCollectionViewController: CKErrorAlertPresentaterDelegate {
+    
+    func retryRequest() {
+        self.receiveData()
+    }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        // Disable loading icon
+        DispatchQueue.main.async {
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.isHidden = true
+            self.present(alert, animated: true)
+        }
     }
 }

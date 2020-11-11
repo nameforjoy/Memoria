@@ -54,6 +54,7 @@
 		8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */; };
 		8D6D619C255ACD8A0099E8D7 /* CKErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */; };
 		8D6D61A1255AD9D70099E8D7 /* CKErrorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */; };
+		8D6D61AC255C15870099E8D7 /* CKErrorAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D61AB255C15870099E8D7 /* CKErrorAlertPresenter.swift */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
 		8D73C88B252FFE65008EF1FD /* UIScrollViewKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C88A252FFE65008EF1FD /* UIScrollViewKeyboard.swift */; };
@@ -140,6 +141,7 @@
 		8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontMonospace.swift; sourceTree = "<group>"; };
 		8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorHandling.swift; sourceTree = "<group>"; };
 		8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorNotification.swift; sourceTree = "<group>"; };
+		8D6D61AB255C15870099E8D7 /* CKErrorAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorAlertPresenter.swift; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
 		8D73C88A252FFE65008EF1FD /* UIScrollViewKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewKeyboard.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				B36DF377255418C800534A0E /* MemoryServices.swift */,
 				8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */,
 				8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */,
+				8D6D61AB255C15870099E8D7 /* CKErrorAlertPresenter.swift */,
 			);
 			name = Services;
 			path = Xibs/Services;
@@ -615,6 +618,7 @@
 				15DCA486254C4CAC00BCD7D0 /* ExpandingCell.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				1550DEFD25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift in Sources */,
+				8D6D61AC255C15870099E8D7 /* CKErrorAlertPresenter.swift in Sources */,
 				8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,

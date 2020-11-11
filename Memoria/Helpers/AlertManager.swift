@@ -75,9 +75,52 @@ class AlertManager {
         let title = "Sem acesso a internet"
         let message = "Não conseguimos acessar os servidores. Cheque sua conexão com a internet e tente novamente!"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.delegate?.buttonAction()
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }))
+        
+        return myAlert
+    }
+    
+    var userNotAuthenticated: UIAlertController {
+        let title = "Usuário não autenticado"
+        let message = "Verifique seu login iCloud para que possamos prosseguir!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+
+        return myAlert
+    }
+    
+    var storageQuotaExceeded: UIAlertController {
+        let title = "Sem espaço no iCloud"
+        let message = "Guardamos suas memórias no iCloud, então libere espaço de armazenamento para podermos prosseguir!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+
+        return myAlert
+    }
+    
+    var serviceUnavailable: UIAlertController {
+        let title = "Ops!"
+        let message = "Tivemos algum problema com o armazenamento das suas memórias. Tente novamente mais tarde."
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
         return myAlert
     }
