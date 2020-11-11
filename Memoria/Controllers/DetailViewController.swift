@@ -44,6 +44,7 @@ class DetailViewController: UITableViewController {
         self.tableView.registerNib(nibIdentifier: .subtitleCell)
         self.tableView.registerNib(nibIdentifier: .photoCell)
         self.tableView.registerNib(nibIdentifier: .audioPlayerCell)
+        self.tableView.registerNib(nibIdentifier: .timePassedCell)
     }
 
     func retrieveDetailsFromCurrentMemory() {
@@ -118,11 +119,10 @@ extension DetailViewController {
 
         // Time Passed By
         if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
-            if let cellType = cell as? SubtitleCell {
+            cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.timePassedCell.rawValue, for: indexPath)
+            if let cellType = cell as? TimePassedCell {
                 if let dateString = DateManager.getTimeIntervalAsStringSinceDate(selectedMemory?.date) {
                     cellType.subtitleLabel.text = dateString
-                    cellType.subtitleLabel.textColor = UIColor.gray
                 } else {
                     cellType.isHidden = true
                 }
