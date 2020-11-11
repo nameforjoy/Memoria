@@ -64,21 +64,6 @@ class AlertManager {
         
         return myAlert
     }
-
-    var poorNetworkConnection: UIAlertController {
-        let title = "Sem acesso a internet"
-        let message = "Não conseguimos acessar os servidores. Cheque sua conexão com a internet e tente novamente!"
-        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        // OK button
-        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        // Go to settings
-        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-        }))
-        
-        return myAlert
-    }
     
     var userNotAuthenticated: UIAlertController {
         let title = "Usuário não autenticado"
@@ -116,6 +101,21 @@ class AlertManager {
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
+        return myAlert
+    }
+    
+    func makePoorNetworkConnectionAlert(message: String? = nil) -> UIAlertController {
+        let title = "Sem acesso a internet"
+        let myMessage: String = message ?? "Não conseguimos acessar os servidores. Cheque sua conexão com a internet e tente novamente!"
+        let myAlert = UIAlertController(title: title, message: myMessage, preferredStyle: .alert)
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        
         return myAlert
     }
     

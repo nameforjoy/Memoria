@@ -39,7 +39,8 @@ class CKErrorAlertPresenter {
     }
     
     @objc func networkNotResponding(_ notification: Notification) {
-        self.delegate.presentAlert(AlertManager().poorNetworkConnection)
+        let alert = AlertManager().makePoorNetworkConnectionAlert()
+        self.delegate.presentAlert(alert)
     }
     
     @objc func userNotAuthenticated(_ notification: Notification) {
