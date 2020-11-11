@@ -240,8 +240,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
                 }
             } else {
                 print(error.debugDescription)
-                // TODO: Treat error
-                // Alert "Infelizmente não conseguimos salvar sua memória"
+                self.present(AlertManager().serviceUnavailable, animated: true)
             }
         }
     }

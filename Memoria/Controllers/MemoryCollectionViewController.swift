@@ -121,6 +121,7 @@ class MemoryCollectionViewController: UIViewController {
             // Handle error
             if error != nil {
                 print(error.debugDescription)
+                self.present(AlertManager().serviceUnavailable, animated: true)
             }
 
             self.memories = memories
