@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Network
 
 class MemoryCollectionViewController: UIViewController {
     
@@ -60,25 +59,6 @@ class MemoryCollectionViewController: UIViewController {
         
         // Check internet connectivity
         self.checkInternetConnectivity()
-    }
-    
-    func checkInternetConnectivity() {
-        
-        let monitor = NWPathMonitor()
-        // Configure completion for whenever connection status changes
-        monitor.pathUpdateHandler = { path in
-            if path.status != .satisfied {
-                self.present(AlertManager().poorNetworkConnection, animated: true)
-            }
-        }
-        // Start monitoring status
-        let queue = DispatchQueue(label: "Monitor")
-        monitor.start(queue: queue)
-        
-        // Check if current status is connected
-        if monitor.currentPath.status != .satisfied {
-            self.present(AlertManager().poorNetworkConnection, animated: true)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

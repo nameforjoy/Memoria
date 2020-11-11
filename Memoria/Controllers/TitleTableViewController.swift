@@ -71,6 +71,9 @@ class TitleTableViewController: UITableViewController {
         // iCloud Notifications
         self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
         self.ckErrorAlertPresenter?.addObservers()
+        
+        // Check internet connectivity
+        self.checkInternetConnectivity()
     }
     
     override func viewWillAppear(_ animated: Bool) {
