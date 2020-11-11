@@ -81,13 +81,15 @@ class MemoryCollectionViewController: UIViewController {
             if error != nil {
                 print(error.debugDescription)
             } else {
-                self.memories = memories
-                if self.memories.isEmpty {
-                    self.tableView.isHidden = true
-                } else {
-                    self.tableView.isHidden = false
+                DispatchQueue.main.async {
+                    self.memories = memories
+                    if self.memories.isEmpty {
+                        self.tableView.isHidden = true
+                    } else {
+                        self.tableView.isHidden = false
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
             }
         }
     }
