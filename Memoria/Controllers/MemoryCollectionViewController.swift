@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Network
 
 class MemoryCollectionViewController: UIViewController {
     
@@ -23,8 +24,9 @@ class MemoryCollectionViewController: UIViewController {
     
     var texts = MemoryBoxTexts()
     
-    // CKError monitoring
+    // Error monitoring
     var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
 
     // Temp atributes for testing data retrieve
     var userMemoryDetails: [Detail]?
@@ -58,7 +60,7 @@ class MemoryCollectionViewController: UIViewController {
         self.tableView.delegate = self
         
         // Check internet connectivity
-        self.checkInternetConnectivity()
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {

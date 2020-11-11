@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import Network
 
 class TitleTableViewController: UITableViewController {
 
     // MARK: Attributes
     
-    // CKError monitoring
+    // Error monitoring
     var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
     
     // Image
     var imageURL: URL?
@@ -73,7 +75,7 @@ class TitleTableViewController: UITableViewController {
         self.ckErrorAlertPresenter?.addObservers()
         
         // Check internet connectivity
-        self.checkInternetConnectivity()
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {

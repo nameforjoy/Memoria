@@ -7,13 +7,15 @@
 
 import UIKit
 import AVFoundation
+import Network
 
 class QuestionTableViewController: UITableViewController {
     
     // MARK: Attributes
     
-    // CKError monitoring
+    // Error monitoring
     var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
     
     // Image
     var imageURL: URL?
@@ -69,7 +71,7 @@ class QuestionTableViewController: UITableViewController {
         self.ckErrorAlertPresenter?.addObservers()
         
         // Check internet connectivity
-        self.checkInternetConnectivity()
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {

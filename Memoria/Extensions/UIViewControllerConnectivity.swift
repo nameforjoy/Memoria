@@ -10,22 +10,18 @@ import Network
 
 extension UIViewController {
     
-    func checkInternetConnectivity() {
-        
-        let monitor = NWPathMonitor()
+    func checkInternetConnectivity(monitor: NWPathMonitor) {
         // Configure completion for whenever connection status changes
         monitor.pathUpdateHandler = { path in
             if path.status != .satisfied {
-                self.present(AlertManager().poorNetworkConnection, animated: true)
+                DispatchQueue.main.async {
+                    self.present(AlertManager().poorNetworkConnection, animated: true)
+                }
             }
         }
         // Start monitoring status
         let queue = DispatchQueue(label: "Monitor")
         monitor.start(queue: queue)
-        
-//        // Check if current status is connected
-//        if monitor.currentPath.status != .satisfied {
-//            self.present(AlertManager().poorNetworkConnection, animated: true)
-//        }
     }
+    
 }
