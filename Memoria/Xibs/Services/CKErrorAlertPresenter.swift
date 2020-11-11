@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CKErrorAlertPresentaterDelegate {
+protocol CKErrorAlertPresentaterDelegate: AnyObject {
     func presentAlert(_ alert: UIAlertController)
     func retryRequest()
 }

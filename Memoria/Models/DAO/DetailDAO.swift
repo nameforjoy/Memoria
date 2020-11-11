@@ -48,10 +48,12 @@ class DetailDAO: DAO {
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
                 print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
                 completion(nil)
+            } else if let ckerror = error as? CKError {
+                CKErrorHandling.treatCKErrors(ckError: ckerror)
             } else {
                 // TODO: Treat error
                 print("Record Not Saved")
-                print(error ?? "Nil")
+                print(error ?? "Unable to print error")
                 completion(error)
             }
         }
@@ -115,9 +117,19 @@ class DetailDAO: DAO {
         }
 
         operation.queryCompletionBlock = { cursor, error in
-            DispatchQueue.main.async {
-                completion(allRecords)
+            
+            if error == nil {
+                DispatchQueue.main.async {
+                    completion(allRecords)
+                }
+            } else if let ckerror = error as? CKError {
+                CKErrorHandling.treatCKErrors(ckError: ckerror)
+            } else {
+                // TODO: Treat error
+                print("Record Not Saved")
+                print(error ?? "Unable to print error")
             }
+            
         }
 
         privateDatabase.add(operation)
