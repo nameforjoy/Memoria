@@ -4,6 +4,9 @@
 //
 //  Created by Joyce Simão Clímaco on 07/10/20.
 //
+// For more precise URL redirectings (for example, go to iCloud Settings), see:
+// https://www.macstories.net/ios/a-comprehensive-guide-to-all-120-settings-urls-supported-by-ios-and-ipados-13-1/
+//
 
 import Foundation
 import UIKit
@@ -34,9 +37,11 @@ class AlertManager {
         let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        // Go to settings
         myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }))
+        // Cancel
         myAlert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         
         return myAlert
@@ -64,6 +69,8 @@ class AlertManager {
         let title = "Limite de tempo atingido"
         let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Pause audio recording and dismiss view
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.delegate?.buttonAction()
         }))
@@ -121,6 +128,30 @@ class AlertManager {
         let message = "Tivemos algum problema com o armazenamento das suas memórias. Tente novamente mais tarde."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        return myAlert
+    }
+    
+    var checkStorageQuota: UIAlertController {
+        let title = "Atenção"
+        let message = "Virifique se possui espaço livre de armazenamento no iCloud, pois é lá que guardaremos suas memórias para sua segurança!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Procceed to add new memory
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.delegate?.buttonAction()
+        }))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        // Don't show again
+        myAlert.addAction(UIAlertAction(title: "Não mostrar novamente", style: .default, handler: { _ in
+            let userDefault = UserDefaults.standard
+            userDefault.set(true, forKey: "shouldNotDisplayStorageAlert") // save true flag to UserDefaults
+            userDefault.synchronize()
+            self.delegate?.buttonAction()
+        }))
 
         return myAlert
     }

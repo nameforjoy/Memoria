@@ -88,7 +88,7 @@ class MemoryCollectionViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func addMemory(_ sender: Any) {
-        performSegue(withIdentifier: "addMemory", sender: self)
+        self.addNewMemory()
     }
 
     func receiveData() {
@@ -188,7 +188,7 @@ class MemoryCollectionViewController: UIViewController {
 extension MemoryCollectionViewController: IconButtonDelegate {
     
     func iconButtonAction() {
-        performSegue(withIdentifier: "addMemory", sender: self)
+        self.addNewMemory()
     }
 }
 
@@ -237,6 +237,27 @@ extension MemoryCollectionViewController: CKErrorAlertPresentaterDelegate {
             self.loadingIcon.stopAnimating()
             self.loadingIcon.isHidden = true
             self.present(alert, animated: true)
+        }
+    }
+}
+
+// MARK: Alert Manager
+
+extension MemoryCollectionViewController: AlertManagerDelegate {
+    
+    func buttonAction() {
+        performSegue(withIdentifier: "addMemory", sender: self)
+    }
+    
+    /// Proceed to add memory screen or display warning for user to check their iCloud storage space
+    func addNewMemory() {
+        let shouldNotDisplayStorageAlert = UserDefaults.standard.bool(forKey: "shouldNotDisplayStorageAlert") // return false if not found
+        if shouldNotDisplayStorageAlert {
+            performSegue(withIdentifier: "addMemory", sender: self)
+        } else {
+            let alertManager = AlertManager()
+            alertManager.delegate = self
+            self.present(alertManager.checkStorageQuota, animated: true)
         }
     }
 }
