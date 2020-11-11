@@ -23,9 +23,9 @@ extension UIViewController {
         let queue = DispatchQueue(label: "Monitor")
         monitor.start(queue: queue)
         
-        // Check if current status is connected
-        if monitor.currentPath.status != .satisfied {
-            self.present(AlertManager().poorNetworkConnection, animated: true)
-        }
+//        // Check if current status is connected
+//        if monitor.currentPath.status != .satisfied {
+//            self.present(AlertManager().poorNetworkConnection, animated: true)
+//        }
     }
 }
