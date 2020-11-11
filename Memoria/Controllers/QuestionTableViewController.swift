@@ -154,6 +154,7 @@ class QuestionTableViewController: UITableViewController {
             if let audioTitleSubtitleCell = cell as? TitleSubtitleCell {
                 audioTitleSubtitleCell.titleLabel.text = self.texts.recordAudioTitle
                 audioTitleSubtitleCell.subtitleLabel.text = self.texts.recordAudioSubtitle
+                audioTitleSubtitleCell.buttonIsHidden = false
                 cell = audioTitleSubtitleCell
             }
         case 3:
@@ -173,6 +174,7 @@ class QuestionTableViewController: UITableViewController {
             if let photoTitleSubtitleCell = cell as? TitleSubtitleCell {
                 photoTitleSubtitleCell.titleLabel.text = self.texts.takePhotoTitle
                 photoTitleSubtitleCell.subtitleLabel.text = self.texts.takePhotoSubtitle
+                photoTitleSubtitleCell.buttonIsHidden = false
                 cell = photoTitleSubtitleCell
             }
         case 6:
