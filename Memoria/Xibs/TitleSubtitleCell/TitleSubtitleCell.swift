@@ -7,21 +7,33 @@
 
 import UIKit
 
+enum RemoveType {
+    case removeImage
+    case removeAudio
+    case undefined
+}
+
+protocol TitleSubtitleCellDelegate: AnyObject {
+    func didTapRemove(buttonType: RemoveType)
+}
+
 class TitleSubtitleCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var removeButton: UIButton!
     
-    var buttonIsHidden: Bool = true {
+    var removeButtonIsHidden: Bool = true {
         didSet {
-            if buttonIsHidden {
+            if removeButtonIsHidden {
                 setUpHiddenButton()
             } else {
                 setUpButton()
             }
         }
     }
+    var removeType: RemoveType = .undefined
+    weak var removeButtonDelegate: TitleSubtitleCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +66,6 @@ class TitleSubtitleCell: UITableViewCell {
     }
 
     @IBAction func removeAction(_ sender: Any) {
-        print("Clicou remover")
+        self.removeButtonDelegate?.didTapRemove(buttonType: self.removeType)
     }
 }
