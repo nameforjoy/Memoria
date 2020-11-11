@@ -180,6 +180,10 @@ extension MemoryCollectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.memoryBoxCell.rawValue, for: indexPath)
+
+        // Disables gray default selection
+        cell.selectionStyle = .none
+
         if let cellType = cell as? MemoryBoxTableViewCell {
             let memory = memories[indexPath.row]
             
