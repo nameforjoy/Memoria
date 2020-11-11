@@ -52,8 +52,30 @@ class DetailViewController: UITableViewController {
                 print("There is \(details.count) details for this memory.")
                 self.memoryDetails = details
                 self.currentDetail = details[0]
+
+                // Uncomment if you want to test how the view looks like with multiple details
+                // This will duplicate the first detail
+//                self.createDuplicateForTesting()
                 if !details.isEmpty {
                     self.tableView.reloadData()
+                }
+            }
+        }
+
+    }
+
+    func createDuplicateForTesting() {
+        if let detail = self.currentDetail {
+            DetailDAO.create(detail: detail) { error in
+                if error == nil {
+                    // Return to main screen
+                    DispatchQueue.main.async {
+                        print("Detail saved")
+                    }
+                } else {
+                    print(error.debugDescription)
+                    // TODO: Treat error
+                    // Alert "Infelizmente não conseguimos salvar sua memória"
                 }
             }
         }
