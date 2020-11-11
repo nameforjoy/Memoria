@@ -54,13 +54,13 @@ class MemoryCollectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.receiveData()
         
         // Present alert if a memory has just been saved
         if self.didJustSaveAMemory {
             self.present(AlertManager().memorySaved, animated: true)
             self.didJustSaveAMemory = false
         }
+        self.receiveData()
     }
     
     deinit {
@@ -77,19 +77,18 @@ class MemoryCollectionViewController: UIViewController {
 
     func receiveData() {
         MemoryDAO.findAll { (memories, error) in
-
             // Handle error
             if error != nil {
                 print(error.debugDescription)
-            }
-
-            self.memories = memories
-            if self.memories.isEmpty {
-                self.tableView.isHidden = true
             } else {
-                self.tableView.isHidden = false
+                self.memories = memories
+                if self.memories.isEmpty {
+                    self.tableView.isHidden = true
+                } else {
+                    self.tableView.isHidden = false
+                }
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
     }
 

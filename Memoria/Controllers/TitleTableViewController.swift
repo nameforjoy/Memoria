@@ -320,7 +320,6 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     
     // Passes needed information the the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
         if let destination = segue.destination as? MemoryCollectionViewController {
             destination.didJustSaveAMemory = true
