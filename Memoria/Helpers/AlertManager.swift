@@ -4,6 +4,9 @@
 //
 //  Created by Joyce Simão Clímaco on 07/10/20.
 //
+// For more precise URL redirectings (for example, go to iCloud Settings), see:
+// https://www.macstories.net/ios/a-comprehensive-guide-to-all-120-settings-urls-supported-by-ios-and-ipados-13-1/
+//
 
 import Foundation
 import UIKit
@@ -34,9 +37,11 @@ class AlertManager {
         let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        // Go to settings
         myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
         }))
+        // Cancel
         myAlert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         
         return myAlert
@@ -60,14 +65,92 @@ class AlertManager {
         return myAlert
     }
     
-    var reachedAudioTimeLimit: UIAlertController {
+    var userNotAuthenticated: UIAlertController {
+        let title = "Usuário não autenticado"
+        let message = "Verifique seu login iCloud para que possamos prosseguir!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+
+        return myAlert
+    }
+    
+    var storageQuotaExceeded: UIAlertController {
+        let title = "Sem espaço no iCloud"
+        let message = "Guardamos suas memórias no iCloud, então libere espaço de armazenamento para podermos prosseguir!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+
+        return myAlert
+    }
+    
+    var serviceUnavailable: UIAlertController {
+        let title = "Ops!"
+        let message = "Tivemos algum problema com o armazenamento das suas memórias. Tente novamente mais tarde."
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        return myAlert
+    }
+    
+    func makePoorNetworkConnectionAlert(message: String? = nil) -> UIAlertController {
+        let title = "Sem acesso a internet"
+        let myMessage: String = message ?? "Não conseguimos acessar os servidores. Cheque sua conexão com a internet e tente novamente!"
+        let myAlert = UIAlertController(title: title, message: myMessage, preferredStyle: .alert)
+        
+        // OK button
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        
+        return myAlert
+    }
+    
+    func makeReachedAudioTimeLimitAlert(_ completion: @escaping () -> Void) -> UIAlertController {
         let title = "Limite de tempo atingido"
         let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.delegate?.buttonAction()
-        }))
         
+        // Pause audio recording and dismiss view
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
+        }))
+        return myAlert
+    }
+    
+    func makeStorageQuotaCheckAlert(_ completion: @escaping () -> Void) -> UIAlertController {
+        let title = "Atenção"
+        let message = "Virifique se possui espaço livre de armazenamento no iCloud, pois é lá que guardaremos suas memórias para sua segurança!"
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Procceed to add new memory
+        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
+        }))
+        // Go to settings
+        myAlert.addAction(UIAlertAction(title: "Ir para Configurações", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        // Don't show again
+        myAlert.addAction(UIAlertAction(title: "Não mostrar novamente", style: .default, handler: { _ in
+            let userDefault = UserDefaults.standard
+            userDefault.set(true, forKey: "shouldNotDisplayStorageAlert") // save true flag to UserDefaults
+            userDefault.synchronize()
+            completion()
+        }))
         return myAlert
     }
 }
