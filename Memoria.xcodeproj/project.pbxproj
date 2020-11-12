@@ -83,6 +83,11 @@
 		B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72425372C7C003E1059 /* MemoryDAO.swift */; };
 		B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72725372C8B003E1059 /* DetailDAO.swift */; };
 		B39CA72B25372CC6003E1059 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72A25372CC6003E1059 /* DAO.swift */; };
+		B3BF6C60255DB54F003F0C32 /* FirstQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF6C5F255DB54F003F0C32 /* FirstQuestionViewController.swift */; };
+		B3BF6C64255DC9C1003F0C32 /* SecondQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF6C63255DC9C1003F0C32 /* SecondQuestionViewController.swift */; };
+		B3BF6C68255DC9E7003F0C32 /* ThirdQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF6C67255DC9E7003F0C32 /* ThirdQuestionViewController.swift */; };
+		B3BF6C6B255DC9FE003F0C32 /* FourthQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF6C6A255DC9FE003F0C32 /* FourthQuestionViewController.swift */; };
+		B3BF6C6E255DCA1A003F0C32 /* FifthQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF6C6D255DCA1A003F0C32 /* FifthQuestionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +178,11 @@
 		B39CA72425372C7C003E1059 /* MemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDAO.swift; sourceTree = "<group>"; };
 		B39CA72725372C8B003E1059 /* DetailDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDAO.swift; sourceTree = "<group>"; };
 		B39CA72A25372CC6003E1059 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		B3BF6C5F255DB54F003F0C32 /* FirstQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstQuestionViewController.swift; path = Memoria/Controllers/QuestionViewControllers/FirstQuestionViewController.swift; sourceTree = SOURCE_ROOT; };
+		B3BF6C63255DC9C1003F0C32 /* SecondQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondQuestionViewController.swift; path = Memoria/Controllers/QuestionViewControllers/SecondQuestionViewController.swift; sourceTree = SOURCE_ROOT; };
+		B3BF6C67255DC9E7003F0C32 /* ThirdQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdQuestionViewController.swift; sourceTree = "<group>"; };
+		B3BF6C6A255DC9FE003F0C32 /* FourthQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthQuestionViewController.swift; sourceTree = "<group>"; };
+		B3BF6C6D255DCA1A003F0C32 /* FifthQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthQuestionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +316,7 @@
 				15AA50D125406CFF00EC2E4B /* ImagePicker.swift */,
 				B3042A9C254385650086AE9E /* DetailViewController.swift */,
 				15514E842549930600918E8B /* QuestionTableViewController.swift */,
+				B3BF6C70255DCA26003F0C32 /* QuestionViewControllers */,
 				8DAD8334254C400A009ED46C /* TitleTableViewController.swift */,
 			);
 			path = Controllers;
@@ -513,6 +524,18 @@
 			path = DAO;
 			sourceTree = "<group>";
 		};
+		B3BF6C70255DCA26003F0C32 /* QuestionViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3BF6C5F255DB54F003F0C32 /* FirstQuestionViewController.swift */,
+				B3BF6C63255DC9C1003F0C32 /* SecondQuestionViewController.swift */,
+				B3BF6C67255DC9E7003F0C32 /* ThirdQuestionViewController.swift */,
+				B3BF6C6A255DC9FE003F0C32 /* FourthQuestionViewController.swift */,
+				B3BF6C6D255DCA1A003F0C32 /* FifthQuestionViewController.swift */,
+			);
+			path = QuestionViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -633,6 +656,7 @@
 				8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */,
 				B371E68E254AEDD500207D85 /* DateManager.swift in Sources */,
 				8D73C88B252FFE65008EF1FD /* UIScrollViewKeyboard.swift in Sources */,
+				B3BF6C6E255DCA1A003F0C32 /* FifthQuestionViewController.swift in Sources */,
 				15DCA486254C4CAC00BCD7D0 /* ExpandingCell.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				1550DEFD25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift in Sources */,
@@ -641,6 +665,7 @@
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
 				8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */,
+				B3BF6C68255DC9E7003F0C32 /* ThirdQuestionViewController.swift in Sources */,
 				B36DF378255418C900534A0E /* MemoryServices.swift in Sources */,
 				8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */,
 				8D60F7F5254368B3002A3F74 /* Typography.swift in Sources */,
@@ -652,6 +677,7 @@
 				8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */,
 				8D6D61B0255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift in Sources */,
 				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,
+				B3BF6C64255DC9C1003F0C32 /* SecondQuestionViewController.swift in Sources */,
 				8D9AA2E0254A756B00C394FF /* PresentationManager.swift in Sources */,
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
@@ -662,6 +688,8 @@
 				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15D24CF02548433A00D0D746 /* SubtilteCell.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
+				B3BF6C60255DB54F003F0C32 /* FirstQuestionViewController.swift in Sources */,
+				B3BF6C6B255DC9FE003F0C32 /* FourthQuestionViewController.swift in Sources */,
 				B39CA72B25372CC6003E1059 /* DAO.swift in Sources */,
 				159F629C25484A330011DB9F /* PhotoCell.swift in Sources */,
 				15266D60252BC7D9006A531D /* UILabelAccessibility.swift in Sources */,
