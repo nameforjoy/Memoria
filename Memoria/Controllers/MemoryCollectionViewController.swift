@@ -119,7 +119,9 @@ class MemoryCollectionViewController: UIViewController {
     // MARK: Segue
     
     /// Unwind segue to get back to this view controller after saving a memory
-    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
     
     // Passes Array of Detail Objects to DetailViewController
     // Future: Passes only a single detail object as destination.currentDetail
@@ -214,6 +216,10 @@ extension MemoryCollectionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.memoryBoxCell.rawValue, for: indexPath)
+
+        // Disables gray default selection
+        cell.selectionStyle = .none
+
         if let cellType = cell as? MemoryBoxTableViewCell {
             let memory = memories[indexPath.row]
             

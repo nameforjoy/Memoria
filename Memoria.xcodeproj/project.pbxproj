@@ -76,6 +76,8 @@
 		8DF6DB3525477CF30057898E /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF6DB3425477CF30057898E /* IconButton.xib */; };
 		B3042A9A254383B20086AE9E /* ViewDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3042A99254383B20086AE9E /* ViewDetail.storyboard */; };
 		B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3042A9C254385650086AE9E /* DetailViewController.swift */; };
+		B3597369255C13C9003C3101 /* TimePassedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3597367255C13C9003C3101 /* TimePassedCell.swift */; };
+		B359736A255C13C9003C3101 /* TimePassedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3597368255C13C9003C3101 /* TimePassedCell.xib */; };
 		B36DF378255418C900534A0E /* MemoryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36DF377255418C800534A0E /* MemoryServices.swift */; };
 		B371E68E254AEDD500207D85 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371E68D254AEDD500207D85 /* DateManager.swift */; };
 		B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39CA72425372C7C003E1059 /* MemoryDAO.swift */; };
@@ -164,6 +166,8 @@
 		8DF6DB3425477CF30057898E /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
 		B3042A99254383B20086AE9E /* ViewDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewDetail.storyboard; sourceTree = "<group>"; };
 		B3042A9C254385650086AE9E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B3597367255C13C9003C3101 /* TimePassedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePassedCell.swift; sourceTree = "<group>"; };
+		B3597368255C13C9003C3101 /* TimePassedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimePassedCell.xib; sourceTree = "<group>"; };
 		B36DF377255418C800534A0E /* MemoryServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryServices.swift; sourceTree = "<group>"; };
 		B371E68D254AEDD500207D85 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		B39CA72425372C7C003E1059 /* MemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDAO.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				15DCA47C254C409200BCD7D0 /* SwitchCell */,
 				8D1DF66D254CEE5000262918 /* TextFieldCell */,
 				159F62A4254861EA0011DB9F /* TextViewCell */,
+				B3597361255C138E003C3101 /* TimePassedCell */,
 				15D24CDC254837CE00D0D746 /* TitleSubtitleCell */,
 			);
 			path = Xibs;
@@ -477,6 +482,15 @@
 			path = IconButton;
 			sourceTree = "<group>";
 		};
+		B3597361255C138E003C3101 /* TimePassedCell */ = {
+			isa = PBXGroup;
+			children = (
+				B3597367255C13C9003C3101 /* TimePassedCell.swift */,
+				B3597368255C13C9003C3101 /* TimePassedCell.xib */,
+			);
+			path = TimePassedCell;
+			sourceTree = "<group>";
+		};
 		B36DF3762554189800534A0E /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +581,7 @@
 				15D24CF32548434600D0D746 /* SubtitleCell.xib in Resources */,
 				159F62AA254862080011DB9F /* TextViewCell.xib in Resources */,
 				8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */,
+				B359736A255C13C9003C3101 /* TimePassedCell.xib in Resources */,
 				15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */,
 				8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */,
 				15DCA47E254C40EF00BCD7D0 /* SwitchCell.xib in Resources */,
@@ -643,6 +658,7 @@
 				8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */,
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
 				8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */,
+				B3597369255C13C9003C3101 /* TimePassedCell.swift in Sources */,
 				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15D24CF02548433A00D0D746 /* SubtilteCell.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,

@@ -21,4 +21,5 @@ enum NibIdentifier: String {
     case textViewCell = "TextViewCell"
     case titleSubtitleCell = "TitleSubtitleCell"
     case memoryBoxCell = "MemoryBoxTableViewCell"
+    case timePassedCell = "TimePassedCell"
 }
