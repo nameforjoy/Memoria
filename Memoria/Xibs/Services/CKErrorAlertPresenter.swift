@@ -15,7 +15,7 @@ protocol CKErrorAlertPresentaterDelegate: AnyObject {
 
 class CKErrorAlertPresenter {
     
-    var delegate: CKErrorAlertPresentaterDelegate
+    var delegate: CKErrorAlertPresentaterDelegate // colocar weak
     
     init(viewController: CKErrorAlertPresentaterDelegate) {
         self.delegate = viewController

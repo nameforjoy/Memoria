@@ -41,6 +41,10 @@ class DetailDAO: DAO {
         // Record detail in iCloud's private database
         self.privateDatabase.save(record) { (savedRecord, error) in
 
+            // Colocar dispatch.main.async na hora de mostrar o alert de erro
+            // (VC com o showError() que os outros vão herdar)
+            // Tira necessidade da post notification
+            
             if error == nil {
                 // Debug prints
                 print("Record Saved")
@@ -49,7 +53,7 @@ class DetailDAO: DAO {
                 print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
                 completion(nil)
             } else if let ckerror = error as? CKError {
-                CKErrorHandling.treatCKErrors(ckError: ckerror)
+                // CKErrorHandling.treatCKErrors(ckError: ckerror)
             } else {
                 // TODO: Treat error
                 print("Record Not Saved")
@@ -123,7 +127,7 @@ class DetailDAO: DAO {
                     completion(allRecords)
                 }
             } else if let ckerror = error as? CKError {
-                CKErrorHandling.treatCKErrors(ckError: ckerror)
+                // CKErrorHandling.treatCKErrors(ckError: ckerror)
             } else {
                 // TODO: Treat error
                 print("Record Not Saved")
