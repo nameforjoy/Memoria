@@ -39,7 +39,7 @@ Vamos guardar uma? </string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hLN-7Y-fZZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="baj-Fk-iR2">
@@ -49,7 +49,7 @@ Vamos guardar uma? </string>
                         <viewLayoutGuide key="safeArea" id="e5p-nX-PYi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hLN-7Y-fZZ" firstAttribute="top" secondItem="izE-Oo-atp" secondAttribute="top" id="4Wp-tk-e6L"/>
+                            <constraint firstItem="hLN-7Y-fZZ" firstAttribute="top" secondItem="e5p-nX-PYi" secondAttribute="top" id="4Wp-tk-e6L"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="25" id="A9q-DQ-adf"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerY" secondItem="e5p-nX-PYi" secondAttribute="centerY" multiplier="0.8" id="Jkt-6K-VkQ"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="NAE-4O-Ve8"/>

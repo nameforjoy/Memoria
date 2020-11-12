@@ -65,18 +65,16 @@ class MemoryCollectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         // Loading Icon Setup
         self.loadingIcon.startAnimating()
         self.loadingIcon.color = UIColor(hexString: "7765A8")
-
-        self.receiveData()
         
         // Present alert if a memory has just been saved
         if self.didJustSaveAMemory {
             self.present(AlertManager().memorySaved, animated: true)
             self.didJustSaveAMemory = false
         }
+        self.receiveData()
     }
     
     deinit {
@@ -104,15 +102,17 @@ class MemoryCollectionViewController: UIViewController {
             if error != nil {
                 print(error.debugDescription)
                 self.present(AlertManager().serviceUnavailable, animated: true)
-            }
-
-            self.memories = memories
-            if self.memories.isEmpty {
-                self.tableView.isHidden = true
             } else {
-                self.tableView.isHidden = false
+                DispatchQueue.main.async {
+                    self.memories = memories
+                    if self.memories.isEmpty {
+                        self.tableView.isHidden = true
+                    } else {
+                        self.tableView.isHidden = false
+                    }
+                    self.tableView.reloadData()
+                }
             }
-            self.tableView.reloadData()
         }
     }
 
