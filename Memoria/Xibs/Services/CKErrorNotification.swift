@@ -9,10 +9,8 @@ import Foundation
 
 enum CKErrorNotification: String {
     case userNotAuthenticated
-    case networkFailure
-    case networkUnavailable
+    case networkNotResponding
     case storageQuotaExceeded
-    case partialFailure
     case serviceUnavailable
     case shouldRetryRequest
 }

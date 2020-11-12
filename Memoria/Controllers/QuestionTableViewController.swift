@@ -7,10 +7,15 @@
 
 import UIKit
 import AVFoundation
+import Network
 
 class QuestionTableViewController: UITableViewController {
     
     // MARK: Attributes
+    
+    // Error monitoring
+    var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
     
     // Image
     var imageURL: URL?
@@ -60,6 +65,13 @@ class QuestionTableViewController: UITableViewController {
         
         // Image Picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        // iCloud Notifications
+        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
+        self.ckErrorAlertPresenter?.addObservers()
+        
+        // Check internet connectivity
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +88,8 @@ class QuestionTableViewController: UITableViewController {
         // Remove font size change observer
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Responders
@@ -210,30 +224,33 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     
     // Saves detail in memory
     func gradientButtonCellAction() {
-        
         // Chack if button has already been clicked
         // Prevent user from clicking on it (and saving the memory detail) twice
         if !self.hasClickedOnSaveButton {
-            guard let newMemoryDetail = self.getDetailFromInterface() else {
-                print("Coudn't get detail from interface.")
-                return
-            }
-            
-            // Calls DAO to object to database
-            DetailDAO.create(detail: newMemoryDetail) { error in
-                if error == nil {
-                    // Return to main screen
-                    DispatchQueue.main.async {
-                        print("Detail saved")
-                        self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
-                    }
-                } else {
-                    print(error.debugDescription)
-                    // TODO: Treat error
-                    // Alert "Infelizmente não conseguimos salvar sua memória"
+            self.saveDetail()
+        }
+        self.hasClickedOnSaveButton = true
+    }
+    
+    /// Save memory detail on database
+    func saveDetail() {
+        guard let newMemoryDetail = self.getDetailFromInterface() else {
+            print("Coudn't get detail from interface.")
+            return
+        }
+        
+        // Calls DAO to object to database
+        DetailDAO.create(detail: newMemoryDetail) { error in
+            if error == nil {
+                // Return to main screen
+                DispatchQueue.main.async {
+                    print("Detail saved")
+                    self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
                 }
+            } else {
+                print(error.debugDescription)
+                self.present(AlertManager().serviceUnavailable, animated: true)
             }
-            self.hasClickedOnSaveButton = true
         }
     }
 
@@ -453,5 +470,18 @@ extension QuestionTableViewController: TitleSubtitleCellDelegate {
         if let titleSubtitleCell = cell as? TitleSubtitleCell {
             titleSubtitleCell.removeButtonIsHidden = hide
         }
+    }
+}
+
+// MARK: Errors
+
+extension QuestionTableViewController: CKErrorAlertPresentaterDelegate {
+    
+    func retryRequest() {
+        self.saveDetail()
+    }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        self.present(alert, animated: true)
     }
 }
