@@ -168,6 +168,8 @@ class QuestionTableViewController: UITableViewController {
             if let audioTitleSubtitleCell = cell as? TitleSubtitleCell {
                 audioTitleSubtitleCell.titleLabel.text = self.texts.recordAudioTitle
                 audioTitleSubtitleCell.subtitleLabel.text = self.texts.recordAudioSubtitle
+                audioTitleSubtitleCell.removeButtonDelegate = self
+                audioTitleSubtitleCell.removeType = .removeAudio
                 cell = audioTitleSubtitleCell
             }
         case 3:
@@ -187,6 +189,8 @@ class QuestionTableViewController: UITableViewController {
             if let photoTitleSubtitleCell = cell as? TitleSubtitleCell {
                 photoTitleSubtitleCell.titleLabel.text = self.texts.takePhotoTitle
                 photoTitleSubtitleCell.subtitleLabel.text = self.texts.takePhotoSubtitle
+                photoTitleSubtitleCell.removeButtonDelegate = self
+                photoTitleSubtitleCell.removeType = .removeImage
                 cell = photoTitleSubtitleCell
             }
         case 6:
@@ -380,6 +384,7 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         self.hiddenRows = self.hiddenRows.filter { $0 != 4 } // remove audio player cell from hiddenRows array
         self.hiddenRows.append(3) // put add audio button cell in hiddenRows array
         self.tableView.reloadData()
+        self.hideRemoveButton(cellRow: 2, hide: false)
     }
     
     /// Ask for microphone usage authorization.
@@ -439,6 +444,32 @@ extension QuestionTableViewController: ImagePickerDelegate {
         self.hiddenRows = self.hiddenRows.filter { $0 != 7 } // remove image cell from hiddenRows array
         self.hiddenRows.append(6) // put add image button cell in hiddenRows array
         self.tableView.reloadData()
+        self.hideRemoveButton(cellRow: 5, hide: false)
+    }
+}
+
+extension QuestionTableViewController: TitleSubtitleCellDelegate {
+    func didTapRemove(buttonType: RemoveType) {
+        
+        if buttonType == .removeAudio {
+            self.hideRemoveButton(cellRow: 2, hide: true)
+            self.hiddenRows = self.hiddenRows.filter { $0 != 3 } // remove record button cell from hiddenRows array
+            self.hiddenRows.append(4) // put audio palyer cell in hiddenRows array
+            self.tableView.reloadData()
+        } else if buttonType == .removeImage {
+            self.hideRemoveButton(cellRow: 5, hide: true)
+            self.hiddenRows = self.hiddenRows.filter { $0 != 6 } // remove select image button cell from hiddenRows array
+            self.hiddenRows.append(7) // put image cell in hiddenRows array
+            self.tableView.reloadData()
+        }
+    }
+    
+    func hideRemoveButton(cellRow: Int, hide: Bool) {
+        let indexPath = IndexPath(row: cellRow, section: 0)
+        let cell = tableView.cellForRow(at: indexPath)
+        if let titleSubtitleCell = cell as? TitleSubtitleCell {
+            titleSubtitleCell.removeButtonIsHidden = hide
+        }
     }
 }
 
