@@ -13,7 +13,7 @@ class FourthQuestionViewController: QuestionTableViewController {
         super.viewDidLoad()
         super.isLastQuestion = false
 
-        self.question = "4Essa memória tem algum cheiro?"
-        self.navigationItem.title = "Quarta"
+        self.question = QuestionTexts.getRandomQuestion(category: .feelings)
+        self.navigationItem.title = Category.feelings.rawValue
     }
 }

@@ -152,7 +152,7 @@ extension DetailViewController {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = "Meus registros"
+                cellType.titleLabel.text = detailForSection?.category
                 cellType.subtitleLabel.text = detailForSection?.text
                 cell = cellType
             }
