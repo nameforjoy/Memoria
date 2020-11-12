@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import Network
 
 class TitleTableViewController: UITableViewController {
 
     // MARK: Attributes
+    
+    // Error monitoring
+    var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
     
     // Image
     var imageURL: URL?
@@ -65,6 +70,12 @@ class TitleTableViewController: UITableViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
+        self.ckErrorAlertPresenter?.addObservers()
+        
+        // Check internet connectivity
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +92,8 @@ class TitleTableViewController: UITableViewController {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Responders
@@ -270,33 +283,34 @@ extension TitleTableViewController: TextViewCellDelegate {
 extension TitleTableViewController: GradientButtonCellDelegate {
     
     func gradientButtonCellAction() {
-        
         if !self.hasClickedOnSaveButton {
-            // Save memory
-            guard let memoryId: UUID = self.memoryID else {
-                print("Memory ID not found")
-                return
-            }
-            
-            let date: Date = DateManager.getEstimatedDate(timePassed: self.timePassed, component: self.timeUnit) ?? Date()
-            let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: !self.isSwitchOn, date: date)
-            print(memory)
-
-            MemoryDAO.create(memory: memory) { (error) in
-                if error == nil {
-                    // Segue
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
-                    }
-                } else {
-                    print(error.debugDescription)
-                    // TODO: Treat error
-                    // Alert "Infelizmente não conseguimos salvar sua memória"
-                }
-            }
+            self.saveMemory()
+        }
+        self.hasClickedOnSaveButton = true
+    }
+    
+    /// Save memory on database
+    func saveMemory() {
+        guard let memoryId: UUID = self.memoryID else {
+            print("Memory ID not found")
+            return
         }
         
-        self.hasClickedOnSaveButton = true
+        let date: Date = DateManager.getEstimatedDate(timePassed: self.timePassed, component: self.timeUnit) ?? Date()
+        let memory = Memory(memoryID: memoryId, title: self.memoryTitle, description: self.memoryDescription, hasDate: !self.isSwitchOn, date: date)
+        print(memory)
+
+        MemoryDAO.create(memory: memory) { (error) in
+            if error == nil {
+                // Segue
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                }
+            } else {
+                print(error.debugDescription)
+                self.present(AlertManager().serviceUnavailable, animated: true)
+            }
+        }
     }
     
     // Present alert warning user they cannot procceed without at least one input.
@@ -320,7 +334,6 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     
     // Passes needed information the the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
         if let destination = segue.destination as? MemoryCollectionViewController {
             destination.didJustSaveAMemory = true
@@ -405,5 +418,18 @@ extension TitleTableViewController: SwitchCellDelegate {
             // preserve switch status after changing font
             switchCell.isSwitchOn = self.isSwitchOn
         }
+    }
+}
+
+// MARK: Errors
+
+extension TitleTableViewController: CKErrorAlertPresentaterDelegate {
+    
+    func retryRequest() {
+        self.saveMemory()
+    }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        self.present(alert, animated: true)
     }
 }

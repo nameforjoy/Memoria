@@ -23,15 +23,14 @@ class CKErrorHandling {
             }
         } else if ckError.code == CKError.notAuthenticated {
             NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.userNotAuthenticated.rawValue), object: nil, userInfo: nil)
-        } else if ckError.code == CKError.networkFailure {
-            NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.networkFailure.rawValue), object: nil, userInfo: nil)
-        } else if ckError.code == CKError.networkUnavailable {
-            NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.networkUnavailable.rawValue), object: nil, userInfo: nil)
+        } else if ckError.code == CKError.networkFailure ||
+                    ckError.code == CKError.networkUnavailable {
+            NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.networkNotResponding.rawValue), object: nil, userInfo: nil)
         } else if ckError.code == CKError.quotaExceeded {
             NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.storageQuotaExceeded.rawValue), object: nil, userInfo: nil)
-        } else if ckError.code == CKError.partialFailure {
-            NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.partialFailure.rawValue), object: nil, userInfo: nil)
-        } else if (ckError.code == CKError.internalError || ckError.code == CKError.serviceUnavailable) {
+        } else if ckError.code == CKError.partialFailure ||
+                    ckError.code == CKError.internalError ||
+                    ckError.code == CKError.serviceUnavailable {
             NotificationCenter.default.post(name: Notification.Name(CKErrorNotification.serviceUnavailable.rawValue), object: nil, userInfo: nil)
         }
     }

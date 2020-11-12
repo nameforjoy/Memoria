@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Network
 
 class MemoryCollectionViewController: UIViewController {
     
@@ -15,12 +16,17 @@ class MemoryCollectionViewController: UIViewController {
     @IBOutlet weak var noMemoriesLabel: UILabel!
     @IBOutlet weak var addFirstMemoryButton: IconButtonView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var loadingIcon: UIActivityIndicatorView!
+
     var memories = [Memory]()
     var didJustSaveAMemory: Bool = false
     var selectedMemory: Memory?
     
     var texts = MemoryBoxTexts()
+    
+    // Error monitoring
+    var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
 
     // Temp atributes for testing data retrieve
     var userMemoryDetails: [Detail]?
@@ -43,53 +49,70 @@ class MemoryCollectionViewController: UIViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
+        self.ckErrorAlertPresenter?.addObservers()
         
         //TableView set up
         self.setupTableView()
         self.registerNibs()
-        self.receiveData()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        // Check internet connectivity
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.receiveData()
+        // Loading Icon Setup
+        self.loadingIcon.startAnimating()
+        self.loadingIcon.color = UIColor(hexString: "7765A8")
         
         // Present alert if a memory has just been saved
         if self.didJustSaveAMemory {
             self.present(AlertManager().memorySaved, animated: true)
             self.didJustSaveAMemory = false
         }
+        self.receiveData()
     }
     
     deinit {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Actions
     
     @IBAction func addMemory(_ sender: Any) {
-        performSegue(withIdentifier: "addMemory", sender: self)
+        self.addNewMemory()
     }
 
     func receiveData() {
         MemoryDAO.findAll { (memories, error) in
 
+            // Disables loading icon
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.isHidden = true
+
             // Handle error
             if error != nil {
                 print(error.debugDescription)
-            }
-
-            self.memories = memories
-            if self.memories.isEmpty {
-                self.tableView.isHidden = true
+                self.present(AlertManager().serviceUnavailable, animated: true)
             } else {
-                self.tableView.isHidden = false
+                DispatchQueue.main.async {
+                    self.memories = memories
+                    if self.memories.isEmpty {
+                        self.tableView.isHidden = true
+                    } else {
+                        self.tableView.isHidden = false
+                    }
+                    self.tableView.reloadData()
+                }
             }
-            self.tableView.reloadData()
         }
     }
 
@@ -169,7 +192,20 @@ class MemoryCollectionViewController: UIViewController {
 extension MemoryCollectionViewController: IconButtonDelegate {
     
     func iconButtonAction() {
-        performSegue(withIdentifier: "addMemory", sender: self)
+        self.addNewMemory()
+    }
+    
+    /// Proceed to add memory screen or display warning for user to check their iCloud storage space
+    func addNewMemory() {
+        let shouldNotDisplayStorageAlert = UserDefaults.standard.bool(forKey: "shouldNotDisplayStorageAlert") // return false if not found
+        if shouldNotDisplayStorageAlert {
+            performSegue(withIdentifier: "addMemory", sender: self)
+        } else {
+            let alert = AlertManager().makeStorageQuotaCheckAlert {
+                self.performSegue(withIdentifier: "addMemory", sender: self)
+            }
+            self.present(alert, animated: true)
+        }
     }
 }
 
@@ -205,5 +241,23 @@ extension MemoryCollectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMemory = memories[indexPath.row]
         performSegue(withIdentifier: "viewDetail", sender: self)
+    }
+}
+
+// MARK: Errors
+
+extension MemoryCollectionViewController: CKErrorAlertPresentaterDelegate {
+    
+    func retryRequest() {
+        self.receiveData()
+    }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        // Disable loading icon
+        DispatchQueue.main.async {
+            self.loadingIcon.stopAnimating()
+            self.loadingIcon.isHidden = true
+            self.present(alert, animated: true)
+        }
     }
 }

@@ -7,10 +7,15 @@
 
 import UIKit
 import AVFoundation
+import Network
 
 class QuestionTableViewController: UITableViewController {
     
     // MARK: Attributes
+    
+    // Error monitoring
+    var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    let monitor = NWPathMonitor()
     
     // Image
     var imageURL: URL?
@@ -60,6 +65,13 @@ class QuestionTableViewController: UITableViewController {
         
         // Image Picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        // iCloud Notifications
+        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
+        self.ckErrorAlertPresenter?.addObservers()
+        
+        // Check internet connectivity
+        self.checkInternetConnectivity(monitor: self.monitor)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +88,8 @@ class QuestionTableViewController: UITableViewController {
         // Remove font size change observer
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
+        // iCloud Notifications
+        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Responders
@@ -154,6 +168,8 @@ class QuestionTableViewController: UITableViewController {
             if let audioTitleSubtitleCell = cell as? TitleSubtitleCell {
                 audioTitleSubtitleCell.titleLabel.text = self.texts.recordAudioTitle
                 audioTitleSubtitleCell.subtitleLabel.text = self.texts.recordAudioSubtitle
+                audioTitleSubtitleCell.removeButtonDelegate = self
+                audioTitleSubtitleCell.removeType = .removeAudio
                 cell = audioTitleSubtitleCell
             }
         case 3:
@@ -173,6 +189,8 @@ class QuestionTableViewController: UITableViewController {
             if let photoTitleSubtitleCell = cell as? TitleSubtitleCell {
                 photoTitleSubtitleCell.titleLabel.text = self.texts.takePhotoTitle
                 photoTitleSubtitleCell.subtitleLabel.text = self.texts.takePhotoSubtitle
+                photoTitleSubtitleCell.removeButtonDelegate = self
+                photoTitleSubtitleCell.removeType = .removeImage
                 cell = photoTitleSubtitleCell
             }
         case 6:
@@ -206,30 +224,33 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     
     // Saves detail in memory
     func gradientButtonCellAction() {
-        
         // Chack if button has already been clicked
         // Prevent user from clicking on it (and saving the memory detail) twice
         if !self.hasClickedOnSaveButton {
-            guard let newMemoryDetail = self.getDetailFromInterface() else {
-                print("Coudn't get detail from interface.")
-                return
-            }
-            
-            // Calls DAO to object to database
-            DetailDAO.create(detail: newMemoryDetail) { error in
-                if error == nil {
-                    // Return to main screen
-                    DispatchQueue.main.async {
-                        print("Detail saved")
-                        self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
-                    }
-                } else {
-                    print(error.debugDescription)
-                    // TODO: Treat error
-                    // Alert "Infelizmente não conseguimos salvar sua memória"
+            self.saveDetail()
+        }
+        self.hasClickedOnSaveButton = true
+    }
+    
+    /// Save memory detail on database
+    func saveDetail() {
+        guard let newMemoryDetail = self.getDetailFromInterface() else {
+            print("Coudn't get detail from interface.")
+            return
+        }
+        
+        // Calls DAO to object to database
+        DetailDAO.create(detail: newMemoryDetail) { error in
+            if error == nil {
+                // Return to main screen
+                DispatchQueue.main.async {
+                    print("Detail saved")
+                    self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
                 }
+            } else {
+                print(error.debugDescription)
+                self.present(AlertManager().serviceUnavailable, animated: true)
             }
-            self.hasClickedOnSaveButton = true
         }
     }
 
@@ -363,6 +384,7 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         self.hiddenRows = self.hiddenRows.filter { $0 != 4 } // remove audio player cell from hiddenRows array
         self.hiddenRows.append(3) // put add audio button cell in hiddenRows array
         self.tableView.reloadData()
+        self.hideRemoveButton(cellRow: 2, hide: false)
     }
     
     /// Ask for microphone usage authorization.
@@ -422,5 +444,44 @@ extension QuestionTableViewController: ImagePickerDelegate {
         self.hiddenRows = self.hiddenRows.filter { $0 != 7 } // remove image cell from hiddenRows array
         self.hiddenRows.append(6) // put add image button cell in hiddenRows array
         self.tableView.reloadData()
+        self.hideRemoveButton(cellRow: 5, hide: false)
+    }
+}
+
+extension QuestionTableViewController: TitleSubtitleCellDelegate {
+    func didTapRemove(buttonType: RemoveType) {
+        
+        if buttonType == .removeAudio {
+            self.hideRemoveButton(cellRow: 2, hide: true)
+            self.hiddenRows = self.hiddenRows.filter { $0 != 3 } // remove record button cell from hiddenRows array
+            self.hiddenRows.append(4) // put audio palyer cell in hiddenRows array
+            self.tableView.reloadData()
+        } else if buttonType == .removeImage {
+            self.hideRemoveButton(cellRow: 5, hide: true)
+            self.hiddenRows = self.hiddenRows.filter { $0 != 6 } // remove select image button cell from hiddenRows array
+            self.hiddenRows.append(7) // put image cell in hiddenRows array
+            self.tableView.reloadData()
+        }
+    }
+    
+    func hideRemoveButton(cellRow: Int, hide: Bool) {
+        let indexPath = IndexPath(row: cellRow, section: 0)
+        let cell = tableView.cellForRow(at: indexPath)
+        if let titleSubtitleCell = cell as? TitleSubtitleCell {
+            titleSubtitleCell.removeButtonIsHidden = hide
+        }
+    }
+}
+
+// MARK: Errors
+
+extension QuestionTableViewController: CKErrorAlertPresentaterDelegate {
+    
+    func retryRequest() {
+        self.saveDetail()
+    }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        self.present(alert, animated: true)
     }
 }

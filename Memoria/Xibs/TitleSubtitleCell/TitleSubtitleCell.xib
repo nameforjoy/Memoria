@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Que tal gravar?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6e-AJ-XKR">
-                        <rect key="frame" x="16" y="12" width="382" height="20"/>
+                        <rect key="frame" x="16" y="12" width="117" height="20"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -28,22 +29,39 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H69-Oc-xwK">
+                        <rect key="frame" x="337" y="7" width="61" height="30"/>
+                        <state key="normal" title="Remover">
+                            <color key="titleColor" name="coral"/>
+                        </state>
+                        <connections>
+                            <action selector="removeAction:" destination="5SG-S6-EyH" eventType="touchUpInside" id="lBH-8I-QCA"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="a6e-AJ-XKR" firstAttribute="trailing" secondItem="MVt-tp-lQR" secondAttribute="trailing" id="6WO-5d-zzk"/>
+                    <constraint firstItem="H69-Oc-xwK" firstAttribute="trailing" secondItem="MVt-tp-lQR" secondAttribute="trailing" id="20R-sz-hy2"/>
+                    <constraint firstItem="H69-Oc-xwK" firstAttribute="centerY" secondItem="a6e-AJ-XKR" secondAttribute="centerY" id="4Dl-o3-0jN"/>
                     <constraint firstItem="a6e-AJ-XKR" firstAttribute="top" secondItem="QWW-4v-X0w" secondAttribute="top" constant="12" id="TfA-Qa-YtM"/>
                     <constraint firstItem="MVt-tp-lQR" firstAttribute="leading" secondItem="QWW-4v-X0w" secondAttribute="leading" constant="16" id="eSu-ca-C4h"/>
                     <constraint firstAttribute="bottom" secondItem="MVt-tp-lQR" secondAttribute="bottom" constant="17" id="gAd-rH-Yro"/>
                     <constraint firstItem="a6e-AJ-XKR" firstAttribute="leading" secondItem="MVt-tp-lQR" secondAttribute="leading" id="ljR-Xr-8Uj"/>
                     <constraint firstAttribute="trailing" secondItem="MVt-tp-lQR" secondAttribute="trailing" constant="16" id="nQR-YN-z7F"/>
                     <constraint firstItem="MVt-tp-lQR" firstAttribute="top" secondItem="a6e-AJ-XKR" secondAttribute="bottom" constant="8" id="oB4-gt-7z5"/>
+                    <constraint firstItem="H69-Oc-xwK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a6e-AJ-XKR" secondAttribute="trailing" constant="8" id="yQ1-DO-Jud"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="removeButton" destination="H69-Oc-xwK" id="QtC-Iy-bm0"/>
                 <outlet property="subtitleLabel" destination="MVt-tp-lQR" id="qJ6-g5-rF3"/>
                 <outlet property="titleLabel" destination="a6e-AJ-XKR" id="3wm-KQ-Jl0"/>
             </connections>
             <point key="canvasLocation" x="-281.15942028985512" y="0.6696428571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="coral">
+            <color red="0.71799999475479126" green="0.3059999942779541" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
