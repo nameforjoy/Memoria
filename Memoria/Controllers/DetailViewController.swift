@@ -15,6 +15,9 @@ class DetailViewController: UITableViewController {
 
     // Temporary property
     var details: [Detail]?
+    
+    // Number of attempts to fetch memory from iCloud
+    var fetchingAttempts: Int = 0
 
     override func viewWillAppear(_ animated: Bool) {
         retrieveDetailsFromCurrentMemory()
@@ -49,16 +52,24 @@ class DetailViewController: UITableViewController {
 
     func retrieveDetailsFromCurrentMemory() {
         if let memoryID = selectedMemory?.memoryID {
-            DetailDAO.findByMemoryID(memoryID: memoryID) { (details) in
-                print("There is \(details.count) details for this memory.")
-                self.memoryDetails = details
-                self.currentDetail = details[0]
-
-                // Uncomment if you want to test how the view looks like with multiple details
-                // This will duplicate the first detail
-//                self.createDuplicateForTesting()
-                if !details.isEmpty {
-                    self.tableView.reloadData()
+            DetailDAO.findByMemoryID(memoryID: memoryID) { (details, error) in
+                
+                if error == nil {
+                    print("There is \(details.count) details for this memory.")
+                    self.memoryDetails = details
+                    self.currentDetail = details[0]
+                    
+                    // Uncomment if you want to test how the view looks like with multiple details
+                    // This will duplicate the first detail
+                    //                self.createDuplicateForTesting()
+                    if !details.isEmpty {
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    guard let error:Error = error else {return}
+                    self.treatDBErrors(error: error, requestRetry: self) { (alert) in
+                        self.present(alert, animated: true)
+                    }
                 }
             }
         }
@@ -186,5 +197,21 @@ extension DetailViewController {
         }
 
         return cell
+    }
+}
+
+// MARK: Retry iCloud request
+
+extension DetailViewController: RequestRetry {
+    func retryRequest() {
+        if self.fetchingAttempts < 5 {
+            self.retrieveDetailsFromCurrentMemory()
+            self.fetchingAttempts += 1
+        } else {
+            self.fetchingAttempts = 0
+            DispatchQueue.main.async {
+                self.present(AlertManager().serviceUnavailable, animated: true)
+            }
+        }
     }
 }

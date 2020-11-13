@@ -477,7 +477,7 @@ extension QuestionTableViewController: TitleSubtitleCellDelegate {
 extension QuestionTableViewController: RequestRetry {
     func retryRequest() {
         if self.savingAttempts < 5 {
-            // self.saveMemory()
+            self.saveDetail()
             self.savingAttempts += 1
         } else {
             self.savingAttempts = 0
