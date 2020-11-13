@@ -36,11 +36,19 @@ class QuestionTableViewController: UITableViewController {
     var hiddenRows: [Int] = [4,7]
     var hasClickedOnSaveButton: Bool = false
     var texts = QuestionTexts()
+
+    // Flow
+    var isLastQuestion: Bool = true
     
     // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Skip Question
+        if !self.isLastQuestion {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pular", style: .plain, target: self, action: #selector(skipQuestion))
+        }
         
         // Table view setup
         self.tableView.separatorStyle = .none
@@ -239,7 +247,11 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
                 // Return to main screen
                 DispatchQueue.main.async {
                     print("Detail saved")
-                    self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
+                    if self.isLastQuestion {
+                        self.performSegue(withIdentifier: "toMemoryTitleTVC", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "nextQuestion", sender: self)
+                    }
                 }
             } else {
                 print(error.debugDescription)
@@ -305,7 +317,13 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         // Pass memory ID information to next screen
         if let destination = segue.destination as? TitleTableViewController {
             destination.memoryID = self.memoryID
+        } else if let destination = segue.destination as? QuestionTableViewController {
+            destination.memoryID = self.memoryID
         }
+    }
+
+    @objc func skipQuestion() {
+        self.performSegue(withIdentifier: "nextQuestion", sender: self)
     }
 }
 

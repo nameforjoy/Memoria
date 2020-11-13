@@ -31,10 +31,19 @@ class MemoryCollectionViewController: UIViewController {
     var userMemoryDetails: [Detail]?
     var isDataLoaded: Bool = false
 
+    // Refresh
+    var refreshControl = UIRefreshControl()
+
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Entrou viewdidload")
+
+        // Refresh
+        refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl) // not required when using UITableViewController
 
         // Navigation set up
         self.setUpNavigationBar()
@@ -110,17 +119,22 @@ class MemoryCollectionViewController: UIViewController {
                     } else {
                         self.tableView.isHidden = false
                     }
+                    self.refreshControl.endRefreshing()
                     self.tableView.reloadData()
                 }
             }
         }
     }
 
+    @objc func refresh(_ sender: AnyObject) {
+         self.receiveData()
+     }
+
     // MARK: Segue
     
     /// Unwind segue to get back to this view controller after saving a memory
     @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {
-        self.tableView.reloadData()
+        self.receiveData()
     }
     
     // Passes Array of Detail Objects to DetailViewController
