@@ -18,8 +18,15 @@ class MemoryCollectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingIcon: UIActivityIndicatorView!
 
-    var memories = [Memory]()
-    var didJustSaveAMemory: Bool = false
+    var memories = [Memory]() {
+        didSet {
+            if self.memories.isEmpty {
+                self.tableView.isHidden = true
+            } else {
+                self.tableView.isHidden = false
+            }
+        }
+    }
     var selectedMemory: Memory?
     
     var texts = MemoryBoxTexts()
@@ -38,7 +45,14 @@ class MemoryCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Entrou viewdidload")
+
+        // Loading data at startup
+        self.updateDataFromDatabase()
+
+        // Loading Icon Setup
+        self.loadingIcon.startAnimating()
+        self.loadingIcon.hidesWhenStopped = true
+        self.loadingIcon.color = UIColor(hexString: "7765A8")
 
         // Refresh
         refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar")
@@ -68,20 +82,6 @@ class MemoryCollectionViewController: UIViewController {
         self.checkInternetConnectivity(monitor: self.monitor)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Loading Icon Setup
-        self.loadingIcon.startAnimating()
-        self.loadingIcon.color = UIColor(hexString: "7765A8")
-        
-        // Present alert if a memory has just been saved
-        if self.didJustSaveAMemory {
-            self.present(AlertManager().memorySaved, animated: true)
-            self.didJustSaveAMemory = false
-        }
-        self.receiveData()
-    }
-    
     deinit {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
@@ -94,12 +94,13 @@ class MemoryCollectionViewController: UIViewController {
         self.addNewMemory()
     }
 
-    func receiveData() {
+    // Retrieve data from server
+    func updateDataFromDatabase() {
+
         MemoryDAO.findAll { (memories, error) in
 
             // Disables loading icon
             self.loadingIcon.stopAnimating()
-            self.loadingIcon.isHidden = true
 
             // Handle error
             if let error: Error = error {
@@ -107,18 +108,12 @@ class MemoryCollectionViewController: UIViewController {
                     // Disable loading icon
                     DispatchQueue.main.async {
                         self.loadingIcon.stopAnimating()
-                        self.loadingIcon.isHidden = true
                         self.present(alert, animated: true)
                     }
                 }
             } else {
                 DispatchQueue.main.async {
                     self.memories = memories
-                    if self.memories.isEmpty {
-                        self.tableView.isHidden = true
-                    } else {
-                        self.tableView.isHidden = false
-                    }
                     self.refreshControl.endRefreshing()
                     self.tableView.reloadData()
                 }
@@ -126,15 +121,16 @@ class MemoryCollectionViewController: UIViewController {
         }
     }
 
+    // Pull to refresh action
     @objc func refresh(_ sender: AnyObject) {
-         self.receiveData()
+         self.updateDataFromDatabase()
      }
 
     // MARK: Segue
     
     /// Unwind segue to get back to this view controller after saving a memory
     @IBAction func unwindToMemoryCollection(segue: UIStoryboardSegue) {
-        self.receiveData()
+        self.updateDataFromDatabase()
     }
     
     // Passes Array of Detail Objects to DetailViewController
@@ -145,6 +141,7 @@ class MemoryCollectionViewController: UIViewController {
             // Set ID for new memory being created
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
+            // Sends memory to be handled by detail view controller
             destination.selectedMemory = self.selectedMemory
         }
     }
@@ -252,6 +249,8 @@ extension MemoryCollectionViewController: UITableViewDataSource {
 }
 
 extension MemoryCollectionViewController: UITableViewDelegate {
+
+    // Sends the tapped memory to the detail view controller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMemory = memories[indexPath.row]
         performSegue(withIdentifier: "viewDetail", sender: self)
@@ -262,6 +261,6 @@ extension MemoryCollectionViewController: UITableViewDelegate {
 
 extension MemoryCollectionViewController: RequestRetry {
     func retryRequest() {
-        self.receiveData()
+        self.updateDataFromDatabase()
     }
 }
