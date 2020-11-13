@@ -27,7 +27,6 @@ class AlertManager {
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (action) in
             self.delegate?.buttonAction()
-            print("Cliquei no ok")
         }
 
         myAlert.addAction(okButton)
