@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +17,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoje" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCJ-92-6zI">
-                        <rect key="frame" x="342.5" y="15.5" width="37.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="800" text="Hoje" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCJ-92-6zI">
+                        <rect key="frame" x="336" y="16" width="37.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" name="blue"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="rJm-nb-cHe">
-                        <rect key="frame" x="385" y="20" width="9" height="12"/>
+                        <rect key="frame" x="378.5" y="16" width="15.5" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="rJm-nb-cHe" secondAttribute="height" multiplier="3:4" id="Tvs-ta-bhs"/>
-                            <constraint firstAttribute="height" constant="12" id="fH3-Qu-gs9"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aconteceu há" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHk-Ob-gGs">
@@ -40,7 +39,9 @@
                 <constraints>
                     <constraint firstItem="dHk-Ob-gGs" firstAttribute="top" secondItem="hcb-Tm-U8a" secondAttribute="top" constant="16" id="5ct-2Z-ije"/>
                     <constraint firstItem="rJm-nb-cHe" firstAttribute="centerY" secondItem="BCJ-92-6zI" secondAttribute="centerY" id="Ayd-DW-7fp"/>
+                    <constraint firstItem="BCJ-92-6zI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dHk-Ob-gGs" secondAttribute="trailing" constant="15" id="E19-ui-mQo"/>
                     <constraint firstAttribute="bottom" secondItem="dHk-Ob-gGs" secondAttribute="bottom" constant="8" id="IIC-rc-hh2"/>
+                    <constraint firstItem="rJm-nb-cHe" firstAttribute="height" secondItem="BCJ-92-6zI" secondAttribute="height" priority="900" id="aJY-k5-bme"/>
                     <constraint firstAttribute="trailing" secondItem="rJm-nb-cHe" secondAttribute="trailing" constant="20" id="d1y-12-QDG"/>
                     <constraint firstItem="dHk-Ob-gGs" firstAttribute="leading" secondItem="hcb-Tm-U8a" secondAttribute="leading" constant="16" id="nN4-7k-dfU"/>
                     <constraint firstItem="rJm-nb-cHe" firstAttribute="leading" secondItem="BCJ-92-6zI" secondAttribute="trailing" constant="5" id="tyD-5h-Cca"/>

@@ -52,10 +52,7 @@ class DetailDAO: DAO {
                 print(savedRecord?.object(forKey: "text") ?? "Nil")
                 print(savedRecord?.object(forKey: "audioAsset") ?? "Nil")
                 completion(nil)
-            } else if let ckerror = error as? CKError {
-                // CKErrorHandling.treatCKErrors(ckError: ckerror)
             } else {
-                // TODO: Treat error
                 print("Record Not Saved")
                 print(error ?? "Unable to print error")
                 completion(error)
@@ -64,7 +61,7 @@ class DetailDAO: DAO {
     }
 
     //This method is not workinng -- Maybe we'll need to use a closure instead of a return
-    static public func findAll(completion: @escaping ([Detail]) -> Void) {
+    static public func findAll(completion: @escaping ([Detail], Error?) -> Void) {
         
         // Fecthed details array
         var allRecords = [Detail]()
@@ -84,12 +81,11 @@ class DetailDAO: DAO {
                 print("Record couldn't be converted into Detail")
                 print("Record ID: \(record.recordID)")
             }
-
         }
         
         operation.queryCompletionBlock = { cursor, error in
             DispatchQueue.main.async {
-                completion(allRecords)
+                completion(allRecords, error)
             }
         }
         
@@ -97,7 +93,7 @@ class DetailDAO: DAO {
     }
 
     /// Method to retrieve all Details from database related to the same Memory ID
-    static public func findByMemoryID(memoryID: UUID, completion: @escaping ([Detail]) -> Void) {
+    static public func findByMemoryID(memoryID: UUID, completion: @escaping ([Detail], Error?) -> Void) {
         // Fecthed details array
         var allRecords = [Detail]()
 
@@ -121,19 +117,9 @@ class DetailDAO: DAO {
         }
 
         operation.queryCompletionBlock = { cursor, error in
-            
-            if error == nil {
-                DispatchQueue.main.async {
-                    completion(allRecords)
-                }
-            } else if let ckerror = error as? CKError {
-                // CKErrorHandling.treatCKErrors(ckError: ckerror)
-            } else {
-                // TODO: Treat error
-                print("Record Not Saved")
-                print(error ?? "Unable to print error")
+            DispatchQueue.main.async {
+                completion(allRecords, error)
             }
-            
         }
 
         privateDatabase.add(operation)

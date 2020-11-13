@@ -34,10 +34,8 @@ class MemoryDAO: DAO {
                 print("Record Saved")
                 print(savedRecord ?? "Unable to print saved record")
                 completion(nil)
-            } else if let ckerror = error as? CKError {
-                // CKErrorHandling.treatCKErrors(ckError: ckerror)
             } else {
-                print("Record not saved for uknown reasons")
+                print("Record not saved")
                 print(error ?? "Unable to print error")
                 completion(error)
             }
@@ -72,8 +70,6 @@ class MemoryDAO: DAO {
                 DispatchQueue.main.async {
                     completion(allRecords, nil)
                 }
-            } else if let ckError = error as? CKError {
-                // CKErrorHandling.treatCKErrors(ckError: ckError)
             } else {
                 print(error ?? "Unable to print error")
                 completion(allRecords, error)
