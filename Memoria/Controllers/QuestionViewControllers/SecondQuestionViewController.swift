@@ -10,8 +10,9 @@ import Foundation
 class SecondQuestionViewController: QuestionTableViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         super.isLastQuestion = false
+        super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
 
         self.question = QuestionTexts.getRandomQuestion(category: .objects)
         self.navigationItem.title = Category.objects.rawValue

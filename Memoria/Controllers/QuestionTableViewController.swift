@@ -44,6 +44,11 @@ class QuestionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Skip Question
+        if !self.isLastQuestion {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pular", style: .plain, target: self, action: #selector(skipQuestion))
+        }
         
         // Table view setup
         self.tableView.separatorStyle = .none
@@ -316,6 +321,10 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         } else if let destination = segue.destination as? QuestionTableViewController {
             destination.memoryID = self.memoryID
         }
+    }
+
+    @objc func skipQuestion() {
+        self.performSegue(withIdentifier: "nextQuestion", sender: self)
     }
 }
 
