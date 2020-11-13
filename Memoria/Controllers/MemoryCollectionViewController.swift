@@ -24,8 +24,7 @@ class MemoryCollectionViewController: UIViewController {
     
     var texts = MemoryBoxTexts()
     
-    // Error monitoring
-    var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    // Network monitoring
     let monitor = NWPathMonitor()
 
     // Temp atributes for testing data retrieve
@@ -49,9 +48,6 @@ class MemoryCollectionViewController: UIViewController {
         // Handle Notifications for Category Size Changes
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(fontSizeChanged), name: UIContentSizeCategory.didChangeNotification, object: nil)
-        // iCloud Notifications
-        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
-        self.ckErrorAlertPresenter?.addObservers()
         
         //TableView set up
         self.setupTableView()
@@ -81,8 +77,6 @@ class MemoryCollectionViewController: UIViewController {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name:  UIContentSizeCategory.didChangeNotification, object: nil)
-        // iCloud Notifications
-        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Actions
@@ -99,9 +93,15 @@ class MemoryCollectionViewController: UIViewController {
             self.loadingIcon.isHidden = true
 
             // Handle error
-            if error != nil {
-                print(error.debugDescription)
-                self.present(AlertManager().serviceUnavailable, animated: true)
+            if let error: Error = error {
+                self.treatDBErrors(error: error, requestRetry: self) { (alert) in
+                    // Disable loading icon
+                    DispatchQueue.main.async {
+                        self.loadingIcon.stopAnimating()
+                        self.loadingIcon.isHidden = true
+                        self.present(alert, animated: true)
+                    }
+                }
             } else {
                 DispatchQueue.main.async {
                     self.memories = memories
@@ -244,20 +244,10 @@ extension MemoryCollectionViewController: UITableViewDelegate {
     }
 }
 
-// MARK: Errors
+// MARK: Retry iCloud request
 
-extension MemoryCollectionViewController: CKErrorAlertPresentaterDelegate {
-    
+extension MemoryCollectionViewController: RequestRetry {
     func retryRequest() {
         self.receiveData()
-    }
-    
-    func presentAlert(_ alert: UIAlertController) {
-        // Disable loading icon
-        DispatchQueue.main.async {
-            self.loadingIcon.stopAnimating()
-            self.loadingIcon.isHidden = true
-            self.present(alert, animated: true)
-        }
     }
 }

@@ -13,9 +13,9 @@ class QuestionTableViewController: UITableViewController {
     
     // MARK: Attributes
     
-    // Error monitoring
-    var ckErrorAlertPresenter: CKErrorAlertPresenter?
+    // Network monitoring
     let monitor = NWPathMonitor()
+    var savingAttempts: Int = 0
     
     // Image
     var imageURL: URL?
@@ -66,10 +66,6 @@ class QuestionTableViewController: UITableViewController {
         // Image Picker
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
-        // iCloud Notifications
-        self.ckErrorAlertPresenter = CKErrorAlertPresenter(viewController: self)
-        self.ckErrorAlertPresenter?.addObservers()
-        
         // Check internet connectivity
         self.checkInternetConnectivity(monitor: self.monitor)
     }
@@ -88,8 +84,6 @@ class QuestionTableViewController: UITableViewController {
         // Remove font size change observer
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
-        // iCloud Notifications
-        self.ckErrorAlertPresenter?.removeObservers()
     }
     
     // MARK: Responders
@@ -249,7 +243,12 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
                 }
             } else {
                 print(error.debugDescription)
-                self.present(AlertManager().serviceUnavailable, animated: true)
+                guard let error: Error = error else {return}
+                self.treatDBErrors(error: error, requestRetry: self) { (alert) in
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true)
+                    }
+                }
             }
         }
     }
@@ -473,15 +472,18 @@ extension QuestionTableViewController: TitleSubtitleCellDelegate {
     }
 }
 
-// MARK: Errors
+// MARK: Retry iCloud request
 
-extension QuestionTableViewController: CKErrorAlertPresentaterDelegate {
-    
+extension QuestionTableViewController: RequestRetry {
     func retryRequest() {
-        self.saveDetail()
-    }
-    
-    func presentAlert(_ alert: UIAlertController) {
-        self.present(alert, animated: true)
+        if self.savingAttempts < 5 {
+            // self.saveMemory()
+            self.savingAttempts += 1
+        } else {
+            self.savingAttempts = 0
+            DispatchQueue.main.async {
+                self.present(AlertManager().serviceUnavailable, animated: true)
+            }
+        }
     }
 }

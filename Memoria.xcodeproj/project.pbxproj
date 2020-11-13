@@ -52,9 +52,6 @@
 		8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F7FE25438109002A3F74 /* TimerManager.swift */; };
 		8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F801254384FC002A3F74 /* DoubleRound.swift */; };
 		8D60F80725439C5E002A3F74 /* UIFontMonospace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */; };
-		8D6D619C255ACD8A0099E8D7 /* CKErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */; };
-		8D6D61A1255AD9D70099E8D7 /* CKErrorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */; };
-		8D6D61AC255C15870099E8D7 /* CKErrorAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D61AB255C15870099E8D7 /* CKErrorAlertPresenter.swift */; };
 		8D6D61B0255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6D61AF255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift */; };
 		8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */; };
 		8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */; };
@@ -142,9 +139,6 @@
 		8D60F7FE25438109002A3F74 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8D60F801254384FC002A3F74 /* DoubleRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRound.swift; sourceTree = "<group>"; };
 		8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontMonospace.swift; sourceTree = "<group>"; };
-		8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorHandling.swift; sourceTree = "<group>"; };
-		8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorNotification.swift; sourceTree = "<group>"; };
-		8D6D61AB255C15870099E8D7 /* CKErrorAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorAlertPresenter.swift; sourceTree = "<group>"; };
 		8D6D61AF255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerConnectivity.swift; sourceTree = "<group>"; };
 		8D73C879252EB36E008EF1FD /* UIButtonAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonAccessibility.swift; sourceTree = "<group>"; };
 		8D73C87C252EB3A4008EF1FD /* UITextViewAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewAccessibility.swift; sourceTree = "<group>"; };
@@ -495,9 +489,6 @@
 			isa = PBXGroup;
 			children = (
 				B36DF377255418C800534A0E /* MemoryServices.swift */,
-				8D6D619B255ACD8A0099E8D7 /* CKErrorHandling.swift */,
-				8D6D61A0255AD9D70099E8D7 /* CKErrorNotification.swift */,
-				8D6D61AB255C15870099E8D7 /* CKErrorAlertPresenter.swift */,
 			);
 			name = Services;
 			path = Xibs/Services;
@@ -621,7 +612,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D6D61A1255AD9D70099E8D7 /* CKErrorNotification.swift in Sources */,
 				8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */,
 				8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */,
 				B39CA72525372C7C003E1059 /* MemoryDAO.swift in Sources */,
@@ -636,7 +626,6 @@
 				15DCA486254C4CAC00BCD7D0 /* ExpandingCell.swift in Sources */,
 				8DDCABA1252EACCA0012B671 /* TraitCollectionAccessibility.swift in Sources */,
 				1550DEFD25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift in Sources */,
-				8D6D61AC255C15870099E8D7 /* CKErrorAlertPresenter.swift in Sources */,
 				8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */,
 				152EE5E6252B33A5002F379C /* AppDelegate.swift in Sources */,
 				8D73C87A252EB36E008EF1FD /* UIButtonAccessibility.swift in Sources */,
@@ -670,7 +659,6 @@
 				8DDCAB9A252EA0290012B671 /* AlertManager.swift in Sources */,
 				B39CA72825372C8B003E1059 /* DetailDAO.swift in Sources */,
 				8D73C87D252EB3A4008EF1FD /* UITextViewAccessibility.swift in Sources */,
-				8D6D619C255ACD8A0099E8D7 /* CKErrorHandling.swift in Sources */,
 				8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */,
 				8D5AD8642559729D00B33EA2 /* QuestionTexts.swift in Sources */,
 				15DCA482254C411000BCD7D0 /* SwitchCell.swift in Sources */,
