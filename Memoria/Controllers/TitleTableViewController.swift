@@ -22,6 +22,7 @@ class TitleTableViewController: UITableViewController {
     var selectedImage: UIImage?
     
     // Memory
+    var memory: Memory?
     var memoryID: UUID?
     var memoryDescription: String?
     var memoryTitle: String?
@@ -44,11 +45,17 @@ class TitleTableViewController: UITableViewController {
     
     // Save button
     var hasClickedOnSaveButton:  Bool = false
+
+    // Alert Manager
+    var alertManager = AlertManager()
     
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Alert Manager
+        alertManager.delegate = self
 
         // Table view setup
         self.tableView.separatorStyle = .none
@@ -297,9 +304,10 @@ extension TitleTableViewController: GradientButtonCellDelegate {
 
         MemoryDAO.create(memory: memory) { (error) in
             if error == nil {
+                self.memory = memory
                 // Segue
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+                    self.present(self.alertManager.memorySaved, animated: true)
                 }
             } else {
                 print(error.debugDescription)
@@ -316,7 +324,7 @@ extension TitleTableViewController: GradientButtonCellDelegate {
     // Present alert warning user they cannot procceed without at least one input.
     // Only done when save button is disabled.
     func disabledButtonAction() {
-        present(AlertManager().giveTitleToSave, animated: true, completion: nil)
+        present(self.alertManager.giveTitleToSave, animated: true, completion: nil)
     }
     
     /// Check if user has input title for memory so that the save button is enabled/disabled
@@ -329,16 +337,7 @@ extension TitleTableViewController: GradientButtonCellDelegate {
         }
         return true
     }
-    
-    // MARK: Segue
-    
-    // Passes needed information the the next screen
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Set .didJustSaveMemory attribute to true so that the "save memory alert" show up as soon as the segue is performed
-        if let destination = segue.destination as? MemoryCollectionViewController {
-            destination.didJustSaveAMemory = true
-        }
-    }
+
 }
 
 // MARK: Expandable Cell
@@ -431,8 +430,17 @@ extension TitleTableViewController: RequestRetry {
         } else {
             self.savingAttempts = 0
             DispatchQueue.main.async {
-                self.present(AlertManager().serviceUnavailable, animated: true)
+                self.present(self.alertManager.serviceUnavailable, animated: true)
             }
         }
     }
+}
+
+// MARK: Saved Alert
+
+extension TitleTableViewController: AlertManagerDelegate {
+    func buttonAction() {
+        self.performSegue(withIdentifier: "unwindToMemoryCollection", sender: self)
+    }
+
 }

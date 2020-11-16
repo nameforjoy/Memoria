@@ -25,7 +25,11 @@ class AlertManager {
         let title: String = "Sua memória foi guardada!"
         let message: String = "Está disponível para ser acessada e gerar boas lembranças"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let okButton = UIAlertAction(title: "OK", style: .default) { (_) in
+            self.delegate?.buttonAction()
+        }
+
+        myAlert.addAction(okButton)
         
         return myAlert
     }
