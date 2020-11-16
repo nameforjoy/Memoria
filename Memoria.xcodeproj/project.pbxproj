@@ -260,7 +260,6 @@
 			children = (
 				1550DEFB25556ADD007EC1A6 /* MemoryBoxTableViewCell.swift */,
 				1550DEFC25556ADD007EC1A6 /* MemoryBoxTableViewCell.xib */,
-				152471E325307DB3006B39B4 /* AudioPlayer */,
 			);
 			path = MemoryBox;
 			sourceTree = "<group>";
@@ -330,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				1550DEFA25556ABB007EC1A6 /* MemoryBox */,
+				152471E325307DB3006B39B4 /* AudioPlayer */,
 				15514E7B254988EE00918E8B /* AudioPlayerCell */,
 				15DCA46D254AE2DC00BCD7D0 /* DatePickerCell */,
 				8DCEE7BA254738D50008DBF8 /* GradientButton */,

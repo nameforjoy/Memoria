@@ -43,8 +43,12 @@ class DateManager {
     }
     
     /// Get time interval in the largest possible units (days, months or years) as a String.
-    static func getTimeIntervalAsStringSinceDate(_ date: Date?) -> String? {
+    static func getTimeIntervalAsStringSinceDate(_ memory: Memory) -> String? {
         
+        guard let date: Date = memory.date else {return nil}
+        if !memory.hasDate {
+            return nil
+        }
         guard let (timePassed, component) = self.getTimeIntervalSinceDate(date: date) else {return nil}
         if timePassed == 0 {
             return TitleTexts().today

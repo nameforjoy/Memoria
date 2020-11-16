@@ -128,11 +128,13 @@ extension DetailViewController {
 
         var cell = UITableViewCell()
 
-        // Time Passed By
+        // Time Passed
         if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.timePassedCell.rawValue, for: indexPath)
             if let cellType = cell as? TimePassedCell {
-                if let dateString = DateManager.getTimeIntervalAsStringSinceDate(selectedMemory?.date) {
+                
+                guard let memory: Memory = self.selectedMemory else {return cell}
+                if let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory) {
                     cellType.subtitleLabel.text = dateString
                 } else {
                     cellType.isHidden = true
@@ -144,7 +146,7 @@ extension DetailViewController {
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.subtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? SubtitleCell {
-                cellType.subtitleLabel.text = selectedMemory?.description
+                cellType.subtitleLabel.text = self.selectedMemory?.description
                 cell = cellType
             }
         }
