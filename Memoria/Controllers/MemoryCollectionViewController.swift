@@ -236,13 +236,8 @@ extension MemoryCollectionViewController: UITableViewDataSource {
             
             cellType.titleLabel.text = memory.title
             
-            let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory.date)
-            
-            if let dateString = dateString {
-                cellType.timeLabel.text = dateString
-            } else {
-                cellType.timeLabel.text = "Indefinido"
-            }
+            let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory)
+            cellType.timeLabel.text = dateString
         }
         return cell
     }
