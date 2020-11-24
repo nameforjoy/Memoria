@@ -137,7 +137,7 @@ class AlertManager {
     
     func makeStorageQuotaCheckAlert(_ completion: @escaping () -> Void) -> UIAlertController {
         let title = "Atenção"
-        let message = "Virifique se possui espaço livre de armazenamento no iCloud, pois é lá que guardaremos suas memórias para sua segurança!"
+        let message = "Verifique se possui espaço livre de armazenamento no iCloud, pois é lá que guardaremos suas memórias para sua segurança!"
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Procceed to add new memory
