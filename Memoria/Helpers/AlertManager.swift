@@ -99,9 +99,9 @@ class AlertManager {
         return myAlert
     }
     
-    var serviceUnavailable: UIAlertController {
+    func makeServiceUnavailableAlert(typeMessage: String) -> UIAlertController {
         let title = "Ops!"
-        let message = "Tivemos algum problema com o armazenamento das suas memórias. Tente novamente mais tarde."
+        let message = "Tivemos algum problema com o armazenamento das suas memórias. Tente novamente mais tarde. " + typeMessage
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 

@@ -34,7 +34,8 @@ extension UIViewController {
     func treatDBErrors(error: Error, requestRetry: RequestRetry? = nil, _ completion: @escaping (_ alert: UIAlertController) -> Void) {
         
         guard let ckError: CKError = error as? CKError else {
-            completion(AlertManager().serviceUnavailable)
+            let alert = AlertManager().makeServiceUnavailableAlert(typeMessage: "Tipo do erro: not iCloud related")
+            completion(alert)
             return
         }
         switch ckError.code {
@@ -52,7 +53,8 @@ extension UIViewController {
         case CKError.quotaExceeded:
             completion(AlertManager().storageQuotaExceeded)
         default:
-            completion(AlertManager().serviceUnavailable)
+            let alert = AlertManager().makeServiceUnavailableAlert(typeMessage: "Tipo do erro: " + ckError.typeDescription())
+            completion(alert)
         }
     }
 }

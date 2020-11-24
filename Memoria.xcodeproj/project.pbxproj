@@ -64,6 +64,7 @@
 		8DAD833C254C4986009ED46C /* NibIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833B254C4986009ED46C /* NibIdentifier.swift */; };
 		8DAD833F254C573F009ED46C /* UITableViewNibRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */; };
 		8DBA9FA0253DD55100E564E9 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */; };
+		8DCC6648256D434C00B76E6E /* CKErrorTypeDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCC6647256D434C00B76E6E /* CKErrorTypeDescription.swift */; };
 		8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */; };
 		8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCEE7BE254739190008DBF8 /* GradientButton.xib */; };
 		8DDCAB82252E1C670012B671 /* MemoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */; };
@@ -156,6 +157,7 @@
 		8DAD833B254C4986009ED46C /* NibIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibIdentifier.swift; sourceTree = "<group>"; };
 		8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewNibRegistering.swift; sourceTree = "<group>"; };
 		8DBA9F9F253DD55100E564E9 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
+		8DCC6647256D434C00B76E6E /* CKErrorTypeDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKErrorTypeDescription.swift; sourceTree = "<group>"; };
 		8DCEE7BB254739090008DBF8 /* GradientButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonView.swift; sourceTree = "<group>"; };
 		8DCEE7BE254739190008DBF8 /* GradientButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientButton.xib; sourceTree = "<group>"; };
 		8DDCAB81252E1C670012B671 /* MemoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				8D60F80625439C5E002A3F74 /* UIFontMonospace.swift */,
 				8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */,
 				8D6D61AF255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift */,
+				8DCC6647256D434C00B76E6E /* CKErrorTypeDescription.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				8DA72A822559BBA1008FE574 /* InputAudioTexts.swift in Sources */,
 				152471E8253081BD006B39B4 /* AudioPlayerView.swift in Sources */,
 				8DCEE7BC254739090008DBF8 /* GradientButtonView.swift in Sources */,
+				8DCC6648256D434C00B76E6E /* CKErrorTypeDescription.swift in Sources */,
 				8D6D61B0255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift in Sources */,
 				15514E802549891F00918E8B /* AudioPlayerCell.swift in Sources */,
 				B3BF6C64255DC9C1003F0C32 /* SecondQuestionViewController.swift in Sources */,

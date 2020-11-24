@@ -149,7 +149,6 @@ class QuestionTableViewController: UITableViewController {
     //swiftlint:disable cyclomatic_complexity
     //swiftlint:disable function_body_length
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         var cell = UITableViewCell()
         
         switch indexPath.row {
@@ -226,8 +225,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
     
     // Saves detail in memory
     func gradientButtonCellAction() {
-        // Chack if button has already been clicked
-        // Prevent user from clicking on it (and saving the memory detail) twice
+        // Prevent user from clicking on the button (and saving the memory detail) twice
         if !self.hasClickedOnSaveButton {
             self.saveDetail()
         }
@@ -265,8 +263,7 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         }
     }
 
-    // Present alert warning user they cannot procceed without at least one input.
-    // Only done when save button is disabled.
+    /// Present alert warning user they cannot procceed without at least one input. Only done when save button is disabled.
     func disabledButtonAction() {
         present(AlertManager().unableToSave, animated: true, completion: nil)
     }
@@ -404,10 +401,8 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         self.hideRemoveButton(cellRow: 2, hide: false)
     }
     
-    /// Ask for microphone usage authorization.
-    /// Procceed with recording if allowed.
+    /// Ask for microphone usage authorization. Procceed with recording if allowed.
     public func askMicrophoneAccessAuthorization() {
-        
         AVAudioSession.sharedInstance().requestRecordPermission { allowed in
             DispatchQueue.main.async {
                 if allowed {
@@ -419,9 +414,7 @@ extension QuestionTableViewController: AudioRecordingDelegate {
         }
     }
     
-    /// Check microphone authorization status.
-    /// Ask user to change permission in Settings if it is currently denied.
-    /// Open  recorder if permission is granted.
+    /// Check microphone authorization status. Ask user to change permission in Settings if it is currently denied, and open  recorder if permission is granted.
     func recordAudioWithMicrophonePermission() {
         
         switch AVAudioSession.sharedInstance().recordPermission {
@@ -447,7 +440,6 @@ extension QuestionTableViewController: AudioRecordingDelegate {
 
 // MARK: Image Picker
 
-///Extension For ImagePicker
 extension QuestionTableViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
@@ -466,8 +458,8 @@ extension QuestionTableViewController: ImagePickerDelegate {
 }
 
 extension QuestionTableViewController: TitleSubtitleCellDelegate {
+    
     func didTapRemove(buttonType: RemoveType) {
-        
         if buttonType == .removeAudio {
             self.hideRemoveButton(cellRow: 2, hide: true)
             self.hiddenRows = self.hiddenRows.filter { $0 != 3 } // remove record button cell from hiddenRows array
@@ -500,7 +492,8 @@ extension QuestionTableViewController: RequestRetry {
         } else {
             self.savingAttempts = 0
             DispatchQueue.main.async {
-                self.present(AlertManager().serviceUnavailable, animated: true)
+                let alert = AlertManager().makeServiceUnavailableAlert(typeMessage: "exceeded maximum number of retry attempts")
+                self.present(alert, animated: true)
             }
         }
     }

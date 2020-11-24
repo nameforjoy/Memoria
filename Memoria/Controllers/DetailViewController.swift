@@ -212,7 +212,8 @@ extension DetailViewController: RequestRetry {
         } else {
             self.fetchingAttempts = 0
             DispatchQueue.main.async {
-                self.present(AlertManager().serviceUnavailable, animated: true)
+                let alert = AlertManager().makeServiceUnavailableAlert(typeMessage: "exceeded maximum number of retry attempts")
+                self.present(alert, animated: true)
             }
         }
     }

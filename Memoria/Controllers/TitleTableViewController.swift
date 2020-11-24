@@ -430,7 +430,8 @@ extension TitleTableViewController: RequestRetry {
         } else {
             self.savingAttempts = 0
             DispatchQueue.main.async {
-                self.present(self.alertManager.serviceUnavailable, animated: true)
+                let alert = AlertManager().makeServiceUnavailableAlert(typeMessage: "exceeded maximum number of retry attempts")
+                self.present(alert, animated: true)
             }
         }
     }
