@@ -30,6 +30,9 @@ class GradientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textLabel.dynamicFont = Typography.title2Bold
+        
+        // Add skip button
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pular", style: .plain, target: self, action: #selector(startImmersion))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +66,8 @@ class GradientViewController: UIViewController {
         
         Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(startImmersion), userInfo: nil, repeats: false)
     }
+    
+    // MARK: Segue
     
     @objc func startImmersion() {
         performSegue(withIdentifier: "startImmersion", sender: self)
