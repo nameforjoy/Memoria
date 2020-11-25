@@ -40,6 +40,7 @@ class GradientViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.configureGradient()
+        self.didSkipIntro = false
         self.textLabel.text = "Pense na memória que escolheu..."
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
