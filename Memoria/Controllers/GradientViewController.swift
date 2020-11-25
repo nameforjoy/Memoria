@@ -58,14 +58,18 @@ class GradientViewController: UIViewController {
         self.textLabel.fadeTransition(1.0)
         self.textLabel.text = "Respire fundo..."
         
-        Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(changeSecondText), userInfo: nil, repeats: false)
+        if !didSkipIntro {
+            Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(changeSecondText), userInfo: nil, repeats: false)
+        }
     }
     
     @objc func changeSecondText() {
         self.textLabel.fadeTransition(1.0)
         self.textLabel.text = "Vamos começar..."
         
-        Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(startImmersion), userInfo: nil, repeats: false)
+        if !didSkipIntro {
+            Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(startImmersion), userInfo: nil, repeats: false)
+        }
     }
     
     // MARK: Segue
