@@ -65,7 +65,7 @@ class MemoryCollectionViewController: UIViewController {
         
         self.addFirstMemoryButton.buttonDelegate = self
         self.addFirstMemoryButton.icon.image = UIImage(named: "plusSign")
-        self.noMemoriesLabel.dynamicFont = Typography().bodyRegular
+        self.noMemoriesLabel.dynamicFont = Typography.bodyRegular
         self.setUpText()
         
         // Handle Notifications for Category Size Changes
@@ -174,7 +174,7 @@ class MemoryCollectionViewController: UIViewController {
         guard let addButton = self.navigationItem.rightBarButtonItem else {return}
         addButton.title = "Adicionar"
         addButton.tintColor = UIColor(hexString: "7765A8")
-        addButton.setTitleTextAttributes([NSAttributedString.Key.font: Typography().calloutSemibold], for: .normal)
+        addButton.setTitleTextAttributes([NSAttributedString.Key.font: Typography.calloutSemibold], for: .normal)
     }
     
     /// Configure back button of navigation flux
@@ -182,7 +182,7 @@ class MemoryCollectionViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         
         // Set navigation title font
-        let attributes = [NSAttributedString.Key.font: Typography().largeTitleBold]
+        let attributes = [NSAttributedString.Key.font: Typography.largeTitleBold]
         UINavigationBar.appearance().titleTextAttributes = attributes
     }
     

@@ -58,6 +58,6 @@ class IconButtonView: UIView {
     
     private func visualSetUp() {
         self.background.layer.cornerRadius = self.background.frame.height/4
-        self.title.dynamicFont = Typography().calloutSemibold
+        self.title.dynamicFont = Typography.calloutSemibold
     }
 }

@@ -26,9 +26,8 @@ class MemoryBoxTableViewCell: UITableViewCell {
     }
     
     func setupFont() {
-        let typography = Typography()
-        self.titleLabel.dynamicFont = typography.title2Semibold
-        self.timeLabel.dynamicFont = typography.title3Regular
+        self.titleLabel.dynamicFont = Typography.title2Semibold
+        self.timeLabel.dynamicFont = Typography.title3Regular
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

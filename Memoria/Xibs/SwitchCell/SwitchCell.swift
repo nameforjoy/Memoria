@@ -37,8 +37,7 @@ class SwitchCell: UITableViewCell {
     
     func setUpText() {
         // Set up dynamic font
-        let typography = Typography()
-        self.dontRemeberLabel.dynamicFont = typography.bodyRegular
+        self.dontRemeberLabel.dynamicFont = Typography.bodyRegular
     }
     
     @IBAction func dontRemberSwitch(_ sender: UISwitch) {

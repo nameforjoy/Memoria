@@ -32,7 +32,7 @@ class IconButtonCell: UITableViewCell {
         // Initialization code
         
         self.background.layer.cornerRadius = self.background.frame.height/4
-        self.title.dynamicFont = Typography().calloutSemibold
+        self.title.dynamicFont = Typography.calloutSemibold
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

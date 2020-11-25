@@ -45,7 +45,7 @@ class GradientViewController: UIViewController {
     }
     
     func configureText() {
-        self.textLabel.dynamicFont = Typography().title2Bold
+        self.textLabel.dynamicFont = Typography.title2Bold
         self.textLabel.text = "Pense na memória que escolheu..."
         
         Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(changeFirstText), userInfo: nil, repeats: false)

@@ -25,7 +25,7 @@ class DatePickerCell: UITableViewCell {
         super.awakeFromNib()
         
         self.textField.keyboardType = UIKeyboardType.numberPad
-        self.textField.dynamicFont = Typography().bodySemibold
+        self.textField.dynamicFont = Typography.bodySemibold
         self.textField.delegate = self
     }
 

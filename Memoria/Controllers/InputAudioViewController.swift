@@ -143,10 +143,9 @@ class InputAudioViewController: UIViewController, AVAudioPlayerDelegate {
     /// Set up question texts in its respective labels.
     func setUpText() {
         // Set up dynamic font
-        let typography = Typography()
-        self.subtitleLabel.dynamicFont = typography.bodyRegular
-        self.titleLabel.dynamicFont = typography.title2Bold
-        self.timerLabel.dynamicFont = typography.bodyRegular.monospacedDigitFont
+        self.subtitleLabel.dynamicFont = Typography.bodyRegular
+        self.titleLabel.dynamicFont = Typography.title2Bold
+        self.timerLabel.dynamicFont = Typography.bodyRegular.monospacedDigitFont
         
         // Starts with empty timer label
         self.timerLabel.text = ""
