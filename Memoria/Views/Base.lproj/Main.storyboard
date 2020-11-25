@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="25" y="379" width="364" height="43.5"/>
+                                <rect key="frame" x="25" y="381" width="364" height="40"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -35,7 +35,7 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="432.5" width="364" height="44"/>
+                                <rect key="frame" x="25" y="431" width="364" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
@@ -128,7 +128,7 @@ Vamos guardar uma? </string>
                     </view>
                     <connections>
                         <outlet property="gradientView" destination="W3p-VM-5WA" id="Mnw-UP-kNQ"/>
-                        <outlet property="textLabel" destination="W3p-VM-5WA" id="YAK-YE-xmT"/>
+                        <outlet property="textLabel" destination="qgV-eo-8wW" id="8w7-7W-fxQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nt6-fb-VUk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

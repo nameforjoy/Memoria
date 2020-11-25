@@ -44,6 +44,7 @@
 		8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DF66E254CEF5900262918 /* TextFieldCell.swift */; };
 		8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DF66F254CEF5900262918 /* TextFieldCell.xib */; };
 		8D3C89A1256E819300F2F729 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3C89A0256E819300F2F729 /* GradientViewController.swift */; };
+		8D3C89A4256E8FB900F2F729 /* UIViewFadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3C89A3256E8FB900F2F729 /* UIViewFadeTransition.swift */; };
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
 		8D5AD8612559699800B33EA2 /* TitleTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8602559699800B33EA2 /* TitleTexts.swift */; };
@@ -130,6 +131,7 @@
 		8D1DF66E254CEF5900262918 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8D1DF66F254CEF5900262918 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		8D3C89A0256E819300F2F729 /* GradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
+		8D3C89A3256E8FB900F2F729 /* UIViewFadeTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFadeTransition.swift; sourceTree = "<group>"; };
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
 		8D5AD8602559699800B33EA2 /* TitleTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTexts.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */,
 				8D6D61AF255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift */,
 				8DCC6647256D434C00B76E6E /* CKErrorTypeDescription.swift */,
+				8D3C89A3256E8FB900F2F729 /* UIViewFadeTransition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */,
+				8D3C89A4256E8FB900F2F729 /* UIViewFadeTransition.swift in Sources */,
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
 				8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */,
 				B3597369255C13C9003C3101 /* TimePassedCell.swift in Sources */,

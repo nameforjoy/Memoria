@@ -10,7 +10,7 @@ import UIKit
 class GradientViewController: UIViewController {
     
     @IBOutlet weak var gradientView: UIView!
-    @IBOutlet weak var textLabel: UIView!
+    @IBOutlet weak var textLabel: UILabel!
     
     let gradient = CAGradientLayer()
     var gradientSet = [[CGColor]]()
@@ -19,6 +19,8 @@ class GradientViewController: UIViewController {
     let gradientOne = UIColor(hexString: "58BFE0").cgColor // blue
     let gradientTwo = UIColor(hexString: "8571BE").cgColor // purple
     let gradientThree = UIColor(hexString: "5C5081").cgColor // dark purple
+    
+    let interval = TimeInterval(3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,33 @@ class GradientViewController: UIViewController {
         gradient.drawsAsynchronously = true
         self.gradientView.layer.addSublayer(gradient)
         
+        self.configureText()
         self.animateGradient()
+    }
+    
+    func configureText() {
+        self.textLabel.dynamicFont = Typography().title2Bold
+        self.textLabel.text = "Pense na memória que escolheu..."
+        
+        Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(changeFirstText), userInfo: nil, repeats: false)
+    }
+    
+    @objc func changeFirstText() {
+        self.textLabel.fadeTransition(0.7)
+        self.textLabel.text = "Respire fundo..."
+        
+        Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(changeSecondText), userInfo: nil, repeats: false)
+    }
+    
+    @objc func changeSecondText() {
+        self.textLabel.fadeTransition(0.7)
+        self.textLabel.text = "Vamos começar..."
+        
+        Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(startImmersion), userInfo: nil, repeats: false)
+    }
+    
+    @objc func startImmersion() {
+        // Segue
     }
     
     func animateGradient() {
