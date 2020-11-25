@@ -80,6 +80,7 @@ class QuestionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor(hexString: "7765A8")
         
         if self.memoryID == nil {
             print("Could not find ID for this memory")

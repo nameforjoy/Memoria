@@ -9,88 +9,111 @@ import UIKit
 
 class GradientViewController: UIViewController {
     
+    // MARK: Attributes
+    
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var textLabel: UILabel!
     
-    let gradient = CAGradientLayer()
+    let gradientLayer = CAGradientLayer()
     var gradientSet = [[CGColor]]()
-    var currentGradient: Int = 0
+    var currentGradientIndex: Int = 0
     
-    let gradientOne = UIColor(hexString: "58BFE0").cgColor // blue
-    let gradientTwo = UIColor(hexString: "8571BE").cgColor // purple
-    let gradientThree = UIColor(hexString: "5C5081").cgColor // dark purple
+    let color1 = UIColor(hexString: "58BFE0").cgColor // blue
+    let color2 = UIColor(hexString: "8571BE").cgColor // purple
+    let color3 = UIColor(hexString: "5C5081").cgColor // dark purple
     
-    let interval = TimeInterval(3)
+    let textTransitionInterval = TimeInterval(4) // in seconds
+    var memoryID: UUID?
+    
+    //  MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textLabel.dynamicFont = Typography.title2Bold
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.configureGradient()
+        self.textLabel.text = "Pense na memória que escolheu..."
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        gradientSet.append([gradientOne, gradientTwo])
-        gradientSet.append([gradientTwo, gradientThree])
-        gradientSet.append([gradientThree, gradientOne])
-        
-        gradient.frame = self.view.bounds
-        gradient.colors = gradientSet[currentGradient]
-        gradient.startPoint = CGPoint(x:0, y:0)
-        gradient.endPoint = CGPoint(x:1, y:1)
-        gradient.drawsAsynchronously = true
-        self.gradientView.layer.addSublayer(gradient)
-        
-        self.configureText()
+        // Start gradient and text animations
         self.animateGradient()
+        Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(changeFirstText), userInfo: nil, repeats: false)
     }
     
-    func configureText() {
-        self.textLabel.dynamicFont = Typography.title2Bold
-        self.textLabel.text = "Pense na memória que escolheu..."
-        
-        Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(changeFirstText), userInfo: nil, repeats: false)
-    }
+    // MARK: Text
     
     @objc func changeFirstText() {
-        self.textLabel.fadeTransition(0.7)
+        self.textLabel.fadeTransition(1.0)
         self.textLabel.text = "Respire fundo..."
         
-        Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(changeSecondText), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(changeSecondText), userInfo: nil, repeats: false)
     }
     
     @objc func changeSecondText() {
-        self.textLabel.fadeTransition(0.7)
+        self.textLabel.fadeTransition(1.0)
         self.textLabel.text = "Vamos começar..."
         
-        Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(startImmersion), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: self.textTransitionInterval, target: self, selector: #selector(startImmersion), userInfo: nil, repeats: false)
     }
     
     @objc func startImmersion() {
-        // Segue
+        performSegue(withIdentifier: "startImmersion", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? QuestionTableViewController {
+            // Set ID for new memory being created
+            destination.memoryID = UUID()
+        }
+    }
+    
+    // MARK: Gradient animation
+    
+    func configureGradient() {
+        self.gradientSet.append([self.color1, self.color2])
+        self.gradientSet.append([self.color2, self.color3])
+        self.gradientSet.append([self.color3, self.color1])
+        
+        self.gradientLayer.frame = self.gradientView.bounds
+        self.gradientLayer.colors = self.gradientSet[self.currentGradientIndex]
+        self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        self.gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        self.gradientLayer.drawsAsynchronously = true
+        self.gradientView.layer.addSublayer(self.gradientLayer)
     }
     
     func animateGradient() {
-        if currentGradient < gradientSet.count - 1 {
-            currentGradient += 1
+        // Update index
+        if self.currentGradientIndex < self.gradientSet.count - 1 {
+            self.currentGradientIndex += 1
         } else {
-            currentGradient = 0
+            self.currentGradientIndex = 0
         }
-        
+        // Configure animation
         let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
         gradientChangeAnimation.delegate = self
         gradientChangeAnimation.duration = 3.0
-        gradientChangeAnimation.toValue = gradientSet[currentGradient]
+        gradientChangeAnimation.toValue = self.gradientSet[self.currentGradientIndex]
         gradientChangeAnimation.fillMode = CAMediaTimingFillMode.forwards
         gradientChangeAnimation.isRemovedOnCompletion = false
-        self.gradient.add(gradientChangeAnimation, forKey: "colorChange")
+        self.gradientLayer.add(gradientChangeAnimation, forKey: "colorChange")
     }
-    
 }
 
 extension GradientViewController: CAAnimationDelegate {
+    
+    // Make animation continue (start over)
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag {
-            gradient.colors = gradientSet[currentGradient]
+            self.gradientLayer.colors = self.gradientSet[self.currentGradientIndex]
             self.animateGradient()
         }
     }

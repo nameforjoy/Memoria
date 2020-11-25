@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ink shape.png",
+      "filename" : "meditating.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ink shape@2x.png",
+      "filename" : "meditating@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ink shape@3x.png",
+      "filename" : "meditating@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

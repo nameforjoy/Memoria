@@ -137,7 +137,7 @@ class MemoryCollectionViewController: UIViewController {
     // Future: Passes only a single detail object as destination.currentDetail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destination = segue.destination as? QuestionTableViewController {
+        if let destination = segue.destination as? GradientViewController {
             // Set ID for new memory being created
             destination.memoryID = UUID()
         } else if let destination = segue.destination as? DetailViewController {
