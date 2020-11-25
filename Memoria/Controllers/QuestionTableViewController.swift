@@ -275,12 +275,11 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         gradientButtonCell.isEnabled = self.shouldEnableSaveButton()
     }
 
+    // Function that enables the Gradient Button Cell
     func enableSaveButton() {
         let buttonIndexPath = IndexPath(row: 8, section: 0)
         if let gradientButtonCell = self.tableView.cellForRow(at: buttonIndexPath) as? GradientButtonCell {
             self.setUpSaveMemoryButtonCell(gradientButtonCell)
-            //gradientButtonCell.isEnabled = true
-            //gradientButtonCell.backgroundColor = .red
         }
     }
 
@@ -342,7 +341,7 @@ extension QuestionTableViewController: TextViewCellDelegate {
         self.tableView.reloadData() // so the save button cell is reloaded and its button enabled/disabled if needed
     }
 
-    func didEndEditing(text: String) {
+    func textViewContentChanged(text: String) {
         self.writtenText = text
         self.enableSaveButton()
     }

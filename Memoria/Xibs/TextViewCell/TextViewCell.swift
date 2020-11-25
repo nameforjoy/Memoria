@@ -9,7 +9,7 @@ import UIKit
 
 protocol TextViewCellDelegate: AnyObject {
     func didFinishWriting(text: String)
-    func didEndEditing(text: String)
+    func textViewContentChanged(text: String)
 }
 
 class TextViewCell: UITableViewCell {
@@ -73,7 +73,7 @@ extension TextViewCell: UITextViewDelegate {
 
     // Updates text at any time text changes
     func textViewDidChange(_ textView: UITextView) {
-        self.textViewCellDelegate?.didEndEditing(text: textView.text)
+        self.textViewCellDelegate?.textViewContentChanged(text: textView.text)
     }
     
     // Limit the number of characters an user can input
