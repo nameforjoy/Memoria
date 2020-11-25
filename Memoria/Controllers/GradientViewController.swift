@@ -23,6 +23,7 @@ class GradientViewController: UIViewController {
     let color3 = UIColor(hexString: "5C5081").cgColor // dark purple
     
     let textTransitionInterval = TimeInterval(4) // in seconds
+    var didSkipIntro: Bool = false
     var memoryID: UUID?
     
     //  MARK: Life cycle
@@ -32,7 +33,7 @@ class GradientViewController: UIViewController {
         self.textLabel.dynamicFont = Typography.title2Bold
         
         // Add skip button
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pular", style: .plain, target: self, action: #selector(startImmersion))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pular", style: .plain, target: self, action: #selector(skipIntro))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +70,15 @@ class GradientViewController: UIViewController {
     
     // MARK: Segue
     
-    @objc func startImmersion() {
+    @objc func skipIntro() {
+        self.didSkipIntro = true
         performSegue(withIdentifier: "startImmersion", sender: self)
+    }
+    
+    @objc func startImmersion() {
+        if !self.didSkipIntro {
+            performSegue(withIdentifier: "startImmersion", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
