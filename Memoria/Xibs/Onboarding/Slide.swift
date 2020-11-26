@@ -81,7 +81,7 @@ class Slide: UIView {
     }
     
     @IBAction func goToConfig(_ sender: Any) {
-        print("Oi")
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
 }
 
