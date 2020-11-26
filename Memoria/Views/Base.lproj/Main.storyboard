@@ -91,7 +91,7 @@ Vamos guardar uma? </string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VEw-jD-fZA">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VEw-jD-fZA">
                                 <rect key="frame" x="145.5" y="834" width="123" height="28"/>
                                 <color key="pageIndicatorTintColor" name="grayDark"/>
                                 <color key="currentPageIndicatorTintColor" name="purpleDark"/>
@@ -123,11 +123,11 @@ Vamos guardar uma? </string>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
             <objects>
-                <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navBarCollection" title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="MgY-yr-YTb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

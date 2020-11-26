@@ -15,7 +15,10 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setups()
+    }
+    
+    func setups() {
         scrollView.delegate = self
         
         slides = createSlides()

@@ -96,6 +96,8 @@ extension NSMutableAttributedString {
 
 extension Slide: GradientButtonDelegate {
     func gradientButtonAction() {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "onboardingSeen")
         if let delegate: SlideDelegate = self.slideDelegate {
             delegate.didPressStartButton()
         }
