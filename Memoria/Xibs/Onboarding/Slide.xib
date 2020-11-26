@@ -19,8 +19,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="texting-person" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-59-YVZ">
                     <rect key="frame" x="45" y="124" width="324" height="365"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="324" id="6u6-de-Tzd"/>
-                        <constraint firstAttribute="height" constant="365" id="nZX-yg-fcs"/>
+                        <constraint firstAttribute="width" secondItem="2qs-59-YVZ" secondAttribute="height" multiplier="324:365" id="cmQ-dq-flx"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FX7-rI-TLF" customClass="GradientButtonView" customModule="Memoria" customModuleProvider="target">
@@ -39,14 +38,17 @@
                         <action selector="goToConfig:" destination="iN0-l3-epB" eventType="touchUpInside" id="14D-wt-ArG"/>
                     </connections>
                 </button>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJU-B3-z9f">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJU-B3-z9f">
                     <rect key="frame" x="0.0" y="505" width="414" height="203"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSq-hn-bNh" userLabel="ContainerView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSq-hn-bNh" userLabel="ContainerView">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Verifique se possui espaço livre de armazenamento no iCloud pois é lá que guardaremos suas memórias para sua segurança!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cj-4F-n2A">
-                                    <rect key="frame" x="32" y="0.0" width="324" height="83"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verifique se possui espaço livre de armazenamento no iCloud pois é lá que guardaremos suas memórias para sua segurança!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cj-4F-n2A">
+                                    <rect key="frame" x="32" y="0.0" width="349" height="81.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="349" id="9QB-Ab-JRi"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -54,12 +56,19 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="4cj-4F-n2A" secondAttribute="trailing" constant="32" id="7Nm-uN-eHY"/>
                                 <constraint firstItem="4cj-4F-n2A" firstAttribute="top" secondItem="uSq-hn-bNh" secondAttribute="top" id="E5f-SR-HFb"/>
+                                <constraint firstAttribute="trailing" secondItem="4cj-4F-n2A" secondAttribute="trailing" constant="33" id="XCF-6k-C4E"/>
                                 <constraint firstItem="4cj-4F-n2A" firstAttribute="leading" secondItem="uSq-hn-bNh" secondAttribute="leading" constant="32" id="eaw-pX-JZa"/>
+                                <constraint firstAttribute="bottom" secondItem="4cj-4F-n2A" secondAttribute="bottom" constant="22.5" id="fyb-le-l6j"/>
                             </constraints>
                         </view>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="uSq-hn-bNh" firstAttribute="top" secondItem="UVi-Fo-yKr" secondAttribute="top" id="0zq-Xn-hdo"/>
+                        <constraint firstItem="uSq-hn-bNh" firstAttribute="centerX" secondItem="OJU-B3-z9f" secondAttribute="centerX" id="JEp-hC-0OO"/>
+                        <constraint firstAttribute="bottom" secondItem="uSq-hn-bNh" secondAttribute="bottom" id="NcC-kQ-Viz"/>
+                        <constraint firstAttribute="trailing" secondItem="uSq-hn-bNh" secondAttribute="trailing" id="rC2-23-Lw9"/>
+                    </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="UVi-Fo-yKr"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="2Mn-ze-NLu"/>
                 </scrollView>
