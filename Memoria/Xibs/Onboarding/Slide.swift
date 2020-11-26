@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SlideDelegate {
+protocol SlideDelegate: AnyObject {
     func didPressStartButton()
 }
 
@@ -18,7 +18,7 @@ class Slide: UIView {
     @IBOutlet weak var configButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
-    var slideDelegate: SlideDelegate? = nil
+    weak var slideDelegate: SlideDelegate?
     
     var configButtonIsHidden: Bool = true {
         didSet {
@@ -33,8 +33,7 @@ class Slide: UIView {
     let purple: UIColor = UIColor(named: "purple") ?? UIColor.purple
 
     func setupSlide1() {
-        let typography = Typography()
-        self.label.dynamicFont = typography.largeTitleBold
+        self.label.dynamicFont = Typography.largeTitleBold
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: "Boas vindas à \nRememoria!")
         attributedString.setColorForText(textForAttribute: "Rememoria", withColor: purple)
         self.label.attributedText = attributedString
@@ -44,20 +43,18 @@ class Slide: UIView {
     }
     
     func setupSlide2() {
-        let typography = Typography()
-        self.label.dynamicFont = typography.bodyRegular
+        self.label.dynamicFont = Typography.bodyRegular
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: "Verifique se possui espaço livre de armazenamento no iCloud pois é lá que guardaremos suas memórias para sua segurança!")
         attributedString.setColorForText(textForAttribute: "armazenamento no iCloud", withColor: purple)
         self.label.attributedText = attributedString
         
         self.button.title = "Começar"
         self.configButtonIsHidden = false
-        self.configButton.dynamicFont = typography.calloutSemibold
+        self.configButton.dynamicFont = Typography.calloutSemibold
     }
     
     func setupSlide3() {
-        let typography = Typography()
-        self.label.dynamicFont = typography.bodyRegular
+        self.label.dynamicFont = Typography.bodyRegular
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: "Para registrar, você pode escolher texto, áudio ou foto, ou até os três! Vamos te conduzir num fluxo de perguntas para que suas memórias fiquem ainda mais vivas.")
         attributedString.setColorForText(textForAttribute: "escolher texto, áudio ou foto", withColor: purple)
         attributedString.setColorForText(textForAttribute: "fluxo de perguntas", withColor: purple)
@@ -68,8 +65,7 @@ class Slide: UIView {
     }
     
     func setupSlide4() {
-        let typography = Typography()
-        self.label.dynamicFont = typography.bodyRegular
+        self.label.dynamicFont = Typography.bodyRegular
         let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: "Aproveite o momento de reconstruir suas lembranças e ressignificá-las. Respire fundo e explore mais sobre você. Vamos lá?")
         attributedString.setColorForText(textForAttribute: "Vamos lá?", withColor: purple)
         self.label.attributedText = attributedString
