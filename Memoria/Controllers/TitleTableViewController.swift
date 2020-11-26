@@ -258,6 +258,10 @@ extension TitleTableViewController: DatePickerCellDelegate {
 // MARK: Text View
 
 extension TitleTableViewController: TextViewCellDelegate {
+    func textViewContentChanged(text: String) {
+        self.memoryDescription = text
+    }
+
     
     func didFinishWriting(text: String) {
         self.memoryDescription = text

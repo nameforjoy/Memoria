@@ -9,6 +9,7 @@ import UIKit
 
 protocol TextViewCellDelegate: AnyObject {
     func didFinishWriting(text: String)
+    func textViewContentChanged(text: String)
 }
 
 class TextViewCell: UITableViewCell {
@@ -68,6 +69,11 @@ extension TextViewCell: UITextViewDelegate {
     // Display placeholder if user left texview empty
     func textViewDidEndEditing(_ textView: UITextView) {
         self.textViewCellDelegate?.didFinishWriting(text: textView.text)
+    }
+
+    // Updates text at any time text changes
+    func textViewDidChange(_ textView: UITextView) {
+        self.textViewCellDelegate?.textViewContentChanged(text: textView.text)
     }
     
     // Limit the number of characters an user can input
