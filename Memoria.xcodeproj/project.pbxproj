@@ -40,6 +40,14 @@
 		15DCA482254C411000BCD7D0 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA481254C411000BCD7D0 /* SwitchCell.swift */; };
 		15DCA486254C4CAC00BCD7D0 /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA485254C4CAC00BCD7D0 /* ExpandingCell.swift */; };
 		15DCA489254C4CBB00BCD7D0 /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DCA488254C4CBB00BCD7D0 /* ExpandingCell.xib */; };
+		8D08C8B8256FE2F1001EAB46 /* Circular Std Black Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EC25436680002A3F74 /* Circular Std Black Italic.ttf */; };
+		8D08C8BA256FE2F5001EAB46 /* Circular Std Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EF25436681002A3F74 /* Circular Std Black.ttf */; };
+		8D08C8BC256FE2F8001EAB46 /* Circular Std Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */; };
+		8D08C8BE256FE2FB001EAB46 /* Circular Std Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EB25436680002A3F74 /* Circular Std Bold.ttf */; };
+		8D08C8C0256FE2FE001EAB46 /* Circular Std Book Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7ED25436680002A3F74 /* Circular Std Book Italic.ttf */; };
+		8D08C8C2256FE305001EAB46 /* Circular Std Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EE25436681002A3F74 /* Circular Std Book.ttf */; };
+		8D08C8C4256FE309001EAB46 /* Circular Std Medium Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7F025436681002A3F74 /* Circular Std Medium Italic.ttf */; };
+		8D08C8C6256FE30C001EAB46 /* Circular Std Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */; };
 		8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D106A0D2551DCC300C4234B /* UITextFieldAccessibility.swift */; };
 		8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DF66E254CEF5900262918 /* TextFieldCell.swift */; };
 		8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DF66F254CEF5900262918 /* TextFieldCell.xib */; };
@@ -595,14 +603,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BB4A772535FE5900CECE25 /* AudioPlayerView.xib in Resources */,
+				8D08C8BA256FE2F5001EAB46 /* Circular Std Black.ttf in Resources */,
+				8D08C8B8256FE2F1001EAB46 /* Circular Std Black Italic.ttf in Resources */,
 				8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */,
 				15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */,
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
+				8D08C8C0256FE2FE001EAB46 /* Circular Std Book Italic.ttf in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
+				8D08C8BC256FE2F8001EAB46 /* Circular Std Bold Italic.ttf in Resources */,
 				8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */,
 				159F629925484A240011DB9F /* PhotoCell.xib in Resources */,
+				8D08C8BE256FE2FB001EAB46 /* Circular Std Bold.ttf in Resources */,
+				8D08C8C2256FE305001EAB46 /* Circular Std Book.ttf in Resources */,
 				15D24CF32548434600D0D746 /* SubtitleCell.xib in Resources */,
 				159F62AA254862080011DB9F /* TextViewCell.xib in Resources */,
+				8D08C8C4256FE309001EAB46 /* Circular Std Medium Italic.ttf in Resources */,
+				8D08C8C6256FE30C001EAB46 /* Circular Std Medium.ttf in Resources */,
 				8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */,
 				B359736A255C13C9003C3101 /* TimePassedCell.xib in Resources */,
 				15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */,
