@@ -31,7 +31,7 @@ class MemoryBoxTexts {
         if self.isAccessibleCategory {
             return "Memórias"
         } else {
-            return "Caixa de memórias"
+            return "Minhas memórias"
         }
     }
 }

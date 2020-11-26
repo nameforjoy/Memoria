@@ -80,6 +80,7 @@ class QuestionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor(hexString: "7765A8")
         
         if self.memoryID == nil {
             print("Could not find ID for this memory")
@@ -274,7 +275,15 @@ extension QuestionTableViewController: GradientButtonCellDelegate {
         gradientButtonCell.buttonDelegate = self
         gradientButtonCell.isEnabled = self.shouldEnableSaveButton()
     }
-    
+
+    // Function that enables the Gradient Button Cell
+    func enableSaveButton() {
+        let buttonIndexPath = IndexPath(row: 8, section: 0)
+        if let gradientButtonCell = self.tableView.cellForRow(at: buttonIndexPath) as? GradientButtonCell {
+            self.setUpSaveMemoryButtonCell(gradientButtonCell)
+        }
+    }
+
     /// Create Detail object from the user's input
     func getDetailFromInterface() -> Detail? {
 
@@ -331,6 +340,11 @@ extension QuestionTableViewController: TextViewCellDelegate {
     func didFinishWriting(text: String) {
         self.writtenText = text
         self.tableView.reloadData() // so the save button cell is reloaded and its button enabled/disabled if needed
+    }
+
+    func textViewContentChanged(text: String) {
+        self.writtenText = text
+        self.enableSaveButton()
     }
     
     /// Configure text view cell as the view for the text anwer input

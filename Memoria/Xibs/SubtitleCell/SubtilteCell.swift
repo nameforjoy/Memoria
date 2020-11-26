@@ -22,8 +22,7 @@ class SubtitleCell: UITableViewCell {
     
     func setUpText() {
         // Set up dynamic font
-        let typography = Typography()
-        self.subtitleLabel.dynamicFont = typography.bodyRegular
+        self.subtitleLabel.dynamicFont = Typography.bodyRegular
     }
 
 }

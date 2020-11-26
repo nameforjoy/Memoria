@@ -47,10 +47,9 @@ class TitleSubtitleCell: UITableViewCell {
     
     func setUpText() {
         // Set up dynamic font
-        let typography = Typography()
-        self.titleLabel.dynamicFont = typography.title2Bold
-        self.subtitleLabel.dynamicFont = typography.bodyRegular
-        self.removeButton.dynamicFont = typography.calloutSemibold
+        self.titleLabel.dynamicFont = Typography.title2Bold
+        self.subtitleLabel.dynamicFont = Typography.bodyRegular
+        self.removeButton.dynamicFont = Typography.calloutSemibold
     }
     
     func setUpHiddenButton() {

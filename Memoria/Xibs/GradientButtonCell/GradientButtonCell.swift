@@ -45,7 +45,7 @@ class GradientButtonCell: UITableViewCell {
         
         self.gradientButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
         
-        let titleFont = Typography().calloutSemibold
+        let titleFont = Typography.calloutSemibold
         self.gradientButton.dynamicFont = titleFont
         self.disabledButton.dynamicFont = titleFont
     }

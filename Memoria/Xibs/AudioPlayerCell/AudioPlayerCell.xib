@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,10 @@
                         <rect key="frame" x="16" y="0.0" width="382" height="72"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U56-MM-ZHp">
-                                <rect key="frame" x="16" y="16" width="35" height="40"/>
+                                <rect key="frame" x="16" y="18" width="31.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Z6V-gJ-FxA"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="playAudio"/>
                                 <connections>
                                     <action selector="playAndPause:" destination="Bpt-zu-lut" eventType="touchUpInside" id="aGg-ev-teH"/>
@@ -38,7 +41,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="U56-MM-ZHp" firstAttribute="width" secondItem="U56-MM-ZHp" secondAttribute="height" multiplier="512:582" id="1aj-dq-Ild"/>
-                            <constraint firstAttribute="height" secondItem="U56-MM-ZHp" secondAttribute="height" multiplier="1.8" id="ARL-rn-2oF"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="Awx-2I-0Bs"/>
                             <constraint firstItem="U56-MM-ZHp" firstAttribute="centerY" secondItem="b0l-M8-2uX" secondAttribute="centerY" id="YNc-HB-zbI"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E1m-1G-oUZ" secondAttribute="bottom" constant="5" id="uKk-S6-ayx"/>
@@ -46,7 +48,7 @@
                         </constraints>
                     </view>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9C6-cO-wN2">
-                        <rect key="frame" x="80" y="19.5" width="308" height="34"/>
+                        <rect key="frame" x="76.5" y="19.5" width="311.5" height="34"/>
                     </slider>
                 </subviews>
                 <constraints>
