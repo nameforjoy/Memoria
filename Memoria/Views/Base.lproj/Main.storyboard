@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="swH-iQ-aQK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EH-RG-xqn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -83,11 +83,49 @@ Vamos guardar uma? </string>
             </objects>
             <point key="canvasLocation" x="195.6521739130435" y="133.92857142857142"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="LK3-B9-6iS">
+            <objects>
+                <viewController id="2EH-RG-xqn" customClass="OnboardingViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m5i-CF-cyg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VEw-jD-fZA">
+                                <rect key="frame" x="145.5" y="834" width="123" height="28"/>
+                                <color key="pageIndicatorTintColor" name="grayDark"/>
+                                <color key="currentPageIndicatorTintColor" name="purpleDark"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBY-9e-jlj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="uNn-7N-BbM"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="rLR-ZO-qVc"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ssg-Dq-pMc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VEw-jD-fZA" firstAttribute="centerX" secondItem="ssg-Dq-pMc" secondAttribute="centerX" id="B4X-WR-oi2"/>
+                            <constraint firstItem="VEw-jD-fZA" firstAttribute="bottom" secondItem="ssg-Dq-pMc" secondAttribute="bottom" id="ZLK-AM-Xa2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="VEw-jD-fZA" id="0EB-zE-AjP"/>
+                        <outlet property="scrollView" destination="nBY-9e-jlj" id="P3e-PV-sg0"/>
+                        <segue destination="swH-iQ-aQK" kind="presentation" identifier="fromOnboarding" modalPresentationStyle="fullScreen" id="uGE-45-jDV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4c-au-Wka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1613.0434782608697" y="133.92857142857142"/>
+        </scene>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
             <objects>
                 <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="MgY-yr-YTb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
                         <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -340,6 +378,9 @@ Vamos guardar uma? </string>
         <image name="startRecording" width="74" height="74"/>
         <namedColor name="grayDark">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleDark">
+            <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
