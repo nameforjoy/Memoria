@@ -22,8 +22,7 @@ class TimePassedCell: UITableViewCell {
     
     func setUpText() {
         // Set up dynamic font
-        let typography = Typography()
-        self.subtitleLabel.dynamicFont = typography.title2Regular
+        self.subtitleLabel.dynamicFont = Typography.title2Regular
         self.subtitleLabel.textColor = UIColor(hexString: "828282")
     }
 

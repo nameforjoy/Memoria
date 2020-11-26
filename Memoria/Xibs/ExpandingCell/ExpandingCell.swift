@@ -37,9 +37,8 @@ class ExpandingCell: UITableViewCell {
     
     func setUpText() {
         // Set up dynamic font
-        let typography = Typography()
-        self.happenedLabel.dynamicFont = typography.bodyRegular
-        self.timeLabel.dynamicFont = typography.bodySemibold
+        self.happenedLabel.dynamicFont = Typography.bodyRegular
+        self.timeLabel.dynamicFont = Typography.bodySemibold
     }
     
     @objc func tappedCell() {

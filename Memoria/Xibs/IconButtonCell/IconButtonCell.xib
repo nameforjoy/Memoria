@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,19 +19,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohd-th-J6N" userLabel="Background View">
-                        <rect key="frame" x="25" y="10" width="364" height="40"/>
+                        <rect key="frame" x="16" y="8" width="382" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKX-IW-vmV" userLabel="Label+icon view">
-                                <rect key="frame" x="142.5" y="0.0" width="79.5" height="40"/>
+                                <rect key="frame" x="151.5" y="0.0" width="79.5" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocz-Qe-SKl">
-                                        <rect key="frame" x="33" y="10" width="36.5" height="20"/>
+                                        <rect key="frame" x="33" y="12" width="36.5" height="20"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" name="purple"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="Goj-5A-eHb">
-                                        <rect key="frame" x="12" y="12" width="16" height="16"/>
+                                        <rect key="frame" x="12" y="14" width="16" height="16"/>
                                         <color key="tintColor" name="purple"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Goj-5A-eHb" secondAttribute="height" id="0Mx-74-ID8"/>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5K-KH-bMT">
-                                <rect key="frame" x="0.0" y="0.0" width="364" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                 <connections>
                                     <action selector="iconButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dXC-hd-oIa"/>
                                 </connections>
@@ -69,10 +69,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ohd-th-J6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="PuF-gZ-VR0"/>
-                    <constraint firstItem="Ohd-th-J6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="fsn-3W-XbG"/>
-                    <constraint firstAttribute="bottom" secondItem="Ohd-th-J6N" secondAttribute="bottom" constant="10" id="fxB-4h-zZh"/>
-                    <constraint firstAttribute="trailing" secondItem="Ohd-th-J6N" secondAttribute="trailing" constant="25" id="rE5-Zl-09e"/>
+                    <constraint firstItem="Ohd-th-J6N" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Lbj-kV-NNr"/>
+                    <constraint firstItem="Ohd-th-J6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PuF-gZ-VR0"/>
+                    <constraint firstItem="Ohd-th-J6N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fmz-xb-r4P"/>
+                    <constraint firstItem="Ohd-th-J6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fsn-3W-XbG"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

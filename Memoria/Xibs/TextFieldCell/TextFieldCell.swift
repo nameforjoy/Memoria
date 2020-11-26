@@ -20,7 +20,7 @@ class TextFieldCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.textField.dynamicFont = Typography().bodyRegular
+        self.textField.dynamicFont = Typography.bodyRegular
         self.textField.delegate = self
     }
     

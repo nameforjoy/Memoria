@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,12 +19,12 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GradientButtonCell" customModule="Memoria" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuh-T7-fDi">
-                        <rect key="frame" x="25" y="10" width="364" height="44"/>
+                        <rect key="frame" x="16" y="8" width="382" height="44"/>
                         <color key="backgroundColor" name="purpleDark"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="FHs-8X-sfa"/>
@@ -38,7 +38,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIi-QA-9qf" userLabel="Disabled Button">
-                        <rect key="frame" x="25" y="10" width="364" height="44"/>
+                        <rect key="frame" x="16" y="8" width="382" height="44"/>
                         <color key="backgroundColor" name="gray"/>
                         <fontDescription key="fontDescription" name="CircularStd-Medium" family="Circular Std" pointSize="16"/>
                         <state key="normal" title="Title">
@@ -50,13 +50,13 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="VIi-QA-9qf" firstAttribute="trailing" secondItem="cuh-T7-fDi" secondAttribute="trailing" id="5WU-Zi-53U"/>
-                    <constraint firstAttribute="trailing" secondItem="cuh-T7-fDi" secondAttribute="trailing" constant="25" id="ArE-5D-Bnm"/>
-                    <constraint firstItem="VIi-QA-9qf" firstAttribute="bottom" secondItem="cuh-T7-fDi" secondAttribute="bottom" id="GyM-U7-sMf"/>
-                    <constraint firstAttribute="bottom" secondItem="cuh-T7-fDi" secondAttribute="bottom" constant="10" id="LV9-Gt-PT6"/>
+                    <constraint firstItem="VIi-QA-9qf" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="7Tx-Wf-7pH"/>
                     <constraint firstItem="VIi-QA-9qf" firstAttribute="top" secondItem="cuh-T7-fDi" secondAttribute="top" id="MeR-CX-69j"/>
-                    <constraint firstItem="cuh-T7-fDi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="dOR-Jh-KEl"/>
-                    <constraint firstItem="cuh-T7-fDi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="i9f-Wo-4pf"/>
+                    <constraint firstItem="cuh-T7-fDi" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Vsb-IQ-dso"/>
+                    <constraint firstItem="cuh-T7-fDi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dOR-Jh-KEl"/>
+                    <constraint firstItem="cuh-T7-fDi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ghE-KZ-I9Z"/>
+                    <constraint firstItem="cuh-T7-fDi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="i9f-Wo-4pf"/>
+                    <constraint firstItem="VIi-QA-9qf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tfY-HY-czU"/>
                     <constraint firstItem="VIi-QA-9qf" firstAttribute="leading" secondItem="cuh-T7-fDi" secondAttribute="leading" id="x3T-xR-hj2"/>
                 </constraints>
             </tableViewCellContentView>
@@ -70,7 +70,7 @@
     </objects>
     <resources>
         <namedColor name="gray">
-            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="purpleDark">
             <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -102,7 +102,7 @@ class AudioPlayerCell: UITableViewCell, AVAudioPlayerDelegate {
         let seconds = total - minutes / 60
 
         self.timerLabel.text = NSString(format: "%02d:%02d", minutes,seconds) as String
-        self.timerLabel.dynamicFont = Typography().caption1Regular.monospacedDigitFont
+        self.timerLabel.dynamicFont = Typography.caption1Regular.monospacedDigitFont
     }
     
     // MARK: Audio play methods

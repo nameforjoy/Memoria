@@ -30,10 +30,14 @@
 	<string>Precisamos acessar sua galeria para que você possa registrar suas memórias</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Display-Black.otf</string>
-		<string>SF-Pro-Display-Medium.otf</string>
-		<string>SF-Pro-Display-Regular.otf</string>
-		<string>SF-Pro-Display-Heavy.otf</string>
+		<string>Circular Std Book Italic.ttf</string>
+		<string>Circular Std Book.ttf</string>
+		<string>Circular Std Medium Italic.ttf</string>
+		<string>Circular Std Medium.ttf</string>
+		<string>Circular Std Black Italic.ttf</string>
+		<string>Circular Std Black.ttf</string>
+		<string>Circular Std Bold Italic.ttf</string>
+		<string>Circular Std Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -56,6 +56,6 @@ class GradientButtonView: UIView {
     private func visualSetUp() {
         self.gradientButton.layer.cornerRadius = self.gradientButton.frame.height/3
         self.gradientButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
-        self.gradientButton.dynamicFont = Typography().calloutSemibold
+        self.gradientButton.dynamicFont = Typography.calloutSemibold
     }
 }

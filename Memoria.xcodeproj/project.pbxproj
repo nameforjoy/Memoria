@@ -40,9 +40,19 @@
 		15DCA482254C411000BCD7D0 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA481254C411000BCD7D0 /* SwitchCell.swift */; };
 		15DCA486254C4CAC00BCD7D0 /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DCA485254C4CAC00BCD7D0 /* ExpandingCell.swift */; };
 		15DCA489254C4CBB00BCD7D0 /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DCA488254C4CBB00BCD7D0 /* ExpandingCell.xib */; };
+		8D08C8B8256FE2F1001EAB46 /* Circular Std Black Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EC25436680002A3F74 /* Circular Std Black Italic.ttf */; };
+		8D08C8BA256FE2F5001EAB46 /* Circular Std Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EF25436681002A3F74 /* Circular Std Black.ttf */; };
+		8D08C8BC256FE2F8001EAB46 /* Circular Std Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EA25436680002A3F74 /* Circular Std Bold Italic.ttf */; };
+		8D08C8BE256FE2FB001EAB46 /* Circular Std Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EB25436680002A3F74 /* Circular Std Bold.ttf */; };
+		8D08C8C0256FE2FE001EAB46 /* Circular Std Book Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7ED25436680002A3F74 /* Circular Std Book Italic.ttf */; };
+		8D08C8C2256FE305001EAB46 /* Circular Std Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7EE25436681002A3F74 /* Circular Std Book.ttf */; };
+		8D08C8C4256FE309001EAB46 /* Circular Std Medium Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7F025436681002A3F74 /* Circular Std Medium Italic.ttf */; };
+		8D08C8C6256FE30C001EAB46 /* Circular Std Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D60F7F125436681002A3F74 /* Circular Std Medium.ttf */; };
 		8D106A0E2551DCC300C4234B /* UITextFieldAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D106A0D2551DCC300C4234B /* UITextFieldAccessibility.swift */; };
 		8D1DF670254CEF5900262918 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DF66E254CEF5900262918 /* TextFieldCell.swift */; };
 		8D1DF671254CEF5900262918 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DF66F254CEF5900262918 /* TextFieldCell.xib */; };
+		8D3C89A1256E819300F2F729 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3C89A0256E819300F2F729 /* GradientViewController.swift */; };
+		8D3C89A4256E8FB900F2F729 /* UIViewFadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3C89A3256E8FB900F2F729 /* UIViewFadeTransition.swift */; };
 		8D55D40225486CF6004A0BF4 /* IconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */; };
 		8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */; };
 		8D5AD8612559699800B33EA2 /* TitleTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD8602559699800B33EA2 /* TitleTexts.swift */; };
@@ -128,6 +138,8 @@
 		8D106A0D2551DCC300C4234B /* UITextFieldAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldAccessibility.swift; sourceTree = "<group>"; };
 		8D1DF66E254CEF5900262918 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8D1DF66F254CEF5900262918 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		8D3C89A0256E819300F2F729 /* GradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
+		8D3C89A3256E8FB900F2F729 /* UIViewFadeTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewFadeTransition.swift; sourceTree = "<group>"; };
 		8D55D40025486CF6004A0BF4 /* IconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButtonCell.swift; sourceTree = "<group>"; };
 		8D55D40125486CF6004A0BF4 /* IconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButtonCell.xib; sourceTree = "<group>"; };
 		8D5AD8602559699800B33EA2 /* TitleTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTexts.swift; sourceTree = "<group>"; };
@@ -217,6 +229,7 @@
 				8DAD833E254C573F009ED46C /* UITableViewNibRegistering.swift */,
 				8D6D61AF255C2E2A0099E8D7 /* UIViewControllerConnectivity.swift */,
 				8DCC6647256D434C00B76E6E /* CKErrorTypeDescription.swift */,
+				8D3C89A3256E8FB900F2F729 /* UIViewFadeTransition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,6 +327,7 @@
 				15514E842549930600918E8B /* QuestionTableViewController.swift */,
 				B3BF6C70255DCA26003F0C32 /* QuestionViewControllers */,
 				8DAD8334254C400A009ED46C /* TitleTableViewController.swift */,
+				8D3C89A0256E819300F2F729 /* GradientViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -589,14 +603,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BB4A772535FE5900CECE25 /* AudioPlayerView.xib in Resources */,
+				8D08C8BA256FE2F5001EAB46 /* Circular Std Black.ttf in Resources */,
+				8D08C8B8256FE2F1001EAB46 /* Circular Std Black Italic.ttf in Resources */,
 				8D55D40325486CF6004A0BF4 /* IconButtonCell.xib in Resources */,
 				15514E7D2549890C00918E8B /* AudioPlayerCell.xib in Resources */,
 				152EE5F2252B33A7002F379C /* LaunchScreen.storyboard in Resources */,
+				8D08C8C0256FE2FE001EAB46 /* Circular Std Book Italic.ttf in Resources */,
 				152EE5EF252B33A7002F379C /* Assets.xcassets in Resources */,
+				8D08C8BC256FE2F8001EAB46 /* Circular Std Bold Italic.ttf in Resources */,
 				8D9AA2E7254A880600C394FF /* GradientButtonCell.xib in Resources */,
 				159F629925484A240011DB9F /* PhotoCell.xib in Resources */,
+				8D08C8BE256FE2FB001EAB46 /* Circular Std Bold.ttf in Resources */,
+				8D08C8C2256FE305001EAB46 /* Circular Std Book.ttf in Resources */,
 				15D24CF32548434600D0D746 /* SubtitleCell.xib in Resources */,
 				159F62AA254862080011DB9F /* TextViewCell.xib in Resources */,
+				8D08C8C4256FE309001EAB46 /* Circular Std Medium Italic.ttf in Resources */,
+				8D08C8C6256FE30C001EAB46 /* Circular Std Medium.ttf in Resources */,
 				8DCEE7BF2547391A0008DBF8 /* GradientButton.xib in Resources */,
 				B359736A255C13C9003C3101 /* TimePassedCell.xib in Resources */,
 				15D24CDE2548381B00D0D746 /* TitleSubtitleCell.xib in Resources */,
@@ -675,11 +697,13 @@
 				8D60F802254384FC002A3F74 /* DoubleRound.swift in Sources */,
 				15AA50D225406CFF00EC2E4B /* ImagePicker.swift in Sources */,
 				8DF6DB3225477CD20057898E /* IconButtonView.swift in Sources */,
+				8D3C89A4256E8FB900F2F729 /* UIViewFadeTransition.swift in Sources */,
 				B3042A9D254385650086AE9E /* DetailViewController.swift in Sources */,
 				8D9AA2E6254A880600C394FF /* GradientButtonCell.swift in Sources */,
 				B3597369255C13C9003C3101 /* TimePassedCell.swift in Sources */,
 				8D60F7FF25438109002A3F74 /* TimerManager.swift in Sources */,
 				15D24CF02548433A00D0D746 /* SubtilteCell.swift in Sources */,
+				8D3C89A1256E819300F2F729 /* GradientViewController.swift in Sources */,
 				15AA50DF2543175D00EC2E4B /* MediaManager.swift in Sources */,
 				B3BF6C60255DB54F003F0C32 /* FirstQuestionViewController.swift in Sources */,
 				B3BF6C6B255DC9FE003F0C32 /* FourthQuestionViewController.swift in Sources */,
