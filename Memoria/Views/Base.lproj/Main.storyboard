@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="25" y="381" width="364" height="40"/>
+                                <rect key="frame" x="16" y="381" width="382" height="40"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -35,7 +35,7 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="25" y="431" width="364" height="44"/>
+                                <rect key="frame" x="16" y="439" width="382" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
@@ -53,10 +53,10 @@ Vamos guardar uma? </string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hLN-7Y-fZZ" firstAttribute="top" secondItem="e5p-nX-PYi" secondAttribute="top" id="4Wp-tk-e6L"/>
-                            <constraint firstItem="YcP-aD-e4p" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="25" id="A9q-DQ-adf"/>
+                            <constraint firstItem="YcP-aD-e4p" firstAttribute="leading" secondItem="e5p-nX-PYi" secondAttribute="leading" constant="16" id="A9q-DQ-adf"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerY" secondItem="e5p-nX-PYi" secondAttribute="centerY" multiplier="0.8" id="Jkt-6K-VkQ"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="NAE-4O-Ve8"/>
-                            <constraint firstItem="YmF-Fb-C8c" firstAttribute="top" secondItem="YcP-aD-e4p" secondAttribute="bottom" constant="10" id="cEL-kU-Klp"/>
+                            <constraint firstItem="YmF-Fb-C8c" firstAttribute="top" secondItem="YcP-aD-e4p" secondAttribute="bottom" constant="18" id="cEL-kU-Klp"/>
                             <constraint firstItem="hLN-7Y-fZZ" firstAttribute="bottom" secondItem="e5p-nX-PYi" secondAttribute="bottom" id="dF2-ba-hB4"/>
                             <constraint firstItem="YcP-aD-e4p" firstAttribute="centerX" secondItem="e5p-nX-PYi" secondAttribute="centerX" id="diD-x7-JTE"/>
                             <constraint firstItem="YmF-Fb-C8c" firstAttribute="leading" secondItem="YcP-aD-e4p" secondAttribute="leading" id="eNZ-Ke-s8L"/>

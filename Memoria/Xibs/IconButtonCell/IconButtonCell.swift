@@ -31,13 +31,12 @@ class IconButtonCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.background.layer.cornerRadius = self.background.frame.height/4
+        self.background.layer.cornerRadius = self.background.frame.height/6
         self.title.dynamicFont = Typography.calloutSemibold
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
