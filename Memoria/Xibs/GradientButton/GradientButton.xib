@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GradientButtonView" customModule="Memoria" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="CLH-c2-qIA"/>
+                <outlet property="disabledButton" destination="uXy-aL-Msz" id="f65-l7-BlJ"/>
                 <outlet property="gradientButton" destination="4KD-dj-psg" id="3hT-Hc-Yl9"/>
             </connections>
         </placeholder>
@@ -39,19 +40,33 @@
                         <action selector="gradientButtonAction:" destination="-1" eventType="touchUpInside" id="3qX-Y5-D7F"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXy-aL-Msz">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                    <color key="backgroundColor" name="gray"/>
+                    <state key="normal" title="Title">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="4KD-dj-psg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IA0-UU-row"/>
+                <constraint firstItem="uXy-aL-Msz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IwU-gV-V5w"/>
+                <constraint firstAttribute="bottom" secondItem="uXy-aL-Msz" secondAttribute="bottom" id="JE1-5v-Nf8"/>
                 <constraint firstItem="4KD-dj-psg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UEq-h9-2uE"/>
+                <constraint firstItem="uXy-aL-Msz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zcr-6Z-QWx"/>
                 <constraint firstAttribute="trailing" secondItem="4KD-dj-psg" secondAttribute="trailing" id="qYr-NS-Xvo"/>
                 <constraint firstAttribute="bottom" secondItem="4KD-dj-psg" secondAttribute="bottom" id="sXr-Nk-TwF"/>
+                <constraint firstAttribute="trailing" secondItem="uXy-aL-Msz" secondAttribute="trailing" id="vOk-VI-WWS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-217.39130434782609" y="-172.43303571428569"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="gray">
+            <color red="0.87800002098083496" green="0.87800002098083496" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="purpleDark">
             <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

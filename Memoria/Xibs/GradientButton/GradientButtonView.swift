@@ -17,6 +17,24 @@ class GradientButtonView: UIView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var gradientButton: UIButton!
+    @IBOutlet weak var disabledButton: UIButton!
+    
+    var isEnabled: Bool = true {
+        didSet {
+            if self.isEnabled {
+                self.disabledButton.isHidden = true
+            } else {
+                self.disabledButton.isHidden = false
+            }
+        }
+    }
+    
+    var title: String = "Title" {
+        didSet {
+            self.gradientButton.setTitle(title, for: .normal)
+            self.disabledButton.setTitle(title, for: .normal)
+        }
+    }
     
     weak var delegate: GradientButtonDelegate?
     
@@ -55,7 +73,9 @@ class GradientButtonView: UIView {
     
     private func visualSetUp() {
         self.gradientButton.layer.cornerRadius = self.gradientButton.frame.height/3
+        self.disabledButton.layer.cornerRadius = self.disabledButton.frame.height/3
         self.gradientButton.applyGradient(colors: [UIColor(hexString: "75679E").cgColor, UIColor(hexString: "A189E2").cgColor])
         self.gradientButton.dynamicFont = Typography.calloutSemibold
+        self.disabledButton.dynamicFont = Typography.calloutSemibold
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="swH-iQ-aQK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2EH-RG-xqn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -99,13 +99,13 @@ Vamos guardar uma? </string>
                                 <color key="backgroundColor" name="purple"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgV-eo-8wW">
-                                <rect key="frame" x="40" y="599.5" width="334" height="26"/>
+                                <rect key="frame" x="40" y="603" width="334" height="26"/>
                                 <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meditating" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-Bg-Ng0">
-                                <rect key="frame" x="41.5" y="260.5" width="331" height="331"/>
+                                <rect key="frame" x="41.5" y="264" width="331" height="331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lDI-Bg-Ng0" secondAttribute="height" id="JwQ-pa-SbK"/>
                                 </constraints>
@@ -137,11 +137,49 @@ Vamos guardar uma? </string>
             </objects>
             <point key="canvasLocation" x="196" y="942"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="LK3-B9-6iS">
+            <objects>
+                <viewController id="2EH-RG-xqn" customClass="OnboardingViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m5i-CF-cyg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VEw-jD-fZA">
+                                <rect key="frame" x="145.5" y="834" width="123" height="28"/>
+                                <color key="pageIndicatorTintColor" name="grayDark"/>
+                                <color key="currentPageIndicatorTintColor" name="purpleDark"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBY-9e-jlj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="uNn-7N-BbM"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="rLR-ZO-qVc"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ssg-Dq-pMc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VEw-jD-fZA" firstAttribute="centerX" secondItem="ssg-Dq-pMc" secondAttribute="centerX" id="B4X-WR-oi2"/>
+                            <constraint firstItem="VEw-jD-fZA" firstAttribute="bottom" secondItem="ssg-Dq-pMc" secondAttribute="bottom" id="ZLK-AM-Xa2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="VEw-jD-fZA" id="0EB-zE-AjP"/>
+                        <outlet property="scrollView" destination="nBY-9e-jlj" id="P3e-PV-sg0"/>
+                        <segue destination="swH-iQ-aQK" kind="presentation" identifier="fromOnboarding" modalPresentationStyle="fullScreen" id="uGE-45-jDV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K4c-au-Wka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1613.0434782608697" y="133.92857142857142"/>
+        </scene>
         <!--Navigation-->
         <scene sceneID="T4j-0T-HqN">
             <objects>
-                <navigationController title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navBarCollection" title="Navigation" automaticallyAdjustsScrollViewInsets="NO" id="swH-iQ-aQK" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="MgY-yr-YTb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="GWF-UF-X5q">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -398,6 +436,9 @@ Vamos guardar uma? </string>
         </namedColor>
         <namedColor name="purple">
             <color red="0.46700000762939453" green="0.39599999785423279" blue="0.6589999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purpleDark">
+            <color red="0.36100000143051147" green="0.31400001049041748" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
