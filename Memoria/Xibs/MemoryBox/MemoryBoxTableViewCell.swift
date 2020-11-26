@@ -20,14 +20,14 @@ class MemoryBoxTableViewCell: UITableViewCell {
     }
     
     func setupView() {
-        self.containerView.layer.cornerRadius = 8
+        self.containerView.layer.cornerRadius = 10
         self.containerView.layer.borderWidth = 2
         self.containerView.layer.borderColor = UIColor.systemGray6.cgColor
     }
     
     func setupFont() {
-        self.titleLabel.dynamicFont = Typography.title2Semibold
-        self.timeLabel.dynamicFont = Typography.title3Regular
+        self.titleLabel.dynamicFont = Typography.title2Bold
+        self.timeLabel.dynamicFont = Typography.bodyRegular
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

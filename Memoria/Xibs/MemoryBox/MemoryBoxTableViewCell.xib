@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="MemoryBoxTableViewCell" customModule="Memoria" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="104" id="KGk-i7-Jjw" customClass="MemoryBoxTableViewCell" customModule="Memoria" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZD-w8-Cmr">
-                        <rect key="frame" x="12" y="8" width="296" height="85"/>
+                        <rect key="frame" x="16" y="8" width="288" height="87"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memória" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alS-Rc-3eV">
-                                <rect key="frame" x="12" y="16" width="272" height="29"/>
+                                <rect key="frame" x="16" y="16" width="256" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Há 15 dias" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-oD-80y">
-                                <rect key="frame" x="12" y="45" width="272" height="24"/>
+                                <rect key="frame" x="16" y="47" width="256" height="24"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="alS-Rc-3eV" firstAttribute="top" secondItem="gZD-w8-Cmr" secondAttribute="top" constant="16" id="5WL-4K-UMh"/>
-                            <constraint firstAttribute="trailing" secondItem="PI9-oD-80y" secondAttribute="trailing" constant="12" id="FMT-fP-wpw"/>
                             <constraint firstAttribute="bottom" secondItem="PI9-oD-80y" secondAttribute="bottom" constant="16" id="Gfv-Gh-Kk9"/>
-                            <constraint firstAttribute="trailing" secondItem="alS-Rc-3eV" secondAttribute="trailing" constant="12" id="ae7-i1-D13"/>
-                            <constraint firstItem="PI9-oD-80y" firstAttribute="top" secondItem="alS-Rc-3eV" secondAttribute="bottom" id="dMC-eh-Q96"/>
-                            <constraint firstItem="alS-Rc-3eV" firstAttribute="leading" secondItem="gZD-w8-Cmr" secondAttribute="leading" constant="12" id="jPT-Xy-yQ8"/>
-                            <constraint firstItem="PI9-oD-80y" firstAttribute="leading" secondItem="gZD-w8-Cmr" secondAttribute="leading" constant="12" id="sSY-qr-UsS"/>
+                            <constraint firstItem="PI9-oD-80y" firstAttribute="top" secondItem="alS-Rc-3eV" secondAttribute="bottom" constant="2" id="dMC-eh-Q96"/>
+                            <constraint firstItem="PI9-oD-80y" firstAttribute="centerX" secondItem="gZD-w8-Cmr" secondAttribute="centerX" id="gqR-J1-VAC"/>
+                            <constraint firstItem="alS-Rc-3eV" firstAttribute="leading" secondItem="gZD-w8-Cmr" secondAttribute="leading" constant="16" id="jPT-Xy-yQ8"/>
+                            <constraint firstItem="alS-Rc-3eV" firstAttribute="centerX" secondItem="gZD-w8-Cmr" secondAttribute="centerX" id="kgl-SR-GbF"/>
+                            <constraint firstItem="PI9-oD-80y" firstAttribute="leading" secondItem="alS-Rc-3eV" secondAttribute="leading" id="uxI-dl-LmO"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gZD-w8-Cmr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="2BZ-8b-XCo"/>
-                    <constraint firstAttribute="bottom" secondItem="gZD-w8-Cmr" secondAttribute="bottom" constant="8" id="6fd-Er-Fvv"/>
-                    <constraint firstAttribute="trailing" secondItem="gZD-w8-Cmr" secondAttribute="trailing" constant="12" id="QoK-gb-cxG"/>
+                    <constraint firstItem="gZD-w8-Cmr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2BZ-8b-XCo"/>
+                    <constraint firstItem="gZD-w8-Cmr" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4fC-wY-2Bw"/>
                     <constraint firstItem="gZD-w8-Cmr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="t9B-kl-P6l"/>
+                    <constraint firstItem="gZD-w8-Cmr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xfq-g2-GVy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -59,7 +59,7 @@
                 <outlet property="timeLabel" destination="PI9-oD-80y" id="ebG-GK-Thh"/>
                 <outlet property="titleLabel" destination="alS-Rc-3eV" id="7gB-y9-1BJ"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="168.08035714285714"/>
+            <point key="canvasLocation" x="140.57971014492756" y="168.41517857142856"/>
         </tableViewCell>
     </objects>
 </document>

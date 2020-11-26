@@ -31,7 +31,7 @@ class IconButtonCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.background.layer.cornerRadius = self.background.frame.height/6
+        self.background.layer.cornerRadius = 10
         self.title.dynamicFont = Typography.calloutSemibold
     }
 
