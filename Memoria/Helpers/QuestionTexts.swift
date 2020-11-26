@@ -124,9 +124,6 @@ class QuestionTexts {
 
         case .purpose:
             return purposeQuestions.randomElement()
-
-        default:
-            return ""
         }
     }
 }

@@ -208,15 +208,7 @@ extension MemoryCollectionViewController: IconButtonDelegate {
     
     /// Proceed to add memory screen or display warning for user to check their iCloud storage space
     func addNewMemory() {
-        let shouldNotDisplayStorageAlert = UserDefaults.standard.bool(forKey: "shouldNotDisplayStorageAlert") // return false if not found
-        if shouldNotDisplayStorageAlert {
-            performSegue(withIdentifier: "addMemory", sender: self)
-        } else {
-            let alert = AlertManager().makeStorageQuotaCheckAlert {
-                self.performSegue(withIdentifier: "addMemory", sender: self)
-            }
-            self.present(alert, animated: true)
-        }
+        performSegue(withIdentifier: "addMemory", sender: self)
     }
 }
 

@@ -262,7 +262,6 @@ extension TitleTableViewController: TextViewCellDelegate {
         self.memoryDescription = text
     }
 
-    
     func didFinishWriting(text: String) {
         self.memoryDescription = text
         self.tableView.reloadData() // so the save button cell is reloaded and its button enabled/disabled if needed
