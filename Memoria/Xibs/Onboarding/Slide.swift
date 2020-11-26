@@ -35,7 +35,7 @@ class Slide: UIView {
     func setupSlide1() {
         let typography = Typography()
         self.label.dynamicFont = typography.largeTitleBold
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: "Bem-vinde à \nRememoria!")
+        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: "Boas vindas à \nRememoria!")
         attributedString.setColorForText(textForAttribute: "Rememoria", withColor: purple)
         self.label.attributedText = attributedString
         
