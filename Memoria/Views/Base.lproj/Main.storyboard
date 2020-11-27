@@ -94,36 +94,41 @@ Vamos guardar uma? </string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ua-z0-xlv" userLabel="Centralizing View">
+                                <rect key="frame" x="32" y="314" width="350" height="274"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3p-VM-5WA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" name="purple"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgV-eo-8wW">
-                                <rect key="frame" x="40" y="603" width="334" height="26"/>
+                                <rect key="frame" x="32" y="562" width="350" height="26"/>
                                 <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meditating" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-Bg-Ng0">
-                                <rect key="frame" x="41.5" y="264" width="331" height="331"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="lDI-Bg-Ng0" secondAttribute="height" id="JwQ-pa-SbK"/>
-                                </constraints>
+                                <rect key="frame" x="32" y="314" width="350" height="232"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RF9-1U-o4H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lDI-Bg-Ng0" firstAttribute="width" secondItem="j3i-WV-F3V" secondAttribute="width" multiplier="0.8" id="1OE-6y-bRp"/>
+                            <constraint firstItem="7Ua-z0-xlv" firstAttribute="centerY" secondItem="RF9-1U-o4H" secondAttribute="centerY" multiplier="0.9" id="4bH-cs-ZEd"/>
                             <constraint firstAttribute="bottom" secondItem="W3p-VM-5WA" secondAttribute="bottom" id="Ab2-e6-GGR"/>
                             <constraint firstItem="W3p-VM-5WA" firstAttribute="leading" secondItem="RF9-1U-o4H" secondAttribute="leading" id="EuG-ZH-Box"/>
-                            <constraint firstItem="qgV-eo-8wW" firstAttribute="centerX" secondItem="W3p-VM-5WA" secondAttribute="centerX" id="HKs-9X-Gtf"/>
-                            <constraint firstItem="qgV-eo-8wW" firstAttribute="leading" secondItem="W3p-VM-5WA" secondAttribute="leading" constant="40" id="IH6-Oe-LPt"/>
-                            <constraint firstItem="qgV-eo-8wW" firstAttribute="top" secondItem="lDI-Bg-Ng0" secondAttribute="bottom" constant="8" id="JDd-HF-eKS"/>
-                            <constraint firstItem="lDI-Bg-Ng0" firstAttribute="centerX" secondItem="RF9-1U-o4H" secondAttribute="centerX" id="VLd-Qf-MTL"/>
+                            <constraint firstItem="qgV-eo-8wW" firstAttribute="centerX" secondItem="7Ua-z0-xlv" secondAttribute="centerX" id="MqX-Y3-cbz"/>
+                            <constraint firstItem="qgV-eo-8wW" firstAttribute="leading" secondItem="7Ua-z0-xlv" secondAttribute="leading" id="R3F-oZ-Hi9"/>
+                            <constraint firstItem="7Ua-z0-xlv" firstAttribute="centerX" secondItem="RF9-1U-o4H" secondAttribute="centerX" id="U4n-hU-0xW"/>
+                            <constraint firstItem="7Ua-z0-xlv" firstAttribute="leading" secondItem="RF9-1U-o4H" secondAttribute="leading" constant="32" id="cKf-Dh-6PN"/>
+                            <constraint firstItem="lDI-Bg-Ng0" firstAttribute="centerX" secondItem="7Ua-z0-xlv" secondAttribute="centerX" id="fIu-Lb-xpd"/>
+                            <constraint firstItem="lDI-Bg-Ng0" firstAttribute="leading" secondItem="7Ua-z0-xlv" secondAttribute="leading" id="fOO-WQ-dzt"/>
+                            <constraint firstItem="lDI-Bg-Ng0" firstAttribute="top" secondItem="7Ua-z0-xlv" secondAttribute="top" id="fg1-2X-kr5"/>
+                            <constraint firstItem="qgV-eo-8wW" firstAttribute="bottom" secondItem="7Ua-z0-xlv" secondAttribute="bottom" id="nRC-1E-vQ9"/>
+                            <constraint firstItem="qgV-eo-8wW" firstAttribute="top" secondItem="lDI-Bg-Ng0" secondAttribute="bottom" constant="16" id="qJ0-dp-6Zb"/>
                             <constraint firstItem="W3p-VM-5WA" firstAttribute="trailing" secondItem="RF9-1U-o4H" secondAttribute="trailing" id="txC-z5-5ZU"/>
                             <constraint firstItem="W3p-VM-5WA" firstAttribute="top" secondItem="j3i-WV-F3V" secondAttribute="top" id="zPG-M1-ZhF"/>
-                            <constraint firstItem="lDI-Bg-Ng0" firstAttribute="centerY" secondItem="RF9-1U-o4H" secondAttribute="centerY" multiplier="0.85" id="zvX-eU-PLB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="atA-X3-a8f"/>
@@ -135,7 +140,7 @@ Vamos guardar uma? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nt6-fb-VUk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="942"/>
+            <point key="canvasLocation" x="195.6521739130435" y="941.51785714285711"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="LK3-B9-6iS">
