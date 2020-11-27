@@ -24,7 +24,8 @@ class MemoryServices {
         let newMemory = Memory(title: title, description: description, hasDate: hasDate, date: estimatedDate)
 
         MemoryDAO.create(memory: newMemory) { (error) in
-            //Present alert "Infelizmente não conseguimos salvar sua memória :("
+            print("Unable to create memory without id")
+            print(error ?? "Unable to print error")
         }
     }
 
@@ -44,7 +45,8 @@ class MemoryServices {
         let newMemory = Memory(memoryID: memoryId, title: title, description: description, hasDate: hasDate, date: estimatedDate)
 
         MemoryDAO.create(memory: newMemory) { (error) in
-            //Present alert "Infelizmente não conseguimos salvar sua memória :("
+            print("Unable to create memory with id")
+            print(error ?? "Unable to print error")
         }
     }
 

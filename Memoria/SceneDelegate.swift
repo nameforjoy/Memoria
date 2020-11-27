@@ -13,18 +13,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        //swiftlint:disable unused_optional_binding
+        guard let _ = (scene as? UIWindowScene) else { return } // makes sure the window scene is not nil
+        
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "onboardingSeen") {
+            // If onboarding has already been seen, change initial view controller to the memory collection navigation
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(windowScene: windowScene)
-            
             if let initialView: UINavigationController = storyboard.instantiateViewController(withIdentifier: "navBarCollection") as? UINavigationController {
-                window?.rootViewController = initialView
+                self.window?.rootViewController = initialView
             }
-            
+            // Show the current window and position it in front of all other windows at the same level or lower
             self.window?.makeKeyAndVisible()
-            guard let _ = (scene as? UIWindowScene) else { return }
         }
     }
 
