@@ -502,6 +502,7 @@ extension QuestionTableViewController: TitleSubtitleCellDelegate {
         self.hiddenRows = self.hiddenRows.filter { $0 != 6 } // remove select image button cell from hiddenRows array
         self.hiddenRows.append(7) // put image cell in hiddenRows array
         self.tableView.reloadData()
+        self.selectedImage = nil
         self.imageURL = nil
     }
     
