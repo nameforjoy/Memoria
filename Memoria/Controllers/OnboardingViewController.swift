@@ -32,19 +32,25 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func createSlides() -> [Slide] {
-        let slide1:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        
+        guard let slide1: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as? Slide,
+              let slide2: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as? Slide,
+              let slide3: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as? Slide,
+              let slide4: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as? Slide else {
+            print("Could not load onboarding nibs")
+            didPressStartButton()
+            return []
+        }
+        
         slide1.imageView.image = UIImage(named: "heart-person")
         slide1.setupSlide1()
         
-        let slide2:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.imageView.image = UIImage(named: "texting-person")
         slide2.setupSlide2()
         
-        let slide3:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide3.imageView.image = UIImage(named: "selfie-person")
         slide3.setupSlide3()
         
-        let slide4:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide4.imageView.image = UIImage(named: "box-person")
         slide4.setupSlide4()
         slide4.slideDelegate = self
