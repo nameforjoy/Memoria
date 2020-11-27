@@ -474,17 +474,35 @@ extension QuestionTableViewController: ImagePickerDelegate {
 extension QuestionTableViewController: TitleSubtitleCellDelegate {
     
     func didTapRemove(buttonType: RemoveType) {
-        if buttonType == .removeAudio {
-            self.hideRemoveButton(cellRow: 2, hide: true)
-            self.hiddenRows = self.hiddenRows.filter { $0 != 3 } // remove record button cell from hiddenRows array
-            self.hiddenRows.append(4) // put audio palyer cell in hiddenRows array
-            self.tableView.reloadData()
-        } else if buttonType == .removeImage {
-            self.hideRemoveButton(cellRow: 5, hide: true)
-            self.hiddenRows = self.hiddenRows.filter { $0 != 6 } // remove select image button cell from hiddenRows array
-            self.hiddenRows.append(7) // put image cell in hiddenRows array
-            self.tableView.reloadData()
+        
+        if buttonType == .removeImage || buttonType == .removeAudio {
+            // Make alert
+            let alert = AlertManager().makeRemoveMediaAlert(mediaType: buttonType) {
+                // Remove button action
+                if buttonType == .removeAudio {
+                    self.removeAudio()
+                } else if buttonType == .removeImage {
+                    self.removeImage()
+                }
+            }
+            self.present(alert, animated: true)
         }
+    }
+    
+    func removeAudio() {
+        self.hideRemoveButton(cellRow: 2, hide: true)
+        self.hiddenRows = self.hiddenRows.filter { $0 != 3 } // remove record button cell from hiddenRows array
+        self.hiddenRows.append(4) // put audio palyer cell in hiddenRows array
+        self.tableView.reloadData()
+        self.audioURL = nil
+    }
+    
+    func removeImage() {
+        self.hideRemoveButton(cellRow: 5, hide: true)
+        self.hiddenRows = self.hiddenRows.filter { $0 != 6 } // remove select image button cell from hiddenRows array
+        self.hiddenRows.append(7) // put image cell in hiddenRows array
+        self.tableView.reloadData()
+        self.imageURL = nil
     }
     
     func hideRemoveButton(cellRow: Int, hide: Bool) {

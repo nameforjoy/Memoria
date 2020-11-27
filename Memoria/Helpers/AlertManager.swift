@@ -123,6 +123,31 @@ class AlertManager {
         return myAlert
     }
     
+    func makeRemoveMediaAlert(mediaType: RemoveType, _ completion: @escaping () -> Void) -> UIAlertController {
+        
+        var title = ""
+        switch mediaType {
+        case .removeImage:
+            title = "Deseja remover essa foto?"
+        case .removeAudio:
+            title = "Deseja remover essa gravação?"
+        default:
+            title = "Deseja prosseguir com essa remoção?"
+        }
+        let message = "Ao removê-la, não será possível recuperá-la."
+        
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Cancel
+        myAlert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
+        // Remove
+        myAlert.addAction(UIAlertAction(title: "Remover", style: .destructive, handler: { _ in
+            completion()
+        }))
+        
+        return myAlert
+    }
+    
     func makeReachedAudioTimeLimitAlert(_ completion: @escaping () -> Void) -> UIAlertController {
         let title = "Limite de tempo atingido"
         let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
