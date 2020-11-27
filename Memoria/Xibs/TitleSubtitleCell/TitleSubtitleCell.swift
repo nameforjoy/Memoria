@@ -26,19 +26,26 @@ class TitleSubtitleCell: UITableViewCell {
     var removeButtonIsHidden: Bool = true {
         didSet {
             if removeButtonIsHidden {
-                setUpHiddenButton()
+                hideButton()
             } else {
-                setUpButton()
+                showButton()
             }
         }
     }
+    
+    var isAccessibilityCategory: Bool = false {
+        didSet {
+            self.setUpButtonAppearance()
+        }
+    }
+    
     var removeType: RemoveType = .undefined
     weak var removeButtonDelegate: TitleSubtitleCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpText()
-        setUpHiddenButton()
+        hideButton()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -52,16 +59,26 @@ class TitleSubtitleCell: UITableViewCell {
         self.removeButton.dynamicFont = Typography.calloutSemibold
     }
     
-    func setUpHiddenButton() {
+    func hideButton() {
         self.removeButton.setTitle("", for: .normal)
         self.removeButton.isHidden = true
         self.isUserInteractionEnabled = false
     }
     
-    func setUpButton() {
-        self.removeButton.setTitle("Remover", for: .normal)
+    func showButton() {
+        self.setUpButtonAppearance()
         self.removeButton.isHidden = false
         self.isUserInteractionEnabled = true
+    }
+    
+    func setUpButtonAppearance() {
+        if self.isAccessibilityCategory {
+            self.removeButton.setTitle("", for: .normal)
+            self.removeButton.setBackgroundImage(UIImage(named: "trash"), for: .normal)
+            // self.tintColor = UIColor(named: "coral")
+        } else {
+            self.removeButton.setTitle("Remover", for: .normal)
+        }
     }
 
     @IBAction func removeAction(_ sender: Any) {

@@ -172,6 +172,8 @@ class QuestionTableViewController: UITableViewController {
                 audioTitleSubtitleCell.subtitleLabel.text = self.texts.recordAudioSubtitle
                 audioTitleSubtitleCell.removeButtonDelegate = self
                 audioTitleSubtitleCell.removeType = .removeAudio
+                audioTitleSubtitleCell.isAccessibilityCategory = self.traitCollection.isAccessibleCategory
+                audioTitleSubtitleCell.removeButtonIsHidden = (self.audioURL == nil)
                 cell = audioTitleSubtitleCell
             }
         case 3:
@@ -193,6 +195,8 @@ class QuestionTableViewController: UITableViewController {
                 photoTitleSubtitleCell.subtitleLabel.text = self.texts.takePhotoSubtitle
                 photoTitleSubtitleCell.removeButtonDelegate = self
                 photoTitleSubtitleCell.removeType = .removeImage
+                photoTitleSubtitleCell.isAccessibilityCategory = self.traitCollection.isAccessibleCategory
+                photoTitleSubtitleCell.removeButtonIsHidden = (self.imageURL == nil)
                 cell = photoTitleSubtitleCell
             }
         case 6:
@@ -474,7 +478,6 @@ extension QuestionTableViewController: ImagePickerDelegate {
 extension QuestionTableViewController: TitleSubtitleCellDelegate {
     
     func didTapRemove(buttonType: RemoveType) {
-        
         if buttonType == .removeImage || buttonType == .removeAudio {
             // Make alert
             let alert = AlertManager().makeRemoveMediaAlert(mediaType: buttonType) {

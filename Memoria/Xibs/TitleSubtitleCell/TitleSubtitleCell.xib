@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Que tal gravar?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6e-AJ-XKR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="900" text="Que tal gravar?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6e-AJ-XKR">
                         <rect key="frame" x="16" y="12" width="117" height="20"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
@@ -31,6 +31,9 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="800" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H69-Oc-xwK">
                         <rect key="frame" x="337" y="12" width="61" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="H69-Oc-xwK" secondAttribute="height" multiplier="0.9" id="6K1-cu-tFj"/>
+                        </constraints>
                         <state key="normal" title="Remover">
                             <color key="titleColor" name="coral"/>
                         </state>
