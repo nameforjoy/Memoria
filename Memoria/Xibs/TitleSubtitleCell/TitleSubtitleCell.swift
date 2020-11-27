@@ -78,6 +78,7 @@ class TitleSubtitleCell: UITableViewCell {
             // self.tintColor = UIColor(named: "coral")
         } else {
             self.removeButton.setTitle("Remover", for: .normal)
+            self.removeButton.setBackgroundImage(nil, for: .normal)
         }
     }
 
