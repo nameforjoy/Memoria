@@ -23,6 +23,9 @@ class MemoryBoxTableViewCell: UITableViewCell {
         self.containerView.layer.cornerRadius = 10
         self.containerView.layer.borderWidth = 2
         self.containerView.layer.borderColor = UIColor.systemGray6.cgColor
+        
+        self.containerView.layer.borderWidth = 2
+        self.containerView.layer.borderColor = UIColor(hexString: "8A77BF").cgColor
     }
     
     func setupFont() {

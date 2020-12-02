@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIView {
-    
     /// Apply gradient in the button background
     func applyGradient(colors: [CGColor]) {
         
@@ -18,7 +17,7 @@ extension UIView {
         gradientLayer.endPoint = CGPoint(x: 1, y: 0)
         
         // Double height of gradient layer (in relation to its bounds) to give space for the button to grow with a dynamic font
-        gradientLayer.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: 2 * self.bounds.height)
+        gradientLayer.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width * 1.5, height: 2 * self.bounds.height)
         
         // Restrict (cip) gradient layer to button's bounds
         self.clipsToBounds = true
