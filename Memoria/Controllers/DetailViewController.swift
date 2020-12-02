@@ -12,10 +12,9 @@ class DetailViewController: UITableViewController {
     var selectedMemory: Memory?
     var currentDetail: Detail?
     var memoryDetails: [Detail]?
-
-    // Temporary property
-    var details: [Detail]?
     
+    // Rows to hide (details without photo or audio)
+    var hiddenRows: [Int] = []
     // Number of attempts to fetch memory from iCloud
     var fetchingAttempts: Int = 0
 
@@ -75,27 +74,20 @@ class DetailViewController: UITableViewController {
         }
 
     }
-
-    func createDuplicateForTesting() {
-        if let detail = self.currentDetail {
-            DetailDAO.create(detail: detail) { error in
-                if error == nil {
-                    // Return to main screen
-                    DispatchQueue.main.async {
-                        print("Detail saved")
-                    }
-                } else {
-                    print(error.debugDescription)
-                    // TODO: Treat error
-                    // Alert "Infelizmente não conseguimos salvar sua memória"
-                }
-            }
-        }
-    }
 }
 
 // MARK: Table View Delegate Methods
 extension DetailViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // Hide cells with indexes contained in the hiddenRows array
+        if self.hiddenRows.contains(indexPath.row) {
+            return 0.0  // collapsed
+        }
+        // expanded with row height of parent
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -137,7 +129,7 @@ extension DetailViewController {
                 if let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory) {
                     cellType.subtitleLabel.text = dateString
                 } else {
-                    cellType.isHidden = true
+                    self.hiddenRows.append(indexPath.row)
                 }
                 cell = cellType
             }
@@ -179,7 +171,7 @@ extension DetailViewController {
                     cell = cellType
                 }
             } else {
-                cell.isHidden = true
+                self.hiddenRows.append(indexPath.row)
             }
 
         // Detail Image
@@ -191,7 +183,7 @@ extension DetailViewController {
                     cell = cellType
                 }
             } else {
-                cell.isHidden = true
+                self.hiddenRows.append(indexPath.row)
             }
 
         default:
