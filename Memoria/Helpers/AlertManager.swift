@@ -23,7 +23,7 @@ class AlertManager {
     var memorySaved: UIAlertController {
         
         let title: String = "Sua memória foi guardada!"
-        let message: String = "Está disponível para ser acessada e gerar boas lembranças"
+        let message: String = "Está disponível para ser acessada e gerar boas lembranças."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .default) { (_) in
             self.delegate?.buttonAction()
@@ -38,7 +38,7 @@ class AlertManager {
     var changeMicrophonePermission: UIAlertController {
         
         let title = "Ops, não temos acesso ao seu microfone!"
-        let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone"
+        let message = "Para gravarmos seu áudio precisamos que você nos permita esse acesso, o que você pode fazer nas Configurações do seu iPhone."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Go to settings
@@ -53,7 +53,7 @@ class AlertManager {
     
     var unableToSave: UIAlertController {
         let title = "Ops, não podemos salvar sua resposta assim!"
-        let message = "Preencha ao menos um dos campos"
+        let message = "Preencha ao menos um dos campos."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
@@ -62,7 +62,7 @@ class AlertManager {
     
     var giveTitleToSave: UIAlertController {
         let title = "Ops, não podemos salvar sua memória assim!"
-        let message = "Insira um título para que possamos prosseguir"
+        let message = "Insira um título para que possamos prosseguir."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         myAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
@@ -149,7 +149,7 @@ class AlertManager {
     }
     
     func makeReachedAudioTimeLimitAlert(_ completion: @escaping () -> Void) -> UIAlertController {
-        let title = "Limite de tempo atingido"
+        let title = "Limite de tempo atingido."
         let message = "Paramos sua gravação pois o áudio atingiu o tempo máximo permitido."
         let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
