@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-kH-i7m">
-                        <rect key="frame" x="113" y="8" width="281" height="32"/>
+                        <rect key="frame" x="117" y="8" width="281" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="281" id="FWV-do-vRR"/>
                         </constraints>
@@ -32,7 +32,7 @@
                         </connections>
                     </segmentedControl>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-1b-IWC">
-                        <rect key="frame" x="16" y="8" width="63" height="34"/>
+                        <rect key="frame" x="20" y="8" width="63" height="34"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="63" id="kRw-Pb-sGk"/>
                         </constraints>
@@ -44,8 +44,8 @@
                 <constraints>
                     <constraint firstItem="zsk-kH-i7m" firstAttribute="top" secondItem="jOz-1b-IWC" secondAttribute="top" id="5iK-FG-YVL"/>
                     <constraint firstItem="jOz-1b-IWC" firstAttribute="top" secondItem="9KE-fK-KM6" secondAttribute="top" constant="8" id="KlY-2y-VG8"/>
-                    <constraint firstItem="jOz-1b-IWC" firstAttribute="leading" secondItem="9KE-fK-KM6" secondAttribute="leading" constant="16" id="Ky1-ah-GlU"/>
-                    <constraint firstAttribute="trailing" secondItem="zsk-kH-i7m" secondAttribute="trailing" constant="16" id="dKf-bc-jme"/>
+                    <constraint firstItem="jOz-1b-IWC" firstAttribute="leading" secondItem="9KE-fK-KM6" secondAttribute="leading" constant="20" symbolic="YES" id="Ky1-ah-GlU"/>
+                    <constraint firstAttribute="trailing" secondItem="zsk-kH-i7m" secondAttribute="trailing" constant="20" symbolic="YES" id="dKf-bc-jme"/>
                     <constraint firstAttribute="bottom" secondItem="jOz-1b-IWC" secondAttribute="bottom" constant="8" id="nn9-1S-l1V"/>
                     <constraint firstItem="zsk-kH-i7m" firstAttribute="leading" secondItem="jOz-1b-IWC" secondAttribute="trailing" constant="34" id="tqW-Un-w6r"/>
                 </constraints>

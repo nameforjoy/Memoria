@@ -18,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZD-w8-Cmr">
-                        <rect key="frame" x="16" y="8" width="288" height="87"/>
+                        <rect key="frame" x="20" y="8" width="280" height="87"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memória" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alS-Rc-3eV">
-                                <rect key="frame" x="16" y="16" width="256" height="29"/>
+                                <rect key="frame" x="16" y="16" width="248" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Há 15 dias" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI9-oD-80y">
-                                <rect key="frame" x="16" y="47" width="256" height="24"/>
+                                <rect key="frame" x="16" y="47" width="248" height="24"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,7 +47,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gZD-w8-Cmr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2BZ-8b-XCo"/>
+                    <constraint firstItem="gZD-w8-Cmr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="2BZ-8b-XCo"/>
                     <constraint firstItem="gZD-w8-Cmr" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4fC-wY-2Bw"/>
                     <constraint firstItem="gZD-w8-Cmr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="t9B-kl-P6l"/>
                     <constraint firstItem="gZD-w8-Cmr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xfq-g2-GVy"/>

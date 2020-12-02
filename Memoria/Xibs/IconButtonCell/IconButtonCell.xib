@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohd-th-J6N" userLabel="Background View">
-                        <rect key="frame" x="16" y="8" width="382" height="44"/>
+                        <rect key="frame" x="20" y="8" width="374" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKX-IW-vmV" userLabel="Label+icon view">
-                                <rect key="frame" x="151.5" y="0.0" width="79.5" height="44"/>
+                                <rect key="frame" x="147.5" y="0.0" width="79.5" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocz-Qe-SKl">
                                         <rect key="frame" x="33" y="12" width="36.5" height="20"/>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5K-KH-bMT">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                 <connections>
                                     <action selector="iconButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dXC-hd-oIa"/>
                                 </connections>
@@ -70,7 +70,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ohd-th-J6N" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Lbj-kV-NNr"/>
-                    <constraint firstItem="Ohd-th-J6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PuF-gZ-VR0"/>
+                    <constraint firstItem="Ohd-th-J6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="PuF-gZ-VR0"/>
                     <constraint firstItem="Ohd-th-J6N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fmz-xb-r4P"/>
                     <constraint firstItem="Ohd-th-J6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fsn-3W-XbG"/>
                 </constraints>

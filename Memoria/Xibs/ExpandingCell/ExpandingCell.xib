@@ -30,7 +30,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aconteceu há" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHk-Ob-gGs">
-                        <rect key="frame" x="16" y="16" width="105" height="20"/>
+                        <rect key="frame" x="20" y="16" width="105" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,8 +42,8 @@
                     <constraint firstItem="BCJ-92-6zI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dHk-Ob-gGs" secondAttribute="trailing" constant="15" id="E19-ui-mQo"/>
                     <constraint firstAttribute="bottom" secondItem="dHk-Ob-gGs" secondAttribute="bottom" constant="8" id="IIC-rc-hh2"/>
                     <constraint firstItem="rJm-nb-cHe" firstAttribute="height" secondItem="BCJ-92-6zI" secondAttribute="height" multiplier="0.75" priority="900" id="aJY-k5-bme"/>
-                    <constraint firstAttribute="trailing" secondItem="rJm-nb-cHe" secondAttribute="trailing" constant="20" id="d1y-12-QDG"/>
-                    <constraint firstItem="dHk-Ob-gGs" firstAttribute="leading" secondItem="hcb-Tm-U8a" secondAttribute="leading" constant="16" id="nN4-7k-dfU"/>
+                    <constraint firstAttribute="trailing" secondItem="rJm-nb-cHe" secondAttribute="trailing" constant="20" symbolic="YES" id="d1y-12-QDG"/>
+                    <constraint firstItem="dHk-Ob-gGs" firstAttribute="leading" secondItem="hcb-Tm-U8a" secondAttribute="leading" constant="20" symbolic="YES" id="nN4-7k-dfU"/>
                     <constraint firstItem="rJm-nb-cHe" firstAttribute="leading" secondItem="BCJ-92-6zI" secondAttribute="trailing" constant="5" id="tyD-5h-Cca"/>
                     <constraint firstItem="BCJ-92-6zI" firstAttribute="centerY" secondItem="dHk-Ob-gGs" secondAttribute="centerY" id="w18-So-knF"/>
                 </constraints>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,7 @@
                     </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Iyu-GY-cnc" secondAttribute="trailing" constant="20" id="42X-pc-g4S"/>
+                    <constraint firstAttribute="trailing" secondItem="Iyu-GY-cnc" secondAttribute="trailing" constant="20" symbolic="YES" id="42X-pc-g4S"/>
                     <constraint firstItem="Iyu-GY-cnc" firstAttribute="centerY" secondItem="NYk-8I-UtA" secondAttribute="centerY" id="A9x-lI-AGf"/>
                     <constraint firstItem="NYk-8I-UtA" firstAttribute="leading" secondItem="Mgp-Ze-gVz" secondAttribute="leading" constant="20" symbolic="YES" id="dFG-1a-LH9"/>
                     <constraint firstItem="NYk-8I-UtA" firstAttribute="top" secondItem="Mgp-Ze-gVz" secondAttribute="top" constant="12" id="e3H-Fb-i6X"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descreva sua mensagem aqui..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vU5-ca-kmT">
-                        <rect key="frame" x="16" y="12" width="382" height="200"/>
+                        <rect key="frame" x="20" y="12" width="378" height="200"/>
                         <color key="backgroundColor" name="grayLight"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="pI4-21-rt8"/>
@@ -29,7 +29,7 @@
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vU5-ca-kmT" firstAttribute="leading" secondItem="YZ4-xD-KFv" secondAttribute="leading" constant="16" id="Sew-fk-Zcw"/>
+                    <constraint firstItem="vU5-ca-kmT" firstAttribute="leading" secondItem="YZ4-xD-KFv" secondAttribute="leading" constant="20" symbolic="YES" id="Sew-fk-Zcw"/>
                     <constraint firstItem="vU5-ca-kmT" firstAttribute="top" secondItem="YZ4-xD-KFv" secondAttribute="top" constant="12" id="Wnn-F0-6gg"/>
                     <constraint firstAttribute="bottom" secondItem="vU5-ca-kmT" secondAttribute="bottom" constant="12" id="hxx-ko-Est"/>
                     <constraint firstAttribute="trailing" secondItem="vU5-ca-kmT" secondAttribute="trailing" constant="16" id="zV8-WO-eKY"/>

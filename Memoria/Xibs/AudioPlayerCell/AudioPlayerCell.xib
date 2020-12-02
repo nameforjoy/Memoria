@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-M8-2uX">
-                        <rect key="frame" x="16" y="0.0" width="382" height="72"/>
+                        <rect key="frame" x="20" y="0.0" width="374" height="72"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U56-MM-ZHp">
                                 <rect key="frame" x="16" y="18" width="31.5" height="36"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1m-1G-oUZ">
-                                <rect key="frame" x="341" y="52.5" width="29" height="12"/>
+                                <rect key="frame" x="333" y="52.5" width="29" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" name="grayDark"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                         </constraints>
                     </view>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9C6-cO-wN2">
-                        <rect key="frame" x="76.5" y="19.5" width="311.5" height="34"/>
+                        <rect key="frame" x="80.5" y="19.5" width="303.5" height="34"/>
                     </slider>
                 </subviews>
                 <constraints>
@@ -57,9 +57,9 @@
                     <constraint firstItem="E1m-1G-oUZ" firstAttribute="top" secondItem="9C6-cO-wN2" secondAttribute="bottom" id="W59-oh-8CM"/>
                     <constraint firstItem="b0l-M8-2uX" firstAttribute="top" secondItem="8s7-vT-XF7" secondAttribute="top" id="adN-be-MXh"/>
                     <constraint firstItem="9C6-cO-wN2" firstAttribute="leading" secondItem="U56-MM-ZHp" secondAttribute="trailing" constant="15" id="htk-HO-PMd"/>
-                    <constraint firstAttribute="trailing" secondItem="b0l-M8-2uX" secondAttribute="trailing" constant="16" id="krQ-2q-F0O"/>
+                    <constraint firstAttribute="trailing" secondItem="b0l-M8-2uX" secondAttribute="trailing" constant="20" symbolic="YES" id="krQ-2q-F0O"/>
                     <constraint firstItem="E1m-1G-oUZ" firstAttribute="trailing" secondItem="9C6-cO-wN2" secondAttribute="trailing" id="qog-mV-nq5"/>
-                    <constraint firstItem="b0l-M8-2uX" firstAttribute="leading" secondItem="8s7-vT-XF7" secondAttribute="leading" constant="16" id="u7M-9j-QVY"/>
+                    <constraint firstItem="b0l-M8-2uX" firstAttribute="leading" secondItem="8s7-vT-XF7" secondAttribute="leading" constant="20" symbolic="YES" id="u7M-9j-QVY"/>
                     <constraint firstAttribute="bottom" secondItem="b0l-M8-2uX" secondAttribute="bottom" id="u9I-0f-lmg"/>
                 </constraints>
             </tableViewCellContentView>
