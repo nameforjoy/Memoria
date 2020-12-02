@@ -15,6 +15,7 @@ class DetailViewController: UITableViewController {
     
     // Rows to hide (details without photo or audio)
     var hiddenRows: [Int] = []
+    var detailSeparatorRows: [Int] = []
     // Number of attempts to fetch memory from iCloud
     var fetchingAttempts: Int = 0
 
@@ -84,6 +85,8 @@ extension DetailViewController {
         // Hide cells with indexes contained in the hiddenRows array
         if self.hiddenRows.contains(indexPath.row) {
             return 0.0  // collapsed
+        } else if self.detailSeparatorRows.contains(indexPath.row) {
+            return 20.0 // separate details
         }
         // expanded with row height of parent
         return super.tableView(tableView, heightForRowAt: indexPath)
@@ -99,7 +102,7 @@ extension DetailViewController {
         if section == 0 {
             return 2
         } else {
-            return 3
+            return 4
         }
     }
 
@@ -157,8 +160,10 @@ extension DetailViewController {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
             if let cellType = cell as? TitleSubtitleCell {
-                cellType.titleLabel.text = detailForSection?.category
+                cellType.titleLabel.text = detailForSection?.question
+                cellType.titleLabel.dynamicFont = Typography.title3Regular
                 cellType.subtitleLabel.text = detailForSection?.text
+                cellType.subtitleLabel.textColor = UIColor.gray
                 cell = cellType
             }
 
@@ -187,6 +192,7 @@ extension DetailViewController {
             }
 
         default:
+            self.detailSeparatorRows.append(indexPath.row)
             print("Default cell was loaded in DetailViewController")
         }
 
