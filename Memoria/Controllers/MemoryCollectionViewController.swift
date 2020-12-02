@@ -82,6 +82,11 @@ class MemoryCollectionViewController: UIViewController {
         self.checkInternetConnectivity(monitor: self.monitor)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor(hexString: "7765A8")
+    }
+    
     deinit {
         // Take notification observers off when de-initializing the class.
         let notificationCenter = NotificationCenter.default
