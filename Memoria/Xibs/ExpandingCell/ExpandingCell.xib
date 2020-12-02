@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="800" text="Hoje" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCJ-92-6zI">
-                        <rect key="frame" x="336" y="16" width="37.5" height="20.5"/>
+                        <rect key="frame" x="340" y="16" width="37.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" name="blue"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="rJm-nb-cHe">
-                        <rect key="frame" x="378.5" y="16" width="15.5" height="20.5"/>
+                        <rect key="frame" x="382.5" y="18.5" width="11.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="rJm-nb-cHe" secondAttribute="height" multiplier="3:4" id="Tvs-ta-bhs"/>
                         </constraints>
@@ -41,7 +41,7 @@
                     <constraint firstItem="rJm-nb-cHe" firstAttribute="centerY" secondItem="BCJ-92-6zI" secondAttribute="centerY" id="Ayd-DW-7fp"/>
                     <constraint firstItem="BCJ-92-6zI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dHk-Ob-gGs" secondAttribute="trailing" constant="15" id="E19-ui-mQo"/>
                     <constraint firstAttribute="bottom" secondItem="dHk-Ob-gGs" secondAttribute="bottom" constant="8" id="IIC-rc-hh2"/>
-                    <constraint firstItem="rJm-nb-cHe" firstAttribute="height" secondItem="BCJ-92-6zI" secondAttribute="height" priority="900" id="aJY-k5-bme"/>
+                    <constraint firstItem="rJm-nb-cHe" firstAttribute="height" secondItem="BCJ-92-6zI" secondAttribute="height" multiplier="0.75" priority="900" id="aJY-k5-bme"/>
                     <constraint firstAttribute="trailing" secondItem="rJm-nb-cHe" secondAttribute="trailing" constant="20" id="d1y-12-QDG"/>
                     <constraint firstItem="dHk-Ob-gGs" firstAttribute="leading" secondItem="hcb-Tm-U8a" secondAttribute="leading" constant="16" id="nN4-7k-dfU"/>
                     <constraint firstItem="rJm-nb-cHe" firstAttribute="leading" secondItem="BCJ-92-6zI" secondAttribute="trailing" constant="5" id="tyD-5h-Cca"/>
