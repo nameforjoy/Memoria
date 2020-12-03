@@ -19,10 +19,6 @@ class DetailViewController: UITableViewController {
     // Number of attempts to fetch memory from iCloud
     var fetchingAttempts: Int = 0
 
-    override func viewWillAppear(_ animated: Bool) {
-        retrieveDetailsFromCurrentMemory()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,7 +33,11 @@ class DetailViewController: UITableViewController {
         self.tableView.delegate = self
 
         self.registerNibs()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        retrieveDetailsFromCurrentMemory()
     }
 
     // MARK: Instantiate Nibs
@@ -59,11 +59,15 @@ class DetailViewController: UITableViewController {
                     self.memoryDetails = details
                     self.currentDetail = details[0]
                     
-                    // Uncomment if you want to test how the view looks like with multiple details
-                    // This will duplicate the first detail
-                    //                self.createDuplicateForTesting()
                     if !details.isEmpty {
-                        self.tableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                        
+                        print("AQUIIIIIII")
+                        for element in (self.memoryDetails ?? []) {
+                            print(element.image)
+                        }
                     }
                 } else {
                     guard let error:Error = error else {return}
@@ -192,7 +196,7 @@ extension DetailViewController {
             }
 
         default:
-            self.detailSeparatorRows.append(indexPath.row)
+            // self.detailSeparatorRows.append(indexPath.row)
             print("Default cell was loaded in DetailViewController")
         }
 
