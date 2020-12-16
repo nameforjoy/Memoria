@@ -14,8 +14,7 @@ class DetailViewController: UITableViewController {
     var memoryDetails: [Detail]?
     
     // Rows to hide (details without photo or audio)
-    var hiddenRows: [Int] = []
-    var detailSeparatorRows: [Int] = []
+    var hiddenIndexes: [IndexPath] = []
     // Number of attempts to fetch memory from iCloud
     var fetchingAttempts: Int = 0
 
@@ -26,7 +25,6 @@ class DetailViewController: UITableViewController {
             print("ID da memória: \(selectedMemory.memoryID) ")
             self.navigationItem.title = selectedMemory.title
         }
-
         self.tableView.separatorStyle = .none
         self.tableView.allowsSelection = false
         self.tableView.isUserInteractionEnabled = true
@@ -66,7 +64,7 @@ class DetailViewController: UITableViewController {
                         
                         print("AQUIIIIIII")
                         for element in (self.memoryDetails ?? []) {
-                            print(element.image)
+                            print(element.image ?? "No image here")
                         }
                     }
                 } else {
@@ -87,22 +85,18 @@ extension DetailViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // Hide cells with indexes contained in the hiddenRows array
-        if self.hiddenRows.contains(indexPath.row) {
+        if self.hiddenIndexes.contains(indexPath) {
             return 0.0  // collapsed
-        } else if self.detailSeparatorRows.contains(indexPath.row) {
-            return 20.0 // separate details
         }
         // expanded with row height of parent
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         return 1 + (memoryDetails?.count ?? 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         if section == 0 {
             return 2
         } else {
@@ -111,7 +105,6 @@ extension DetailViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         var cell = UITableViewCell()
 
         if indexPath.section == 0 {
@@ -119,12 +112,10 @@ extension DetailViewController {
         } else {
             cell = self.getDetailCell(tableView: tableView, indexPath: indexPath)
         }
-
         return cell
     }
 
     func getHeaderCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-
         var cell = UITableViewCell()
 
         // Time Passed
@@ -136,7 +127,7 @@ extension DetailViewController {
                 if let dateString = DateManager.getTimeIntervalAsStringSinceDate(memory) {
                     cellType.subtitleLabel.text = dateString
                 } else {
-                    self.hiddenRows.append(indexPath.row)
+                    self.hiddenIndexes.append(indexPath)
                 }
                 cell = cellType
             }
@@ -180,7 +171,7 @@ extension DetailViewController {
                     cell = cellType
                 }
             } else {
-                self.hiddenRows.append(indexPath.row)
+                self.hiddenIndexes.append(indexPath)
             }
 
         // Detail Image
@@ -192,7 +183,7 @@ extension DetailViewController {
                     cell = cellType
                 }
             } else {
-                self.hiddenRows.append(indexPath.row)
+                self.hiddenIndexes.append(indexPath)
             }
 
         default:
