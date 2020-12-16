@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="16" y="381" width="382" height="40"/>
+                                <rect key="frame" x="16" y="379" width="382" height="43.5"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -35,7 +35,7 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="16" y="439" width="382" height="44"/>
+                                <rect key="frame" x="16" y="440.5" width="382" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
@@ -95,7 +95,7 @@ Vamos guardar uma? </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ua-z0-xlv" userLabel="Centralizing View">
-                                <rect key="frame" x="32" y="314" width="350" height="274"/>
+                                <rect key="frame" x="32" y="313" width="350" height="276"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3p-VM-5WA">
@@ -103,13 +103,13 @@ Vamos guardar uma? </string>
                                 <color key="backgroundColor" name="purple"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgV-eo-8wW">
-                                <rect key="frame" x="32" y="562" width="350" height="26"/>
+                                <rect key="frame" x="32" y="561" width="350" height="28"/>
                                 <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meditating" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-Bg-Ng0">
-                                <rect key="frame" x="32" y="314" width="350" height="232"/>
+                                <rect key="frame" x="32" y="313" width="350" height="232"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RF9-1U-o4H"/>
@@ -152,7 +152,7 @@ Vamos guardar uma? </string>
                         <subviews>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VEw-jD-fZA">
                                 <rect key="frame" x="145.5" y="834" width="123" height="28"/>
-                                <color key="pageIndicatorTintColor" name="grayDark"/>
+                                <color key="pageIndicatorTintColor" systemColor="systemGray4Color"/>
                                 <color key="currentPageIndicatorTintColor" name="purpleDark"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nBY-9e-jlj">
@@ -447,6 +447,9 @@ Vamos guardar uma? </string>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
