@@ -61,8 +61,6 @@ class DetailViewController: UITableViewController {
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
-                        
-                        print("AQUIIIIIII")
                         for element in (self.memoryDetails ?? []) {
                             print(element.image ?? "No image here")
                         }
@@ -146,11 +144,9 @@ extension DetailViewController {
 
     func getDetailCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-
         let detailForSection = memoryDetails?[indexPath.section - 1]
 
         switch indexPath.row {
-
         // Detail Description
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: NibIdentifier.titleSubtitleCell.rawValue, for: indexPath)
@@ -161,7 +157,6 @@ extension DetailViewController {
                 cellType.subtitleLabel.textColor = UIColor.gray
                 cell = cellType
             }
-
         // Detail Audio
         case 1:
             if let audioURL = detailForSection?.audio {
@@ -173,7 +168,6 @@ extension DetailViewController {
             } else {
                 self.hiddenIndexes.append(indexPath)
             }
-
         // Detail Image
         case 2:
             if let imageURL = detailForSection?.image, let image = MediaManager.getUIImage(imageURL: imageURL) {
