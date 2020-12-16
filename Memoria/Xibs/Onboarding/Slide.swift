@@ -39,6 +39,7 @@ class Slide: UIView {
         self.label.attributedText = attributedString
         
         self.button.title = "Começar"
+        self.button.isHidden = true
         self.configButtonIsHidden = true
     }
     
@@ -50,6 +51,7 @@ class Slide: UIView {
         
         self.button.title = "Começar"
         self.configButtonIsHidden = false
+        self.button.isHidden = true
         self.configButton.dynamicFont = Typography.calloutSemibold
     }
     
@@ -61,6 +63,7 @@ class Slide: UIView {
         self.label.attributedText = attributedString
         
         self.button.title = "Começar"
+        self.button.isHidden = true
         self.configButtonIsHidden = true
     }
     
@@ -73,6 +76,7 @@ class Slide: UIView {
         self.button.title = "Começar"
         self.button.delegate = self
         self.button.isEnabled = true
+        self.button.isHidden = false
         self.configButtonIsHidden = true
     }
     
