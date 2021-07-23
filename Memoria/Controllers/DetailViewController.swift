@@ -7,12 +7,14 @@
 
 import UIKit
 
-class DetailViewController: UITableViewController {
+class DetailViewController: UIViewController {
 
     var selectedMemory: Memory?
     var currentDetail: Detail?
     var memoryDetails: [Detail]?
-
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingIcon: UIActivityIndicatorView!
+    
     // Temporary property
     var details: [Detail]?
     
@@ -51,9 +53,13 @@ class DetailViewController: UITableViewController {
     }
 
     func retrieveDetailsFromCurrentMemory() {
+        startLoadingIcon()
+
         if let memoryID = selectedMemory?.memoryID {
             DetailDAO.findByMemoryID(memoryID: memoryID) { (details, error) in
-                
+
+                self.stopLoadingIcon()
+
                 if error == nil {
                     print("There is \(details.count) details for this memory.")
                     self.memoryDetails = details
@@ -76,6 +82,18 @@ class DetailViewController: UITableViewController {
 
     }
 
+    func startLoadingIcon() {
+        // Loading Icon Setup
+        self.loadingIcon.startAnimating()
+        self.loadingIcon.hidesWhenStopped = true
+        self.loadingIcon.color = UIColor(hexString: "7765A8")
+    }
+
+    func stopLoadingIcon() {
+        // Disables loading icon
+        self.loadingIcon.stopAnimating()
+    }
+
     func createDuplicateForTesting() {
         if let detail = self.currentDetail {
             DetailDAO.create(detail: detail) { error in
@@ -95,23 +113,23 @@ class DetailViewController: UITableViewController {
 }
 
 // MARK: Table View Delegate Methods
-extension DetailViewController {
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
 
         return 1 + (memoryDetails?.count ?? 0)
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if section == 0 {
             return 2
         } else {
-            return 3
+            return 3 + 1
         }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         var cell = UITableViewCell()
 

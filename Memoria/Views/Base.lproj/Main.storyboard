@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-aD-e4p">
-                                <rect key="frame" x="16" y="381" width="382" height="40"/>
+                                <rect key="frame" x="16" y="379" width="382" height="43.5"/>
                                 <string key="text">Você ainda não guardou nenhuma memória.
 Vamos guardar uma? </string>
                                 <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="17"/>
@@ -35,7 +35,7 @@ Vamos guardar uma? </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmF-Fb-C8c" customClass="IconButtonView" customModule="Memoria" customModuleProvider="target">
-                                <rect key="frame" x="16" y="439" width="382" height="44"/>
+                                <rect key="frame" x="16" y="440.5" width="382" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="44" id="vzF-Dk-UH6"/>
@@ -78,34 +78,34 @@ Vamos guardar uma? </string>
                         <outlet property="loadingIcon" destination="baj-Fk-iR2" id="Soy-je-Kap"/>
                         <outlet property="noMemoriesLabel" destination="YcP-aD-e4p" id="44d-AZ-a2u"/>
                         <outlet property="tableView" destination="hLN-7Y-fZZ" id="ToS-fL-c2H"/>
-                        <segue destination="BwW-ST-TNg" kind="show" identifier="viewDetail" id="Sob-dv-5Fd"/>
-                        <segue destination="WX6-c7-ef2" kind="show" identifier="addMemory" id="lfw-gm-LtL"/>
+                        <segue destination="WX6-c7-ef2" kind="showDetail" identifier="addMemory" id="lfw-gm-LtL"/>
+                        <segue destination="qta-nt-E8T" kind="show" identifier="viewDetail" id="tJe-XQ-JGp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7v-o0-zM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="195.6521739130435" y="133.92857142857142"/>
+            <point key="canvasLocation" x="252" y="134"/>
         </scene>
         <!--Gradient View Controller-->
         <scene sceneID="5iA-4l-Tqo">
             <objects>
                 <viewController id="WX6-c7-ef2" customClass="GradientViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j3i-WV-F3V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3p-VM-5WA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" name="purple"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgV-eo-8wW">
-                                <rect key="frame" x="40" y="603" width="334" height="26"/>
+                                <rect key="frame" x="40" y="517" width="334" height="28"/>
                                 <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meditating" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-Bg-Ng0">
-                                <rect key="frame" x="41.5" y="264" width="331" height="331"/>
+                                <rect key="frame" x="41.5" y="178" width="331" height="331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lDI-Bg-Ng0" secondAttribute="height" id="JwQ-pa-SbK"/>
                                 </constraints>
@@ -198,7 +198,7 @@ Vamos guardar uma? </string>
             <objects>
                 <tableViewController id="t6u-Vq-Uny" customClass="FifthQuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Okw-rV-sJX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -220,7 +220,7 @@ Vamos guardar uma? </string>
             <objects>
                 <tableViewController id="14s-zS-Ppn" customClass="TitleTableViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jj4-nb-ge8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -237,16 +237,6 @@ Vamos guardar uma? </string>
                 <exit id="X3O-Fd-rj7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4872" y="942"/>
-        </scene>
-        <!--ViewDetail-->
-        <scene sceneID="S4D-lb-bWz">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ViewDetail" id="BwW-ST-TNg" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="nVW-LJ-NF4"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hBa-O5-tc1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-422" y="613"/>
         </scene>
         <!--Input Audio View Controller-->
         <scene sceneID="AyG-dy-ZVO">
@@ -343,7 +333,7 @@ Vamos guardar uma? </string>
             <objects>
                 <tableViewController id="X2c-S5-BIy" customClass="FirstQuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lKU-Rd-bNx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -365,7 +355,7 @@ Vamos guardar uma? </string>
             <objects>
                 <tableViewController id="whW-jA-30A" customClass="SecondQuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fIp-ex-Pef">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -387,7 +377,7 @@ Vamos guardar uma? </string>
             <objects>
                 <tableViewController id="mdj-8J-NVF" customClass="ThirdQuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yok-em-j58">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -409,7 +399,7 @@ Vamos guardar uma? </string>
             <objects>
                 <tableViewController id="dxD-a1-8AI" customClass="FourthQuestionViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cPO-Jo-MvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
@@ -425,6 +415,47 @@ Vamos guardar uma? </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23d-ke-4xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3301" y="929"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="4Tv-ij-bTx">
+            <objects>
+                <viewController id="qta-nt-E8T" customClass="DetailViewController" customModule="Memoria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nls-zN-bXe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rnt-W7-ckq">
+                                <rect key="frame" x="0.0" y="176" width="414" height="686"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qta-nt-E8T" id="0Uz-HP-j4M"/>
+                                    <outlet property="delegate" destination="qta-nt-E8T" id="qZ4-5W-Fr5"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9ZQ-nL-WcM">
+                                <rect key="frame" x="188.5" y="482.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QFc-z2-tw9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QFc-z2-tw9" firstAttribute="trailing" secondItem="Rnt-W7-ckq" secondAttribute="trailing" id="580-7z-5mC"/>
+                            <constraint firstItem="Rnt-W7-ckq" firstAttribute="leading" secondItem="QFc-z2-tw9" secondAttribute="leading" id="7j3-Vn-nDC"/>
+                            <constraint firstItem="Rnt-W7-ckq" firstAttribute="top" secondItem="QFc-z2-tw9" secondAttribute="top" constant="36" id="FrF-Rp-phi"/>
+                            <constraint firstItem="9ZQ-nL-WcM" firstAttribute="centerX" secondItem="QFc-z2-tw9" secondAttribute="centerX" id="Idh-V1-LwS"/>
+                            <constraint firstItem="Rnt-W7-ckq" firstAttribute="bottom" secondItem="QFc-z2-tw9" secondAttribute="bottom" id="ce2-bN-AUw"/>
+                            <constraint firstItem="9ZQ-nL-WcM" firstAttribute="centerY" secondItem="QFc-z2-tw9" secondAttribute="centerY" id="wnK-xt-S4p"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hEs-kx-ldS"/>
+                    <connections>
+                        <outlet property="loadingIcon" destination="9ZQ-nL-WcM" id="muw-RT-zo2"/>
+                        <outlet property="tableView" destination="Rnt-W7-ckq" id="J5U-7P-8lT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqq-re-LNB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="134"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.46666666670000001" green="0.39607843139999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
