@@ -233,6 +233,22 @@ extension MemoryCollectionViewController: UITableViewDataSource {
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let uuid = memories[indexPath.row].memoryID
+            MemoryDAO.delete(with: uuid) { _, error in
+                if error == nil {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension MemoryCollectionViewController: UITableViewDelegate {

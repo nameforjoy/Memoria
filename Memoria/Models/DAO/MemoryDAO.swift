@@ -42,6 +42,25 @@ class MemoryDAO: DAO {
         }
     }
 
+    static public func delete(with memoryID: UUID, completion: @escaping (CKRecord.ID?, Error?) -> Void) {
+        // Converts UUID to String
+        let memoryIDAsString = memoryID.uuidString
+        let predicate = NSPredicate(format: "memoryID == %@", memoryIDAsString as CVarArg)
+
+        //  Make query operation to fetch a detail
+        let query = CKQuery(recordType: "Memory", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+
+        operation.recordFetchedBlock = { record in
+
+            privateDatabase.delete(withRecordID: record.recordID) { id, error in
+                completion(id, error)
+            }
+        }
+
+        privateDatabase.add(operation)
+    }
+
     /// Retrieve all memories from database
     static public func findAll(completion: @escaping ([Memory], Error?) -> Void) {
         var allRecords = [Memory]()
